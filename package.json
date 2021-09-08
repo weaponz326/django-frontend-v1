@@ -22,6 +22,8 @@
     "@angular/router": "~12.2.0",
     "bootstrap": "^5.1.0",
     "bootstrap-icons": "^1.5.0",
+    "chart.js": "^3.5.1",
+    "ng2-charts": "^2.4.3",
     "rxjs": "~6.6.0",
     "smart-webcomponents-angular": "^10.0.25",
     "tslib": "^2.3.0",

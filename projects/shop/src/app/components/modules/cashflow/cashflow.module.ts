@@ -1,5 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
+import { ChartsModule } from 'ng2-charts';
+
+import { ModuleUtilitiesModule } from 'projects/personal/src/app/components/module-utilities/module-utilities.module';
+
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SettingsComponent } from './settings/settings.component';
 import { AllSheetsComponent } from './all-sheets/all-sheets.component';
@@ -29,7 +34,9 @@ import { QuarterlyComponent } from './sheet-types/quarterly/quarterly.component'
     QuarterlyComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    ChartsModule,
+    ModuleUtilitiesModule,
   ]
 })
 export class CashflowModule { }

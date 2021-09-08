@@ -1,5 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
+import { ChartsModule } from 'ng2-charts';
+
+import { ModuleUtilitiesModule } from 'projects/personal/src/app/components/module-utilities/module-utilities.module';
+
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SettingsComponent } from './settings/settings.component';
 import { AllMeetingsComponent } from './all-meetings/all-meetings.component';
@@ -19,7 +24,9 @@ import { MeetingFormComponent } from './meeting-form/meeting-form.component';
     MeetingFormComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    ChartsModule,
+    ModuleUtilitiesModule,
   ]
 })
 export class MeetingsModule { }

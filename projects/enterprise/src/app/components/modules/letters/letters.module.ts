@@ -1,5 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
+import { ChartsModule } from 'ng2-charts';
+
+import { ModuleUtilitiesModule } from 'projects/personal/src/app/components/module-utilities/module-utilities.module';
+
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SettingsComponent } from './settings/settings.component';
 import { AllLettersComponent } from './all-letters/all-letters.component';
@@ -25,7 +30,9 @@ import { SentFormComponent } from './sent-form/sent-form.component';
     SentFormComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    ChartsModule,
+    ModuleUtilitiesModule,
   ]
 })
 export class LettersModule { }

@@ -1,5 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
+import { ChartsModule } from 'ng2-charts';
+
+import { ModuleUtilitiesModule } from 'projects/personal/src/app/components/module-utilities/module-utilities.module';
+
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SettingsComponent } from './settings/settings.component';
 import { AllFeesComponent } from './all-fees/all-fees.component';
@@ -31,7 +36,9 @@ import { StudentBillComponent } from './student-bill/student-bill.component';
     StudentBillComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    ChartsModule,
+    ModuleUtilitiesModule,
   ]
 })
 export class FeesModule { }
