@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
 import { FormHeaderComponent } from './form-header/form-header.component';
 import { FormFooterComponent } from './form-footer/form-footer.component';
 import { SignupFormComponent } from './signup-form/signup-form.component';
@@ -22,6 +23,10 @@ import { ResetFormComponent } from './reset-form/reset-form.component';
   ],
   imports: [
     CommonModule
+  ],
+  exports: [
+    FormHeaderComponent,
+    FormFooterComponent,
   ]
 })
 export class AuthFormsModule { }

@@ -10,6 +10,9 @@ import { RestaurantFormComponent } from './restaurant-form/restaurant-form.compo
   ],
   imports: [
     CommonModule
+  ],
+  exports: [
+    RestaurantFormComponent
   ]
 })
 export class RegisterFormsModule { }

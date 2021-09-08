@@ -16,6 +16,12 @@ import { SuiteRightComponent } from './suite-right/suite-right.component';
   ],
   imports: [
     CommonModule
+  ],
+  exports: [
+    MainScrollnavComponent,
+    LandingTopComponent,
+    SuiteLeftComponent,
+    SuiteRightComponent
   ]
 })
 export class MainLandingModule { }

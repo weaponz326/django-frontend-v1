@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { MeetingsPageRoutingModule } from './meetings-page-routing.module';
+import { MainNavbarModule } from 'projects/application/src/app/components/main-navbar/main-navbar.module';
+
 import { MeetingsPageComponent } from './meetings-page.component';
 
 
@@ -11,7 +13,8 @@ import { MeetingsPageComponent } from './meetings-page.component';
   ],
   imports: [
     CommonModule,
-    MeetingsPageRoutingModule
+    MeetingsPageRoutingModule,
+    MainNavbarModule,
   ]
 })
 export class MeetingsPageModule { }

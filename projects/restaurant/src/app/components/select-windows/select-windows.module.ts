@@ -30,6 +30,19 @@ import { SittingComponent } from './sitting/sitting.component';
   ],
   imports: [
     CommonModule
+  ],
+  exports: [
+    MenuComponent,
+    StaffComponent,
+    TableComponent,
+    CustomerComponent,
+    DeliveryComponent,
+    PaymentComponent,
+    RosterComponent,
+    ReservationComponent,
+    OrderComponent,
+    KitchenStockComponent,
+    SittingComponent
   ]
 })
 export class SelectWindowsModule { }

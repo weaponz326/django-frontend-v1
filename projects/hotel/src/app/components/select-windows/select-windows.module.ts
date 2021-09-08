@@ -24,6 +24,16 @@ import { HousekeepingComponent } from './housekeeping/housekeeping.component';
   ],
   imports: [
     CommonModule
+  ],
+  exports: [
+    BillComponent,
+    GuestComponent,
+    ServiceComponent,
+    CheckinComponent,
+    BookingComponent,
+    RoomComponent,
+    AssetComponent,
+    HousekeepingComponent
   ]
 })
 export class SelectWindowsModule { }

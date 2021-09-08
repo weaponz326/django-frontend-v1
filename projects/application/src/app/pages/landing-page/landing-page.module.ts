@@ -2,6 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { LandingPageRoutingModule } from './landing-page-routing.module';
+import { MainNavbarModule } from '../../components/main-navbar/main-navbar.module';
+import { MainLandingModule } from '../../components/main-landing/main-landing.module';
+
 import { LandingPageComponent } from './landing-page.component';
 
 
@@ -11,7 +14,9 @@ import { LandingPageComponent } from './landing-page.component';
   ],
   imports: [
     CommonModule,
-    LandingPageRoutingModule
+    LandingPageRoutingModule,
+    MainNavbarModule,
+    MainLandingModule
   ]
 })
 export class LandingPageModule { }

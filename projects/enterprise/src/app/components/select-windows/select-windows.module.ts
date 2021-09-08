@@ -34,6 +34,21 @@ import { ReceptionComponent } from './reception/reception.component';
   ],
   imports: [
     CommonModule
+  ],
+  exports: [
+    AccountComponent,
+    PayrollComponent,
+    AttendanceComponent,
+    AssetComponent,
+    LeaveComponent,
+    BudgetComponent,
+    ProcurementComponent,
+    LettersComponent,
+    AppraisalComponent,
+    FileComponent,
+    EmployeeComponent,
+    LedgerComponent,
+    ReceptionComponent
   ]
 })
 export class SelectWindowsModule { }

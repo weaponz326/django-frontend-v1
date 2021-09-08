@@ -32,6 +32,20 @@ import { DispensaryComponent } from './dispensary/dispensary.component';
   ],
   imports: [
     CommonModule
+  ],
+  exports: [
+    PatientComponent,
+    AppointmentComponent,
+    BillComponent,
+    DoctorComponent,
+    LaboratoryComponent,
+    NurseComponent,
+    PrescriptionComponent,
+    DiagnosisComponent,
+    DrugComponent,
+    WardComponent,
+    AdmissionComponent,
+    DispensaryComponent
   ]
 })
 export class SelectWindowsModule { }

@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { InventoryPageRoutingModule } from './inventory-page-routing.module';
+import { MainNavbarModule } from 'projects/application/src/app/components/main-navbar/main-navbar.module';
+
 import { InventoryPageComponent } from './inventory-page.component';
 
 
@@ -11,7 +13,8 @@ import { InventoryPageComponent } from './inventory-page.component';
   ],
   imports: [
     CommonModule,
-    InventoryPageRoutingModule
+    InventoryPageRoutingModule,
+    MainNavbarModule,
   ]
 })
 export class InventoryPageModule { }

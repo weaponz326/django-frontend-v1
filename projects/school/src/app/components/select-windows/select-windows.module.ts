@@ -30,6 +30,19 @@ import { SectionComponent } from './section/section.component';
   ],
   imports: [
     CommonModule
+  ],
+  exports: [
+    ParentComponent,
+    AssessmentComponent,
+    SubjectComponent,
+    AttendanceComponent,
+    StudentComponent,
+    ReportComponent,
+    TeacherComponent,
+    ClassComponent,
+    TimetableComponent,
+    FeeComponent,
+    SectionComponent
   ]
 })
 export class SelectWindowsModule { }

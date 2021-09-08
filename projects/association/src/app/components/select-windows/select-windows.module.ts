@@ -30,6 +30,19 @@ import { YearComponent } from './year/year.component';
   ],
   imports: [
     CommonModule
+  ],
+  exports: [
+    AccountComponent,
+    MemberComponent,
+    CommitteeComponent,
+    DuesComponent,
+    ExecutiveComponent,
+    ActionPlanComponent,
+    BudgetComponent,
+    AttendanceComponent,
+    MeetingComponent,
+    GroupComponent,
+    YearComponent
   ]
 })
 export class SelectWindowsModule { }

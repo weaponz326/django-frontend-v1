@@ -12,6 +12,10 @@ import { MainFooterComponent } from './main-footer/main-footer.component';
   ],
   imports: [
     CommonModule
+  ],
+  exports: [
+    MainNavbarComponent,
+    MainFooterComponent
   ]
 })
 export class MainNavbarModule { }

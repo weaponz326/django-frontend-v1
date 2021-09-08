@@ -28,6 +28,18 @@ import { MaterialComponent } from './material/material.component';
   ],
   imports: [
     CommonModule
+  ],
+  exports: [
+    StockComponent,
+    EquipmentComponent,
+    PurchasingComponent,
+    OrderComponent,
+    ManufacturingComponent,
+    ContractorComponent,
+    ProjectComponent,
+    WorkerComponent,
+    TaskComponent,
+    MaterialComponent
   ]
 })
 export class SelectWindowsModule { }

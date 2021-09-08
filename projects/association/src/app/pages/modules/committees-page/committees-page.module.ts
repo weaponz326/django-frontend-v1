@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { CommitteesPageRoutingModule } from './committees-page-routing.module';
+import { MainNavbarModule } from 'projects/application/src/app/components/main-navbar/main-navbar.module';
+
 import { CommitteesPageComponent } from './committees-page.component';
 
 
@@ -11,7 +13,8 @@ import { CommitteesPageComponent } from './committees-page.component';
   ],
   imports: [
     CommonModule,
-    CommitteesPageRoutingModule
+    CommitteesPageRoutingModule,
+    MainNavbarModule,
   ]
 })
 export class CommitteesPageModule { }

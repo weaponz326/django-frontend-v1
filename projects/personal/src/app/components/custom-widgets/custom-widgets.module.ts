@@ -14,6 +14,11 @@ import { LogoUploadComponent } from './logo-upload/logo-upload.component';
   ],
   imports: [
     CommonModule
+  ],
+  exports: [
+    DobInputComponent,
+    ProfileUploadComponent,
+    LogoUploadComponent
   ]
 })
 export class CustomWidgetsModule { }

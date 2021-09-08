@@ -20,6 +20,14 @@ import { ContactComponent } from './contact/contact.component';
   ],
   imports: [
     CommonModule
+  ],
+  exports: [
+    SuiteScrollnavComponent,
+    UserTopComponent,
+    GuestTopComponent,
+    AboutComponent,
+    PricingComponent,
+    ContactComponent
   ]
 })
 export class SuiteLandingModule { }

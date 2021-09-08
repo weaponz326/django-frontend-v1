@@ -20,6 +20,14 @@ import { DeleteConfirmationComponent } from './delete-confirmation/delete-confir
   ],
   imports: [
     CommonModule
+  ],
+  exports: [
+    ModuleSidenavComponent,
+    ModuleTopnavComponent,
+    ConnectionSpinnerComponent,
+    ConnectionPromptComponent,
+    AccessPromptComponent,
+    DeleteConfirmationComponent
   ]
 })
 export class ModuleUtilitiesModule { }

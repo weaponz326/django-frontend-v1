@@ -18,6 +18,13 @@ import { TaskComponent } from './task/task.component';
   ],
   imports: [
     CommonModule
+  ],
+  exports: [
+    CalendarComponent,
+    BudgetComponent,
+    NoteComponent,
+    AccountComponent,
+    TaskComponent
   ]
 })
 export class SelectWindowsModule { }

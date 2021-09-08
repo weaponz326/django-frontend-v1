@@ -2,6 +2,10 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { PortalPageRoutingModule } from './portal-page-routing.module';
+import { MainNavbarModule } from 'projects/application/src/app/components/main-navbar/main-navbar.module';
+import { ModuleUtilitiesModule } from '../../../components/module-utilities/module-utilities.module';
+import { PortalModule } from '../../../components/modules/portal/portal.module';
+
 import { PortalPageComponent } from './portal-page.component';
 
 
@@ -11,7 +15,10 @@ import { PortalPageComponent } from './portal-page.component';
   ],
   imports: [
     CommonModule,
-    PortalPageRoutingModule
+    PortalPageRoutingModule,
+    MainNavbarModule,
+    ModuleUtilitiesModule,
+    PortalModule
   ]
 })
 export class PortalPageModule { }

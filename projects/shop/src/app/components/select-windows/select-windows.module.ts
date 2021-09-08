@@ -28,6 +28,18 @@ import { CashflowComponent } from './cashflow/cashflow.component';
   ],
   imports: [
     CommonModule
+  ],
+  exports: [
+    ReceivableComponent,
+    ProductComponent,
+    InvoiceComponent,
+    MarkettingComponent,
+    PayableComponent,
+    SalesComponent,
+    InventoryComponent,
+    SupplierComponent,
+    PurchasingComponent,
+    CashflowComponent
   ]
 })
 export class SelectWindowsModule { }

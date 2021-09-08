@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { ParentsPageRoutingModule } from './parents-page-routing.module';
+import { MainNavbarModule } from 'projects/application/src/app/components/main-navbar/main-navbar.module';
+
 import { ParentsPageComponent } from './parents-page.component';
 
 
@@ -11,7 +13,8 @@ import { ParentsPageComponent } from './parents-page.component';
   ],
   imports: [
     CommonModule,
-    ParentsPageRoutingModule
+    ParentsPageRoutingModule,
+    MainNavbarModule,
   ]
 })
 export class ParentsPageModule { }
