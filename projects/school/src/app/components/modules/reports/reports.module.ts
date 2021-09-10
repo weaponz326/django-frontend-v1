@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { ChartsModule } from 'ng2-charts';
+// import { ChartsModule } from 'ng2-charts';
 
 import { ModuleUtilitiesModule } from 'projects/personal/src/app/components/module-utilities/module-utilities.module';
 
@@ -27,7 +27,7 @@ import { StudentReportComponent } from './student-report/student-report.componen
   ],
   imports: [
     CommonModule,
-    ChartsModule,
+    // ChartsModule,
     ModuleUtilitiesModule,
   ]
 })

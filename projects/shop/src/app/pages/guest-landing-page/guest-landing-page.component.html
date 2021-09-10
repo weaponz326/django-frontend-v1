@@ -1,1 +1,51 @@
-<p>guest-landing-page works!</p>
+<app-main-navbar
+    [navBrand]="'nR Shop'"
+    [source]="'Shop'"
+></app-main-navbar>
+
+<app-suite-scrollnav
+    (aboutEvent)="gotoAbout()"
+    (pricingEvent)="gotoPricing()"
+    (contactEvent)="gotoContact()"
+></app-suite-scrollnav>
+
+<app-guest-top
+    [suiteName]="'Shop'"
+    [primaryCaption]="'netRink Shop'"
+    [secondaryCaption]="'Easy way to manage all activities and operations of your shop'"
+    [features]="[
+        {
+            'title': 'Customer relationship',
+            'description': 'Manage your customers for a good customer eperience',
+            'imgLink': '../../../assets/images/features/customer.png'
+        },
+        {
+            'title': 'Financial management',
+            'description': 'Easily handle all financial operations of your shop',
+            'imgLink': '../../../assets/images/features/financial.png'
+        },
+        {
+            'title': 'Product Management',
+            'description': 'Manage and track all products from aquisition to sale',
+            'imgLink': '../../../assets/images/features/product.png'
+        },
+        {
+            'title': 'Sales management',
+            'description': 'Manage sales and all of its related activities',
+            'imgLink': '../../../assets/images/features/sales.png'
+        }
+    ]"
+></app-guest-top>
+
+<app-about id="aboutComponentReference"
+    [suiteName]="'Shop'"
+    [suiteDetails]="''"
+></app-about>
+
+<app-pricing id="pricingComponentReference"></app-pricing>
+
+<app-contact id="contactComponentReference"
+    [suiteName]="'Shop'"
+></app-contact>
+
+<app-main-footer></app-main-footer>

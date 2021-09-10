@@ -1,1 +1,51 @@
-<p>guest-landing-page works!</p>
+<app-main-navbar
+    [navBrand]="'nR Hospital'"
+    [source]="'Hospital'"
+></app-main-navbar>
+
+<app-suite-scrollnav
+    (aboutEvent)="gotoAbout()"
+    (pricingEvent)="gotoPricing()"
+    (contactEvent)="gotoContact()"
+></app-suite-scrollnav>
+
+<app-guest-top
+    [suiteName]="'Hospital'"
+    [primaryCaption]="'netRink Hospital'"
+    [secondaryCaption]="'Link up all departments of your hospital for easy and effective operations'"
+    [features]="[
+        {
+            'title': 'Patients management',
+            'description': 'Register patients and access their medical data at anytime',
+            'imgLink': '../../../assets/images/features/patients.png'
+        },
+        {
+            'title': 'Staff management',
+            'description': 'Manage doctors, nurses, and all other supporting staff',
+            'imgLink': '../../../assets/images/features/staff.png'
+        },
+        {
+            'title': 'OPD and IPD',
+            'description': 'Run operations of all departments of your facility effectively',
+            'imgLink': '../../../assets/images/features/opd_ipd.png'
+        },
+        {
+            'title': 'Bills and payments',
+            'description': 'Automatically generate bills and receive payments from patients',
+            'imgLink': '../../../assets/images/features/bills.png'
+        }
+    ]"
+></app-guest-top>
+
+<app-about id="aboutComponentReference"
+    [suiteName]="'Hospital'"
+    [suiteDetails]="''"
+></app-about>
+
+<app-pricing id="pricingComponentReference"></app-pricing>
+
+<app-contact id="contactComponentReference"
+    [suiteName]="'Hospital'"
+></app-contact>
+
+<app-main-footer></app-main-footer>

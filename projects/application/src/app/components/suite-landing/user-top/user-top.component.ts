@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-user-top',
@@ -9,7 +9,17 @@ export class UserTopComponent implements OnInit {
 
   constructor() { }
 
+  @Input() suiteName: string = "";
+  @Input() accounts: any;
+
+  @Output() selectAccount = new EventEmitter<number>();
+
   ngOnInit(): void {
+  }
+
+  accountSelected(accountId: any){
+    this.selectAccount.emit(accountId);
+    console.log(accountId);
   }
 
 }

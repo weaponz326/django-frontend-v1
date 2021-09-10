@@ -1,1 +1,51 @@
-<p>guest-landing-page works!</p>
+<app-main-navbar
+    [navBrand]="'nR Production'"
+    [source]="'Production'"
+></app-main-navbar>
+
+<app-suite-scrollnav
+    (aboutEvent)="gotoAbout()"
+    (pricingEvent)="gotoPricing()"
+    (contactEvent)="gotoContact()"
+></app-suite-scrollnav>
+
+<app-guest-top
+    [suiteName]="'Production'"
+    [primaryCaption]="'netRink Production'"
+    [secondaryCaption]="'Fully manage your production facility\'s operations, from beginning to end'"
+    [features]="[
+        {
+            'title': 'Production materials',
+            'description': 'Take stock of materials needed for your production',
+            'imgLink': '../../../assets/images/features/materials.png'
+        },
+        {
+            'title': 'Operations management',
+            'description': 'Manage all production related administrative operations',
+            'imgLink': '../../../assets/images/features/operations.png'
+        },
+        {
+            'title': 'Product lifecycle',
+            'description': 'Manage products as they go through the production proccess',
+            'imgLink': '../../../assets/images/features/product.png'
+        },
+        {
+            'title': 'Production planning',
+            'description': 'Plan your production proccesses and tasks',
+            'imgLink': '../../../assets/images/features/planning.png'
+        }
+    ]"
+></app-guest-top>
+
+<app-about id="aboutComponentReference"
+    [suiteName]="'Production'"
+    [suiteDetails]="''"
+></app-about>
+
+<app-pricing id="pricingComponentReference"></app-pricing>
+
+<app-contact id="contactComponentReference"
+    [suiteName]="'Production'"
+></app-contact>
+
+<app-main-footer></app-main-footer>

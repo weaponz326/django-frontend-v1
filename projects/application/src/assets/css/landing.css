@@ -1,0 +1,15 @@
+.bg-darker {
+  background-color: #78797a !important;
+}
+
+.bg-dark-light {
+  background-color: #f4f5f6 !important;
+}
+
+.bg-light-dark {
+  background-color: #fcfdfe !important;
+}
+
+.text-white {
+  color: #fffd;
+}

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { ChartsModule } from 'ng2-charts';
+// import { ChartsModule } from 'ng2-charts';
 
 import { ModuleUtilitiesModule } from '../../module-utilities/module-utilities.module';
 
@@ -21,7 +21,7 @@ import { ViewNoteComponent } from './view-note/view-note.component';
   ],
   imports: [
     CommonModule,
-    ChartsModule,
+    // ChartsModule,
     ModuleUtilitiesModule,
   ]
 })

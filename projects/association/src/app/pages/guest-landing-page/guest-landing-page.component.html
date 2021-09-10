@@ -1,1 +1,51 @@
-<p>guest-landing-page works!</p>
+<app-main-navbar
+    [navBrand]="'nR Association'"
+    [source]="'Association'"
+></app-main-navbar>
+
+<app-suite-scrollnav
+    (aboutEvent)="gotoAbout()"
+    (pricingEvent)="gotoPricing()"
+    (contactEvent)="gotoContact()"
+></app-suite-scrollnav>
+
+<app-guest-top
+    [suiteName]="'Association'"
+    [primaryCaption]="'netRink Association'"
+    [secondaryCaption]="'Everything you need to manage and run your business operations effectively'"
+    [features]="[
+        {
+            'title': 'Meetings and Attendance',
+            'description': 'Keep track of meetings and members',
+            'imgLink': '../../../assets/images/features/meeting.png'
+        },
+        {
+            'title': 'Administrative work',
+            'description': 'Efficiently take care of the paper work',
+            'imgLink': '../../../assets/images/features/operations.png'
+        },
+        {
+            'title': 'Activities and Planning',
+            'description': 'Plan and handle all activities',
+            'imgLink': '../../../assets/images/features/planning.png'
+        },
+        {
+            'title': 'Members Managemet',
+            'description': 'Manage all members effectively',
+            'imgLink': '../../../assets/images/features/personnel.png'
+        }
+    ]"
+></app-guest-top>
+
+<app-about id="aboutComponentReference"
+    [suiteName]="'Association'"
+    [suiteDetails]="''"
+></app-about>
+
+<app-pricing id="pricingComponentReference"></app-pricing>
+
+<app-contact id="contactComponentReference"
+    [suiteName]="'Association'"
+></app-contact>
+
+<app-main-footer></app-main-footer>

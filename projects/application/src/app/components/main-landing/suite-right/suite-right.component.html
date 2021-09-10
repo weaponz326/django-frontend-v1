@@ -1,1 +1,26 @@
-<p>suite-right works!</p>
+<div class="bg-light-dark py-5">
+    <div class="container scroll-div" id={{suiteDivId}}>
+        <div class="row g-5">
+
+            <div class="col-md-6 bg-white rounded">
+                <img src={{suiteImageSrc}} class="img-fluid my-auto">
+            </div>
+
+            <div class="col-md-6">
+                <p class="h1">{{suiteName}}</p>
+                <p class="h4 my-4">{{suiteDescription}}</p>
+                <br>
+                <ul>
+                    <li class="suite-uses" *ngFor="let use of suiteUses">
+                        <p class="lead text-muted ms-2">{{use}}<p>
+                    </li>
+                </ul>
+                <br>
+                <a href={{suiteButtonLink}} target="_blank">
+                    <button class="btn btn-lg btn-primary mt-4 ms-3">go to {{suiteName}}</button>
+                </a>
+            </div>
+
+        </div>
+    </div>
+</div>

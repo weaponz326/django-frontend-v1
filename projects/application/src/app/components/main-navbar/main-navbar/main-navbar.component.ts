@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-main-navbar',
@@ -8,6 +8,12 @@ import { Component, OnInit } from '@angular/core';
 export class MainNavbarComponent implements OnInit {
 
   constructor() { }
+
+  @Input() source: string = "Application";
+  @Input() navBrand: string = "NetRink";
+  @Input() isForms: boolean = false;
+
+  isLogin: boolean = false;
 
   ngOnInit(): void {
   }

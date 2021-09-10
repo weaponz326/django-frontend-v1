@@ -1,1 +1,51 @@
-<p>guest-landing-page works!</p>
+<app-main-navbar
+    [navBrand]="'nR Hotel'"
+    [source]="'Hotel'"
+></app-main-navbar>
+
+<app-suite-scrollnav
+    (aboutEvent)="gotoAbout()"
+    (pricingEvent)="gotoPricing()"
+    (contactEvent)="gotoContact()"
+></app-suite-scrollnav>
+
+<app-guest-top
+    [suiteName]="'Hotel'"
+    [primaryCaption]="'netRink Hotel'"
+    [secondaryCaption]="'Effective running of all the day to day operations of your hotel'"
+    [features]="[
+        {
+            'title': 'Bills and Payments',
+            'description': 'Automatically generate bills and receive payments from guests',
+            'imgLink': '../../../assets/images/features/bills.png'
+        },
+        {
+            'title': 'Operations management',
+            'description': 'Run all activities of your establishment with ease',
+            'imgLink': '../../../assets/images/features/operations.png'
+        },
+        {
+            'title': 'Room Booking',
+            'description': 'Receive and proccess bookings from from your guests',
+            'imgLink': '../../../assets/images/features/booking.png'
+        },
+        {
+            'title': 'Guests management',
+            'description': 'Manage your guests well for good customer relationship',
+            'imgLink': '../../../assets/images/features/guests.png'
+        }
+    ]"
+></app-guest-top>
+
+<app-about id="aboutComponentReference"
+    [suiteName]="'Hotel'"
+    [suiteDetails]="''"
+></app-about>
+
+<app-pricing id="pricingComponentReference"></app-pricing>
+
+<app-contact id="contactComponentReference"
+    [suiteName]="'Hotel'"
+></app-contact>
+
+<app-main-footer></app-main-footer>

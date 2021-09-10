@@ -1,1 +1,51 @@
-<p>guest-landing-page works!</p>
+<app-main-navbar
+    [navBrand]="'nR Personal'"
+    [source]="'Personal'"
+></app-main-navbar>
+
+<app-suite-scrollnav
+    (aboutEvent)="gotoAbout()"
+    (pricingEvent)="gotoPricing()"
+    (contactEvent)="gotoContact()"
+></app-suite-scrollnav>
+
+<app-guest-top
+    [suiteName]="'Personal'"
+    [primaryCaption]="'netRink Personal'"
+    [secondaryCaption]="'Get unlimited access to a range of simple and easy to use personal productivity tools'"
+    [features]="[
+        {
+            'title': 'Financial management',
+            'description': 'Plan your budgets, and assemble all your accounts in one place',
+            'imgLink': '../../../assets/images/features/financial.png'
+        },
+        {
+            'title': 'Note Taking',
+            'description': 'Put down notes, images, audio and video recordings, and access them anywhere',
+            'imgLink': '../../../assets/images/features/notes.png'
+        },
+        {
+            'title': 'Personal orgnisation',
+            'description': 'Take care of all your routine tasks and schedules',
+            'imgLink': '../../../assets/images/features/organization.png'
+        },
+        {
+            'title': 'Seamless integration',
+            'description': 'Import and export data to and from other netRink suites with ease',
+            'imgLink': '../../../assets/images/features/integration.png'
+        }
+    ]">
+</app-guest-top>
+
+<app-about id="aboutComponentReference"
+    [suiteName]="'Personal'"
+    [suiteDetails]="''"
+></app-about>
+
+<app-pricing id="pricingComponentReference"></app-pricing>
+
+<app-contact id="contactComponentReference"
+    [suiteName]="'Personal'"
+></app-contact>
+
+<app-main-footer></app-main-footer>

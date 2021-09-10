@@ -1,1 +1,29 @@
-<p>user-landing-page works!</p>
+<app-main-navbar
+    [navBrand]="'nR Shop'"
+    [source]="'Shop'"
+></app-main-navbar>
+
+<app-suite-scrollnav
+    (aboutEvent)="gotoAbout()"
+    (pricingEvent)="gotoPricing()"
+    (contactEvent)="gotoContact()"
+></app-suite-scrollnav>
+
+<app-user-top
+    [suiteName]="'Shop'"
+    [accounts]="null"
+    (selectAccount)="activateAccount($event)"
+></app-user-top>
+
+<app-about id="aboutComponentReference"
+    [suiteName]="'Shop'"
+    [suiteDetails]="''"
+></app-about>
+
+<app-pricing id="pricingComponentReference"></app-pricing>
+
+<app-contact id="contactComponentReference"
+    [suiteName]="'Shop'"
+></app-contact>
+
+<app-main-footer></app-main-footer>
