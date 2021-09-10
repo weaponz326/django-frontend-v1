@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 import { SuiteScrollnavComponent } from './suite-scrollnav/suite-scrollnav.component';
 import { UserTopComponent } from './user-top/user-top.component';
@@ -22,7 +23,8 @@ import { ContactComponent } from './contact/contact.component';
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    FormsModule,
   ],
   exports: [
     SuiteScrollnavComponent,
