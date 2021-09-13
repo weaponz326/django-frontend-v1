@@ -37,7 +37,7 @@
                         <p class="h4 my-3 text-center">Leave a message</p>
 
                         <div *ngIf="isSubmitted" class="alert-success small text-center rounded border p-3 mb-3">Message successfully submitted</div>
-                        <div *ngIf="isFieldEmpty" class="alert-danger small text-center rounded border p-3 mb-3">Please privide for all fields</div>
+                        <div *ngIf="isFieldEmpty" class="alert-danger small text-center rounded border p-3 mb-3">Please provide for all fields</div>
 
                         <form (ngSubmit)="onSubmit()" #contactForm="ngForm">
                             <div class="form-group row mb-3">

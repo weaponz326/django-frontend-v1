@@ -1,4 +1,4 @@
-+ projects	
++ projects
 	+ application (A)
 		+ pages
 			- landing page (Mr)(C)
@@ -19,6 +19,8 @@
 				- pricing (C)
 				- contact (C)
 		+ services
+			- endpoints (S)
+			- main api (S)
 			- support contact api (S)
 	+ personal (A)
 		+ pages
@@ -43,7 +45,7 @@
 				- recovery form (C)
 				- reset form (C)
 			+ module utilities (M)
-				- module sidenav (C) 
+				- module sidenav (C)
 				- module topbar (C)
 				- connection spinner (C)
 				- connection prompt (C)
@@ -51,8 +53,8 @@
 				- delete confirmation (C)
 			+ custom widgets (M)
 				- dob input (C)
-				- profile upload (C)			
-				- logo upload (C)			
+				- profile upload (C)
+				- logo upload (C)
 			+ modules
 				+ portal (M)
 					- dashboard (C)
@@ -105,7 +107,7 @@
 					- edit transaction (C)
 					- transaction form (C)
 					- all transactions (C)
-				+ tasks (M)			
+				+ tasks (M)
 					- dashboard (C)
 					- settings (C)
 					- all tasks (C)
@@ -130,7 +132,7 @@
 				+ accounts api (S)
 				+ tasks api (S)
 		+ models
-			- portal model 
+			- portal model
 			- settings model
 			- calendar model
 			- budget model
@@ -138,7 +140,7 @@
 			- accounts model
 			- tasks model
 		+ guards
-			- auth (G)	
+			- auth (G)
 	+ restaurant
 		+ pages
 			- guest landing page (Mr)(C)
@@ -161,8 +163,8 @@
 				- kitchen stock page (Mr)(C)
 				- sittings page (Mr)(C)
 		+ components
-			+ register forms (M)
-				- restaurant form (C)
+			+ register form (M)
+				- register form (C)
 			+ modules
 				+ admin (M)
 					- dashboard (C)
@@ -264,7 +266,7 @@
 					- all orders (C)
 					- add order (C)
 					- view order (C)
-					- order items (C)				
+					- order items (C)
 					- add item (C)
 					- edit item (C)
 					- item form (C)
@@ -365,8 +367,8 @@
 				- fees page (Mr)(C)
 				- sections page (Mr)(C)
 		+ components
-			+ register forms (M)
-				- school form (C)
+			+ register form (M)
+				- register form (C)
 			+ modules
 				+ admin (M)
 					- dashboard (C)
@@ -437,7 +439,7 @@
 					- all students (C)
 					- new student (C)
 					- view student (C)
-					- student form (C)			
+					- student form (C)
 				+ reports (M)
 					- dashboard (C)
 					- settings (C)
@@ -465,7 +467,7 @@
 					- settings (C)
 					- all payments (C)
 					- new payment (C)
-					- view payment (C)				
+					- view payment (C)
 				+ classes (M)
 					- dashboard (C)
 					- settings (C)
@@ -497,7 +499,7 @@
 					- add arrears (C)
 					- all bills (C)
 					- student bill (C)
-				+ sections (M)			
+				+ sections (M)
 					- dashboard (C)
 					- settings (C)
 					- all sections (C)
@@ -597,8 +599,8 @@
 				- ledger page (Mr)(C)
 				- reception page (Mr)(C)
 		+ components
-			+ register forms (M)
-				- enterprise form (C)
+			+ register form (M)
+				- register form (C)
 			+ modules
 				+ admin (M)
 					- dashboard (C)
@@ -640,7 +642,7 @@
 					- add transactions (C)
 					- edit transaction (C)
 					- transaction form (C)
-					- all transactions (C)					
+					- all transactions (C)
 				+ payroll (M)
 					- dashboard (C)
 					- settings (C)
@@ -734,7 +736,7 @@
 					- ledger table (C)
 					- add item (C)
 					- edit item (C)
-					- item form (C)			
+					- item form (C)
 				+ reception (M)
 					- dashboard (C)
 					- settings (C)
@@ -833,8 +835,8 @@
 				- groups page (Mr)(C)
 				- year page (Mr)(C)
 		+ components
-			+ register forms (M)
-				- association form (C)
+			+ register form (M)
+				- register form (C)
 			+ modules
 				+ admin (M)
 					- dashboard (C)
@@ -907,7 +909,7 @@
 					- all executives (C)
 					- add executive (C)
 					- view executive (C)
-					- executive form (C)				
+					- executive form (C)
 				+ action plan (M)
 					- dashboard (C)
 					- settings (C)
@@ -916,7 +918,7 @@
 					- view plan (C)
 					- plan steps (C)
 					- add step (C)
-					- edit step	(C)			
+					- edit step	(C)
 				+ budget (M)
 					- dashboard (C)
 					- settings (C)
@@ -942,7 +944,7 @@
 					- all meetings (C)
 					- add meeting (C)
 					- view meeting (C)
-					- meeting form (C)			
+					- meeting form (C)
 				+ groups (M)
 					- dashboard (C)
 					- settings (C)
@@ -951,7 +953,7 @@
 					- view group (C)
 					- group form (C)
 					- group members (C)
-				+ year (M)			
+				+ year (M)
 					- dashboard (C)
 					- settings (C)
 					- all years (C)
@@ -1045,8 +1047,8 @@
 				- dispensary page (Mr)(C)
 				- roster page (Mr)(C)
 		+ components
-			+ register forms (M)
-				- hospital form (C)
+			+ register form (M)
+				- register form (C)
 			+ modules
 				+ admin (M)
 					- dashboard (C)
@@ -1085,14 +1087,14 @@
 					- all patients (C)
 					- new patient (C)
 					- view patient (C)
-					- patient form (C)			
+					- patient form (C)
 				+ appointments (M)
 					- dashboard (C)
 					- settings (C)
 					- all appointments (C)
 					- add appointment (C)
 					- edit appointment (C)
-					- appointment form (C)			
+					- appointment form (C)
 				+ staff (M)
 					- dashboard (C)
 					- settings (C)
@@ -1122,14 +1124,14 @@
 					- settings (C)
 					- all labs (C)
 					- new lab (C)
-					- view lab (C)				
+					- view lab (C)
 				+ payments (M)
 					- dashboard (C)
 					- settings (C)
 					- all payments (C)
 					- new payment (C)
 					- view payment (C)
-					- payments history (C)					
+					- payments history (C)
 				+ nurses (M)
 					- dashboard
 					- settings
@@ -1160,7 +1162,7 @@
 					- all drugs (C)
 					- new drug (C)
 					- view drug (C)
-					- drug form	(C)		
+					- drug form	(C)
 				+ wards (M)
 					- dashboard (C)
 					- settings (C)
@@ -1309,8 +1311,8 @@
 				- assets page (Mr)(C)
 				- housekeeping page (Mr)(C)
 		+ components
-			+ register forms (M)
-				- hotel form (C)
+			+ register form (M)
+				- register form (C)
 			+ modules
 				+ admin (M)
 					- dashboard (C)
@@ -1401,7 +1403,7 @@
 					- all checkin (C)
 					- new checkin (C)
 					- view checkin (C)
-					- checkin form (C)			
+					- checkin form (C)
 				+ bookings (M)
 					- dashboard (C)
 					- settings (C)
@@ -1425,7 +1427,7 @@
 					- new asset (C)
 					- view asset (C)
 					- asset form (C)
-				+ housekeeping (M)	
+				+ housekeeping (M)
 					- dashboard (C)
 					- settings (C)
 					- all housekeeping (C)
@@ -1521,8 +1523,8 @@
 				- cashflow page (Mr)(C)
 				- staff page (Mr)(C)
 		+ components
-			+ register forms (M)
-				- shop form (C)
+			+ register form (M)
+				- register form (C)
 			+ modules
 				+ admin (M)
 					- dashboard (C)
@@ -1622,7 +1624,7 @@
 					- order items (C)
 					- add item (C)
 					- edit item (C)
-					- item form	(C)			
+					- item form	(C)
 				+ inventory (M)
 					- dashboard (C)
 					- settings (C)
@@ -1660,8 +1662,8 @@
 						- daily (C)
 						- weekly (C)
 						- monthly (C)
-						- quarterly (C)						
-				+ staff (M)		
+						- quarterly (C)
+				+ staff (M)
 					- dashboard (C)
 					- settings (C)
 					- all staff (C)
@@ -1763,8 +1765,8 @@
 				- roster page (Mr)(C)
 				- materials page (Mr)(C)
 		+ components
-			+ register forms (M)
-				- production form (C)
+			+ register form (M)
+				- register form (C)
 			+ modules
 				+ admin (M)
 					- dashboard (C)
@@ -1826,7 +1828,7 @@
 					- all orders (C)
 					- new order (C)
 					- view order (C)
-					- order form (C)				
+					- order form (C)
 				+ manufacturing (M)
 					- dashboard (C)
 					- settings (C)
@@ -1945,4 +1947,3 @@
 				- tasks (G)
 				- roster (G)
 				- materials (G)
-				

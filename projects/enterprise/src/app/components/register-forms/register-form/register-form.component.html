@@ -1,0 +1,66 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-5 mx-auto vh-100">
+
+            <mat-card class="my-auto">
+                <mat-card-content>
+
+                    <app-form-header [formHeading]="'Enterprise Profile'"></app-form-header>
+
+                    <form *ngIf="!showPrompt" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+                        <div class="row">
+                            <div class="col">
+                                <mat-form-field appearance="outline" class="w-100">
+                                    <mat-label>Enterprise Name</mat-label>
+                                    <input matInput type="text" formControlName="name" required>
+                                </mat-form-field>
+                                <mat-error *ngFor="let nameErr of nameErrors">{{nameErr}}</mat-error>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+                                <mat-form-field appearance="outline" class="w-100">
+                                    <mat-label>Location</mat-label>
+                                    <input matInput type="text" formControlName="location" required ngx-google-places-autocomplete #placesRef="ngx-places" (onAddressChange)="onAddressChange($event)">
+                                </mat-form-field>
+                                <mat-error *ngFor="let locErr of locErrors">{{locErr}}</mat-error>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+                                <mat-form-field appearance="outline" class="w-100">
+                                    <mat-label>About</mat-label>
+                                    <textarea matInput rows="3" formControlName="about" required maxlength="250"></textarea>
+                                </mat-form-field>
+                                <mat-error *ngFor="let abtErr of abtErrors">{{abtErr}}</mat-error>
+                            </div>
+                        </div>
+
+                        <div class="row mb-2">
+                            <div class="col">
+                                <button mat-raised-button color="primary" [disabled]="isSending" class="float-end form-button">Submit</button>
+                            </div>
+                        </div>
+
+                    </form>
+
+                    <div *ngIf="showPrompt" class="row p5 text-center">
+                        <div class="col">
+                            <img src="../../../../assets/images/forms/success.png" class="mb-4 prompt-image mx-auto">
+                            <p class="lead">Successfully completed Registration</p>
+                            <button mat-raised-button color="primary" class="mt-3 mb-1 form-button">Continue</button>
+                            <p>continue to Enterprise</p>
+                        </div>
+                    </div>
+
+                    <app-form-footer></app-form-footer>
+
+                </mat-card-content>
+            </mat-card>
+
+        </div>
+    </div>
+</div>

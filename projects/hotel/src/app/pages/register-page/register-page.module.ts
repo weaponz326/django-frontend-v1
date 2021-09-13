@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 
 import { RegisterPageRoutingModule } from './register-page-routing.module';
 import { MainNavbarModule } from 'projects/application/src/app/components/main-navbar/main-navbar.module';
-import { AuthFormsModule } from 'projects/personal/src/app/components/auth-forms/auth-forms.module';
 import { RegisterFormsModule } from '../../components/register-forms/register-forms.module';
 
 import { RegisterPageComponent } from './register-page.component';
@@ -17,8 +16,7 @@ import { RegisterPageComponent } from './register-page.component';
     CommonModule,
     RegisterPageRoutingModule,
     MainNavbarModule,
-    AuthFormsModule,
-    RegisterFormsModule,
+    RegisterFormsModule
   ]
 })
 export class RegisterPageModule { }

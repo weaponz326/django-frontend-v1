@@ -3,39 +3,41 @@
 
         <a class="navbar-brand" [routerLink]="'/'">{{navBrand}}</a>
 
-        <div *ngIf="this.isLogin; then loggedinBlock else notLoggedinBlock"></div>
+        <div *ngIf="!isForms">
+            <div *ngIf="this.isLogin; then loggedinBlock else notLoggedinBlock"></div>
 
-        <ng-template #notLoggedinBlock>
-            <div class="d-flex user-btns">
-                <button class="btn btn-secondary ms-2" type="button" [routerLink]="'/auth/login'">Log in</button>
-                <button class="btn btn-secondary ms-2" type="button" [routerLink]="'/auth/signup'">Sign up</button>
-            </div>
-        </ng-template>
+            <ng-template #notLoggedinBlock>
+                <div class="d-flex user-btns">
+                    <button class="btn btn-secondary ms-2" type="button" [routerLink]="'/auth/login'">Log in</button>
+                    <button class="btn btn-secondary ms-2" type="button" [routerLink]="'/auth/signup'">Sign up</button>
+                </div>
+            </ng-template>
 
-        <ng-template #loggedinBlock>
-            <div class="dropdown">
-                <a class="btn btn-outline-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                    Hi Namy
-                </a>
+            <ng-template #loggedinBlock>
+                <div class="dropdown">
+                    <a class="btn btn-outline-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                        Hi {{name}}
+                    </a>
 
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    <a class="dropdown-item" href="#">
-                        <i class="bi bi-person me-2"></i>My Account
-                    </a>
-                    <a class="dropdown-item" href="#">
-                        <i class="bi bi-list me-2"></i>All Accounts
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">
-                      <i class="bi bi-question-circle me-2"></i>Help
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">
-                        <i class="bi bi-box-arrow-right me-2"></i>Logout
-                    </a>
-                </ul>
-            </div>
-        </ng-template>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <!-- <a class="dropdown-item" href="#">
+                            <i class="bi bi-person me-2"></i>My Account
+                        </a>
+                        <a class="dropdown-item" href="#">
+                            <i class="bi bi-list me-2"></i>All Accounts
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">
+                          <i class="bi bi-question-circle me-2"></i>Help
+                        </a>
+                        <div class="dropdown-divider"></div> -->
+                        <a class="dropdown-item" href="#" (click)="logout($event)">
+                            <i class="bi bi-box-arrow-right me-2"></i>Logout
+                        </a>
+                    </ul>
+                </div>
+            </ng-template>
+        </div>
 
     </div>
 </nav>

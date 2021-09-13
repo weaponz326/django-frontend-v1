@@ -1,1 +1,68 @@
-<p>signup-form works!</p>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-5 mx-auto vh-100">
+
+            <mat-card>
+                <mat-card-content>
+
+                    <app-form-header [formHeading]="'Sign up'"></app-form-header>
+
+                    <form *ngIf="!showPrompt" [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+
+                        <div class="row">
+                            <div class="col">
+                                <mat-form-field appearance="outline" class="w-100">
+                                    <mat-label>Email</mat-label>
+                                    <input matInput type="text" formControlName="email" required>
+                                </mat-form-field>
+                                <mat-error *ngFor="let emailError of emailErrors">{{emailError}}</mat-error>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+                                <mat-form-field appearance="outline" class="w-100">
+                                    <mat-label>Password</mat-label>
+                                    <input matInput type="password" formControlName="password1" required>
+                                </mat-form-field>
+                                <mat-error *ngFor="let pass1Err of pass1Errors">{{pass1Err}}</mat-error>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+                                <mat-form-field appearance="outline" class="w-100">
+                                    <mat-label>Confirm Password</mat-label>
+                                    <input matInput type="password" formControlName="password2" required>
+                                </mat-form-field>
+                                <mat-error *ngFor="let pass1Err of pass1Errors">{{pass1Err}}</mat-error>
+                                <mat-error *ngFor="let nfErr of nfErrors">{{nfErrors}}</mat-error>
+                            </div>
+                        </div>
+
+                        <div class="row mb-2">
+                            <div class="col">
+                                <button mat-raised-button color="primary" [disabled]="isSending" class="float-end form-button">Sign Up</button>
+                            </div>
+                        </div>
+
+                        <p class="small text-center mb-2">Already have an account? <a href="#"routerLink="/auth/login">Log in</a></p>
+
+                    </form>
+
+                    <div *ngIf="showPrompt" class="row p5 text-center">
+                        <div class="col">
+                            <img src="../../../../assets/images/forms/success.png" class="mb-4 prompt-image mx-auto">
+                            <p class="lead">Account successfully created</p>
+                            <p class="lead">Plese check your email to confirm the account</p>
+                        </div>
+                    </div>
+
+                    <app-form-footer></app-form-footer>
+
+                </mat-card-content>
+            </mat-card>
+
+        </div>
+    </div>
+</div>
