@@ -28,7 +28,9 @@ export class GuestTopComponent implements OnInit {
     e.preventDefault();
     console.log("u are about to create an account or accounts");
 
-    if (this.suiteName != "Personal"){
+    if (this.suiteName != "nR Personal"){
+      sessionStorage.setItem("is_suite_registration", "OK");
+
       this.authApi.getUser()
       .subscribe(
         res => {
@@ -37,19 +39,19 @@ export class GuestTopComponent implements OnInit {
           if (res.id){
             this.router.navigateByUrl("/register");
           }else{
-            this.router.navigateByUrl("auth/signup");
+            this.router.navigateByUrl("/auth/signup");
           }
         },
         err => {
           console.log(err);
-          this.router.navigateByUrl("auth/signup");
+          this.router.navigateByUrl("/auth/signup");
         }
       )
     }
-
-    // for pesonal suite
     else{
-      this.router.navigateByUrl("user-auth/signup");
+      sessionStorage.setItem("is_suite_registration", "");
+
+      this.router.navigateByUrl("/auth/signup");
     }
   }
 

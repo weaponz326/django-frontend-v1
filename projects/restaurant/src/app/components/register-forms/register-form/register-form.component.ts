@@ -30,21 +30,18 @@ export class RegisterFormComponent implements OnInit {
   locErrors: any;
   abtErrors: any;
 
-  mergedData: any;       // for storing merged user id and register form profiles
-
-  personalId: any = {
-    personal_id: localStorage.getItem('personal_id')
-  }
-
   ngOnInit(): void {
   }
 
   onSubmit(){
-    this.mergedData = Object.assign(this.registerForm.value, this.personalId);
-    console.log(this.mergedData);
+    let personalData: any = {
+      personal_id: localStorage.getItem('personal_id')
+    }
+    let mergedData = Object.assign(this.registerForm.value, personalData);
+    console.log(mergedData);
 
     this.isSending = true;
-    this.registerApi.postProfile(this.mergedData)
+    this.registerApi.postProfile(mergedData)
       .subscribe(
         res => {
           console.log(res);
@@ -68,7 +65,7 @@ export class RegisterFormComponent implements OnInit {
   }
 
   onAddressChange(address: any) {
-    this.registerForm.controls.location = address.formatted_address;
+    this.registerForm.controls.location.setValue(address.formatted_address);
     console.log(address);
   }
 

@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 
+import { environment } from 'projects/personal/src/environments/environment';
+
 import { AuthApiService } from 'projects/personal/src/app/services/auth-api/auth-api.service';
 import { MainApiService } from '../../../services/main-api/main-api.service';
 
@@ -22,13 +24,14 @@ export class MainNavbarComponent implements OnInit {
 
   isLogin: boolean = false;
   name: string = "";
+  email: string = "";
+  profilePhotoSrc: string = "../../../../assets/images/utilities/photo-avatar.jpg";
 
   ngOnInit(): void {
-    this.setSource();
     this.getUser();
 
-    if(this.isForms == true){
-      localStorage.setItem("suite_registration_type", this.navBrand);
+    if(!this.isForms){
+      this.setSource();
     }
   }
 
@@ -53,6 +56,9 @@ export class MainNavbarComponent implements OnInit {
           if(res.id) {
             this.isLogin = true;
             this.name = res.first_name;
+            this.email = res.email;
+            if(res.photo != null) this.profilePhotoSrc = environment.personalUrl + res.photo;
+
             localStorage.setItem('personal_id', res.id);
           }
         },
@@ -82,7 +88,7 @@ export class MainNavbarComponent implements OnInit {
           localStorage.removeItem("shop_id");
           localStorage.removeItem("production_id");
 
-          // TODO: reload page
+          window.location.href = "/";
         },
         err => {
           console.log(err);

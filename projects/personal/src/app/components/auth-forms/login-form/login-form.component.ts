@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { AuthApiService } from '../../../services/auth-api/auth-api.service';
+import { MainApiService } from 'projects/application/src/app/services/main-api/main-api.service';
 
 
 @Component({
@@ -14,7 +15,8 @@ export class LoginFormComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private authApi: AuthApiService
+    private authApi: AuthApiService,
+    private mainApi: MainApiService,
   ) { }
 
   loginForm = new FormGroup({
@@ -29,9 +31,24 @@ export class LoginFormComponent implements OnInit {
   isSending: boolean = false;
   showPrompt: boolean = false;
 
-  suiteRegistrationType = localStorage.getItem('suite_registration_type');
+  suiteRegistrationType: string = "";
 
   ngOnInit(): void {
+    this.getSource();
+  }
+
+  getSource(){
+    this.mainApi.getSource()
+      .subscribe(
+        res => {
+          console.log(res);
+
+          this.suiteRegistrationType = res.user_source;
+        },
+        err => {
+          console.log(err);
+        }
+      )
   }
 
   onSubmit(){
@@ -43,11 +60,19 @@ export class LoginFormComponent implements OnInit {
           if (JSON.stringify(res).includes("key")){
             localStorage.setItem('token', res.key);
 
-            if(this.suiteRegistrationType == "Personal" || this.suiteRegistrationType == "Application"){
-              this.router.navigateByUrl( "/");
+            // TODO: can't get auth_token if angular router is used
+            if(this.suiteRegistrationType == "nR Personal" || this.suiteRegistrationType == "netRink"){
+              window.location.href = "/";
             }
             else{
-              this.showPrompt = true;
+              if(sessionStorage.getItem("is_suite_registration") == "OK"){
+                this.showPrompt = true;
+              }
+              else{
+                window.location.href = "/";
+              }
+
+              sessionStorage.removeItem("is_suite_registration");
             }
           }
 
@@ -62,6 +87,11 @@ export class LoginFormComponent implements OnInit {
           this.isSending = false;
         }
       )
+  }
+
+  registrationRedirect(){
+    // TODO: can't get auth_token if angular router is used    
+    window.location.href = "/register";    
   }
 
 }

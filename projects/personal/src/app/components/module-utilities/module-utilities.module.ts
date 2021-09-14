@@ -6,6 +6,7 @@ import { ConnectionSpinnerComponent } from './connection-spinner/connection-spin
 import { ConnectionPromptComponent } from './connection-prompt/connection-prompt.component';
 import { AccessPromptComponent } from './access-prompt/access-prompt.component';
 import { DeleteConfirmationComponent } from './delete-confirmation/delete-confirmation.component';
+import { DashboardCardComponent } from './dashboard-card/dashboard-card.component';
 
 
 
@@ -16,7 +17,8 @@ import { DeleteConfirmationComponent } from './delete-confirmation/delete-confir
     ConnectionSpinnerComponent,
     ConnectionPromptComponent,
     AccessPromptComponent,
-    DeleteConfirmationComponent
+    DeleteConfirmationComponent,
+    DashboardCardComponent
   ],
   imports: [
     CommonModule

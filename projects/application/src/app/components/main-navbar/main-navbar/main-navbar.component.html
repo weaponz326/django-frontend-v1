@@ -16,24 +16,33 @@
             <ng-template #loggedinBlock>
                 <div class="dropdown">
                     <a class="btn btn-outline-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                        Hi {{name}}
+                        <img [src]="profilePhotoSrc" width="26" height="26" class="rounded-circle border">
                     </a>
 
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <!-- <a class="dropdown-item" href="#">
-                            <i class="bi bi-person me-2"></i>My Account
-                        </a>
-                        <a class="dropdown-item" href="#">
-                            <i class="bi bi-list me-2"></i>All Accounts
-                        </a>
+                        <li class="ms-3 me-2">
+                            <p class="lead mb-0 user-info">{{name}}</p>
+                            <p class="small text-muted mb-0 user-info">{{email}}</p>
+                        </li>
+
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">
-                          <i class="bi bi-question-circle me-2"></i>Help
-                        </a>
+
+                        <!-- <li>
+                            <a class="dropdown-item" href="#"><i class="bi bi-person me-2"></i>My Account</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#"><i class="bi bi-list me-2"></i>All Accounts</a>
+                        </li>
+                        <div class="dropdown-divider"></div>
+                        <li>
+                            <a class="dropdown-item" href="#"><i class="bi bi-question-circle me-2"></i>Help</a>
+                        </li>
+
                         <div class="dropdown-divider"></div> -->
-                        <a class="dropdown-item" href="#" (click)="logout($event)">
-                            <i class="bi bi-box-arrow-right me-2"></i>Logout
-                        </a>
+
+                        <li>
+                            <a class="dropdown-item" href="#" (click)="logout($event)"><i class="bi bi-box-arrow-right me-2"></i>Logout</a>
+                        </li>
                     </ul>
                 </div>
             </ng-template>
