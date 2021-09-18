@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
+import { AuthApiService } from '../../services/auth-api/auth-api.service';
+
 
 @Component({
   selector: 'app-guest-landing-page',
@@ -7,9 +11,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GuestLandingPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private router: Router,
+    private authApi: AuthApiService
+  ) { }
 
   ngOnInit(): void {
+    this.getUser();
+  }
+
+  getUser(){
+    this.authApi.getUser()
+      .subscribe(
+        res => {
+          console.log(res);
+
+          // go to suite page if user is logged in
+          if (res.id){
+            this.router.navigateByUrl("/home");
+          }
+        },
+        err => {
+          console.log(err);
+        }
+      )
   }
 
   gotoAbout() {

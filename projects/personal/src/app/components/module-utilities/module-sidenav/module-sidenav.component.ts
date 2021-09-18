@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-module-sidenav',
@@ -8,6 +8,9 @@ import { Component, OnInit } from '@angular/core';
 export class ModuleSidenavComponent implements OnInit {
 
   constructor() { }
+
+  @Input() heading: any;
+  @Input() navLinks: any[] = [];
 
   ngOnInit(): void {
   }

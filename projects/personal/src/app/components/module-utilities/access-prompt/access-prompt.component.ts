@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+
+import { ToastComponent } from 'smart-webcomponents-angular/toast';
+
 
 @Component({
   selector: 'app-access-prompt',
@@ -8,6 +11,8 @@ import { Component, OnInit } from '@angular/core';
 export class AccessPromptComponent implements OnInit {
 
   constructor() { }
+
+  @ViewChild('toast', { read: ToastComponent, static: false }) toast!: ToastComponent;
 
   ngOnInit(): void {
   }

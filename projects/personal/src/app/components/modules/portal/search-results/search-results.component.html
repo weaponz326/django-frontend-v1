@@ -1,1 +1,31 @@
-<p>search-results works!</p>
+<div class="row mb-3">
+    <div class="col-md-12 text-center text-muted">
+        <small>showing results for <b>"{{searchQuery}}"</b></small>
+    </div>
+</div>
+
+<div class="result-body">
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <tbody>
+                <tr *ngFor="let result of searchResults" class="list-pointer" (click)="viewDetail(result.id)">
+                    <td class="align-middle" width="75">
+                        <img *ngIf="result?.photo != null" [src]="personalUrl + result.photo" alt="Company" width="40" height="40" class="rounded-circle" />
+                        <img *ngIf="result?.photo == null" src="../../../../../assets/images/utilities/photo-avatar.jpg" alt="Company" width="40" height="40" class="rounded-circle" />
+                    </td>
+                    <td class="align-middle">
+                        <p class="m-0"><strong>{{result?.first_name}} {{result?.last_name}}</strong></p>
+                    </td>
+                    <td class="align-middle">
+                        <p class="m-0">{{result?.location}}</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<!-- http loader spinner and connection notification components -->
+
+<!-- <app-connection-notification #connectionNotificationComponentReference></app-connection-notification> -->

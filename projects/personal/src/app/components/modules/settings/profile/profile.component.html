@@ -1,1 +1,33 @@
-<p>profile works!</p>
+<app-module-topnav [headings]="navHeading"></app-module-topnav>
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-12">
+
+            <smart-tabs #tabsReference class="w-100">
+                <smart-tab-item label="Basic Profile">
+                    <app-basic #basicComponentReference (additionalEvent)="sendUser($event)"></app-basic>
+                </smart-tab-item>
+                <smart-tab-item label="Profile Photo">
+                    <app-photo #photoComponentReference (photoEvent)="sendUser($event)"></app-photo>
+                </smart-tab-item>
+                <smart-tab-item label="Bio Profile">
+                    <app-additional #additionalComponentReference (additionalEvent)="saveAdditional($event)"></app-additional>
+                </smart-tab-item>
+                <smart-tab-item label="Location Details">
+                    <app-location #locationComponentReference (locationEvent)="saveLocation($event)"></app-location>
+                </smart-tab-item>
+                <smart-tab-item label="Contact Details">
+                    <app-contact #contactComponentReference (contactEvent)="saveContact($event)"></app-contact>
+                </smart-tab-item>
+            </smart-tabs>
+
+        </div>
+    </div>
+
+</div>
+
+<!-- connection error prompt component -->
+
+<app-connection-prompt #connectionPromptComponentReference></app-connection-prompt>

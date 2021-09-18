@@ -9,6 +9,10 @@ export class SettingsPageComponent implements OnInit {
 
   constructor() { }
 
+  navLinks: any[] = [
+    { text: "Profile", url: "/home/settings/profile", icon: "bi bi-person" },
+  ]
+
   ngOnInit(): void {
   }
 

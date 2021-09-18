@@ -1,24 +1,25 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
+import { DropDownListModule } from 'smart-webcomponents-angular/dropdownlist';
+
 import { DobInputComponent } from './dob-input/dob-input.component';
-import { ProfileUploadComponent } from './profile-upload/profile-upload.component';
-import { LogoUploadComponent } from './logo-upload/logo-upload.component';
+import { ImageUploadComponent } from './image-upload/image-upload.component';
 
 
 
 @NgModule({
   declarations: [
     DobInputComponent,
-    ProfileUploadComponent,
-    LogoUploadComponent
+    ImageUploadComponent,
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    DropDownListModule
   ],
   exports: [
     DobInputComponent,
-    ProfileUploadComponent,
-    LogoUploadComponent
+    ImageUploadComponent,
   ]
 })
 export class CustomWidgetsModule { }

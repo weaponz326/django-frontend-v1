@@ -1,14 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
-// import { ChartsModule } from 'ng2-charts';
+import { ChartsModule } from 'ng2-charts';
+import { ButtonModule } from 'smart-webcomponents-angular/button';
+import { InputModule } from 'smart-webcomponents-angular/input';
+import { MultilineTextBoxModule } from 'smart-webcomponents-angular/multilinetextbox';
 
 import { ModuleUtilitiesModule } from '../../module-utilities/module-utilities.module';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SettingsComponent } from './settings/settings.component';
 import { NewRinkComponent } from './new-rink/new-rink.component';
-import { RinkDetailsComponent } from './rink-details/rink-details.component';
 import { TimelineComponent } from './timeline/timeline.component';
 import { ViewRinkComponent } from './view-rink/view-rink.component';
 import { SearchViewComponent } from './search-view/search-view.component';
@@ -22,7 +26,6 @@ import { SearchDetailComponent } from './search-detail/search-detail.component';
     DashboardComponent,
     SettingsComponent,
     NewRinkComponent,
-    RinkDetailsComponent,
     TimelineComponent,
     ViewRinkComponent,
     SearchViewComponent,
@@ -31,8 +34,13 @@ import { SearchDetailComponent } from './search-detail/search-detail.component';
   ],
   imports: [
     CommonModule,
-    // ChartsModule,
+    FormsModule,
+    RouterModule,
+    ChartsModule,
     ModuleUtilitiesModule,
+    ButtonModule,
+    InputModule,
+    MultilineTextBoxModule,
   ]
 })
 export class PortalModule { }

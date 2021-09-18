@@ -148,10 +148,12 @@
               "./node_modules/smart-webcomponents-angular/source/styles/smart.default.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/bootstrap-icons/font/bootstrap-icons.css",
+              "projects/personal/src/assets/styles/sb-admin-2.min.css",
               "projects/personal/src/styles.scss"
             ],
             "scripts": [
-              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
+              "projects/personal/src/assets/scripts/sb-admin-2.min.js"
             ]
           },
           "configurations": {
@@ -222,10 +224,12 @@
               "./node_modules/smart-webcomponents-angular/source/styles/smart.default.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/bootstrap-icons/font/bootstrap-icons.css",
+              "projects/personal/src/assets/styles/sb-admin-2.min.css",
               "projects/personal/src/styles.scss"
             ],
             "scripts": [
-              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
+              "projects/personal/src/assets/scripts/sb-admin-2.min.js"
             ]
           }
         }
@@ -263,10 +267,12 @@
               "./node_modules/smart-webcomponents-angular/source/styles/smart.default.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/bootstrap-icons/font/bootstrap-icons.css",
+              "projects/personal/src/assets/styles/sb-admin-2.min.css",
               "projects/restaurant/src/styles.scss"
             ],
             "scripts": [
-              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
+              "projects/personal/src/assets/scripts/sb-admin-2.min.js"
             ]
           },
           "configurations": {
@@ -337,10 +343,12 @@
               "./node_modules/smart-webcomponents-angular/source/styles/smart.default.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/bootstrap-icons/font/bootstrap-icons.css",
+              "projects/personal/src/assets/styles/sb-admin-2.min.css",
               "projects/restaurant/src/styles.scss"
             ],
             "scripts": [
-              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
+              "projects/personal/src/assets/scripts/sb-admin-2.min.js"
             ]
           }
         }
@@ -378,10 +386,12 @@
               "./node_modules/smart-webcomponents-angular/source/styles/smart.default.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/bootstrap-icons/font/bootstrap-icons.css",
+              "projects/personal/src/assets/styles/sb-admin-2.min.css",
               "projects/school/src/styles.scss"
             ],
             "scripts": [
-              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
+              "projects/personal/src/assets/scripts/sb-admin-2.min.js"
             ]
           },
           "configurations": {
@@ -452,10 +462,12 @@
               "./node_modules/smart-webcomponents-angular/source/styles/smart.default.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/bootstrap-icons/font/bootstrap-icons.css",
+              "projects/personal/src/assets/styles/sb-admin-2.min.css",
               "projects/school/src/styles.scss"
             ],
             "scripts": [
-              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
+              "projects/personal/src/assets/scripts/sb-admin-2.min.js"
             ]
           }
         }
@@ -493,10 +505,12 @@
               "./node_modules/smart-webcomponents-angular/source/styles/smart.default.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/bootstrap-icons/font/bootstrap-icons.css",
+              "projects/personal/src/assets/styles/sb-admin-2.min.css",
               "projects/enterprise/src/styles.scss"
             ],
             "scripts": [
-              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
+              "projects/personal/src/assets/scripts/sb-admin-2.min.js"
             ]
           },
           "configurations": {
@@ -567,10 +581,12 @@
               "./node_modules/smart-webcomponents-angular/source/styles/smart.default.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/bootstrap-icons/font/bootstrap-icons.css",
+              "projects/personal/src/assets/styles/sb-admin-2.min.css",
               "projects/enterprise/src/styles.scss"
             ],
             "scripts": [
-              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
+              "projects/personal/src/assets/scripts/sb-admin-2.min.js"
             ]
           }
         }
@@ -608,10 +624,12 @@
               "./node_modules/smart-webcomponents-angular/source/styles/smart.default.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/bootstrap-icons/font/bootstrap-icons.css",
+              "projects/personal/src/assets/styles/sb-admin-2.min.css",
               "projects/association/src/styles.scss"
             ],
             "scripts": [
-              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
+              "projects/personal/src/assets/scripts/sb-admin-2.min.js"
             ]
           },
           "configurations": {
@@ -682,10 +700,12 @@
               "./node_modules/smart-webcomponents-angular/source/styles/smart.default.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/bootstrap-icons/font/bootstrap-icons.css",
+              "projects/personal/src/assets/styles/sb-admin-2.min.css",
               "projects/association/src/styles.scss"
             ],
             "scripts": [
-              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
+              "projects/personal/src/assets/scripts/sb-admin-2.min.js"
             ]
           }
         }
@@ -723,10 +743,12 @@
               "./node_modules/smart-webcomponents-angular/source/styles/smart.default.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/bootstrap-icons/font/bootstrap-icons.css",
+              "projects/personal/src/assets/styles/sb-admin-2.min.css",
               "projects/hospital/src/styles.scss"
             ],
             "scripts": [
-              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
+              "projects/personal/src/assets/scripts/sb-admin-2.min.js"
             ]
           },
           "configurations": {
@@ -797,10 +819,12 @@
               "./node_modules/smart-webcomponents-angular/source/styles/smart.default.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/bootstrap-icons/font/bootstrap-icons.css",
+              "projects/personal/src/assets/styles/sb-admin-2.min.css",
               "projects/hospital/src/styles.scss"
             ],
             "scripts": [
-              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
+              "projects/personal/src/assets/scripts/sb-admin-2.min.js"
             ]
           }
         }
@@ -838,10 +862,12 @@
               "./node_modules/smart-webcomponents-angular/source/styles/smart.default.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/bootstrap-icons/font/bootstrap-icons.css",
+              "projects/personal/src/assets/styles/sb-admin-2.min.css",
               "projects/hotel/src/styles.scss"
             ],
             "scripts": [
-              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
+              "projects/personal/src/assets/scripts/sb-admin-2.min.js"
             ]
           },
           "configurations": {
@@ -912,10 +938,12 @@
               "./node_modules/smart-webcomponents-angular/source/styles/smart.default.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/bootstrap-icons/font/bootstrap-icons.css",
+              "projects/personal/src/assets/styles/sb-admin-2.min.css",
               "projects/hotel/src/styles.scss"
             ],
             "scripts": [
-              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
+              "projects/personal/src/assets/scripts/sb-admin-2.min.js"
             ]
           }
         }
@@ -953,10 +981,12 @@
               "./node_modules/smart-webcomponents-angular/source/styles/smart.default.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/bootstrap-icons/font/bootstrap-icons.css",
+              "projects/personal/src/assets/styles/sb-admin-2.min.css",
               "projects/shop/src/styles.scss"
             ],
             "scripts": [
-              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
+              "projects/personal/src/assets/scripts/sb-admin-2.min.js"
             ]
           },
           "configurations": {
@@ -1027,10 +1057,12 @@
               "./node_modules/smart-webcomponents-angular/source/styles/smart.default.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/bootstrap-icons/font/bootstrap-icons.css",
+              "projects/personal/src/assets/styles/sb-admin-2.min.css",
               "projects/shop/src/styles.scss"
             ],
             "scripts": [
-              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
+              "projects/personal/src/assets/scripts/sb-admin-2.min.js"
             ]
           }
         }
@@ -1068,10 +1100,12 @@
               "./node_modules/smart-webcomponents-angular/source/styles/smart.default.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/bootstrap-icons/font/bootstrap-icons.css",
+              "projects/personal/src/assets/styles/sb-admin-2.min.css",
               "projects/production/src/styles.scss"
             ],
             "scripts": [
-              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
+              "projects/personal/src/assets/scripts/sb-admin-2.min.js"
             ]
           },
           "configurations": {
@@ -1142,10 +1176,12 @@
               "./node_modules/smart-webcomponents-angular/source/styles/smart.default.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/bootstrap-icons/font/bootstrap-icons.css",
+              "projects/personal/src/assets/styles/sb-admin-2.min.css",
               "projects/production/src/styles.scss"
             ],
             "scripts": [
-              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
+              "projects/personal/src/assets/scripts/sb-admin-2.min.js"
             ]
           }
         }

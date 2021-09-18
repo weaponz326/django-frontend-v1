@@ -39,11 +39,11 @@ export class AuthApiService {
   }
 
   public postLogout(): Observable<any>{
-    return this.http.post(this.personalUrl + "users/rest-auth/logout/", { 'headers': this.endpoints.headers });
+    return this.http.post(this.personalUrl + "users/rest-auth/logout/", this.endpoints.headers);
   }
 
   public getUser(): Observable<any>{
-    return this.http.get(this.personalUrl + "users/rest-auth/user/", { 'headers': this.endpoints.headers });
+    return this.http.get(this.personalUrl + "users/rest-auth/user/", this.endpoints.headers);
   }
 
 }

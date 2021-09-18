@@ -9,9 +9,9 @@ export class EndpointsService {
 
   constructor() { }
 
-  token = localStorage.getItem('token');
+  token = new HttpHeaders()
+    .set('Authorization', "Token " + localStorage.getItem('token'));
 
-  headers = new HttpHeaders()
-    .set('Authorization', "Token " + this.token);
+  headers = { 'headers': this.token };
 
 }

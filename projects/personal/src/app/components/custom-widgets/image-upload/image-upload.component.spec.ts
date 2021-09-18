@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ConnectionSpinnerComponent } from './connection-spinner.component';
+import { ImageUploadComponent } from './image-upload.component';
 
-describe('ConnectionSpinnerComponent', () => {
-  let component: ConnectionSpinnerComponent;
-  let fixture: ComponentFixture<ConnectionSpinnerComponent>;
+describe('ImageUploadComponent', () => {
+  let component: ImageUploadComponent;
+  let fixture: ComponentFixture<ImageUploadComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ConnectionSpinnerComponent ]
+      declarations: [ ImageUploadComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ConnectionSpinnerComponent);
+    fixture = TestBed.createComponent(ImageUploadComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,1 +1,45 @@
-<p>module-sidenav works!</p>
+<ul class="navbar-nav bg-light sidebar sidebar-light h-100 accordion" id="accordionSidebar">
+
+    <a class="sidebar-brand d-flex align-items-center" routerLink="./">
+        <div class="sidebar-brand-text mx-3 ps-1"><h3>{{heading}}</h3></div>
+    </a>
+
+    <hr class="sidebar-divider">
+
+    <li class="nav-item">
+        <a class="nav-link" routerLink="dashboard">
+            <i class="bi bi-speedometer2"></i>
+            <span class="ms-1">Dashboard</span>
+        </a>
+    </li>
+
+    <hr class="sidebar-divider">
+
+    <li *ngFor="let link of navLinks" class="nav-item">
+        <a class="nav-link" routerLink={{link.url}}>
+            <i class={{link.icon}}></i>
+            <span class="ms-1">{{link.text}}</span>
+        </a>
+    </li>
+
+    <hr class="sidebar-divider">
+
+    <li class="nav-item">
+        <a class="nav-link" routerLink="settings">
+            <i class="bi bi-gear"></i>
+            <span class="ms-1">Settings</span>
+        </a>
+    </li>
+
+    <hr class="sidebar-divider">
+
+    <div class="text-center d-none d-md-inline">
+        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+    </div>
+
+    <div class="sidebar-card">
+        <i class="bi bi-house-fill sidebar-card-illustration mb-3 home-icon"></i>
+        <a class="btn btn-secondary btn-sm" routerLink="/home">go Home</a>
+    </div>
+
+</ul>
