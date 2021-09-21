@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
+import { RegisterApiService } from '../../services/register-api/register-api.service';
+
 
 @Component({
   selector: 'app-guest-landing-page',
@@ -7,9 +11,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GuestLandingPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private router: Router,
+    private registerApi: RegisterApiService
+  ) { }
 
   ngOnInit(): void {
+    this.checkUserAccount();
+  }
+
+  checkUserAccount(){
+    // redirect if user has an account
+    this.registerApi.hasAccount()
+      .subscribe(
+        res => {
+          console.log(res);
+          if (res.has_account == true){
+            this.router.navigateByUrl("/user");
+          }
+        },
+        err => {
+          console.log(err);
+        }
+      )
   }
 
   gotoAbout() {

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-// import { ChartsModule } from 'ng2-charts';
+import { ChartsModule } from 'ng2-charts';
 import { TabsModule } from 'smart-webcomponents-angular/tabs';
 import { ButtonModule } from 'smart-webcomponents-angular/button';
 import { InputModule } from 'smart-webcomponents-angular/input';
@@ -35,7 +35,7 @@ import { LocationComponent } from './profile-content/location/location.component
   ],
   imports: [
     CommonModule,
-    // ChartsModule,
+    ChartsModule,
     TabsModule,
     ButtonModule,
     InputModule,

@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
+import { RegisterApiService } from '../../services/register-api/register-api.service';
+
 
 @Component({
   selector: 'app-user-landing-page',
@@ -7,13 +11,45 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserLandingPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private router: Router,
+    private registerApi: RegisterApiService
+  ) { }
+
+  accounts: any;
 
   ngOnInit(): void {
+    this.getUserAccounts();
+  }
+
+  getUserAccounts(){
+    this.registerApi.getUserAccounts()
+    .subscribe(
+      res => {
+        console.log(res);
+        this.accounts = res;
+      },
+      err => {
+        console.log(err);
+      }
+    )
   }
 
   activateAccount(accountId: any){
     console.log(accountId);
+
+    this.registerApi.postSelectedAccount(accountId)
+      .subscribe(
+        res => {
+          console.log(res);
+
+          sessionStorage.setItem('production_id', res.production_id);
+          this.router.navigateByUrl('/home');
+        },
+        err => {
+          console.log(err);
+        }
+      )
   }
 
   gotoAbout() {

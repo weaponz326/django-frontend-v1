@@ -1,1 +1,133 @@
-<p>billing works!</p>
+<app-module-topnav [headings]="navHeading"></app-module-topnav>
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-8">
+
+            <div class="row mb-3">
+                <div class="col-md-3" [class.active-panel]="selectedSubscription=='Individual'">
+                    <div class="card text-center shadow subscription-panel list-pointer" (click)="setSubscription('Individual')">
+                        <p class="h6 my-3">Individual Subscription</p>
+                    </div>
+                </div>
+                <div class="col-md-3" [class.active-panel]="selectedSubscription=='Small Team'">
+                    <div class="card text-center shadow subscription-panel list-pointer" (click)="setSubscription('Small Team')">
+                        <p class="h6 my-3">Small Team Subscription</p>
+                    </div>
+                </div>
+                <div class="col-md-3" [class.active-panel]="selectedSubscription=='Large Team'">
+                    <div class="card text-center shadow subscription-panel list-pointer" (click)="setSubscription('Large Team')">
+                        <p class="h6 my-3">Large Team Subscription</p>
+                    </div>
+                </div>
+                <div class="col-md-3" [class.active-panel]="selectedSubscription=='Comprehensive'">
+                    <div class="card text-center shadow subscription-panel list-pointer" (click)="setSubscription('Comprehensive')">
+                        <p class="h6 my-3">Comprehensive Subscription</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-3" [class.active-panel]="selectedPlan=='Monthly' && !(selectedSubscription=='Individual' || selectedSubscription=='Comprehensive')">
+                    <div class="card text-center shadow subscription-panel list-pointer" (click)="setPlan('Monthly')">
+                        <p class="h6 my-3">Monthly Plan</p>
+                    </div>
+                </div>
+                <div class="col-md-3" [class.active-panel]="selectedPlan=='Yearly' && !(selectedSubscription=='Individual' || selectedSubscription=='Comprehensive')">
+                    <div class="card text-center shadow subscription-panel list-pointer" (click)="setPlan('Yearly')">
+                        <p class="h6 my-3">Yearly Plan</p>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="top-divider" />
+            <hr class="bottom-divider" />
+
+            <app-payment-form></app-payment-form>
+
+        </div>
+
+        <div class="col-md-4">
+
+            <div class="row mb-3">
+                <div class="col">
+                    <smart-button #buttonReference class="float-right" routerLink="/home/settings/payments-history">Payments History</smart-button>
+                </div>
+            </div>
+
+            <div class="card shadow">
+                <div class="card-body">
+
+                    <p class="h4">Billing Summary</p>
+                    <hr />
+
+                    <div *ngIf="selectedSubscription=='Individual'">
+                        <p class="h5 mb-2">Individual Subscription</p>
+                        <p class="m-0">Single User</p>
+                        <p class="m-0">Free Upgrades</p>
+                        <p class="m-0">1GB Storage</p>
+                    </div>
+                    <div *ngIf="selectedSubscription=='Small Team'">
+                        <p class="h5 mb-2">Small Team Subscription</p>
+                        <p class="m-0">10 Users</p>
+                        <p class="m-0">Free Upgrades</p>
+                        <p class="m-0">Technical Support</p>
+                        <p class="m-0">50GB Storage</p>
+                    </div>
+                    <div *ngIf="selectedSubscription=='Large Team'">
+                        <p class="h5 mb-2">Large Team Subscription</p>
+                        <p class="m-0">50 Users</p>
+                        <p class="m-0">Free Upgrades</p>
+                        <p class="m-0">Technical Support</p>
+                        <p class="m-0">2TB Storage</p>
+                    </div>
+                    <div *ngIf="selectedSubscription=='Comprehensive'">
+                        <p class="h5 mb-2">Comprehensive Subscription</p>
+                        <p class="m-0">Single User</p>
+                        <p class="m-0">Free Upgrades</p>
+                        <p class="m-0">Technical Support</p>
+                        <p class="m-0">Unlimited Storage</p>
+                        <p class="m-0">Customized Functions</p>
+                    </div>
+
+                    <br />
+
+                    <div *ngIf="selectedSubscription=='Individual'">
+                        <p class="h5"><strong>Free</strong></p>
+                        <button class="btn btn-primary mt-3" (click)="saveSubscription()">Save Plan</button>
+                    </div>
+                    <div *ngIf="selectedSubscription=='Small Team'">
+                        <div *ngIf="selectedPlan=='Monthly'">
+                            <p class="h5 mb-2">Monthly Plan</p>
+                            <p class="h4 m-0"><strong>$19.99</strong></p>
+                        </div>
+                        <div *ngIf="selectedPlan=='Yearly'">
+                            <p class="h5 mb-2">Yearly Plan</p>
+                            <p class="h4 m-0"><strong>$199.99</strong></p>
+                            <p class="m-0">Save $39.89</p>
+                        </div>
+                        <button class="btn btn-primary mt-3" (click)="saveSubscription()">Save Plan</button>
+                    </div>
+                    <div *ngIf="selectedSubscription=='Large Team'">
+                        <div *ngIf="selectedPlan=='Monthly'">
+                            <p class="h5 mb-2">Monthly Plan</p>
+                            <p class="h4 m-0"><strong>$74.99</strong></p>
+                        </div>
+                        <div *ngIf="selectedPlan=='Yearly'">
+                            <p class="h5 mb-2">Yearly Plan</p>
+                            <p class="h4 m-0"><strong>$749.99</strong></p>
+                            <p class="m-0">Save $149.89</p>
+                        </div>
+                        <button class="btn btn-primary mt-3" (click)="saveSubscription()">Save Plan</button>
+                    </div>
+                    <div *ngIf="selectedSubscription=='Comprehensive'">
+                        <button class="btn btn-primary">Contact Us</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

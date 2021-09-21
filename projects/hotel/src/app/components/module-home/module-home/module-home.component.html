@@ -1,0 +1,211 @@
+<nav class="navbar navbar-expand navbar-light bg-white topbar d-block mb-4 static-top shadow">
+    <div class="text-center module-heading">
+        <a routerLink="./">
+            <h3 class="mt-2"><i class="bi bi-house-fill me-2"></i>Home</h3>
+        </a>
+    </div>
+</nav>
+
+<div class="container home-div">
+
+    <div class="row my-3">
+
+        <div class="col-md-2 col-sm-6 text-center">
+            <smart-tooltip #portalTooltipReference [selector]="'portal'" [arrow]="true">
+                Interact with guests through netRink portal
+            </smart-tooltip>
+
+            <a id="portal" routerLink="/home/portal/dashboard">
+                <figure>
+                    <img src="../../../assets/images/modules/portal.png" class="home-icons" />
+                    <figcaption>Portal</figcaption>
+                </figure>
+            </a>
+        </div>
+
+        <div class="col-md-2 col-sm-6 text-center">
+            <smart-tooltip #billsTooltipReference [selector]="'bills'" [arrow]="true">
+                Generate bills for all services
+            </smart-tooltip>
+
+            <a id="bills" routerLink="/home/bills/dashboard">
+                <figure>
+                    <img src="../../../assets/images/modules/bills.png" class="home-icons" />
+                    <figcaption>Bills</figcaption>
+                </figure>
+            </a>
+        </div>
+
+        <div class="col-md-2 col-sm-6 text-center">
+            <smart-tooltip #staffTooltipReference [selector]="'staff'" [arrow]="true">
+                Manage all staff
+            </smart-tooltip>
+
+            <a id="staff" routerLink="/home/staff/dashboard">
+                <figure>
+                    <img src="../../../assets/images/modules/staff.png" class="home-icons" />
+                    <figcaption>Staff</figcaption>
+                </figure>
+            </a>
+        </div>
+
+        <div class="col-md-2 col-sm-6 text-center">
+            <smart-tooltip #roomsTooltipReference [selector]="'rooms'" [arrow]="true">
+                Effectively manage rooms
+            </smart-tooltip>
+
+            <a id="rooms" routerLink="/home/rooms/dashboard">
+                <figure>
+                    <img src="../../../assets/images/modules/rooms.png" class="home-icons" />
+                    <figcaption>Rooms</figcaption>
+                </figure>
+            </a>
+        </div>
+
+        <div class="col-md-2 col-sm-6 text-center">
+            <smart-tooltip #paymentsTooltipReference [selector]="'payments'" [arrow]="true">
+                Receive payments of bills from guests
+            </smart-tooltip>
+
+            <a id="payments" routerLink="/home/payments/dashboard">
+                <figure>
+                    <img src="../../../assets/images/modules/payments.png" class="home-icons" />
+                    <figcaption>Payments</figcaption>
+                </figure>
+            </a>
+        </div>
+
+        <div class="col-md-2 col-sm-6 text-center">
+            <smart-tooltip #servicesTooltipReference [selector]="'services'" [arrow]="true">
+                Manage provision of extra services
+            </smart-tooltip>
+
+            <a id="services" routerLink="/home/services/dashboard">
+                <figure>
+                    <img src="../../../assets/images/modules/services.png" class="home-icons" />
+                    <figcaption>Services</figcaption>
+                </figure>
+            </a>
+        </div>
+
+    </div>
+
+    <!-- ------------------------------------------------------------------------------------------
+    new row -->
+
+    <div class="row my-3">
+
+        <div class="col-md-2 col-sm-6 text-center">
+            <smart-tooltip #adminTooltipReference [selector]="'admin'" [arrow]="true">
+                Manage users and access levels
+            </smart-tooltip>
+
+            <a id="admin" routerLink="/home/admin/dashboard">
+                <figure>
+                    <img src="../../../assets/images/modules/admin.png" class="home-icons" />
+                    <figcaption>Admin</figcaption>
+                </figure>
+            </a>
+        </div>
+
+        <div class="col-md-2 col-sm-6 text-center">
+            <smart-tooltip #checkInTooltipReference [selector]="'checkIn'" [arrow]="true">
+                Check in guests and manage their stay
+            </smart-tooltip>
+
+            <a id="checkIn" routerLink="/home/checkin/dashboard">
+                <figure>
+                    <img src="../../../assets/images/modules/check_in.png" class="home-icons" />
+                    <figcaption>Check-In</figcaption>
+                </figure>
+            </a>
+        </div>
+
+        <div class="col-md-2 col-sm-6 text-center">
+            <smart-tooltip #bookingsTooltipReference [selector]="'bookings'" [arrow]="true">
+                Receive and proccess bookings
+            </smart-tooltip>
+
+            <a id="bookings" routerLink="/home/bookings/dashboard">
+                <figure>
+                    <img src="../../../assets/images/modules/bookings.png" class="home-icons" />
+                    <figcaption>Bookings</figcaption>
+                </figure>
+            </a>
+        </div>
+
+        <div class="col-md-2 col-sm-6 text-center">
+            <smart-tooltip #guestsTooltipReference [selector]="'guests'" [arrow]="true">
+                Keep track of all your guests
+            </smart-tooltip>
+
+            <a id="guests" routerLink="/home/guests/dashboard">
+                <figure>
+                    <img src="../../../assets/images/modules/guests.png" class="home-icons" />
+                    <figcaption>Guests</figcaption>
+                </figure>
+            </a>
+        </div>
+
+        <div class="col-md-2 col-sm-6 text-center">
+            <smart-tooltip #housekeepingTooltipReference [selector]="'houseKeeping'" [arrow]="true">
+                Manage the up-keep of rooms
+            </smart-tooltip>
+
+            <a id="houseKeeping" routerLink="/home/housekeeping/dashboard">
+                <figure>
+                    <img src="../../../assets/images/modules/house_keeping.png" class="home-icons" />
+                    <figcaption>House Keeping</figcaption>
+                </figure>
+            </a>
+        </div>
+
+        <div class="col-md-2 col-sm-6 text-center">
+            <smart-tooltip #assetsooltipReference [selector]="'assets'" [arrow]="true">
+                Track and manage all assets of your facilty
+            </smart-tooltip>
+
+            <a id="assets"  routerLink="/home/assets/dashboard">
+                <figure>
+                    <img src="../../../assets/images/modules/assets.png" class="home-icons" />
+                    <figcaption>Assets</figcaption>
+                </figure>
+            </a>
+        </div>
+
+    </div>
+
+    <!-- -----------------------------------------------------------------------------
+    new row -->
+
+    <div class="row my-3">
+
+        <div class="col-md-2 col-sm-6 text-center">
+            <smart-tooltip #settingsTooltipReference [selector]="'settings'" [arrow]="true">
+                Set configuarations for your modules
+            </smart-tooltip>
+
+            <a id="settings" routerLink="/home/settings/dashboard">
+                <figure>
+                    <img src="../../../assets/images/modules/settings.png" class="home-icons" />
+                    <figcaption>Settings</figcaption>
+                </figure>
+            </a>
+        </div>
+
+        <div class="col-md-2 col-sm-6 text-center">
+            <smart-tooltip #rosterTooltipReference [selector]="'roster'" [arrow]="true">
+                Plan and manage staff shift and schedules
+            </smart-tooltip>
+
+            <a id="roster" routerLink="/home/roster/dashboard">
+                <figure>
+                    <img src="../../../assets/images/modules/roster.png" class="home-icons" />
+                    <figcaption>Roster</figcaption>
+                </figure>
+            </a>
+        </div>
+
+    </div>
+
+</div>

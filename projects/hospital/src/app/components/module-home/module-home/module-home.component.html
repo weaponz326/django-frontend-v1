@@ -1,0 +1,263 @@
+<nav class="navbar navbar-expand navbar-light bg-white topbar d-block mb-4 static-top shadow">
+    <div class="text-center module-heading">
+        <a routerLink="./">
+            <h3 class="mt-2"><i class="bi bi-house-fill me-2"></i>Home</h3>
+        </a>
+    </div>
+</nav>
+
+<div class="container home-div">
+
+    <div class="row">
+
+        <div class="col-md-2 col-sm-6 text-center">
+            <smart-tooltip #portalTooltipReference [selector]="'portal'" [arrow]="true">
+                Interact with patients and staff through netRink portal
+            </smart-tooltip>
+
+            <a id="portal" href="#" routerLink="/home/portal/dashboard">
+                <figure>
+                    <img src="../../../assets/images/modules/portal.png" class="home-icons" />
+                    <figcaption>Portal</figcaption>
+                </figure>
+            </a>
+        </div>
+
+        <div class="col-md-2 col-sm-6 text-center">
+            <smart-tooltip #patientsTooltipReference [selector]="'patients'" [arrow]="true">
+                Manage all patient related operations
+            </smart-tooltip>
+
+            <a id="patients" href="#" routerLink="/home/patients/dashboard">
+                <figure>
+                    <img src="../../../assets/images/modules/patients.png" class="home-icons" />
+                    <figcaption>Patients</figcaption>
+                </figure>
+            </a>
+        </div>
+
+        <div class="col-md-2 col-sm-6 text-center">
+            <smart-tooltip #appointmentsTooltipReference [selector]="'appointments'" [arrow]="true">
+                Schedule appointments between doctors and patients
+            </smart-tooltip>
+
+            <a id="appointments" href="#" routerLink="/home/appointments/dashboard">
+                <figure>
+                    <img src="../../../assets/images/modules/appointments.png" class="home-icons" />
+                    <figcaption>Appointments</figcaption>
+                </figure>
+            </a>
+        </div>
+
+        <div class="col-md-2 col-sm-6 text-center">
+            <smart-tooltip #diagnosisTooltipReference [selector]="'diagnosis'" [arrow]="true">
+                Manage all forms patients diagnosis
+            </smart-tooltip>
+
+            <a id="diagnosis" href="#" routerLink="/home/diagnosis/dashboard">
+                <figure>
+                    <img src="../../../assets/images/modules/diagnosis.png" class="home-icons" />
+                    <figcaption>Diagnosis</figcaption>
+                </figure>
+            </a>
+        </div>
+
+        <div class="col-md-2 col-sm-6 text-center">
+            <smart-tooltip #billsTooltipReference [selector]="'bills'" [arrow]="true">
+                generate medical bills for patients
+            </smart-tooltip>
+
+            <a id="bills" href="#" routerLink="/home/bills/dashboard">
+                <figure>
+                    <img src="../../../assets/images/modules/bills.png" class="home-icons" />
+                    <figcaption>Bills</figcaption>
+                </figure>
+            </a>
+        </div>
+
+        <div class="col-md-2 col-sm-6 text-center">
+            <smart-tooltip #doctorsTooltipReference [selector]="'doctors'" [arrow]="true">
+                Manage medical doctors of your facility
+            </smart-tooltip>
+
+            <a id="doctors" href="#" routerLink="/home/doctors/dashboard">
+                <figure>
+                    <img src="../../../assets/images/modules/doctors.png" class="home-icons" />
+                    <figcaption>Doctors</figcaption>
+                </figure>
+            </a>
+        </div>
+
+    </div>
+
+    <!-- -----------------------------------------------------------------------------------------
+    new row -->
+
+    <div class="row">
+
+        <div class="col-md-2 col-sm-6 text-center">
+            <smart-tooltip #adminTooltipReference [selector]="'admin'" [arrow]="true">
+                Manage users and access levels
+            </smart-tooltip>
+
+            <a id="admin" href="#" routerLink="/home/admin/dashboard">
+                <figure>
+                    <img src="../../../assets/images/modules/admin.png" class="home-icons" />
+                    <figcaption>Admin</figcaption>
+                </figure>
+            </a>
+        </div>
+
+        <div class="col-md-2 col-sm-6 text-center">
+            <smart-tooltip #laboratoryTooltipReference [selector]="'laboratory'" [arrow]="true">
+                Manage patients' laboratory sessions
+            </smart-tooltip>
+
+            <a id="laboratory" href="#" routerLink="/home/laboratory/dashboard">
+                <figure>
+                    <img src="../../../assets/images/modules/laboratory.png" class="home-icons" />
+                    <figcaption>Laboratory</figcaption>
+                </figure>
+            </a>
+        </div>
+
+        <div class="col-md-2 col-sm-6 text-center">
+            <smart-tooltip #dispensaryTooltipReference [selector]="'diespensary'" [arrow]="true">
+                Dispense drugs to patients
+            </smart-tooltip>
+
+            <a id="diespensary" href="#" routerLink="/home/dispensary/dashboard">
+                <figure>
+                    <img src="../../../assets/images/modules/dispensary.png" class="home-icons" />
+                    <figcaption>Dispensary</figcaption>
+                </figure>
+            </a>
+        </div>
+
+        <div class="col-md-2 col-sm-6 text-center">
+            <smart-tooltip #nursesTooltipReference [selector]="'nurses'" [arrow]="true">
+                Manage nurses of your facility
+            </smart-tooltip>
+
+            <a id="nurses" href="#" routerLink="/home/nurses/dashboard">
+                <figure>
+                    <img src="../../../assets/images/modules/nurses.png" class="home-icons" />
+                    <figcaption>Nurses</figcaption>
+                </figure>
+            </a>
+        </div>
+
+        <div class="col-md-2 col-sm-6 text-center">
+            <smart-tooltip #prescriptionsTooltipReference [selector]="'prescriptions'" [arrow]="true">
+                Prescribe medications for patients
+            </smart-tooltip>
+
+            <a id="prescriptions" href="#" routerLink="/home/prescriptions/dashboard">
+                <figure>
+                    <img src="../../../assets/images/modules/prescriptions.png" class="home-icons" />
+                    <figcaption>Prescriptions</figcaption>
+                </figure>
+            </a>
+        </div>
+
+        <div class="col-md-2 col-sm-6 text-center">
+            <smart-tooltip #staffTooltipReference [selector]="'staff'" [arrow]="true">
+                Manage all other medical and non medical staff
+            </smart-tooltip>
+
+            <a id="staff" href="#" routerLink="/home/staff/dashboard">
+                <figure>
+                    <img src="../../../assets/images/modules/staff.png" class="home-icons" />
+                    <figcaption>Staff</figcaption>
+                </figure>
+            </a>
+        </div>
+
+    </div>
+
+    <!-- --------------------------------------------------------------------------------------------------------
+    new row -->
+
+    <div class="row">
+
+        <div class="col-md-2 col-sm-6 text-center">
+            <smart-tooltip #settingsTooltipReference [selector]="'settings'" [arrow]="true">
+                Set configuarations for your modules
+            </smart-tooltip>
+
+            <a id="settings" href="#" routerLink="/home/settings/dashboard">
+                <figure>
+                    <img src="../../../assets/images/modules/settings.png" class="home-icons" />
+                    <figcaption>Settings</figcaption>
+                </figure>
+            </a>
+        </div>
+
+        <div class="col-md-2 col-sm-6 text-center">
+            <smart-tooltip #drugsTooltipReference [selector]="'drugs'" [arrow]="true">
+                Manage all pharmaceutical drugs
+            </smart-tooltip>
+
+            <a id="drugs" href="#" routerLink="/home/drugs/dashboard">
+                <figure>
+                    <img src="../../../assets/images/modules/drugs.png" class="home-icons" />
+                    <figcaption>Drugs</figcaption>
+                </figure>
+            </a>
+        </div>
+
+        <div class="col-md-2 col-sm-6 text-center">
+            <smart-tooltip #admissionsTooltipReference [selector]="'admissions'" [arrow]="true">
+                Manage patients' admission sessions
+            </smart-tooltip>
+
+            <a id="admissions" href="#" routerLink="/home/admissions/dashboard">
+                <figure>
+                    <img src="../../../assets/images/modules/admissions.png" class="home-icons" />
+                    <figcaption>Admissions</figcaption>
+                </figure>
+            </a>
+        </div>
+
+        <div class="col-md-2 col-sm-6 text-center">
+            <smart-tooltip #rosterTooltipReference [selector]="'roster'" [arrow]="true">
+                Plan and manage staff shift and schedules
+            </smart-tooltip>
+
+            <a id="roster" routerLink="/home/roster/dashboard">
+                <figure>
+                    <img src="../../../assets/images/modules/roster.png" class="home-icons" />
+                    <figcaption>Roster</figcaption>
+                </figure>
+            </a>
+        </div>
+
+        <div class="col-md-2 col-sm-6 text-center">
+            <smart-tooltip #wardsTooltipReference [selector]="'wards'" [arrow]="true">
+                Manage operations of patients' wards
+            </smart-tooltip>
+
+            <a id="wards" href="#" routerLink="/home/wards/dashboard">
+                <figure>
+                    <img src="../../../assets/images/modules/wards.png" class="home-icons" />
+                    <figcaption>Wards</figcaption>
+                </figure>
+            </a>
+        </div>
+
+        <div class="col-md-2 col-sm-6 text-center">
+            <smart-tooltip #paymentsTooltipReference [selector]="'payments'" [arrow]="true">
+                Recieve payment of bills from patients
+            </smart-tooltip>
+
+            <a id="payments" href="#" routerLink="/home/payments/dashboard">
+                <figure>
+                    <img src="../../../assets/images/modules/payments.png" class="home-icons" />
+                    <figcaption>Payments</figcaption>
+                </figure>
+            </a>
+        </div>
+
+    </div>
+
+</div>

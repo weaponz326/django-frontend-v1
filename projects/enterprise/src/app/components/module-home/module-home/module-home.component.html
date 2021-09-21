@@ -1,0 +1,237 @@
+<nav class="navbar navbar-expand navbar-light bg-white topbar d-block mb-4 static-top shadow">
+    <div class="text-center module-heading">
+        <a routerLink="./">
+            <h3 class="mt-2"><i class="bi bi-house-fill me-2"></i>Home</h3>
+        </a>
+    </div>
+</nav>
+
+<<div class="container home-div">
+
+    <div class="row my-3">
+
+        <div class="col-md-2 col-sm-6 text-center">
+            <smart-tooltip #portalTooltipReference [selector]="'portal'" [arrow]="true">
+                Connect to other businesses throgh netRink portal
+            </smart-tooltip>
+
+            <a id="portal" routerLink="/home/portal/dashboard">
+                <figure>
+                    <img src="../../../assets/images/modules/portal.png" class="home-icons" />
+                    <figcaption>Portal</figcaption>
+                </figure>
+            </a>
+        </div>
+
+        <div class="col-md-2 col-sm-6 text-center">
+            <smart-tooltip #accountsTooltipReference [selector]="'accounts'" [arrow]="true">
+                Manage financial accounts and transactions
+            </smart-tooltip>
+
+            <a id="accounts" routerLink="/home/accounts/dashboard">
+                <figure>
+                    <img src="../../../assets/images/modules/accounts.png" class="home-icons" />
+                    <figcaption>Accounts</figcaption>
+                </figure>
+            </a>
+        </div>
+
+        <div class="col-md-2 col-sm-6 text-center">
+            <smart-tooltip #payrollTooltipReference [selector]="'payroll'" [arrow]="true">
+                Implement payroll for all employees
+            </smart-tooltip>
+
+            <a id="payroll" routerLink="/home/payroll/dashboard">
+                <figure>
+                    <img src="../../../assets/images/modules/payroll.png" class="home-icons" />
+                    <figcaption>Payroll</figcaption>
+                </figure>
+            </a>
+        </div>
+
+        <div class="col-md-2 col-sm-6 text-center">
+            <smart-tooltip #lettersTooltipReference [selector]="'letters'" [arrow]="true">
+                Organise all incoming and outgoing letters
+            </smart-tooltip>
+
+            <a id="letters" routerLink="/home/letters/dashboard">
+                <figure>
+                    <img src="../../../assets/images/modules/letters.png" class="home-icons" />
+                    <figcaption>Letters</figcaption>
+                </figure>
+            </a>
+        </div>
+
+        <div class="col-md-2 col-sm-6 text-center">
+            <smart-tooltip #assetsTooltipReference [selector]="'assets'" [arrow]="true">
+                Manage and track assets
+            </smart-tooltip>
+
+            <a id="assets" routerLink="/home/assets/dashboard">
+                <figure>
+                    <img src="../../../assets/images/modules/assets.png" class="home-icons" />
+                    <figcaption>Assets</figcaption>
+                </figure>
+            </a>
+        </div>
+
+        <div class="col-md-2 col-sm-6 text-center">
+            <smart-tooltip #leaveTooltipReference [selector]="'leave'" [arrow]="true">
+                Manage employees' leave
+            </smart-tooltip>
+
+            <a id="leave" routerLink="/home/leave/dashboard">
+                <figure>
+                    <img src="../../../assets/images/modules/leave.png" class="home-icons" />
+                    <figcaption>Leave</figcaption>
+                </figure>
+            </a>
+        </div>
+
+    </div>
+
+    <!-- ----------------------------------------------------------------------------------
+    row -->
+
+    <div class="row my-3">
+
+        <div class="col-md-2 col-sm-6 text-center">
+            <smart-tooltip #adminTooltipReference [selector]="'admin'" [arrow]="true">
+                Manage users and access levels
+            </smart-tooltip>
+
+            <a id="admin" routerLink="/home/admin/dashboard">
+                <figure>
+                    <img src="../../../assets/images/modules/admin.png" class="home-icons" />
+                    <figcaption>Admin</figcaption>
+                </figure>
+            </a>
+        </div>
+
+        <div class="col-md-2 col-sm-6 text-center">
+            <smart-tooltip #budgetTooltipReference [selector]="'budget'" [arrow]="true">
+                Plan and prepare company's budget
+            </smart-tooltip>
+
+            <a id="budget" routerLink="/home/budget/dashboard">
+                <figure>
+                    <img src="../../../assets/images/modules/budget.png" class="home-icons" />
+                    <figcaption>Budget</figcaption>
+                </figure>
+            </a>
+        </div>
+
+        <div class="col-md-2 col-sm-6 text-center">
+            <smart-tooltip #procurementTooltipReference [selector]="'procurement'" [arrow]="true">
+                Manage procurement operations
+            </smart-tooltip>
+
+            <a id="procurement" routerLink="/home/procurement/dashboard">
+                <figure>
+                    <img src="../../../assets/images/modules/procurement.png" class="home-icons" />
+                    <figcaption>Procurement</figcaption>
+                </figure>
+            </a>
+        </div>
+
+        <div class="col-md-2 col-sm-6 text-center">
+            <smart-tooltip #attendanceTooltipReference [selector]="'attendance'" [arrow]="true">
+                Take attendance of employees
+            </smart-tooltip>
+
+            <a id="attendance" routerLink="/home/attendance/dashboard">
+                <figure>
+                    <img src="../../../assets/images/modules/attendance.png" class="home-icons" />
+                    <figcaption>Attendance</figcaption>
+                </figure>
+            </a>
+        </div>
+
+        <div class="col-md-2 col-sm-6 text-center">
+            <smart-tooltip #appraisalTooltipReference [selector]="'appraisal'" [arrow]="true">
+                Conduct appraisal assessment for employees
+            </smart-tooltip>
+
+            <a id="appraisal" routerLink="/home/appraisal/dashboard">
+                <figure>
+                    <img src="../../../assets/images/modules/appraisal.png" class="home-icons" />
+                    <figcaption>Appraisal</figcaption>
+                </figure>
+            </a>
+        </div>
+
+        <div class="col-md-2 col-sm-6 text-center">
+            <smart-tooltip #filesTooltipReference [selector]="'files'" [arrow]="true">
+                Organise all types of files
+            </smart-tooltip>
+
+            <a id="files" routerLink="/home/files/dashboard">
+                <figure>
+                    <img src="../../../assets/images/modules/files.png" class="home-icons" />
+                    <figcaption>Files</figcaption>
+                </figure>
+            </a>
+        </div>
+
+    </div>
+
+    <!-- ------------------------------------------------------------------------
+    row -->
+
+    <div class="row my-3">
+
+        <div class="col-md-2 col-sm-6 text-center">
+            <smart-tooltip #settingsTooltipReference [selector]="'settings'" [arrow]="true">
+                Set configuarations for your modules
+            </smart-tooltip>
+
+            <a id="settings" routerLink="/home/settings/dashboard">
+                <figure>
+                    <img src="../../../assets/images/modules/settings.png" class="home-icons" />
+                    <figcaption>Settings</figcaption>
+                </figure>
+            </a>
+        </div>
+
+        <div class="col-md-2 col-sm-6 text-center">
+            <smart-tooltip #employeesTooltipReference [selector]="'employees'" [arrow]="true">
+                Manage all employees
+            </smart-tooltip>
+
+            <a id="employees" routerLink="/home/employees/dashboard">
+                <figure>
+                    <img src="../../../assets/images/modules/employees.png" class="home-icons" />
+                    <figcaption>Employees</figcaption>
+                </figure>
+            </a>
+        </div>
+
+        <div class="col-md-2 col-sm-6 text-center">
+            <smart-tooltip #ledgerTooltipReference [selector]="'ledger'" [arrow]="true">
+                Prepare general ledger
+            </smart-tooltip>
+
+            <a id="ledger" routerLink="/home/ledger/dashboard">
+                <figure>
+                    <img src="../../../assets/images/modules/ledger.png" class="home-icons" />
+                    <figcaption>Ledger</figcaption>
+                </figure>
+            </a>
+        </div>
+
+        <div class="col-md-2 col-sm-6 text-center">
+            <smart-tooltip #receptionTooltipReference [selector]="'reception'" [arrow]="true">
+                Receive and manage visitors at front desk
+            </smart-tooltip>
+
+            <a id="reception" routerLink="/home/reception/dashboard">
+                <figure>
+                    <img src="../../../assets/images/modules/reception.png" class="home-icons" />
+                    <figcaption>Reception</figcaption>
+                </figure>
+            </a>
+        </div>
+
+    </div>
+
+</div>

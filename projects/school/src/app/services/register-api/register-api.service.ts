@@ -19,7 +19,20 @@ export class RegisterApiService {
   schoolUrl = environment.schoolUrl;
 
   public postProfile(profile: any): Observable<any>{
-    return this.http.post(this.schoolUrl + "accounts/profile/", profile);
+    return this.http.post(this.schoolUrl + "accounts/account/", profile);
+  }
+
+  public hasAccount(): Observable<any>{
+    console.log(localStorage.getItem('personal_id'));
+    return this.http.post(this.schoolUrl + "accounts/has-account/", { personal_id: localStorage.getItem('personal_id') });
+  }
+
+  public getUserAccounts(): Observable<any>{
+    return this.http.get(this.schoolUrl + "accounts/user-accounts?personal_id=" + localStorage.getItem('personal_id'));
+  }
+
+  public postSelectedAccount(accountId: any): Observable<any>{
+    return this.http.post(this.schoolUrl + "accounts/active-account/", { active_account: accountId }, { withCredentials: true });
   }
 
 }

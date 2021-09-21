@@ -1,0 +1,237 @@
+<nav class="navbar navbar-expand navbar-light bg-white topbar d-block mb-4 static-top shadow">
+    <div class="text-center module-heading">
+        <a routerLink="./">
+            <h3 class="mt-2"><i class="bi bi-house-fill me-2"></i>Home</h3>
+        </a>
+    </div>
+</nav>
+
+<div class="container home-div">
+
+    <div class="row">
+
+        <div class="col-md-2 col-sm-6 text-center">
+            <smart-tooltip #portalTooltipReference [selector]="'portal'" [arrow]="true">
+                Connect with production stakeholders through netRink portal
+            </smart-tooltip>
+
+            <a id="portal" routerLink="/home/portal/dashboard">
+                <figure>
+                    <img src="../../../assets/images/modules/portal.png" class="home-icons" />
+                    <figcaption>Portal</figcaption>
+                </figure>
+            </a>
+        </div>
+
+        <div class="col-md-2 col-sm-6 text-center">
+            <smart-tooltip #stockTooltipReference [selector]="'stock'" [arrow]="true">
+                Take stock of all production materials
+            </smart-tooltip>
+
+            <a id="stock" routerLink="/home/stock/dashboard">
+                <figure>
+                    <img src="../../../assets/images/modules/stock.png" class="home-icons" />
+                    <figcaption>Stock</figcaption>
+                </figure>
+            </a>
+        </div>
+
+        <div class="col-md-2 col-sm-6 text-center">
+            <smart-tooltip #equipmentTooltipReference [selector]="'eqpuipment'" [arrow]="true">
+                Manage all production equipment
+            </smart-tooltip>
+
+            <a id="eqpuipment" routerLink="/home/equipment/dashboard">
+                <figure>
+                    <img src="../../../assets/images/modules/equipment.png" class="home-icons" />
+                    <figcaption>Equipment</figcaption>
+                </figure>
+            </a>
+        </div>
+
+        <div class="col-md-2 col-sm-6 text-center">
+            <smart-tooltip #purchasingTooltipReference [selector]="'purchasing'" [arrow]="true">
+                Manage the purchasing of materials
+            </smart-tooltip>
+
+            <a id="purchasing" routerLink="/home/purchasing/dashboard">
+                <figure>
+                    <img src="../../../assets/images/modules/purchasing.png" class="home-icons" />
+                    <figcaption>Purchasing</figcaption>
+                </figure>
+            </a>
+        </div>
+
+        <div class="col-md-2 col-sm-6 text-center">
+            <smart-tooltip #manufacturingTooltipReference [selector]="'manufacturing'" [arrow]="true">
+                Manage manufacturing batches
+            </smart-tooltip>
+
+            <a id="manufacturing" routerLink="/home/manufacturing/dashboard">
+                <figure>
+                    <img src="../../../assets/images/modules/manufacturing.png" class="home-icons" />
+                    <figcaption>Manufacturing</figcaption>
+                </figure>
+            </a>
+        </div>
+
+        <div class="col-md-2 col-sm-6 text-center">
+            <smart-tooltip #productsTooltipReference [selector]="'products'" [arrow]="true">
+                Manage all products
+            </smart-tooltip>
+
+            <a id="products" routerLink="/home/products/dashboard">
+                <figure>
+                    <img src="../../../assets/images/modules/products.png" class="home-icons" />
+                    <figcaption>Products</figcaption>
+                </figure>
+            </a>
+        </div>
+
+    </div>
+
+    <!-- ------------------------------------------------------------------------------
+    row -->
+
+    <div class="row">
+
+        <div class="col-md-2 col-sm-6 text-center">
+            <smart-tooltip #adminTooltipReference [selector]="'admin'" [arrow]="true">
+                Manage users and access levels
+            </smart-tooltip>
+
+            <a id="admin" routerLink="/home/admin/dashboard">
+                <figure>
+                    <img src="../../../assets/images/modules/admin.png" class="home-icons" />
+                    <figcaption>Admin</figcaption>
+                </figure>
+            </a>
+        </div>
+
+        <div class="col-md-2 col-sm-6 text-center">
+            <smart-tooltip #projectsTooltipReference [selector]="'projects'" [arrow]="true">
+                Plan and manage projects
+            </smart-tooltip>
+
+            <a id="projects" routerLink="/home/projects/dashboard">
+                <figure>
+                    <img src="../../../assets/images/modules/projects.png" class="home-icons" />
+                    <figcaption>Projects</figcaption>
+                </figure>
+            </a>
+        </div>
+
+        <div class="col-md-2 col-sm-6 text-center">
+            <smart-tooltip #workersTooltipReference [selector]="'workers'" [arrow]="true">
+                Manage all technical workers
+            </smart-tooltip>
+
+            <a id="workers" routerLink="/home/workers/dashboard">
+                <figure>
+                    <img src="../../../assets/images/modules/workers.png" class="home-icons" />
+                    <figcaption>Workers</figcaption>
+                </figure>
+            </a>
+        </div>
+
+        <div class="col-md-2 col-sm-6 text-center">
+            <smart-tooltip #contractorsTooltipReference [selector]="'contractors'" [arrow]="true">
+                Manage all sub-contractors
+            </smart-tooltip>
+
+            <a id="contractors" routerLink="/home/contractors/dashboard">
+                <figure>
+                    <img src="../../../assets/images/modules/contractors.png" class="home-icons" />
+                    <figcaption>Contractors</figcaption>
+                </figure>
+            </a>
+        </div>
+
+        <div class="col-md-2 col-sm-6 text-center">
+            <smart-tooltip #tasksTooltipReference [selector]="'tasks'" [arrow]="true">
+                Manage the status of tasks
+            </smart-tooltip>
+
+            <a id="tasks" routerLink="/home/tasks/dashboard">
+                <figure>
+                    <img src="../../../assets/images/modules/tasks.png" class="home-icons" />
+                    <figcaption>Tasks</figcaption>
+                </figure>
+            </a>
+        </div>
+
+        <div class="col-md-2 col-sm-6 text-center">
+            <smart-tooltip #ordersTooltipReference [selector]="'orders'" [arrow]="true">
+                Receive and respond to orders
+            </smart-tooltip>
+
+            <a id="orders" routerLink="/home/orders/dashboard">
+                <figure>
+                    <img src="../../../assets/images/modules/orders.png" class="home-icons" />
+                    <figcaption>Orders</figcaption>
+                </figure>
+            </a>
+        </div>
+
+    </div>
+
+    <!-- -----------------------------------------------------------------------------
+    new row -->
+
+    <div class="row">
+
+        <div class="col-md-2 col-sm-6 text-center">
+            <smart-tooltip #settingsTooltipReference [selector]="'settings'" [arrow]="true">
+                Set configuarations for your modules
+            </smart-tooltip>
+
+            <a id="settings" routerLink="/home/settings/dashboard">
+                <figure>
+                    <img src="../../../assets/images/modules/settings.png" class="home-icons" />
+                    <figcaption>Settings</figcaption>
+                </figure>
+            </a>
+        </div>
+
+        <div class="col-md-2 col-sm-6 text-center">
+            <smart-tooltip #rosterTooltipReference [selector]="'roster'" [arrow]="true">
+                Plan and manage workers' shift and schedules
+            </smart-tooltip>
+
+            <a id="roster" routerLink="/home/roster/dashboard">
+                <figure>
+                    <img src="../../../assets/images/modules/roster.png" class="home-icons" />
+                    <figcaption>Roster</figcaption>
+                </figure>
+            </a>
+        </div>
+
+        <div class="col-md-2 col-sm-6 text-center">
+            <smart-tooltip #materialsTooltipReference [selector]="'materials'" [arrow]="true">
+                Manage bill of materials for production
+            </smart-tooltip>
+
+            <a id="materials" routerLink="/home/materials/dashboard">
+                <figure>
+                    <img src="../../../assets/images/modules/materials.png" class="home-icons" />
+                    <figcaption>Materials</figcaption>
+                </figure>
+            </a>
+        </div>
+
+        <div class="col-md-2 col-sm-6 text-center">
+            <smart-tooltip #staffTooltipReference [selector]="'staff'" [arrow]="true">
+                Manage non technical staff
+            </smart-tooltip>
+
+            <a id="staff" routerLink="/home/staff/dashboard">
+                <figure>
+                    <img src="../../../assets/images/modules/staff.png" class="home-icons" />
+                    <figcaption>Staff</figcaption>
+                </figure>
+            </a>
+        </div>
+
+    </div>
+
+</div>

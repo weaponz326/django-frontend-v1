@@ -11,7 +11,7 @@
 
 <app-user-top
     [suiteName]="'Hotel'"
-    [accounts]="null"
+    [accounts]="this.accounts"
     (selectAccount)="activateAccount($event)"
 ></app-user-top>
 

@@ -78,3 +78,21 @@
 .rinkin-icon{
 	color: green;
 }
+
+/* settings module */
+
+.active-panel .subscription-panel{
+  background-color: navy;
+  color: white;
+}
+  
+.billing-form smart-input,
+.billing-form smart-button{
+	height: 36px;
+}
+
+.billing-page-control-button{
+	width: 120px;
+	padding-top: 0 !important;
+	padding-bottom: 0 !important;
+}

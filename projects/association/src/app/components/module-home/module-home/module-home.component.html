@@ -1,0 +1,211 @@
+<nav class="navbar navbar-expand navbar-light bg-white topbar d-block mb-4 static-top shadow">
+    <div class="text-center module-heading">
+        <a routerLink="./">
+            <h3 class="mt-2"><i class="bi bi-house-fill me-2"></i>Home</h3>
+        </a>
+    </div>
+</nav>
+
+<div class="container home-div">
+
+    <div class="row">
+
+        <div class="col-md-2 col-sm-6 text-center">
+            <smart-tooltip #portalTooltipReference [selector]="'portal'" [arrow]="true">
+                Connect to other associations throgh netRink portal
+            </smart-tooltip>
+
+            <a id="portal" routerLink="/home/portal/dashboard">
+                <figure>
+                    <img src="../../../assets/images/modules/portal.png" class="home-icons" />
+                    <figcaption>Portal</figcaption>
+                </figure>
+            </a>
+        </div>
+
+        <div class="col-md-2 col-sm-6 text-center">
+            <smart-tooltip #accountsTooltipReference [selector]="'accounts'" [arrow]="true">
+                Manage financial accounts and transactions
+            </smart-tooltip>
+
+            <a id="accounts" routerLink="/home/accounts/dashboard">
+                <figure>
+                    <img src="../../../assets/images/modules/accounts.png" class="home-icons" />
+                    <figcaption>Accounts</figcaption>
+                </figure>
+            </a>
+        </div>
+
+        <div class="col-md-2 col-sm-6 text-center">
+            <smart-tooltip #membersTooltipReference [selector]="'members'" [arrow]="true">
+                Manage all members related operations
+            </smart-tooltip>
+
+            <a id="members" routerLink="/home/members/dashboard">
+                <figure>
+                    <img src="../../../assets/images/modules/members.png" class="home-icons" />
+                    <figcaption>Members</figcaption>
+                </figure>
+            </a>
+        </div>
+
+        <div class="col-md-2 col-sm-6 text-center">
+            <smart-tooltip #committeesTooltipReference [selector]="'committees'" [arrow]="true">
+                Manage the affairs of sub committees
+            </smart-tooltip>
+
+            <a id="committees" routerLink="/home/committees/dashboard">
+                <figure>
+                    <img src="../../../assets/images/modules/committees.png" class="home-icons" />
+                    <figcaption>Committees</figcaption>
+                </figure>
+            </a>
+        </div>
+
+        <div class="col-md-2 col-sm-6 text-center">
+            <smart-tooltip #duesTooltipReference [selector]="'dues'" [arrow]="true">
+                Manage dues and financial obligations of members
+            </smart-tooltip>
+
+            <a id="dues" routerLink="/home/dues/dashboard">
+                <figure>
+                    <img src="../../../assets/images/modules/dues.png" class="home-icons" />
+                    <figcaption>Dues</figcaption>
+                </figure>
+            </a>
+        </div>
+
+        <div class="col-md-2 col-sm-6 text-center">
+            <smart-tooltip #meetingsTooltipReference [selector]="'meetings'" [arrow]="true">
+                Plan and organize meetings
+            </smart-tooltip>
+
+            <a id="meetings" routerLink="/home/meetings/dashboard">
+                <figure>
+                    <img src="../../../assets/images/modules/meetings.png" class="home-icons" />
+                    <figcaption>Meetings</figcaption>
+                </figure>
+            </a>
+        </div>
+
+    </div>
+
+    <!-- ----------------------------------------------------------------------------------
+    row -->
+
+    <div class="row">
+
+        <div class="col-md-2 col-sm-6 text-center">
+            <smart-tooltip #adminTooltipReference [selector]="'admin'" [arrow]="true">
+                Manage users and access levels
+            </smart-tooltip>
+
+            <a id="admin" routerLink="/home/admin/dashboard">
+                <figure>
+                    <img src="../../../assets/images/modules/admin.png" class="home-icons" />
+                    <figcaption>Admin</figcaption>
+                </figure>
+            </a>
+        </div>
+
+        <div class="col-md-2 col-sm-6 text-center">
+            <smart-tooltip #executivesTooltipReference [selector]="'executives'" [arrow]="true">
+                Manage directors and executives
+            </smart-tooltip>
+
+            <a id="executives" routerLink="/home/executives/dashboard">
+                <figure>
+                    <img src="../../../assets/images/modules/executives.png" class="home-icons" />
+                    <figcaption>Executives</figcaption>
+                </figure>
+            </a>
+        </div>
+
+        <div class="col-md-2 col-sm-6 text-center">
+            <smart-tooltip #actionPlanTooltipReference [selector]="'actionPlan'" [arrow]="true">
+                Plan and manage activities, goals and objectives
+            </smart-tooltip>
+
+            <a id="actionPlan" routerLink="/home/action-plan/dashboard">
+                <figure>
+                    <img src="../../../assets/images/modules/action-plan.png" class="home-icons" />
+                    <figcaption>Action Plan</figcaption>
+                </figure>
+            </a>
+        </div>          
+
+        <div class="col-md-2 col-sm-6 text-center">
+            <smart-tooltip #yearTooltipReference [selector]="'year'" [arrow]="true">
+                Plan and manage years, terms or tenures
+            </smart-tooltip>
+
+            <a id="year" routerLink="/home/year/dashboard">
+                <figure>
+                    <img src="../../../assets/images/modules/year.png" class="home-icons" />
+                    <figcaption>Year</figcaption>
+                </figure>
+            </a>
+        </div>
+
+        <div class="col-md-2 col-sm-6 text-center">
+            <smart-tooltip #attendanceTooltipReference [selector]="'attendance'" [arrow]="true">
+                Take attendance to meetings and events
+            </smart-tooltip>
+
+            <a id="attendance" routerLink="/home/attendance/dashboard">
+                <figure>
+                    <img src="../../../assets/images/modules/attendance.png" class="home-icons" />
+                    <figcaption>Attendance</figcaption>
+                </figure>
+            </a>
+        </div>
+
+        <div class="col-md-2 col-sm-6 text-center">
+            <smart-tooltip #groupsTooltipReference [selector]="'groups'" [arrow]="true">
+                Manage sub divisions within the association
+            </smart-tooltip>
+
+            <a id="groups" routerLink="/home/groups/dashboard">
+                <figure>
+                    <img src="../../../assets/images/modules/groups.png" class="home-icons" />
+                    <figcaption>Groups</figcaption>
+                </figure>
+            </a>
+        </div>
+
+    </div>
+
+    <!-- ------------------------------------------------------------------------
+    row -->
+
+    <div class="row">
+
+        <div class="col-md-2 col-sm-6 text-center">
+            <smart-tooltip #settingsTooltipReference [selector]="'settings'" [arrow]="true">
+                Set configuarations for your modules
+            </smart-tooltip>
+
+            <a id="settings" routerLink="/home/settings/dashboard">
+                <figure>
+                    <img src="../../../assets/images/modules/settings.png" class="home-icons" />
+                    <figcaption>Settings</figcaption>
+                </figure>
+            </a>
+        </div>
+
+        <div class="col-md-2 col-sm-6 text-center">
+            <smart-tooltip #budgetTooltipReference [selector]="'budget'" [arrow]="true">
+                Plan and prepare association's budget
+            </smart-tooltip>
+
+            <a id="budget" routerLink="/home/budget/dashboard">
+                <figure>
+                    <img src="../../../assets/images/modules/budget.png" class="home-icons" />
+                    <figcaption>Budget</figcaption>
+                </figure>
+            </a>
+        </div>
+
+    </div>
+
+</div>

@@ -35,8 +35,10 @@ export class RegisterFormComponent implements OnInit {
 
   onSubmit(){
     let personalData: any = {
-      personal_id: localStorage.getItem('personal_id')
+      personal_id: localStorage.getItem('personal_id'),
+      personal_name: sessionStorage.getItem('personal_name')
     }
+
     let mergedData = Object.assign(this.registerForm.value, personalData);
     console.log(mergedData);
 

@@ -1,1 +1,71 @@
-<p>access-form works!</p>
+<div class="row mb-3">
+    <div class="col-md-12">
+        <h5>User Access Levels</h5>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+
+        <table class="table table-sm">
+            <thead>
+                <tr>
+                    <th>Module</th>
+                    <th>Access</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>Admin</td>
+                    <td><smart-check-box #adminCheckBoxReference></smart-check-box></td>
+                </tr>
+                <tr>
+                    <td>Customers</td>
+                    <td><smart-check-box #customersCheckBoxReference></smart-check-box></td>
+                </tr>
+                <tr>
+                    <td>Deliveries</td>
+                    <td><smart-check-box #deliveriesCheckBoxReference></smart-check-box></td>
+                </tr>
+                <tr>
+                    <td>Menu</td>
+                    <td><smart-check-box #menuCheckBoxReference></smart-check-box></td>
+                </tr>
+                <tr>
+                    <td>Orders</td>
+                    <td><smart-check-box #ordersCheckBoxReference></smart-check-box></td>
+                </tr>
+                <tr>
+                    <td>Payments</td>
+                    <td><smart-check-box #paymentsCheckBoxReference></smart-check-box></td>
+                </tr>
+                <tr>
+                    <td>Portal</td>
+                    <td><smart-check-box #portalCheckBoxReference></smart-check-box></td>
+                </tr>
+                <tr>
+                    <td>Settings</td>
+                    <td><smart-check-box #settingsCheckBoxReference></smart-check-box></td>
+                </tr>
+                <tr>
+                    <td>Staff</td>
+                    <td><smart-check-box #staffCheckBoxReference></smart-check-box></td>
+                </tr>
+                <tr>
+                    <td>Reservations</td>
+                    <td><smart-check-box #reservationsCheckBoxReference></smart-check-box></td>
+                </tr>
+                <tr>
+                    <td>Tables</td>
+                    <td><smart-check-box #tablesCheckBoxReference></smart-check-box></td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+<!-- connection error prompt component -->
+
+<app-connection-prompt #connectionPromptComponentReference></app-connection-prompt>

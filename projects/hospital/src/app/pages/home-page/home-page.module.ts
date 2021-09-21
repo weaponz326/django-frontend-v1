@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { HomePageRoutingModule } from './home-page-routing.module';
 import { MainNavbarModule } from 'projects/application/src/app/components/main-navbar/main-navbar.module';
 import { ModuleUtilitiesModule } from 'projects/personal/src/app/components/module-utilities/module-utilities.module';
+import { ModuleHomeModule } from '../../components/module-home/module-home.module';
 
 import { HomePageComponent } from './home-page.component';
 
@@ -17,6 +18,7 @@ import { HomePageComponent } from './home-page.component';
     HomePageRoutingModule,
     MainNavbarModule,
     ModuleUtilitiesModule,
+    ModuleHomeModule,
   ]
 })
 export class HomePageModule { }

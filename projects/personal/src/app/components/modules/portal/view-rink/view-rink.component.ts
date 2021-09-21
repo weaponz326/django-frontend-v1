@@ -20,8 +20,8 @@ export class ViewRinkComponent implements OnInit {
   @ViewChild('connectionPromptComponentReference', { read: ConnectionPromptComponent, static: false }) connectionPrompt!: ConnectionPromptComponent;
 
   navHeading: any[] = [
-    { text: "Timeline", url: "/suite/portal/timeline" },
-    { text: "View Rink", url: "/suite/portal/view-rink" },
+    { text: "Timeline", url: "/home/portal/timeline" },
+    { text: "View Rink", url: "/home/portal/view-rink" },
   ];
 
   personalId = localStorage.getItem('personal_id');

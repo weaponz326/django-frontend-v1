@@ -1,0 +1,263 @@
+<nav class="navbar navbar-expand navbar-light bg-white topbar d-block mb-4 static-top shadow">
+    <div class="text-center module-heading">
+        <a routerLink="./">
+            <h3 class="mt-2"><i class="bi bi-house-fill me-2"></i>Home</h3>
+        </a>
+    </div>
+</nav>
+
+<div class="container home-div">
+
+    <div class="row">
+
+        <div class="col-md-2 col-sm-6 text-center">
+            <smart-tooltip #portalTooltipReference [selector]="'portal'" [arrow]="true">
+                Connect with customers through netRink portal
+            </smart-tooltip>
+
+            <a id="portal" routerLink="/home/portal/dashboard">
+                <figure>
+                    <img src="../../../assets/images/modules/portal.png" class="home-icons" />
+                    <figcaption>Portal</figcaption>
+                </figure>
+            </a>
+        </div>
+
+        <div class="col-md-2 col-sm-6 text-center">
+            <smart-tooltip #receivablesTooltipReference [selector]="'receivables'" [arrow]="true">
+                Manage accounts receivables
+            </smart-tooltip>
+
+            <a id="receivables" routerLink="/home/receivables/dashboard">
+                <figure>
+                    <img src="../../../assets/images/modules/receivables.png" class="home-icons" />
+                    <figcaption>Receivables</figcaption>
+                </figure>
+            </a>
+        </div>
+
+        <div class="col-md-2 col-sm-6 text-center">
+            <smart-tooltip #productsTooltipReference [selector]="'products'" [arrow]="true">
+                Manage all products
+            </smart-tooltip>
+
+            <a id="products" routerLink="/home/products/dashboard">
+                <figure>
+                    <img src="../../../assets/images/modules/products.png" class="home-icons" />
+                    <figcaption>Products</figcaption>
+                </figure>
+            </a>
+        </div>
+
+        <div class="col-md-2 col-sm-6 text-center">
+            <smart-tooltip #invoiceTooltipReference [selector]="'invoice'" [arrow]="true">
+                Generate invoice for sales
+            </smart-tooltip>
+
+            <a id="invoice" routerLink="/home/invoice/dashboard">
+                <figure>
+                    <img src="../../../assets/images/modules/invoice.png" class="home-icons" />
+                    <figcaption>Invoice</figcaption>
+                </figure>
+            </a>
+        </div>
+
+        <div class="col-md-2 col-sm-6 text-center">
+            <smart-tooltip #markettingTooltipReference [selector]="'marketting'" [arrow]="true">
+                Plan and manage marketting activities
+            </smart-tooltip>
+
+            <a id="marketting" routerLink="/home/marketting/dashboard">
+                <figure>
+                    <img src="../../../assets/images/modules/marketting.png" class="home-icons" />
+                    <figcaption>Marketting</figcaption>
+                </figure>
+            </a>
+        </div>
+
+        <div class="col-md-2 col-sm-6 text-center">
+            <smart-tooltip #payablesTooltipReference [selector]="'payables'" [arrow]="true">
+                Manage accounts payables
+            </smart-tooltip>
+
+            <a id="payables" routerLink="/home/payables/dashboard">
+                <figure>
+                    <img src="../../../assets/images/modules/payables.png" class="home-icons" />
+                    <figcaption>Payables</figcaption>
+                </figure>
+            </a>
+        </div>
+
+    </div>
+
+    <!-- -----------------------------------------------------------------------------
+    row -->
+
+    <div class="row">
+
+        <div class="col-md-2 col-sm-6 text-center">
+            <smart-tooltip #adminTooltipReference [selector]="'admin'" [arrow]="true">
+                Manage users and access levels
+            </smart-tooltip>
+
+            <a id="admin" routerLink="/home/admin/dashboard">
+                <figure>
+                    <img src="../../../assets/images/modules/admin.png" class="home-icons" />
+                    <figcaption>Admin</figcaption>
+                </figure>
+            </a>
+        </div>
+
+        <div class="col-md-2 col-sm-6 text-center">
+            <smart-tooltip #customersTooltipReference [selector]="'customers'" [arrow]="true">
+                Keep track of customers
+            </smart-tooltip>
+
+            <a id="customers" routerLink="/home/customers/dashboard">
+                <figure>
+                    <img src="../../../assets/images/modules/customers.png" class="home-icons" />
+                    <figcaption>Customers</figcaption>
+                </figure>
+            </a>
+        </div>
+
+        <div class="col-md-2 col-sm-6 text-center">
+            <smart-tooltip #salesTooltipReference [selector]="'sales'" [arrow]="true">
+                Manage all sales operations
+            </smart-tooltip>
+
+            <a id="sales" routerLink="/home/sales/dashboard">
+                <figure>
+                    <img src="../../../assets/images/modules/sales.png" class="home-icons" />
+                    <figcaption>Sales</figcaption>
+                </figure>
+            </a>
+        </div>
+
+        <div class="col-md-2 col-sm-6 text-center">
+            <smart-tooltip #paymentsTooltipReference [selector]="'payments'" [arrow]="true">
+                Receive payments from customers
+            </smart-tooltip>
+
+            <a id="payments" routerLink="/home/payments/dashboard">
+                <figure>
+                    <img src="../../../assets/images/modules/payments.png" class="home-icons" />
+                    <figcaption>Payments</figcaption>
+                </figure>
+            </a>
+        </div>
+
+        <div class="col-md-2 col-sm-6 text-center">
+            <smart-tooltip #cashflowTooltipReference [selector]="'cashFlow'" [arrow]="true">
+                Manage financial transactions
+            </smart-tooltip>
+
+            <a id="cashFlow" routerLink="/home/cashflow/dashboard">
+                <figure>
+                    <img src="../../../assets/images/modules/cash_flow.png" class="home-icons" />
+                    <figcaption>Cash Flow</figcaption>
+                </figure>
+            </a>
+        </div>
+        
+        <div class="col-md-2 col-sm-6 text-center">
+            <smart-tooltip #inventoryTooltipReference [selector]="'inventory'" [arrow]="true">
+                Keep track of all products
+            </smart-tooltip>
+
+            <a id="inventory" routerLink="/home/inventory/dashboard">
+                <figure>
+                    <img src="../../../assets/images/modules/inventory.png" class="home-icons" />
+                    <figcaption>Inventory</figcaption>
+                </figure>
+            </a>
+        </div>
+
+    </div>
+
+    <!-- -------------------------------------------------------------------------------
+    row -->
+
+    <div class="row">
+
+        <div class="col-md-2 col-sm-6 text-center">
+            <smart-tooltip #settingsTooltipReference [selector]="'settings'" [arrow]="true">
+                Set configuarations for your modules
+            </smart-tooltip>
+
+            <a id="settings" routerLink="/home/settings/dashboard">
+                <figure>
+                    <img src="../../../assets/images/modules/settings.png" class="home-icons" />
+                    <figcaption>Settings</figcaption>
+                </figure>
+            </a>
+        </div>
+
+        <div class="col-md-2 col-sm-6 text-center">
+            <smart-tooltip #suppliersTooltipReference [selector]="'suppliers'" [arrow]="true">
+                Manage products suppliers
+            </smart-tooltip>
+
+            <a id="suppliers" routerLink="/home/suppliers/dashboard">
+                <figure>
+                    <img src="../../../assets/images/modules/suppliers.png" class="home-icons" />
+                    <figcaption>Suppliers</figcaption>
+                </figure>
+            </a>
+        </div>
+
+        <div class="col-md-2 col-sm-6 text-center">
+            <smart-tooltip #staffTooltipReference [selector]="'staff'" [arrow]="true">
+                Manage all staff
+            </smart-tooltip>
+
+            <a id="staff" routerLink="/home/staff/dashboard">
+                <figure>
+                    <img src="../../../assets/images/modules/staff.png" class="home-icons" />
+                    <figcaption>Staff</figcaption>
+                </figure>
+            </a>
+        </div>
+
+        <div class="col-md-2 col-sm-6 text-center">
+            <smart-tooltip #ordersTooltipReference [selector]="'orders'" [arrow]="true">
+                Receive and respond to orders
+            </smart-tooltip>
+
+            <a id="orders" routerLink="/home/orders/dashboard">
+                <figure>
+                    <img src="../../../assets/images/modules/orders.png" class="home-icons" />
+                    <figcaption>Orders</figcaption>
+                </figure>
+            </a>
+        </div>
+
+        <div class="col-md-2 col-sm-6 text-center">
+            <smart-tooltip #rosterTooltipReference [selector]="'roster'" [arrow]="true">
+                Plan and manage staff shift schedules
+            </smart-tooltip>
+
+            <a id="roster" routerLink="/home/roster/dashboard">
+                <figure>
+                    <img src="../../../assets/images/modules/roster.png" class="home-icons" />
+                    <figcaption>Roster</figcaption>
+                </figure>
+            </a>
+        </div>
+
+        <div class="col-md-2 col-sm-6 text-center">
+            <smart-tooltip #purchasingTooltipReference [selector]="'purchasing'" [arrow]="true">
+                Manage  the purchasing of goods and services
+            </smart-tooltip>
+
+            <a id="purchasing" routerLink="/home/purchasing/dashboard">
+                <figure>
+                    <img src="../../../assets/images/modules/purchasing.png" class="home-icons" />
+                    <figcaption>Purchasing</figcaption>
+                </figure>
+            </a>
+        </div>
+
+    </div>
+
+</div>

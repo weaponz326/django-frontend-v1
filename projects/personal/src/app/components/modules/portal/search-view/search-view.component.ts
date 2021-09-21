@@ -48,7 +48,7 @@ export class SearchViewComponent implements OnInit {
 
   doSearch(){
     // put search input in url
-    this.router.navigate(['/home/portal/search/search-results', { input: this.searchInput, filter: this.searchFilter }]);
+    this.router.navigate(['/home/portal/search', { input: this.searchInput, filter: this.searchFilter }]);
 
     sessionStorage.setItem('personalSearchInput', this.searchInput);
     sessionStorage.setItem('personalSearchFilter', this.searchFilter);

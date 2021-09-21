@@ -59,7 +59,9 @@ export class MainNavbarComponent implements OnInit {
             this.email = res.email;
             if(res.photo != null) this.profilePhotoSrc = environment.personalUrl + res.photo;
 
+            let full_name = res.first_name + " " + res.last_name;;
             localStorage.setItem('personal_id', res.id);
+            sessionStorage.setItem('personal_name', full_name);
           }
         },
         err => {
