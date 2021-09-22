@@ -17,7 +17,7 @@ export class ContactComponent implements OnInit {
   @ViewChild('emailInputReference', { read: InputComponent, static: false }) emailInput!: InputComponent;
   @ViewChild('phoneInputReference', { read: InputComponent, static: false }) phoneInput!: InputComponent;
   @ViewChild('addressTextAreaReference', { read: MultilineTextBoxComponent, static: false }) addressTextArea!: MultilineTextBoxComponent;
-  @ViewChild('saveButtonference', { read: ButtonComponent, static: false }) saveButton!: ButtonComponent;
+  @ViewChild('saveButtonReference', { read: ButtonComponent, static: false }) saveButton!: ButtonComponent;
 
   @Output() contactEvent = new EventEmitter<any>();
 

@@ -13,15 +13,16 @@
             <div class="row mb-3">
                 <div class="col-md-3 text-muted"><label class="float-end"><em>Invitee :</em></label></div>
                 <div class="col-md-9">
-                    <div class="col-md-2">
+                    <!-- <div class="col-md-2">
                         <img *ngIf="invitation?.user.photo != null" [src]="personalUrl + invitation.user.photo" alt="" width="40" height="40" class="rounded-circle" />
-                        <img *ngIf="invitation?.user.photo == null" src="../../../../../assets/images/utilities/photo-avatar.jpg" alt="Company" width="40" height="40" class="rounded-circle" />                    </div>
+                        <img *ngIf="invitation?.user.photo == null" src="../../../../../assets/images/utilities/photo-avatar.jpg" alt="Company" width="40" height="40" class="rounded-circle" />                    
+                    </div> -->
                     <div class="col-md-5">
-                        <strong>{{invitation?.user.first_name}} {{invitation?.user.last_name}}</strong>
+                        <strong>{{invitation?.invitee_name}}</strong>
                     </div>
-                    <div class="col-md-5 text-muted">
+                    <!-- <div class="col-md-5 text-muted">
                         {{invitation?.user.location}}
-                    </div>
+                    </div> -->
                 </div>
             </div>
 

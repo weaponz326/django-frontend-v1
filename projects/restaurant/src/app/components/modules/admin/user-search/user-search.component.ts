@@ -84,18 +84,21 @@ export class UserSearchComponent implements OnInit {
       )
   }
 
-  sendInvitation(userId: any) {
+  sendInvitation() {
     let data = {
-      account: sessionStorage.getItem('restaurant_id'),
-      personal: userId,
+      account: localStorage.getItem('restaurant_id'),
+      invitee_id: this.searchDetail.id,
+      invitee_name: this.searchDetail.first_name + " " + this.searchDetail.last_name,
       invitation_status: 'Awaiting',
     }
+
+    console.log(data);
 
     this.adminApi.sendInvitation(data)
       .subscribe(
         res => {
           console.log(res);
-          sessionStorage.setItem('restaurant_invitation_id', res.id);
+          sessionStorage.setItem('restaurant_invitation_id', res.data.id);
           this.router.navigateByUrl('/home/admin/view-invitation');
         },
         err => {
@@ -108,8 +111,6 @@ export class UserSearchComponent implements OnInit {
   gotoSearchDetail(userId: any){
     sessionStorage.setItem('restaurantAdminSearchUser', userId);
     this.getDetail();
-
-    this.router.navigateByUrl('suite/admin/search/search-detail');
   }
 
 }

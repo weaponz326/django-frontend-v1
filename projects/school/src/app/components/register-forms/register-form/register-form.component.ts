@@ -49,6 +49,7 @@ export class RegisterFormComponent implements OnInit {
           console.log(res);
           if(res.message == "OK"){
             this.showPrompt = true;
+            localStorage.setItem('school_id', res.data.id);
           }
 
           this.isSending = false;

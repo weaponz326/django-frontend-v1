@@ -39,6 +39,7 @@ export class AllUsersComponent implements OnInit {
       .subscribe(
         res => {
           console.log(res);
+          return res;
         },
         err => {
           console.log(err);
@@ -64,14 +65,14 @@ export class AllUsersComponent implements OnInit {
         dataSource: this.getAllUsers(),
         dataFields: [
           'id: string',
-          'user: string',
+          'personal_name: string',
           'user_level: string'
         ]
       }
     );
 
     this.grid.columns = <GridColumn[]>[
-      { label: "User's Name", dataField: "user", width: "60%" },
+      { label: "User's Name", dataField: "personal_name", width: "60%" },
       { label: "User Level", dataField: "user_level", width: "40%" },
     ];
 

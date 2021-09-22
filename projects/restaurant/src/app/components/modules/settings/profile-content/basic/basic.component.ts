@@ -17,7 +17,7 @@ export class BasicComponent implements OnInit {
   @ViewChild('nameInputReference', { read: InputComponent, static: false }) nameInput!: InputComponent;
   @ViewChild('locationInputReference', { read: InputComponent, static: false }) locationInput!: InputComponent;
   @ViewChild('aboutTextAreaReference', { read: MultilineTextBoxComponent, static: false }) aboutTextArea!: MultilineTextBoxComponent;
-  @ViewChild('saveButtonference', { read: ButtonComponent, static: false }) saveButton!: ButtonComponent;
+  @ViewChild('saveButtonReference', { read: ButtonComponent, static: false }) saveButton!: ButtonComponent;
 
   @Output() basicEvent = new EventEmitter<any>();
 

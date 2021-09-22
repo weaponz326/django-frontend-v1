@@ -14,7 +14,7 @@ export class LogoComponent implements OnInit {
 
   constructor() { }
 
-  @ViewChild('saveButtonference', { read: ButtonComponent, static: false }) saveButton!: ButtonComponent;
+  @ViewChild('saveButtonReference', { read: ButtonComponent, static: false }) saveButton!: ButtonComponent;
   @ViewChild('imageUploadComponentReference', { read: ImageUploadComponent, static: false }) imageUpload!: ImageUploadComponent;
 
   @Output() logoEvent = new EventEmitter<any>();

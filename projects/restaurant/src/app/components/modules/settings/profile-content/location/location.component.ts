@@ -16,7 +16,7 @@ export class LocationComponent implements OnInit {
   @ViewChild('countrySelectReference', { read: InputComponent, static: false }) countrySelectInput!: InputComponent;
   @ViewChild('stateSelectReference', { read: InputComponent, static: false }) stateSelectInput!: InputComponent;
   @ViewChild('citySelectReference', { read: InputComponent, static: false }) citySelectInput!: InputComponent;
-  @ViewChild('saveButtonference', { read: ButtonComponent, static: false }) saveButton!: ButtonComponent;
+  @ViewChild('saveButtonReference', { read: ButtonComponent, static: false }) saveButton!: ButtonComponent;
 
   @Output() locationEvent = new EventEmitter<any>();
 

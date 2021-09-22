@@ -22,8 +22,7 @@ export class SettingsApiService {
   // get all profile categories
 
   public getAccount(): Observable<any>{
-    // return this.http.get(this.restaurantUrl + "accounts/account/" + localStorage.getItem('restaurant_id'));
-      return this.http.get(this.restaurantUrl + "accounts/account/");
+    return this.http.get(this.restaurantUrl + "accounts/account/" + localStorage.getItem('restaurant_id'));
   }
 
   public getExtendedProfile(): Observable<any>{

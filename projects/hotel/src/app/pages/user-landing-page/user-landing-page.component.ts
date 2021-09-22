@@ -43,7 +43,7 @@ export class UserLandingPageComponent implements OnInit {
         res => {
           console.log(res);
 
-          sessionStorage.setItem('hotel_id', res.hotel_id);
+          localStorage.setItem('hotel_id', res.hotel_id);
           this.router.navigateByUrl('/home');
         },
         err => {

@@ -9,6 +9,11 @@ export class PaymentsHistoryComponent implements OnInit {
 
   constructor() { }
 
+  navHeading: any[] = [
+    { text: "Billing", url: "/home/settings/billing" },
+    { text: "Payments History", url: "/home/settings/payments-history" },
+  ];
+
   ngOnInit(): void {
   }
 

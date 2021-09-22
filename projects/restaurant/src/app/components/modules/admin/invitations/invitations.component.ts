@@ -41,6 +41,7 @@ export class InvitationsComponent implements OnInit {
       .subscribe(
         res => {
           console.log(res);
+          return res;
         },
         err => {
           console.log(err);
@@ -75,7 +76,7 @@ export class InvitationsComponent implements OnInit {
 
     this.grid.columns = <GridColumn[]>[
       { label: "Invitation Date", dataField: "date_sent", width: "25%" },
-      { label: "User's Name", dataField: "user_name", width: "50%" },
+      { label: "User's Name", dataField: "invitee_name", width: "50%" },
       { label: "Invitation Status", dataField: "invitation_status", width: "25%" },
     ];
 

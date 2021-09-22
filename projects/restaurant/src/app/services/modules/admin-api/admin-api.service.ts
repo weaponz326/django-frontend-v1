@@ -40,13 +40,13 @@ export class AdminApiService {
   }
 
   public getAllInvitations(): Observable<any>{
-    return this.http.get(this.restaurantUrl + "module-admin/invitation?account=" + sessionStorage.getItem('restaurant_id'));
+    return this.http.get(this.restaurantUrl + "module-admin/invitation?account=" + localStorage.getItem('restaurant_id'));
   }
 
   // users
 
   public getAllUsers(): Observable<any>{
-    return this.http.get(this.restaurantUrl + "module-admin/user?account=" + sessionStorage.getItem('restaurant_id'));
+    return this.http.get(this.restaurantUrl + "module-admin/user?account=" + localStorage.getItem('restaurant_id'));
   }
 
   public getUser(): Observable<any>{
@@ -58,7 +58,7 @@ export class AdminApiService {
   }
 
   public putUser(user: any): Observable<any>{
-    return this.http.put(this.restaurantUrl + "module-admin/user/" + sessionStorage.getItem('restaurant_admin_user_id'), user);
+    return this.http.put(this.restaurantUrl + "module-admin/user/" + localStorage.getItem('restaurant_admin_user_id'), user);
   }
 
   public putUserAccess(userAccess: any): Observable<any>{
