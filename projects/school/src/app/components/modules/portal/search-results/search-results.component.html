@@ -1,1 +1,26 @@
-<p>search-results works!</p>
+<div class="row mb-3">
+    <div class="col-md-12 text-center text-muted">
+        <small>showing results for <b>"{{searchQuery}}"</b></small>
+    </div>
+</div>
+
+<div class="result-body">
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <tbody>
+                <tr *ngFor="let result of searchResults" class="list-pointer" (click)="viewDetail(result.id)">
+                    <td class="align-middle" width="75">
+                        <img *ngIf="result?.logo != null" [src]="schoolUrl + result.logo" alt="Company" width="40" height="40" class="rounded" />
+                        <img *ngIf="result?.logo == null" src="../../../../../assets/images/utilities/logo-placeholder.jpg" alt="Company" width="40" height="40" class="rounded" />
+                    </td>
+                    <td class="align-middle">
+                        <p class="m-0"><strong>{{result?.name}}</strong></p>
+                    </td>
+                    <td class="align-middle">
+                        <p class="m-0">{{result?.location}}</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -9,6 +9,11 @@ export class PortalPageComponent implements OnInit {
 
   constructor() { }
 
+  navLinks: any[] = [
+    { text: "Timeline", url: "/home/portal/timeline", icon: "bi bi-clock" },
+    { text: "New Rink", url: "/home/portal/search", icon: "bi bi-plus-square" }
+  ]
+
   ngOnInit(): void {
   }
 

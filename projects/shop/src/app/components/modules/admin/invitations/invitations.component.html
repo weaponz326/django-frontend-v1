@@ -1,1 +1,21 @@
-<p>invitations works!</p>
+<app-module-topnav [headings]="navHeading"></app-module-topnav>
+
+<div class="container">
+
+    <div class="row mb-3">
+        <div class="col">
+            <smart-button #buttonReference routerLink="/home/admin/search">Invite User</smart-button>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8">
+            <smart-grid #gridReference class="w-100"></smart-grid>
+        </div>
+    </div>
+
+</div>
+
+<!-- connection error prompt component -->
+
+<app-connection-prompt #connectionPromptComponentReference></app-connection-prompt>

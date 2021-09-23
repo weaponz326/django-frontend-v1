@@ -1,1 +1,87 @@
-<p>access-form works!</p>
+<div class="row mb-3">
+    <div class="col-md-12">
+        <h5>User Access Levels</h5>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+
+        <table class="table table-sm">
+            <thead>
+                <tr>
+                    <th>Module</th>
+                    <th>Access</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>Admin</td>
+                    <td><smart-check-box #adminCheckBoxReference></smart-check-box></td>
+                </tr>
+                <tr>
+                    <td>Assessment</td>
+                    <td><smart-check-box #assessmentCheckBoxReference></smart-check-box></td>
+                </tr>
+                <tr>
+                    <td>Attendant</td>
+                    <td><smart-check-box #attendanceCheckBoxReference></smart-check-box></td>
+                </tr>
+                <tr>
+                    <td>Classes</td>
+                    <td><smart-check-box #classesCheckBoxReference></smart-check-box></td>
+                </tr>
+                <tr>
+                    <td>Fees</td>
+                    <td><smart-check-box #feesCheckBoxReference></smart-check-box></td>
+                </tr>
+                <tr>
+                    <td>Parents</td>
+                    <td><smart-check-box #parentsCheckBoxReference></smart-check-box></td>
+                </tr>
+                <tr>
+                    <td>Payments</td>
+                    <td><smart-check-box #paymentsCheckBoxReference></smart-check-box></td>
+                </tr>
+                <tr>
+                    <td>Portal</td>
+                    <td><smart-check-box #portalCheckBoxReference></smart-check-box></td>
+                </tr>
+                <tr>
+                    <td>Reports</td>
+                    <td><smart-check-box #reportsCheckBoxReference></smart-check-box></td>
+                </tr>
+                <tr>
+                    <td>Settings</td>
+                    <td><smart-check-box #settingsCheckBoxReference></smart-check-box></td>
+                </tr>
+                <tr>
+                    <td>Staff</td>
+                    <td><smart-check-box #staffCheckBoxReference></smart-check-box></td>
+                </tr>
+                <tr>
+                    <td>Students</td>
+                    <td><smart-check-box #studentsCheckBoxReference></smart-check-box></td>
+                </tr>
+                <tr>
+                    <td>Subjects</td>
+                    <td><smart-check-box #subjectsCheckBoxReference></smart-check-box></td>
+                </tr>
+                <tr>
+                    <td>Teachers</td>
+                    <td><smart-check-box #teachersCheckBoxReference></smart-check-box></td>
+                </tr>
+                <tr>
+                    <td>Timetable</td>
+                    <td><smart-check-box #timetableCheckBoxReference></smart-check-box></td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+<!-- connection error prompt component -->
+
+<app-connection-prompt #connectionPromptComponentReference></app-connection-prompt>

@@ -1,1 +1,91 @@
-<p>access-form works!</p>
+<div class="row mb-3">
+    <div class="col-md-12">
+        <h5>User Access Levels</h5>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+
+        <table class="table table-sm">
+            <thead>
+                <tr>
+                    <th>Module</th>
+                    <th>Access</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>Accounts</td>
+                    <td><smart-check-box #accountsCheckBoxReference></smart-check-box></td>
+                </tr>
+                <tr>
+                    <td>Admin</td>
+                    <td><smart-check-box #adminCheckBoxReference></smart-check-box></td>
+                </tr>
+                <tr>
+                    <td>Appraisal</td>
+                    <td><smart-check-box #appraisalCheckBoxReference></smart-check-box></td>
+                </tr>
+                <tr>
+                    <td>Assets</td>
+                    <td><smart-check-box #assetsCheckBoxReference></smart-check-box></td>
+                </tr>
+                <tr>
+                    <td>Attendance</td>
+                    <td><smart-check-box #attendanceCheckBoxReference></smart-check-box></td>
+                </tr>
+                <tr>
+                    <td>Budget</td>
+                    <td><smart-check-box #budgetCheckBoxReference></smart-check-box></td>
+                </tr>
+                <tr>
+                    <td>Employees</td>
+                    <td><smart-check-box #employeesCheckBoxReference></smart-check-box></td>
+                </tr>
+                <tr>
+                    <td>Files</td>
+                    <td><smart-check-box #filesCheckBoxReference></smart-check-box></td>
+                </tr>
+                <tr>
+                    <td>Leave</td>
+                    <td><smart-check-box #leaveCheckBoxReference></smart-check-box></td>
+                </tr>
+                <tr>
+                    <td>Ledger</td>
+                    <td><smart-check-box #ledgerCheckBoxReference></smart-check-box></td>
+                </tr>
+                <tr>
+                    <td>Letters</td>
+                    <td><smart-check-box #lettersCheckBoxReference></smart-check-box></td>
+                </tr>
+                <tr>
+                    <td>Payroll</td>
+                    <td><smart-check-box #payrollCheckBoxReference></smart-check-box></td>
+                </tr>
+                <tr>
+                    <td>Portal</td>
+                    <td><smart-check-box #portalCheckBoxReference></smart-check-box></td>
+                </tr>
+                <tr>
+                    <td>Procurement</td>
+                    <td><smart-check-box #procurementCheckBoxReference></smart-check-box></td>
+                </tr>
+                <tr>
+                    <td>Reception</td>
+                    <td><smart-check-box #receptionCheckBoxReference></smart-check-box></td>
+                </tr>
+                <tr>
+                    <td>Settings</td>
+                    <td><smart-check-box #settingsCheckBoxReference></smart-check-box></td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+<!-- connection error prompt component -->
+
+<app-connection-prompt #connectionPromptComponentReference></app-connection-prompt>

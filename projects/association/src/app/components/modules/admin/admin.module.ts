@@ -1,7 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
-// import { ChartsModule } from 'ng2-charts';
+import { ChartsModule } from 'ng2-charts';
+import { ButtonModule } from 'smart-webcomponents-angular/button';
+import { InputModule } from 'smart-webcomponents-angular/input';
+import { GridModule } from 'smart-webcomponents-angular/grid';
+import { DropDownListModule } from 'smart-webcomponents-angular/dropdownlist';
+import { CheckBoxModule } from 'smart-webcomponents-angular/checkbox';
 
 import { ModuleUtilitiesModule } from 'projects/personal/src/app/components/module-utilities/module-utilities.module';
 
@@ -33,7 +40,14 @@ import { ViewInvitationComponent } from './view-invitation/view-invitation.compo
   ],
   imports: [
     CommonModule,
-    // ChartsModule,
+    FormsModule,
+    RouterModule,
+    ChartsModule,
+    ButtonModule,
+    InputModule,
+    GridModule,
+    DropDownListModule,
+    CheckBoxModule,
     ModuleUtilitiesModule,
   ]
 })

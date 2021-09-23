@@ -1,1 +1,38 @@
-<p>basic works!</p>
+<div class="row m-2 page-form">
+    <div class="col-md-6">
+
+        <div class="row mb-3">
+            <div class="col-md-12">
+                <h5>Basic Profile</h5>
+            </div>
+        </div>
+
+        <div class="row mb-2">
+            <div class="col-md-4"><label>Name :</label></div>
+            <div class="col-md-8">
+                <smart-input #nameInputReference class="w-100"></smart-input>
+            </div>
+        </div>
+
+        <div class="row mb-2">
+            <div class="col-md-4"><label>Location :</label></div>
+            <div class="col-md-8">
+                <smart-input #locationInputReference class="w-100"></smart-input>
+            </div>
+        </div>
+
+        <div class="row mb-2">
+            <div class="col-md-4"><label>About :</label></div>
+            <div class="col-md-8">
+                <smart-multiline-text-box #aboutTextAreaReference class="w-100" [rows]="3"></smart-multiline-text-box>
+            </div>
+        </div>
+
+        <div class="row mt-3 page-form-div">
+            <div class="col-md-12">
+                <smart-button #saveButtonReference class="float-end page-control-button" (click)="emitBasic()">Save</smart-button>
+            </div>
+        </div>
+
+    </div>
+</div>

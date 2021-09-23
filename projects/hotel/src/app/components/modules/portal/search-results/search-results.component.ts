@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+
+import { environment } from 'projects/hotel/src/environments/environment';
+
+import { PortalApiService } from 'projects/hotel/src/app/services/modules/portal-api/portal-api.service';
+
 
 @Component({
   selector: 'app-search-results',
@@ -7,9 +12,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchResultsComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private portalApi: PortalApiService
+  ) { }
+
+  @Input() searchResults: any;
+  @Input() searchQuery: any;
+  @Output() viewDetailEvent = new EventEmitter<string>();
+
+  hotelUrl = environment.hotelUrl;
 
   ngOnInit(): void {
+  }
+
+  viewDetail(userId: any){
+    this.viewDetailEvent.emit(userId);
   }
 
 }

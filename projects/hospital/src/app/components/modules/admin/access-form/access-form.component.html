@@ -1,1 +1,91 @@
-<p>access-form works!</p>
+<div class="row mb-3">
+    <div class="col-md-12">
+        <h5>User Access Levels</h5>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+
+        <table class="table table-sm">
+            <thead>
+                <tr>
+                    <th>Module</th>
+                    <th>Access</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>Admin</td>
+                    <td><smart-check-box #adminCheckBoxReference></smart-check-box></td>
+                </tr>
+                <tr>
+                    <td>Admissions</td>
+                    <td><smart-check-box #admissionsCheckBoxReference></smart-check-box></td>
+                </tr>
+                <tr>
+                    <td>Appoitments</td>
+                    <td><smart-check-box #appointmentsCheckBoxReference></smart-check-box></td>
+                </tr>
+                <tr>
+                    <td>Bills</td>
+                    <td><smart-check-box #billsCheckBoxReference></smart-check-box></td>
+                </tr>
+                <tr>
+                    <td>Diagnosis</td>
+                    <td><smart-check-box #diagnosisCheckBoxReference></smart-check-box></td>
+                </tr>
+                <tr>
+                    <td>Doctors</td>
+                    <td><smart-check-box #doctorsCheckBoxReference></smart-check-box></td>
+                </tr>
+                <tr>
+                    <td>Drugs</td>
+                    <td><smart-check-box #drugsCheckBoxReference></smart-check-box></td>
+                </tr>
+                <tr>
+                    <td>Laboratory</td>
+                    <td><smart-check-box #laboratoryCheckBoxReference></smart-check-box></td>
+                </tr>
+                <tr>
+                    <td>Nurses</td>
+                    <td><smart-check-box #nursesCheckBoxReference></smart-check-box></td>
+                </tr>
+                <tr>
+                    <td>Patients</td>
+                    <td><smart-check-box #patientsCheckBoxReference></smart-check-box></td>
+                </tr>
+                <tr>
+                    <td>Payments</td>
+                    <td><smart-check-box #paymentsCheckBoxReference></smart-check-box></td>
+                </tr>
+                <tr>
+                    <td>Portal</td>
+                    <td><smart-check-box #portalCheckBoxReference></smart-check-box></td>
+                </tr>
+                <tr>
+                    <td>Prescriptions</td>
+                    <td><smart-check-box #prescriptionsCheckBoxReference></smart-check-box></td>
+                </tr>
+                <tr>
+                    <td>Settings</td>
+                    <td><smart-check-box #settingsCheckBoxReference></smart-check-box></td>
+                </tr>
+                <tr>
+                    <td>Staff</td>
+                    <td><smart-check-box #staffCheckBoxReference></smart-check-box></td>
+                </tr>
+                <tr>
+                    <td>Wards</td>
+                    <td><smart-check-box #wardsCheckBoxReference></smart-check-box></td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+<!-- connection error prompt component -->
+
+<app-connection-prompt #connectionPromptComponentReference></app-connection-prompt>

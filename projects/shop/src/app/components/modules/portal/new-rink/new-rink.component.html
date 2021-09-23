@@ -1,1 +1,58 @@
-<p>new-rink works!</p>
+<app-module-topnav [headings]="navHeading"></app-module-topnav>
+
+<div class="container">
+
+    <div class="row page-form">
+        <div class="col-md-8">
+
+            <div class="row mb-1">
+                <div class="col-md-3"><label class="float-end">Recipient Name :</label></div>
+                <div class="col-md-6">
+                    <smart-input #nameInputReference class="w-100" [disabled]="true"></smart-input>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-3"><label class="float-end">Recipient Location :</label></div>
+                <div class="col-md-6">
+                    <smart-input #locationInputReference class="w-100" [disabled]="true"></smart-input>
+                </div>
+            </div>
+
+            <div class="row mb-1">
+                <div class="col-md-3"><label class="float-end">Rink Type :</label></div>
+                <div class="col-md-6">
+                    <smart-input #typeDropDownListReference class="w-100" [dataSource]="typeSource" [dropDownButtonPosition]='"right"'></smart-input>
+                </div>
+            </div>
+
+            <div class="row mb-1">
+                <div class="col-md-3"><label class="float-end">Rink Source :</label></div>
+                <div class="col-md-6">
+                    <smart-input #sourceInputReference class="page-group-input" [disabled]="true"></smart-input>
+                    <smart-button #cancelButtonReference class="page-group-button">...</smart-button>
+                </div>
+            </div>
+
+            <div class="row mb-1">
+                <div class="col-md-3"><label class="float-end">Comment :</label></div>
+                <div class="col-md-6">
+                    <smart-multiline-text-box #commentTextAreaReference class="w-100" enter-key-behavior="newLine" [rows]="3"></smart-multiline-text-box>
+                </div>
+            </div>
+
+            <div class="row mt-3">
+                <div class="col-md-9">
+                    <smart-button #cancelButtonReference class="page-control-button float-end ms-1" routerLink="/home/portal/search">Cancel</smart-button>
+                    <smart-button #sendButtonReference class="page-control-button float-end ms-1" (click)="sendRink()">Send</smart-button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<!-- connection error prompt component -->
+
+<app-connection-prompt #connectionPromptComponentReference></app-connection-prompt>

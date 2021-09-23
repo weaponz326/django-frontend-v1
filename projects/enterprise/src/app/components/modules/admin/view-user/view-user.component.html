@@ -1,1 +1,56 @@
-<p>view-user works!</p>
+<app-module-topnav [headings]="navHeading"></app-module-topnav>
+
+<div class="container">
+
+    <div class="row page-form">
+        <div class="col-md-6">
+
+            <div class="row mb-2">
+                <div class="col-md-4"><label class="float-end">User Name :</label></div>
+                <div class="col-md-8">
+                    <smart-input #userNameReference class="w-100"></smart-input>
+                </div>
+            </div>
+
+            <div class="row mb-2">
+                <div class="col-md-4"><label class="float-end">Access Level :</label></div>
+                <div class="col-md-8">
+                    <smart-drop-down-list #accessLevelDropDownListReference class="w-100"  (onChange)="changeLevel($event)">
+                        <smart-list-item [value]="'Admin'">Admin</smart-list-item>
+                        <smart-list-item [value]="'Manager'">Manager</smart-list-item>
+                        <smart-list-item [value]="'Staff'">Staff</smart-list-item>
+                    </smart-drop-down-list>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-md-6">
+            <span class="small"><strong>Admin</strong> - has access to all modules by default</span><br />
+            <span class="small"><strong>Manager</strong> - has access to all but except Admin and Settings modules by default</span><br />
+            <span class="small"><strong>Staff</strong> - has no access to all modules by default</span><br />
+        </div>
+
+    </div>
+
+    <hr />
+
+    <div class="row">
+        <div class="col-md-6">
+            <app-access-form #accessFormComponentReference></app-access-form>
+        </div>
+    </div>
+
+    <div class="row page-form">
+        <div class="col-md-6">
+            <smart-button #saveReference class="float-end page-control-button ms-1" routerLink="/suite/admin/all-users">Cancel</smart-button>
+            <smart-button #saveReference class="float-end page-control-button ms-1">Delete</smart-button>
+            <smart-button #saveReference class="float-end page-control-button ms-1" (click)="saveUser()">Save</smart-button>
+        </div>
+    </div>
+
+</div>
+
+<!-- connection error prompt component -->
+
+<app-connection-prompt #connectionPromptComponentReference></app-connection-prompt>

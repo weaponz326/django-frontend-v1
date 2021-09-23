@@ -1,1 +1,15 @@
-<p>settings-page works!</p>
+<app-main-navbar [navBrand]="'nR Hotel'" [source]="'Hotel'"></app-main-navbar>
+
+<div id="wrapper">
+
+    <app-module-sidenav [navLinks]="navLinks" [heading]="'Settings'"></app-module-sidenav>
+
+    <div id="content-wrapper" class="d-flex flex-column">
+        <div id="content">
+
+            <router-outlet></router-outlet>
+
+        </div>
+    </div>
+
+</div>

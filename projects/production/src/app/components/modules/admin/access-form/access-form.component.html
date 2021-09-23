@@ -1,1 +1,83 @@
-<p>access-form works!</p>
+<div class="row mb-3">
+    <div class="col-md-12">
+        <h5>User Access Levels</h5>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+
+        <table class="table table-sm">
+            <thead>
+                <tr>
+                    <th>Module</th>
+                    <th>Access</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>Admin</td>
+                    <td><smart-check-box #adminCheckBoxReference></smart-check-box></td>
+                </tr>
+                <tr>
+                    <td>Contractors</td>
+                    <td><smart-check-box #contractorsCheckBoxReference></smart-check-box></td>
+                </tr>
+                <tr>
+                    <td>Equipment</td>
+                    <td><smart-check-box #equipmentCheckBoxReference></smart-check-box></td>
+                </tr>
+                <tr>
+                    <td>Manufacturing</td>
+                    <td><smart-check-box #manufacturingCheckBoxReference></smart-check-box></td>
+                </tr>
+                <tr>
+                    <td>Orders</td>
+                    <td><smart-check-box #ordersCheckBoxReference></smart-check-box></td>
+                </tr>
+                <tr>
+                    <td>Portal</td>
+                    <td><smart-check-box #portalCheckBoxReference></smart-check-box></td>
+                </tr>
+                <tr>
+                    <td>Products</td>
+                    <td><smart-check-box #productsCheckBoxReference></smart-check-box></td>
+                </tr>
+                <tr>
+                    <td>Projects</td>
+                    <td><smart-check-box #projectsCheckBoxReference></smart-check-box></td>
+                </tr>
+                <tr>
+                    <td>Purchasing</td>
+                    <td><smart-check-box #purchasingCheckBoxReference></smart-check-box></td>
+                </tr>
+                <tr>
+                    <td>Schedule</td>
+                    <td><smart-check-box #scheduleCheckBoxReference></smart-check-box></td>
+                </tr>
+                <tr>
+                    <td>Settings</td>
+                    <td><smart-check-box #settingsCheckBoxReference></smart-check-box></td>
+                </tr>
+                <tr>
+                    <td>Stock</td>
+                    <td><smart-check-box #stockCheckBoxReference></smart-check-box></td>
+                </tr>
+                <tr>
+                    <td>Tasks</td>
+                    <td><smart-check-box #tasksCheckBoxReference></smart-check-box></td>
+                </tr>
+                <tr>
+                    <td>Workers</td>
+                    <td><smart-check-box #workersCheckBoxReference></smart-check-box></td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+<!-- connection error prompt component -->
+
+<app-connection-prompt #connectionPromptComponentReference></app-connection-prompt>

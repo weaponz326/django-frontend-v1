@@ -1,1 +1,15 @@
-<p>portal-page works!</p>
+<app-main-navbar [navBrand]="'nR Enterprise'" [source]="'Enterprise'"></app-main-navbar>
+
+<div id="wrapper">
+
+    <app-module-sidenav [navLinks]="navLinks" [heading]="'Portal'"></app-module-sidenav>
+
+    <div id="content-wrapper" class="d-flex flex-column">
+        <div id="content">
+
+            <router-outlet></router-outlet>
+
+        </div>
+    </div>
+
+</div>

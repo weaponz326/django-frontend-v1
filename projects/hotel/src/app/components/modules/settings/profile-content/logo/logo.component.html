@@ -1,1 +1,23 @@
-<p>logo works!</p>
+<div class="row m-2 page-form">
+    <div class="col-md-6">
+
+        <div class="row mb-3">
+            <div class="col-md-12">
+                <h5>Hotel Logo</h5>
+            </div>
+        </div>
+
+        <div class="row mt-3 page-form-div">
+            <div class="col-md-12">
+                <app-image-upload [width]="160" [height]="160" [imgType]="'logo'"></app-image-upload>
+            </div>
+        </div>
+
+        <div class="row mt-3 page-form-div">
+            <div class="col-md-12">
+                <smart-button #saveButtonReference class="page-control-button" (click)="emitLogo()">Save</smart-button>
+            </div>
+        </div>
+
+    </div>
+</div>

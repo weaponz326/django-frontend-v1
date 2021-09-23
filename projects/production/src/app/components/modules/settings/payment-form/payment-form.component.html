@@ -1,0 +1,53 @@
+<div class="row billing-form">
+    <div class="col-md-9">
+
+        <h3 class="mb-3">Billing Details</h3>
+
+        <div class="row mb-2">
+            <div class="col-md-4"><label>Name on Card :</label></div>
+            <div class="col-md-8">
+                <smart-input #nameInputReference class="w-100"></smart-input>
+            </div>
+        </div>
+
+        <div class="row mb-2">
+            <div class="col-md-4"><label>Card Number :</label></div>
+            <div class="col-md-8">
+                <smart-input #cardNumberInputReference class="w-100"></smart-input>
+            </div>
+        </div>
+
+        <div class="row mb-2">
+            <div class="col-md-4"><label>Expiry Date :</label></div>
+
+            <div class="col-md-4">
+                <div class="row gx-2">
+                    <div class="col-md-5">
+                        <smart-input #expiryMonthInputReference [placeholder]="'00'" class="w-100"></smart-input>
+                    </div>
+                    <div class="col-md-2 h3 text-center">/</div>
+                    <div class="col-md-5">
+                        <smart-input #expiryYearInputReference [placeholder]="'00'" class="w-100"></smart-input>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="row mb-2">
+            <div class="col-md-4"><label>CVC Number :</label></div>
+            <div class="col-md-4">
+                <smart-input #cvcInputReference [placeholder]="'***'" class="w-100"></smart-input>
+            </div>
+        </div>
+
+        <hr />
+
+        <div class="row mb-2">
+            <div class="col">
+                <smart-button #buttonReference class="float-right page-control-button">Save</smart-button>
+            </div>
+        </div>
+
+    </div>
+</div>

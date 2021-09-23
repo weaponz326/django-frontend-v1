@@ -1,1 +1,47 @@
-<p>view-invitation works!</p>
+<app-module-topnav [headings]="navHeading"></app-module-topnav>
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-8">
+
+            <div class="row mb-3">
+                <div class="col-md-3 text-muted"><label class="float-end"><em>Invitation Date :</em></label></div>
+                <div class="col-md-9">{{invitation?.date_sent | date: 'MMMM d, y, hh:mm:ss a'}}</div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-3 text-muted"><label class="float-end"><em>Invitee :</em></label></div>
+                <div class="col-md-9">
+                    <!-- <div class="col-md-2">
+                        <img *ngIf="invitation?.user.photo != null" [src]="personalUrl + invitation.user.photo" alt="" width="40" height="40" class="rounded-circle" />
+                        <img *ngIf="invitation?.user.photo == null" src="../../../../../assets/images/utilities/photo-avatar.jpg" alt="Company" width="40" height="40" class="rounded-circle" />                    
+                    </div> -->
+                    <div class="col-md-5">
+                        <strong>{{invitation?.invitee_name}}</strong>
+                    </div>
+                    <!-- <div class="col-md-5 text-muted">
+                        {{invitation?.user.location}}
+                    </div> -->
+                </div>
+            </div>
+
+            <div class="row mb-4">
+                <div class="col-md-3 text-muted"><label class="float-end"><em>Invitation Status :</em></label></div>
+                <div class="col-md-9">{{invitation?.invitation_status}}</div>
+            </div>
+
+            <div *ngIf="invitation?.invitation_status == 'Awaiting'" class="row">
+                <div class="offset-md-3 col">
+                    <smart-button #buttonReference>Cancel Invitation</smart-button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<!-- connection error prompt component -->
+
+<app-connection-prompt #connectionPromptComponentReference></app-connection-prompt>

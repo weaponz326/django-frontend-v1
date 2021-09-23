@@ -1,4 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+
+import { ButtonComponent } from 'smart-webcomponents-angular/button';
+import { InputComponent } from 'smart-webcomponents-angular/input';
+import { DropDownListComponent } from 'smart-webcomponents-angular/dropdownlist';
+
+import { AdminApiService } from 'projects/hospital/src/app/services/modules/admin-api/admin-api.service';
+import { ConnectionPromptComponent } from 'projects/personal/src/app/components/module-utilities/connection-prompt/connection-prompt.component';
+import { AccessFormComponent } from '../access-form/access-form.component';
+
 
 @Component({
   selector: 'app-view-user',
@@ -7,9 +16,66 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ViewUserComponent implements OnInit {
 
-  constructor() { }
+  constructor(private adminApi: AdminApiService) { }
+
+  @ViewChild('userNameInputReference', { read: InputComponent, static: false }) userNameInput!: InputComponent;
+  @ViewChild('accessLevelDropDownListReference', { read: DropDownListComponent, static: false }) accessLevelDropDownList!: DropDownListComponent;
+  @ViewChild('saveButtonReference', { read: ButtonComponent, static: false }) saveButton!: ButtonComponent;
+  @ViewChild('deleteButtonReference', { read: ButtonComponent, static: false }) deleteButton!: ButtonComponent;
+  @ViewChild('cancelReference', { read: ButtonComponent, static: false }) cancelButton!: ButtonComponent;
+
+  @ViewChild('accessFormComponentReference', { read: AccessFormComponent, static: false }) accessFormComponent!: AccessFormComponent;
+  @ViewChild('connectionPromptComponentReference', { read: ConnectionPromptComponent, static: false }) connectionPrompt!: ConnectionPromptComponent;
+
+  navHeading: any[] = [
+    { text: "All Users", url: "/home/admin/all-users" },
+    { text: "View User", url: "/home/admin/view-user" },
+  ];
 
   ngOnInit(): void {
+    this.getUser();
+  }
+
+  getUser() {
+    this.adminApi.getUser()
+      .subscribe(
+        res => {
+          console.log(res);
+          this.userNameInput.value = res.user_name;
+          this.accessLevelDropDownList.value = res.user_level;
+
+          this.accessFormComponent.initAccessLevel();
+        },
+        err => {
+          console.log(err);
+          this.connectionPrompt.toast.open();
+        }
+      )
+  }
+
+  saveUser(){
+    // sends both user access details
+
+    let user = { user_level: this.accessLevelDropDownList.value }
+
+    this.adminApi.putUser(user)
+      .subscribe(
+        res => {
+          console.log(res);
+        },
+        err => {
+          console.log(err);
+          this.connectionPrompt.toast.open();
+        }
+      )
+
+    this.accessFormComponent.saveAccessLevel();
+  }
+
+  changeLevel(event: any)  {
+    console.log(event.args.item.value);
+
+    this.accessFormComponent.setLevelAccess(event.args.item.value);
   }
 
 }
