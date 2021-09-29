@@ -1,1 +1,17 @@
-<p>all-transactions works!</p>
+<app-module-topnav [headings]="navHeading"></app-module-topnav>
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-12">
+
+            <smart-grid #transactionsGridReference class="w-100" [dataSource]="dataSource" [columns]="columns" [editing]="editing"></smart-grid>
+
+        </div>
+    </div>
+
+</div>
+
+<!-- connection error prompt component -->
+
+<app-connection-prompt #connectionPromptComponentReference></app-connection-prompt>

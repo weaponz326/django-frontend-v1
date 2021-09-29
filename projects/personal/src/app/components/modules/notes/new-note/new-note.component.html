@@ -22,7 +22,6 @@
                 <div class="col-md-12">
                     <smart-button #cancelButtonReference class="page-control-button float-end ms-1">Cancel</smart-button>
                     <smart-button #saveButtonReference class="page-control-button float-end ms-1" (click)="saveNote()">Save</smart-button>
-                    <smart-button #deleteButtonReference class="page-control-button float-end ms-1" (click)="deleteNote()">Delete</smart-button>
                 </div>
             </div>
 
@@ -36,15 +35,6 @@
                         Add Attachment
                         <i class="bi bi-paperclip ms-2"></i>
                     </smart-button>
-                </div>
-            </div>
-
-            <div class="row mb-2 g-1">
-                <div *ngFor="let file of fileNames; index as i" class="col-md-12 mb-1">
-                    <div class="btn-group w-100" role="group">
-                        <button class="btn btn-outline-secondary file-name-btn" (click)="downloadFile(file.id, i)">{{formatFileName(file.file)}}</button>
-                        <button class="btn btn-outline-secondary btn-sm file-delete-btn" (click)="deleteFile(file.id, i)"><i class="bi bi-trash"></i></button>
-                    </div>
                 </div>
             </div>
 

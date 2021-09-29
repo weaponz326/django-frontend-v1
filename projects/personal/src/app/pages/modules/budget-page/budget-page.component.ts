@@ -9,6 +9,10 @@ export class BudgetPageComponent implements OnInit {
 
   constructor() { }
 
+  navLinks: any[] = [
+    { text: "All Budgets", url: "/home/budget/all-budget", icon: "bi bi-list-ul" }
+  ]
+
   ngOnInit(): void {
   }
 

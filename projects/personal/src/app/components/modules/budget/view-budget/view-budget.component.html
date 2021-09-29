@@ -1,1 +1,57 @@
-<p>view-budget works!</p>
+<app-module-topnav [headings]="navHeading"></app-module-topnav>
+
+<div class="container">
+
+    <div class="row page-form">
+        <div class="col-md-6">
+
+            <h4 class="mb-3">Budget Details</h4>
+
+            <div class="row mb-1">
+                <div class="col-md-4"><label class="float-end">Budget ID :</label></div>
+                <div class="col-md-8">
+                    <smart-input #budgetCodeInputReference class="w-100"></smart-input>
+                </div>
+            </div>
+
+            <div class="row mb-1">
+                <div class="col-md-4"><label class="float-end">Budget Name :</label></div>
+                <div class="col-md-8">
+                    <smart-input #budgetNameInputReference class="w-100"></smart-input>
+                </div>
+            </div>
+
+            <div class="row mb-1">
+                <div class="col-md-4"><label class="float-end">Budget Type :</label></div>
+                <div class="col-md-8">
+                    <smart-drop-down-list #budgetTypeDropDownListReference class="w-100">
+                        <smart-list-item [value]="'Daily'">Daily</smart-list-item>
+                        <smart-list-item [value]="'Weekly'">Weekly</smart-list-item>
+                        <smart-list-item [value]="'Monthly'">Monthly</smart-list-item>
+                        <smart-list-item [value]="'Quaterly'">Quaterly</smart-list-item>
+                        <smart-list-item [value]="'Yearly'">Yearly</smart-list-item>
+                    </smart-drop-down-list>
+                </div>
+            </div>
+
+            <hr />
+
+            <div class="row">
+                <div class="col-md-12">
+                    <smart-button #cancelButtonReference class="page-control-button float-end ms-1">Cancel</smart-button>
+                    <smart-button #cancelButtonReference class="page-control-button float-end ms-1">Delete</smart-button>
+                    <smart-button #cancelButtonReference class="page-control-button float-end ms-1">Save</smart-button>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-md-6 text-center">
+            <p class="h3">Income over Expenditure :</p>
+            <p class="h1">$ </p>
+        </div>
+    </div>
+
+    <app-budget-tables></app-budget-tables>
+
+</div>

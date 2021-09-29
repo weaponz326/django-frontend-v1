@@ -1,1 +1,25 @@
-<p>all-budget works!</p>
+<app-module-topnav [headings]="navHeading"></app-module-topnav>
+
+<div class="container">
+
+    <div class="row mb-3">
+        <div class="col-md-12">
+            <smart-button #buttonReference (click)="newBudget.window.open()">New Budget</smart-button>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8">
+            <smart-grid #gridReference class="w-100" [dataSource]="dataSource" [columns]="columns" [sorting]="sorting"></smart-grid>
+        </div>
+    </div>
+
+</div>
+
+<!-- new budget window component -->
+
+<app-new-budget #newBudgetComponentReference></app-new-budget>
+
+<!-- connection error prompt component -->
+
+<app-connection-prompt #connectionPromptComponentReference></app-connection-prompt>

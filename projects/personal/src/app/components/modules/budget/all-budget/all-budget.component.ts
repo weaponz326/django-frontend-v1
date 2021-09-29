@@ -1,4 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+
+import { ButtonComponent } from 'smart-webcomponents-angular/button';
+import { GridComponent, GridColumn, DataAdapter, Smart } from 'smart-webcomponents-angular/grid';
+
+import { BudgetApiService } from 'projects/personal/src/app/services/modules/budget-api/budget-api.service';
+import { ConnectionPromptComponent } from '../../../module-utilities/connection-prompt/connection-prompt.component'
+import { NewBudgetComponent } from '../new-budget/new-budget.component'
+
 
 @Component({
   selector: 'app-all-budget',
@@ -7,9 +15,60 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AllBudgetComponent implements OnInit {
 
-  constructor() { }
+  constructor(private budgetApi: BudgetApiService) { }
+
+  @ViewChild('newBudgetButtonReference', { read: ButtonComponent, static: false }) newBudgetButton!: ButtonComponent;
+  @ViewChild('budgetsGridReference', { read: GridComponent, static: false }) budgetsGrid!: GridComponent;
+
+  @ViewChild('connectionPromptComponentReference', { read: ConnectionPromptComponent, static: false }) connectionPrompt!: ConnectionPromptComponent;
+  @ViewChild('newBudgetComponentReference', { read: NewBudgetComponent, static: false }) newBudget!: NewBudgetComponent;
+
+  navHeading: any[] = [
+    { text: "All Budgets", url: "/home/budget/all-budget" },
+  ];
+
+  sorting = { enabled: true }
+  filtering = { enabled: true }
+  dataSource = [];
+  columns: GridColumn[] = <GridColumn[]>[];
 
   ngOnInit(): void {
+    this.initGrid();
+  }
+
+  getAppointments(){
+    this.budgetApi.getBudgets()
+      .subscribe(
+        res => {
+          console.log(res);
+          this.dataSource = res;
+        },
+        err => {
+          console.log(err);
+          this.connectionPrompt.toast.open();
+        }
+      )
+  }
+
+  initGrid(){
+    this.dataSource = new Smart.DataAdapter (
+      <DataAdapter>{
+        id: 'id',
+        dataSource: this.getAppointments(),
+        dataFields:[
+          'id: string',
+          'budget_code: string',
+          'budget_name: string',
+          'budget_type: string',
+        ]
+      }
+    );
+
+    this.columns = <GridColumn[]>[
+      { label: "Budget ID", dataField: "budget_code", width: "20%" },
+      { label: "Budget Name", dataField: "budget_name", width: "50%" },
+      { label: "Budget Type", dataField: "budget_type", width: "30%" },
+    ]
   }
 
 }

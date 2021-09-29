@@ -9,6 +9,11 @@ export class NotesPageComponent implements OnInit {
 
   constructor() { }
 
+  navLinks: any[] = [
+    { text: "New Note", url: "/home/notes/new-note", icon: "bi bi-plus-square" },
+    { text: "All Notes", url: "/home/notes/all-notes", icon: "bi bi-list-ul" }
+  ]
+
   ngOnInit(): void {
   }
 

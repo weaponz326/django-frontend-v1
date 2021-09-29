@@ -1,1 +1,13 @@
-<p>all-tasks works!</p>
+<app-module-topnav [headings]="navHeading"></app-module-topnav>
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-10">
+            <smart-grid #notesGridReference class="w-100"
+            [dataSource]="dataSource" [columns]="columns" [sorting]="sorting" [filtering]="filtering">
+            </smart-grid>
+        </div>
+    </div>
+
+</div>

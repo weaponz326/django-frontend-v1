@@ -1,0 +1,24 @@
+<app-module-topnav [headings]="navHeading"></app-module-topnav>
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-8">
+
+            <smart-tree #tree id="tree" class="w-100" [selectionMode]="'checkBox'">
+                <smart-tree-item>Task 1</smart-tree-item>
+                <smart-tree-items-group [expanded]="true" [selected]="true">Task 2
+                    <smart-tree-item>Sub Task 2.1</smart-tree-item>
+                    <smart-tree-item>Sub Task 2.2</smart-tree-item>
+                    <smart-tree-item>Sub Task 2.3</smart-tree-item>
+                </smart-tree-items-group>
+            </smart-tree>
+
+        </div>
+    </div>
+
+</div>
+
+<!-- connection error prompt component -->
+
+<app-connection-prompt #connectionPromptComponentReference></app-connection-prompt>

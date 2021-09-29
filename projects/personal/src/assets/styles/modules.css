@@ -1,7 +1,3 @@
-.module-heading h3{
-	font-size: 25px;
-}
-
 .module-heading a{
 	color: #7f7f7f;
 }
@@ -69,6 +65,30 @@
 	padding-bottom: 0 !important;
 }
 
+/* grid dialog forms */
+/* TODO: only works when placed in components scss */
+
+::ng-deep .smart-window.smart-grid-dialog .col-md-6{
+  padding: 0;
+  max-width: 100%;
+}
+
+::ng-deep .smart-grid-layout .col-sm-6{
+  grid-column: span 12;
+  max-width: 100%;
+}
+
+::ng-deep .smart-window.smart-grid-dialog [editor]:not([template=checkBox]){
+  width: 350px;
+  height: 32px;
+  max-width: 100%;
+}
+
+::ng-deep .smart-window.smart-grid-dialog .column label{
+  padding: 0;
+  margin: 0;
+}
+
 /* portal modules */
 
 .rinkout-icon{
@@ -85,7 +105,7 @@
   background-color: navy;
   color: white;
 }
-  
+
 .billing-form smart-input,
 .billing-form smart-button{
 	height: 36px;
@@ -97,8 +117,7 @@
 	padding-bottom: 0 !important;
 }
 
-/* TODO: only works when palced in component.css */
-.settings-tabs ::ng-deep .smart-tabs-content-section,
-.settings-tabs ::ng-deep .smart-tabs-header-section{
-    border: none;
+::ng-deep .settings-tabs .smart-tabs-content-section,
+::ng-deep .settings-tabs .smart-tabs-header-section{
+  border: none;
 }

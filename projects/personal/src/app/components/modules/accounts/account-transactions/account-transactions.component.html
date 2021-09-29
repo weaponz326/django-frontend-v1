@@ -1,1 +1,15 @@
-<p>account-transactions works!</p>
+<div class="row">
+    <div class="col-md-9">
+
+        <hr class="top-divider" />
+        <hr class="bottom-divider" />
+
+        <h4 class="mb-3">Transactions</h4>
+        <smart-grid #transactionsGridReference class="w-100" [dataSource]="dataSource" [columns]="columns" [editing]="editing"></smart-grid>
+
+    </div>
+</div>
+
+<!-- connection error prompt component -->
+
+<app-connection-prompt #connectionPromptComponentReference></app-connection-prompt>

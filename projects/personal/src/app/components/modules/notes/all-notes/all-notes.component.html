@@ -1,1 +1,26 @@
-<p>all-notes works!</p>
+<app-module-topnav [headings]="navHeading"></app-module-topnav>
+
+<div class="container">
+
+    <!-- <div class="row">
+        <div class="col-md-9">
+            <div class="row">
+                <div class="col-md-6 mx-auto">
+
+                </div>
+            </div>
+
+            <hr />
+        </div>
+    </div> -->
+
+    <div class="row">
+        <div class="col-md-9">
+            <smart-grid #notesGridReference class="w-100"
+            [dataSource]="dataSource" [columns]="columns" [sorting]="sorting" [filtering]="filtering"
+            (onRowDoubleClick)="viewNote($event)">
+            </smart-grid>
+        </div>
+    </div>
+
+</div>

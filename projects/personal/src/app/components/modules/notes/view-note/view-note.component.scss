@@ -1,0 +1,27 @@
+smart-editor{
+  height: 350px;
+}
+
+.btn-group{
+  height: 50px;
+}
+
+.file-name-btn{
+  font-size: 13px;
+  padding-left: 2px;
+  padding-right: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+button.file-name-btn:hover{
+  background-color: white;
+  color: #858796;
+}
+
+.file-delete-btn{
+  font-size: 15px;
+  padding: 0;
+  max-width: 30px;
+}

@@ -1,1 +1,19 @@
-<p>kanban-view works!</p>
+<app-module-topnav [headings]="navHeading"></app-module-topnav>
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-8">
+
+            <smart-kanban #tasksKanban id="kanban" class="w-100"
+            [addNewButton]="addNewButton" [collapsible]="collapsible" [dataSource]="dataSource" [editable]="editable" [taskActions]="taskActions" [taskDue]="taskDue" [taskProgress]="taskProgress" [columns]="columns">
+            </smart-kanban>
+
+        </div>
+    </div>
+
+</div>
+
+<!-- connection error prompt component -->
+
+<app-connection-prompt #connectionPromptComponentReference></app-connection-prompt>

@@ -1,7 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-// import { ChartsModule } from 'ng2-charts';
+import { ChartsModule } from 'ng2-charts';
+import { ButtonModule } from 'smart-webcomponents-angular/button';
+import { InputModule } from 'smart-webcomponents-angular/input';
+import { DropDownListModule } from 'smart-webcomponents-angular/dropdownlist';
+import { GridModule } from 'smart-webcomponents-angular/grid';
+import { WindowModule } from 'smart-webcomponents-angular/window';
 
 import { ModuleUtilitiesModule } from '../../module-utilities/module-utilities.module';
 
@@ -33,7 +38,12 @@ import { AllTransactionsComponent } from './all-transactions/all-transactions.co
   ],
   imports: [
     CommonModule,
-    // ChartsModule,
+    ChartsModule,
+    ButtonModule,
+    InputModule,
+    DropDownListModule,
+    GridModule,
+    WindowModule,
     ModuleUtilitiesModule,
   ]
 })

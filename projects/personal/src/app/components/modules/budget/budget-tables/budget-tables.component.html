@@ -1,1 +1,22 @@
-<p>budget-tables works!</p>
+<div class="row">
+    <div class="col-md-12">
+
+        <hr class="top-divider" />
+        <hr class="bottom-divider" />
+
+        <div class="row">
+
+            <div class="col-md-6">
+                <h4 class="mb-3">Income</h4>
+                <smart-grid #incomeGridReference class="w-100" [dataSource]="incomeDataSource" [columns]="incomeColumns" [editing]="incomeEditing"></smart-grid>
+            </div>
+
+            <div class="col-md-6">
+                <h4 class="mb-3">Expenditure</h4>
+                <smart-grid #expenditureGridReference class="w-100" [dataSource]="expenditureDataSource" [columns]="expenditureColumns" [editing]="expenditureEditing"></smart-grid>
+            </div>
+
+        </div>
+
+    </div>
+</div>

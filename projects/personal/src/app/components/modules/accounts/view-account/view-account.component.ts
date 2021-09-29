@@ -1,4 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+
+import { ButtonComponent } from 'smart-webcomponents-angular/button';
+import { InputComponent } from 'smart-webcomponents-angular/input';
+import { DropDownListComponent } from 'smart-webcomponents-angular/dropdownlist';
+
+import { AccountsApiService } from 'projects/personal/src/app/services/modules/accounts-api/accounts-api.service';
+import { ConnectionPromptComponent } from '../../../module-utilities/connection-prompt/connection-prompt.component'
+
 
 @Component({
   selector: 'app-view-account',
@@ -7,7 +15,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ViewAccountComponent implements OnInit {
 
-  constructor() { }
+  constructor(private accountsApi: AccountsApiService) { }
+
+  @ViewChild('accountNameInputReference', { read: InputComponent, static: false }) accountNameInput!: InputComponent;
+  @ViewChild('accountNumberInputReference', { read: InputComponent, static: false }) accountNumberInput!: InputComponent;
+  @ViewChild('bankNameInputReference', { read: InputComponent, static: false }) bankNameInput!: InputComponent;
+  @ViewChild('accountTypeDropDownListReference', { read: DropDownListComponent, static: false }) accountTypeDropDownList!: DropDownListComponent;
+
+  @ViewChild('connectionPromptComponentReference', { read: ConnectionPromptComponent, static: false }) connectionPrompt!: ConnectionPromptComponent;
+
+  navHeading: any[] = [
+    { text: "All Accounts", url: "/home/accounts/all-accounts" },
+    { text: "View Account", url: "/home/accounts/view-account" },
+  ];
 
   ngOnInit(): void {
   }

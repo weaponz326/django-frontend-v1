@@ -1,1 +1,65 @@
-<p>view-account works!</p>
+<app-module-topnav [headings]="navHeading"></app-module-topnav>
+
+<div class="container">
+
+    <div class="row page-form">
+        <div class="col-md-6">
+
+            <h4 class="mb-3">Account Details</h4>
+
+            <div class="row mb-1">
+                <div class="col-md-4"><label class="float-end">Account Name :</label></div>
+                <div class="col-md-8">
+                    <smart-input #accountNameInputReference class="w-100"></smart-input>
+                </div>
+            </div>
+
+            <div class="row mb-1">
+                <div class="col-md-4"><label class="float-end">Account Number :</label></div>
+                <div class="col-md-8">
+                    <smart-input #accountNumberInputReference class="w-100"></smart-input>
+                </div>
+            </div>
+
+            <div class="row mb-1">
+                <div class="col-md-4"><label class="float-end">Bank Name :</label></div>
+                <div class="col-md-8">
+                    <smart-input #bankNameInputReference class="w-100"></smart-input>
+                </div>
+            </div>
+
+            <div class="row mb-1">
+                <div class="col-md-4"><label class="float-end">Account Type :</label></div>
+                <div class="col-md-8">
+                    <smart-drop-down-list #accountTypeDropDownListReference class="w-100">
+                        <smart-list-item [value]="'Savings'">Savings</smart-list-item>
+                        <smart-list-item [value]="'Current'">Current</smart-list-item>
+                    </smart-drop-down-list>
+                </div>
+            </div>
+
+            <hr />
+
+            <div class="row">
+                <div class="col-md-12">
+                    <smart-button #cancelButtonReference class="page-control-button float-end ms-1">Cancel</smart-button>
+                    <smart-button #cancelButtonReference class="page-control-button float-end ms-1">Delete</smart-button>
+                    <smart-button #cancelButtonReference class="page-control-button float-end ms-1">Save</smart-button>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-md-6 text-center">
+            <p class="h3">Account Balance:</p>
+            <p class="h1">$ </p>
+        </div>
+    </div>
+
+    <app-account-transactions></app-account-transactions>
+
+</div>
+
+<!-- connection error prompt component -->
+
+<app-connection-prompt #connectionPromptComponentReference></app-connection-prompt>
