@@ -7,7 +7,7 @@
             <div *ngIf="this.isLogin; then loggedinBlock else notLoggedinBlock"></div>
 
             <ng-template #notLoggedinBlock>
-                <div class="d-flex user-btns">
+                <div class="d-flex auth-btns">
                     <button class="btn btn-secondary ms-2" type="button" [routerLink]="'/auth/login'">Log in</button>
                     <button class="btn btn-secondary ms-2" type="button" [routerLink]="'/auth/signup'">Sign up</button>
                 </div>
@@ -15,7 +15,7 @@
 
             <ng-template #loggedinBlock>
                 <div class="dropdown">
-                    <a class="btn btn-outline-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="btn btn-outline-light dropdown-toggle user-btn" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                         <img [src]="profilePhotoSrc" width="26" height="26" class="rounded-circle border">
                     </a>
 

@@ -26,4 +26,8 @@ export class ChecklistViewComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onPrint(){
+    console.log("lets start printing...");
+  }
+
 }

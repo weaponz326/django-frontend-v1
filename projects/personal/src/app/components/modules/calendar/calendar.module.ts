@@ -7,6 +7,7 @@ import { SchedulerModule } from 'smart-webcomponents-angular/scheduler';
 import { GridModule } from 'smart-webcomponents-angular/grid';
 
 import { ModuleUtilitiesModule } from '../../module-utilities/module-utilities.module';
+import { CalendarPrintingModule } from '../../printing/calendar-printing/calendar-printing.module';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SettingsComponent } from './settings/settings.component';
@@ -28,6 +29,7 @@ import { ViewCalendarComponent } from './view-calendar/view-calendar.component';
     SchedulerModule,
     GridModule,
     ModuleUtilitiesModule,
+    CalendarPrintingModule,
   ]
 })
 export class CalendarModule { }

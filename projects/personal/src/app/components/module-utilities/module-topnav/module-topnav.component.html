@@ -1,14 +1,24 @@
-<nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+<nav class="navbar navbar-light bg-white topbar mb-4 static-top shadow">
 
-    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+    <!-- <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
         <i class="fa fa-bars"></i>
-    </button>
+    </button> -->
 
     <div *ngFor="let heading of headings" class="module-heading">
         <a class="align-items-center" routerLink={{heading.url}}>
             <h3 class="d-inline-block">{{heading.text}}</h3>
         </a>
         <span *ngIf="headings.indexOf(heading) != headings.length - 1" class="bi bi-chevron-double-right mx-2"></span>
+    </div>
+
+    <div *ngIf="showPrint" class="dropdown">
+        <button class="d-sm-inline-block btn btn-secondary shadow-sm float-end" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="bi bi-file-earmark me-2"></i> File
+        </button>
+
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <li class="mx-2" (click)="print.emit()"><i class="bi bi-printer me-1"></i>Print</li>
+        </ul>
     </div>
 
 </nav>

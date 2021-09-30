@@ -22,7 +22,9 @@
             <div class="row mb-1">
                 <div class="col-md-3"><label class="float-end">Rink Type :</label></div>
                 <div class="col-md-6">
-                    <smart-input #typeDropDownListReference class="w-100" [dataSource]="typeSource" [dropDownButtonPosition]='"right"'></smart-input>
+                    <smart-input #typeDropDownListReference class="w-100"
+                    [dataSource]="typeSource" [dropDownButtonPosition]='"right"' (change)="onTypeSelected($event)">
+                    </smart-input>
                 </div>
             </div>
 
@@ -30,7 +32,7 @@
                 <div class="col-md-3"><label class="float-end">Rink Source :</label></div>
                 <div class="col-md-6">
                     <smart-input #sourceInputReference class="page-group-input" [disabled]="true"></smart-input>
-                    <smart-button #cancelButtonReference class="page-group-button">...</smart-button>
+                    <smart-button #sourceButtonReference class="page-group-button" [disabled]="true" (click)="openSourceWindow()">...</smart-button>
                 </div>
             </div>
 
@@ -52,6 +54,14 @@
     </div>
 
 </div>
+
+<!-- module sect windows -->
+
+<app-select-appointment #selectAppointmentComponentReference (appointmentSelected)="onSourceSelected($event)"></app-select-appointment>
+
+<app-select-note #selectNoteComponentReference (noteSelected)="onSourceSelected($event)"></app-select-note>
+
+<app-select-task #selectTaskComponentReference (taskSelected)="onSourceSelected($event)"></app-select-task>
 
 <!-- connection error prompt component -->
 

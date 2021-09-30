@@ -31,4 +31,8 @@ export class ViewBudgetComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onPrint(){
+    console.log("lets start printing...");
+  }
+
 }

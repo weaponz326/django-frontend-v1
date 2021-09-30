@@ -175,4 +175,8 @@ export class ViewNoteComponent implements OnInit {
     ];
   }
 
+  onPrint(){
+    console.log("lets start printing...");
+  }
+
 }

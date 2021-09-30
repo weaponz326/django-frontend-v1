@@ -32,4 +32,8 @@ export class ViewAccountComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onPrint(){
+    console.log("lets start printing...");
+  }
+
 }

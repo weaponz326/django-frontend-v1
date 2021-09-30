@@ -79,4 +79,8 @@ export class AllNotesComponent implements OnInit {
     ]
   }
 
+  onPrint(){
+    console.log("lets start printing...");
+  }
+
 }

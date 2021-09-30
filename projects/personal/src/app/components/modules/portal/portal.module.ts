@@ -9,6 +9,9 @@ import { InputModule } from 'smart-webcomponents-angular/input';
 import { MultilineTextBoxModule } from 'smart-webcomponents-angular/multilinetextbox';
 
 import { ModuleUtilitiesModule } from '../../module-utilities/module-utilities.module';
+import { CalendarWindowsModule } from '../../select-windows/calendar-windows/calendar-windows.module';
+import { NotesWindowsModule } from '../../select-windows/notes-windows/notes-windows.module';
+import { TasksWindowsModule } from '../../select-windows/tasks-windows/tasks-windows.module';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SettingsComponent } from './settings/settings.component';
@@ -18,7 +21,6 @@ import { ViewRinkComponent } from './view-rink/view-rink.component';
 import { SearchViewComponent } from './search-view/search-view.component';
 import { SearchResultsComponent } from './search-results/search-results.component';
 import { SearchDetailComponent } from './search-detail/search-detail.component';
-
 
 
 @NgModule({
@@ -38,6 +40,9 @@ import { SearchDetailComponent } from './search-detail/search-detail.component';
     RouterModule,
     ChartsModule,
     ModuleUtilitiesModule,
+    CalendarWindowsModule,
+    NotesWindowsModule,
+    TasksWindowsModule,
     ButtonModule,
     InputModule,
     MultilineTextBoxModule,

@@ -84,4 +84,8 @@ export class AllAccountsComponent implements OnInit {
     }
   }
 
+  onPrint(){
+    console.log("lets start printing...");
+  }
+
 }

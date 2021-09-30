@@ -51,10 +51,11 @@
 
 .page-group-input{
 	width: 88%;
+  margin-right: 2% !important;
 }
 
 .page-group-button{
-	width: 12%;
+	width: 10%;
 	padding: 0 !important;
 	background-color: #f5f5f5;
 }
@@ -63,6 +64,11 @@
 	width: 100px;
 	padding-top: 0 !important;
 	padding-bottom: 0 !important;
+}
+
+.module-select-window smart-window{
+  width: 555px;
+  height: 600px;
 }
 
 /* grid dialog forms */

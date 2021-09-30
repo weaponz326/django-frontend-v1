@@ -71,4 +71,8 @@ export class AllBudgetComponent implements OnInit {
     ]
   }
 
+  onPrint(){
+    console.log("lets start printing...");
+  }
+
 }

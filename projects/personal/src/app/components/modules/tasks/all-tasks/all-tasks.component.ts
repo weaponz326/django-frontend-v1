@@ -56,4 +56,8 @@ export class AllTasksComponent implements OnInit {
     ]
   }
 
+  onPrint(){
+    console.log("lets start printing...");
+  }
+
 }
