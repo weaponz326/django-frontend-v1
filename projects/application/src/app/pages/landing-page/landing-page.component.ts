@@ -9,15 +9,15 @@ export class LandingPageComponent implements OnInit {
 
   constructor() { }
 
-  personalUrl = '#';
-  hospitalUrl = '#';
-  restaurantUrl = '#';
-  schoolUrl = '#';
-  enterpriseUrl = '#';
-  associationUrl = '#';
-  hotelUrl = '#';
-  shopUrl = '#';
-  productionUrl = '#';
+  personalUrl = 'https://personal.netrink.com';
+  hospitalUrl = 'https://hospital.netrink.com';
+  restaurantUrl = 'https://restaurant.netrink.com';
+  schoolUrl = 'https://school.netrink.com';
+  enterpriseUrl = 'https://enterprise.netrink.com';
+  associationUrl = 'https://association.netrink.com';
+  hotelUrl = 'https://hotel.netrink.com';
+  shopUrl = 'https://shop.netrink.com';
+  productionUrl = 'https://production.netrink.com';
 
   ngOnInit(): void {
   }
