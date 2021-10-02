@@ -4,7 +4,7 @@ import { GridComponent, GridColumn, DataAdapter, Smart } from 'smart-webcomponen
 
 import { CalendarApiService } from 'projects/personal/src/app/services/modules/calendar-api/calendar-api.service';
 import { ConnectionPromptComponent } from '../../../module-utilities/connection-prompt/connection-prompt.component'
-import { PrintAllAppointmentsComponent } from '../../../printing/calendar-printing/print-all-appointments/print-all-appointments.component';
+import { AllAppointmentsPrintComponent } from '../../../printing/calendar-print/all-appointments-print/all-appointments-print.component';
 
 
 @Component({
@@ -19,7 +19,7 @@ export class AllAppointmentsComponent implements OnInit {
   @ViewChild('appointmentsGridReference', { read: GridComponent, static: false }) appointmentsGrid!: GridComponent;
 
   @ViewChild('connectionPromptComponentReference', { read: ConnectionPromptComponent, static: false }) connectionPrompt!: ConnectionPromptComponent;
-  @ViewChild('printAllAppointmentsComponentReference', { read: PrintAllAppointmentsComponent, static: false }) printAllAppointments!: PrintAllAppointmentsComponent;
+  @ViewChild('AllAppointmentsPrintComponent', { read: AllAppointmentsPrintComponent, static: false }) allAppointmentsPrint!: AllAppointmentsPrintComponent;
 
   navHeading: any[] = [
     { text: "All Appointments", url: "/home/calendar/all-appointments" },
@@ -72,7 +72,7 @@ export class AllAppointmentsComponent implements OnInit {
 
   onPrint(){
     console.log("lets start printing...");
-    this.printAllAppointments.print();
+    // this.allAppointmentsPrint.print();
   }
 
 }
