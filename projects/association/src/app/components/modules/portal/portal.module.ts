@@ -18,6 +18,8 @@ import { SearchDetailComponent } from './search-detail/search-detail.component';
 import { NewRinkComponent } from './new-rink/new-rink.component';
 import { TimelineComponent } from './timeline/timeline.component';
 import { ViewRinkComponent } from './view-rink/view-rink.component';
+import { MemberDetailsComponent } from './rink-details/member-details/member-details.component';
+import { ActionPlanDetailsComponent } from './rink-details/action-plan-details/action-plan-details.component';
 
 
 
@@ -31,6 +33,8 @@ import { ViewRinkComponent } from './view-rink/view-rink.component';
     NewRinkComponent,
     TimelineComponent,
     ViewRinkComponent,
+    MemberDetailsComponent,
+    ActionPlanDetailsComponent,
   ],
   imports: [
     CommonModule,

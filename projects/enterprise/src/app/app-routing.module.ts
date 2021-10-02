@@ -93,6 +93,10 @@ const routes: Routes = [
         path: "reception",
         loadChildren: () => import("./pages/modules/reception-page/reception-page.module").then(m => m.ReceptionPageModule)
       },
+      {
+        path: "year",
+        loadChildren: () => import("./pages/modules/year-page/year-page.module").then(m => m.YearPageModule)
+      },
     ]
   }
 ];

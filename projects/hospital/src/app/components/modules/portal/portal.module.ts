@@ -18,6 +18,16 @@ import { SearchDetailComponent } from './search-detail/search-detail.component';
 import { NewRinkComponent } from './new-rink/new-rink.component';
 import { TimelineComponent } from './timeline/timeline.component';
 import { ViewRinkComponent } from './view-rink/view-rink.component';
+import { PatientDetailsComponent } from './rink-details/patient-details/patient-details.component';
+import { AppointmentDetailsComponent } from './rink-details/appointment-details/appointment-details.component';
+import { StaffDetailsComponent } from './rink-details/staff-details/staff-details.component';
+import { BillDetailsComponent } from './rink-details/bill-details/bill-details.component';
+import { DoctorDetailsComponent } from './rink-details/doctor-details/doctor-details.component';
+import { NurseDetailsComponent } from './rink-details/nurse-details/nurse-details.component';
+import { LaboratoryDetailsComponent } from './rink-details/laboratory-details/laboratory-details.component';
+import { PrescriptionDetailsComponent } from './rink-details/prescription-details/prescription-details.component';
+import { DiagnosisDetailsComponent } from './rink-details/diagnosis-details/diagnosis-details.component';
+import { AdmissionDetailsComponent } from './rink-details/admission-details/admission-details.component';
 
 
 
@@ -31,6 +41,16 @@ import { ViewRinkComponent } from './view-rink/view-rink.component';
     NewRinkComponent,
     TimelineComponent,
     ViewRinkComponent,
+    PatientDetailsComponent,
+    AppointmentDetailsComponent,
+    StaffDetailsComponent,
+    BillDetailsComponent,
+    DoctorDetailsComponent,
+    NurseDetailsComponent,
+    LaboratoryDetailsComponent,
+    PrescriptionDetailsComponent,
+    DiagnosisDetailsComponent,
+    AdmissionDetailsComponent,
   ],
   imports: [
     CommonModule,

@@ -1,10 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { SelectBudgetComponent } from './select-budget/select-budget.component';
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    SelectBudgetComponent
+  ],
   imports: [
     CommonModule
   ]

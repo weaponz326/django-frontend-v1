@@ -19,7 +19,6 @@ export class ModuleHomeComponent implements OnInit {
   @ViewChild("#duesTooltipReference", { read: TooltipComponent, static: false }) duesTooltip!: TooltipComponent;
   @ViewChild("#executivesTooltipReference", { read: TooltipComponent, static: false }) executivesTooltip!: TooltipComponent;
   @ViewChild("#actionPlanTooltipReference", { read: TooltipComponent, static: false }) actionPlanTooltip!: TooltipComponent;
-  @ViewChild("#budgetTooltipReference", { read: TooltipComponent, static: false }) budgetTooltip!: TooltipComponent;
   @ViewChild("#attendanceTooltipReference", { read: TooltipComponent, static: false }) attendanceTooltip!: TooltipComponent;
   @ViewChild("#meetingsTooltipReference", { read: TooltipComponent, static: false }) meetingsTooltip!: TooltipComponent;
   @ViewChild("#groupsTooltipReference", { read: TooltipComponent, static: false }) groupsTooltip!: TooltipComponent;

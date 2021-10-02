@@ -21,6 +21,9 @@ import { ViewRinkComponent } from './view-rink/view-rink.component';
 import { SearchViewComponent } from './search-view/search-view.component';
 import { SearchResultsComponent } from './search-results/search-results.component';
 import { SearchDetailComponent } from './search-detail/search-detail.component';
+import { AppointmentDetailsComponent } from './rink-details/appointment-details/appointment-details.component';
+import { NoteDetailsComponent } from './rink-details/note-details/note-details.component';
+import { TaskDetailsComponent } from './rink-details/task-details/task-details.component';
 
 
 @NgModule({
@@ -32,7 +35,10 @@ import { SearchDetailComponent } from './search-detail/search-detail.component';
     ViewRinkComponent,
     SearchViewComponent,
     SearchResultsComponent,
-    SearchDetailComponent
+    SearchDetailComponent,
+    AppointmentDetailsComponent,
+    NoteDetailsComponent,
+    TaskDetailsComponent
   ],
   imports: [
     CommonModule,

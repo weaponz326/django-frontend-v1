@@ -18,6 +18,11 @@ import { SearchDetailComponent } from './search-detail/search-detail.component';
 import { NewRinkComponent } from './new-rink/new-rink.component';
 import { TimelineComponent } from './timeline/timeline.component';
 import { ViewRinkComponent } from './view-rink/view-rink.component';
+import { AssetDetailsComponent } from './rink-details/asset-details/asset-details.component';
+import { LetterDetailsComponent } from './rink-details/letter-details/letter-details.component';
+import { AppraisalDetailsComponent } from './rink-details/appraisal-details/appraisal-details.component';
+import { FileDetailsComponent } from './rink-details/file-details/file-details.component';
+import { EmployeeDetailsComponent } from './rink-details/employee-details/employee-details.component';
 
 
 
@@ -31,6 +36,11 @@ import { ViewRinkComponent } from './view-rink/view-rink.component';
     NewRinkComponent,
     TimelineComponent,
     ViewRinkComponent,
+    AssetDetailsComponent,
+    LetterDetailsComponent,
+    AppraisalDetailsComponent,
+    FileDetailsComponent,
+    EmployeeDetailsComponent,
   ],
   imports: [
     CommonModule,

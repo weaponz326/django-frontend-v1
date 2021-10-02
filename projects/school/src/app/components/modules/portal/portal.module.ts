@@ -18,6 +18,14 @@ import { SearchDetailComponent } from './search-detail/search-detail.component';
 import { NewRinkComponent } from './new-rink/new-rink.component';
 import { TimelineComponent } from './timeline/timeline.component';
 import { ViewRinkComponent } from './view-rink/view-rink.component';
+import { ParentDetailsComponent } from './rink-details/parent-details/parent-details.component';
+import { AssessmentDetailsComponent } from './rink-details/assessment-details/assessment-details.component';
+import { SubjectDetailsComponent } from './rink-details/subject-details/subject-details.component';
+import { StudentDetailsComponent } from './rink-details/student-details/student-details.component';
+import { ReportDetailsComponent } from './rink-details/report-details/report-details.component';
+import { TeacherDetailsComponent } from './rink-details/teacher-details/teacher-details.component';
+import { StaffDetailsComponent } from './rink-details/staff-details/staff-details.component';
+import { FeesDetailsComponent } from './rink-details/fees-details/fees-details.component';
 
 
 
@@ -31,6 +39,14 @@ import { ViewRinkComponent } from './view-rink/view-rink.component';
     NewRinkComponent,
     TimelineComponent,
     ViewRinkComponent,
+    ParentDetailsComponent,
+    AssessmentDetailsComponent,
+    SubjectDetailsComponent,
+    StudentDetailsComponent,
+    ReportDetailsComponent,
+    TeacherDetailsComponent,
+    StaffDetailsComponent,
+    FeesDetailsComponent,
   ],
   imports: [
     CommonModule,

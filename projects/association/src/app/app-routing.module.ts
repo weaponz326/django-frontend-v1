@@ -66,10 +66,6 @@ const routes: Routes = [
         loadChildren: () => import("./pages/modules/action-plan-page/action-plan-page.module").then(m => m.ActionPlanPageModule)
       },
       {
-        path: "budget",
-        loadChildren: () => import("./pages/modules/budget-page/budget-page.module").then(m => m.BudgetPageModule)
-      },
-      {
         path: "attendance",
         loadChildren: () => import("./pages/modules/attendance-page/attendance-page.module").then(m => m.AttendancePageModule)
       },

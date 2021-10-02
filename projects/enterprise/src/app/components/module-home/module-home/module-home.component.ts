@@ -11,7 +11,7 @@ import { TooltipComponent } from 'smart-webcomponents-angular/tooltip';
 export class ModuleHomeComponent implements OnInit {
 
   constructor() { }
-  
+
   @ViewChild("#adminTooltipReference", { read: TooltipComponent, static: false }) adminTooltip!: TooltipComponent;
   @ViewChild("#accountsTooltipReference", { read: TooltipComponent, static: false }) accountsTooltip!: TooltipComponent;
   @ViewChild("#payrollTooltipReference", { read: TooltipComponent, static: false }) payrollTooltip!: TooltipComponent;
@@ -28,6 +28,7 @@ export class ModuleHomeComponent implements OnInit {
   @ViewChild("#receptionTooltipReference", { read: TooltipComponent, static: false }) receptionTooltip!: TooltipComponent;
   @ViewChild("#portalTooltipReference", { read: TooltipComponent, static: false }) portalTooltip!: TooltipComponent;
   @ViewChild("#settingsTooltipReference", { read: TooltipComponent, static: false }) settingsTooltip!: TooltipComponent;
+  @ViewChild("#yearTooltipReference", { read: TooltipComponent, static: false }) yearTooltip!: TooltipComponent;
 
   ngOnInit(): void {
   }
