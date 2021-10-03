@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 
 import { TreeComponent } from 'smart-webcomponents-angular/tree';
+import { InputComponent } from 'smart-webcomponents-angular/input';
+import { ButtonComponent } from 'smart-webcomponents-angular/button';
 
 import { TasksApiService } from 'projects/personal/src/app/services/modules/tasks-api/tasks-api.service';
 import { ConnectionPromptComponent } from '../../../module-utilities/connection-prompt/connection-prompt.component'
@@ -15,7 +17,8 @@ export class ChecklistViewComponent implements OnInit {
 
   constructor(private tasksApi: TasksApiService) { }
 
-	@ViewChild('tasksTree', { read: TreeComponent, static: false }) tasksTree!: TreeComponent;
+	@ViewChild('tasksTreeReference', { read: TreeComponent, static: false }) tasksTree!: TreeComponent;
+  @ViewChild('taskGroupInputReference', { read: InputComponent, static: false }) taskGroupInput!: InputComponent;
 
   @ViewChild('connectionPromptComponentReference', { read: ConnectionPromptComponent, static: false }) connectionPrompt!: ConnectionPromptComponent;
 

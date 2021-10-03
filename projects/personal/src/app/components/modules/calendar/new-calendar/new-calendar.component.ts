@@ -9,11 +9,11 @@ import { ConnectionPromptComponent } from '../../../module-utilities/connection-
 
 
 @Component({
-  selector: 'app-view-calendar',
-  templateUrl: './view-calendar.component.html',
-  styleUrls: ['./view-calendar.component.scss']
+  selector: 'app-new-calendar',
+  templateUrl: './new-calendar.component.html',
+  styleUrls: ['./new-calendar.component.scss']
 })
-export class ViewCalendarComponent implements OnInit {
+export class NewCalendarComponent implements OnInit {
 
   constructor(private calendarApi: CalendarApiService) { }
 
@@ -23,7 +23,7 @@ export class ViewCalendarComponent implements OnInit {
   @ViewChild('connectionPromptComponentReference', { read: ConnectionPromptComponent, static: false }) connectionPrompt!: ConnectionPromptComponent;
 
   navHeading: any[] = [
-    { text: "View Calendar", url: "/home/calendar/view-calendar" },
+    { text: "New Calendar", url: "/home/calendar/new-calendar" },
   ];
 
   view: SchedulerViewType = 'month';
@@ -34,24 +34,6 @@ export class ViewCalendarComponent implements OnInit {
   scrollButtonsPosition: string = 'far';
 
   ngOnInit(): void {
-  }
-
-  ngAfterViewInit(): void {
-    this.getSchedules();
-  }
-
-  getSchedules(){
-    this.calendarApi.getSchedules()
-      .subscribe(
-        res => {
-          console.log(res);
-          this.dataSource = res;
-        },
-        err => {
-          console.log(err);
-          this.connectionPrompt.toast.open();
-        }
-      )
   }
 
   postSchedule(event: CustomEvent){
@@ -70,16 +52,6 @@ export class ViewCalendarComponent implements OnInit {
           this.connectionPrompt.toast.open();
         }
       )
-  }
-
-  putSchedule(event: CustomEvent){
-    console.log(event);
-
-  }
-
-  deleteSchedule(event: CustomEvent){
-    console.log(event);
-
   }
 
   updateData(event: CustomEvent) {

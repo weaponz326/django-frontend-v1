@@ -33,17 +33,17 @@ export class SelectAppointmentComponent implements OnInit {
   }
 
   getAppointments(){
-    this.calendarApi.getAppointments()
-      .subscribe(
-        res => {
-          console.log(res);
-          this.dataSource = res;
-        },
-        err => {
-          console.log(err);
-          this.connectionPrompt.toast.open();
-        }
-      )
+    // this.calendarApi.getAppointments()
+    //   .subscribe(
+    //     res => {
+    //       console.log(res);
+    //       this.dataSource = res;
+    //     },
+    //     err => {
+    //       console.log(err);
+    //       this.connectionPrompt.toast.open();
+    //     }
+    //   )
   }
 
   selectRow(event: any){

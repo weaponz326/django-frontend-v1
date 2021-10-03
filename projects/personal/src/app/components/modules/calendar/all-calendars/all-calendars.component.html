@@ -2,11 +2,15 @@
 
 <div class="container">
 
+    <div class="row mb-3">
+        <div class="col-md-12">
+            <smart-button #newCalendarButtonReference routerLink="/home/calendar/new-calendar">New Calendar</smart-button>
+        </div>
+    </div>
+
     <div class="row">
-        <div class="col-md-9">
-
+        <div class="col-md-7">
             <smart-grid #appointmentsGridReference class="w-100" [dataSource]="dataSource" [columns]="columns" [sorting]="sorting"></smart-grid>
-
         </div>
     </div>
 

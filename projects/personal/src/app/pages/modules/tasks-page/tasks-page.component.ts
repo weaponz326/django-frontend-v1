@@ -10,9 +10,9 @@ export class TasksPageComponent implements OnInit {
   constructor() { }
 
   navLinks: any[] = [
-    { text: "Kanban View", url: "/home/tasks/kanban-view", icon: "bi bi-book" },
-    { text: "Checklist View", url: "/home/tasks/checklist-view", icon: "bi bi-book" },
-    { text: "All Tasks", url: "/home/tasks/all-tasks", icon: "bi bi-list-ul" }
+    { text: "All Task Groups", url: "/home/tasks/all-task-groups", icon: "bi bi-list-ul" },
+    { text: "New Task Group", url: "/home/tasks/new-task-group", icon: "bi bi-plus-square" },
+    { text: "All Task Items", url: "/home/tasks/all-task-items", icon: "bi bi-list-ul" }
   ]
 
   ngOnInit(): void {

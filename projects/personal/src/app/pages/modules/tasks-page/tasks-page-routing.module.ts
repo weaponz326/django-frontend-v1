@@ -4,8 +4,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { TasksPageComponent } from './tasks-page.component';
 import { KanbanViewComponent } from '../../../components/modules/tasks/kanban-view/kanban-view.component';
 import { ChecklistViewComponent } from '../../../components/modules/tasks/checklist-view/checklist-view.component';
-import { AllTasksComponent } from '../../../components/modules/tasks/all-tasks/all-tasks.component';
 import { DashboardComponent } from '../../../components/modules/tasks/dashboard/dashboard.component';
+import { AllTaskGroupsComponent } from '../../../components/modules/tasks/all-task-groups/all-task-groups.component';
+import { NewTaskGroupComponent } from '../../../components/modules/tasks/new-task-group/new-task-group.component';
+import { AllTaskItemsComponent } from '../../../components/modules/tasks/all-task-items/all-task-items.component';
 
 
 const routes: Routes = [
@@ -15,9 +17,11 @@ const routes: Routes = [
     children: [
       { path: "", component: DashboardComponent },
       { path: "dashboard", component: DashboardComponent },
+      { path: "all-task-groups", component: AllTaskGroupsComponent },
+      { path: "new-task-group", component: NewTaskGroupComponent },
       { path: "kanban-view", component: KanbanViewComponent },
       { path: "checklist-view", component: ChecklistViewComponent },
-      { path: "all-tasks", component: AllTasksComponent },
+      { path: "all-task-items", component: AllTaskItemsComponent },
     ]
   }
 ];

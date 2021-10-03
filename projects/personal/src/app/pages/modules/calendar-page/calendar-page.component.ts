@@ -10,8 +10,9 @@ export class CalendarPageComponent implements OnInit {
   constructor() { }
 
   navLinks: any[] = [
-    { text: "View Calendar", url: "/home/calendar/view-calendar", icon: "bi bi-book" },
-    { text: "All Appointments", url: "/home/calendar/all-appointments", icon: "bi bi-list-ul" }
+    { text: "All Calendars", url: "/home/calendar/all-calendars", icon: "bi bi-list-ul" },
+    { text: "New Calendar", url: "/home/calendar/new-calendar", icon: "bi bi-plus-square" },
+    { text: "All Schedules", url: "/home/calendar/all-schedules", icon: "bi bi-list-ul" }
   ]
 
   ngOnInit(): void {

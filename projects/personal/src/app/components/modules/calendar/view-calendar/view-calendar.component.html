@@ -5,17 +5,35 @@
     <div class="row">
         <div class="col-md-9">
 
+            <div class="row page-form">
+                <div class="col-md-9">
+
+                    <div class="row mb-3">
+                        <div class="col-md-3">
+                            <label class="float-end">Calendar Name :</label>
+                        </div>
+                        <div class="col-md-6">
+                            <smart-input #calendarNameInputReference class="w-100"></smart-input>
+                        </div>
+                        <div class="col-md-3">
+                            <smart-button #cancelButtonReference class="page-control-button">Save</smart-button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
             <smart-scheduler #scheduler id="scheduler"
                 [view]="view"
                 [dataSource]="dataSource"
                 [firstDayOfWeek]="firstDayOfWeek"
                 [disableDateMenu]="disableDateMenu"
                 [currentTimeIndicator]="currentTimeIndicator"
-                (onDragEnd)="putAppointment($event)"
-                (onResizeEnd)="putAppointment($event)"
-                (onItemInsert)="postAppointment($event)"
-                (onItemUpdate)="putAppointment($event)"
-                (onItemRemove)="deleteAppointment($event)"
+                (onDragEnd)="putSchedule($event)"
+                (onResizeEnd)="putSchedule($event)"
+                (onItemInsert)="postSchedule($event)"
+                (onItemUpdate)="putSchedule($event)"
+                (onItemRemove)="deleteSchedule($event)"
             ></smart-scheduler>
 
         </div>

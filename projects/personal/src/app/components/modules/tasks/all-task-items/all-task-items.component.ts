@@ -7,20 +7,20 @@ import { ConnectionPromptComponent } from '../../../module-utilities/connection-
 
 
 @Component({
-  selector: 'app-all-tasks',
-  templateUrl: './all-tasks.component.html',
-  styleUrls: ['./all-tasks.component.scss']
+  selector: 'app-all-task-items',
+  templateUrl: './all-task-items.component.html',
+  styleUrls: ['./all-task-items.component.scss']
 })
-export class AllTasksComponent implements OnInit {
+export class AllTaskItemsComponent implements OnInit {
 
   constructor(private tasksApi: TasksApiService) { }
 
-  @ViewChild('notesGridReference', { read: GridComponent, static: false }) subjectInput!: GridComponent;
+  @ViewChild('taskItemsGridReference', { read: GridComponent, static: false }) subjectInput!: GridComponent;
 
   @ViewChild('connectionPromptComponentReference', { read: ConnectionPromptComponent, static: false }) connectionPrompt!: ConnectionPromptComponent;
 
   navHeading: any[] = [
-    { text: "All Tasks", url: "/home/tasks/all-tasks" },
+    { text: "All Task Items", url: "/home/tasks/all-task-items" },
   ];
 
   sorting = { enabled: true }
@@ -38,7 +38,7 @@ export class AllTasksComponent implements OnInit {
         dataSource: [],
         dataFields:[
           'id: string',
-          'label: task_name',
+          'label: task_item',
           'dateStart: priority',
           'dateStart: start_date',
           'dateEnd: end_date',
@@ -48,7 +48,7 @@ export class AllTasksComponent implements OnInit {
     );
 
     this.columns = <GridColumn[]>[
-      { label: 'Task Name', dataField: 'task_name', width: '36%' },
+      { label: 'Task Item', dataField: 'task_item', width: '36%' },
       { label: 'Priority', dataField: 'priority', width: '14%' },
       { label: 'Start Date', dataField: 'start_date', width: '18%' },
       { label: 'End Date', dataField: 'end_date', width: '18%' },

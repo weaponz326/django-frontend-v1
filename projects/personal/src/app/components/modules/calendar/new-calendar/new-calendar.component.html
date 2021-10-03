@@ -1,4 +1,4 @@
-<app-module-topnav [headings]="navHeading" [showPrint]="true" (print)="onPrint()"></app-module-topnav>
+<app-module-topnav [headings]="navHeading"></app-module-topnav>
 
 <div class="container">
 
@@ -7,7 +7,7 @@
 
             <div class="row mb-3">
                 <div class="col-md-3">
-                    <label class="float-end">Task Group :</label>
+                    <label class="float-end">Calendar Name :</label>
                 </div>
                 <div class="col-md-6">
                     <smart-input #calendarNameInputReference class="w-100"></smart-input>
@@ -23,14 +23,14 @@
     <div class="row">
         <div class="col-md-9">
 
-            <smart-tree #tasksTreeReference id="tree" class="w-100" [selectionMode]="'checkBox'">
-                <smart-tree-item>Task 1</smart-tree-item>
-                <smart-tree-items-group [expanded]="true" [selected]="true">Task 2
-                    <smart-tree-item>Sub Task 2.1</smart-tree-item>
-                    <smart-tree-item>Sub Task 2.2</smart-tree-item>
-                    <smart-tree-item>Sub Task 2.3</smart-tree-item>
-                </smart-tree-items-group>
-            </smart-tree>
+            <smart-scheduler #scheduler id="scheduler"
+                [view]="view"
+                [dataSource]="dataSource"
+                [firstDayOfWeek]="firstDayOfWeek"
+                [disableDateMenu]="disableDateMenu"
+                [currentTimeIndicator]="currentTimeIndicator"
+                (onItemInsert)="postSchedule($event)"
+            ></smart-scheduler>
 
         </div>
     </div>

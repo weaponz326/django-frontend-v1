@@ -19,22 +19,22 @@ export class CalendarApiService {
   personalUrl = environment.personalUrl;
 
   // get all apointments belonging to a user
-  public getAppointments(): Observable<any>{
-    return this.http.get(this.personalUrl + "module-calendar/appointment?user=" + localStorage.getItem('personal_id'), this.endpoints.headers);
+  public getSchedules(): Observable<any>{
+    return this.http.get(this.personalUrl + "module-calendar/calendar?user=" + localStorage.getItem('personal_id'), this.endpoints.headers);
   }
 
-  // create update and delete appointment
+  // create update and delete calendar
 
-  public postAppointment(appointment: any): Observable<any>{
-    return this.http.post(this.personalUrl + "module-calendar/appointment/", appointment, this.endpoints.headers);
+  public postSchedule(calendar: any): Observable<any>{
+    return this.http.post(this.personalUrl + "module-calendar/calendar/", calendar, this.endpoints.headers);
   }
 
-  public putAppointment(appointment: any, appointmentId: any): Observable<any>{
-    return this.http.put(this.personalUrl + "module-calendar/appointment/" + appointmentId, appointment, this.endpoints.headers);
+  public putSchedule(calendar: any, calendarId: any): Observable<any>{
+    return this.http.put(this.personalUrl + "module-calendar/calendar/" + calendarId, calendar, this.endpoints.headers);
   }
 
-  public deleteAppointment(appointmentId: any): Observable<any>{
-    return this.http.delete(this.personalUrl + "module-calendar/appointment/" + appointmentId, this.endpoints.headers);
+  public deleteSchedule(calendarId: any): Observable<any>{
+    return this.http.delete(this.personalUrl + "module-calendar/calendar/" + calendarId, this.endpoints.headers);
   }
 
 }

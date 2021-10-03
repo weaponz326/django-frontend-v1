@@ -1,28 +1,28 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 
 import { GridComponent, GridColumn, DataAdapter, Smart } from 'smart-webcomponents-angular/grid';
+import { ButtonComponent } from 'smart-webcomponents-angular/button';
 
 import { CalendarApiService } from 'projects/personal/src/app/services/modules/calendar-api/calendar-api.service';
 import { ConnectionPromptComponent } from '../../../module-utilities/connection-prompt/connection-prompt.component'
-import { AllAppointmentsPrintComponent } from '../../../printing/calendar-print/all-appointments-print/all-appointments-print.component';
 
 
 @Component({
-  selector: 'app-all-appointments',
-  templateUrl: './all-appointments.component.html',
-  styleUrls: ['./all-appointments.component.scss']
+  selector: 'app-all-calendars',
+  templateUrl: './all-calendars.component.html',
+  styleUrls: ['./all-calendars.component.scss']
 })
-export class AllAppointmentsComponent implements OnInit {
+export class AllCalendarsComponent implements OnInit {
 
   constructor(private calendarApi: CalendarApiService) { }
 
   @ViewChild('appointmentsGridReference', { read: GridComponent, static: false }) appointmentsGrid!: GridComponent;
+  @ViewChild('newCalendarButtonReference', { read: ButtonComponent, static: false }) newCalendarButton!: ButtonComponent;
 
   @ViewChild('connectionPromptComponentReference', { read: ConnectionPromptComponent, static: false }) connectionPrompt!: ConnectionPromptComponent;
-  @ViewChild('AllAppointmentsPrintComponent', { read: AllAppointmentsPrintComponent, static: false }) allAppointmentsPrint!: AllAppointmentsPrintComponent;
 
   navHeading: any[] = [
-    { text: "All Appointments", url: "/home/calendar/all-appointments" },
+    { text: "All Calendars", url: "/home/calendar/all-calendars" },
   ];
 
   sorting = { enabled: true }
@@ -35,7 +35,7 @@ export class AllAppointmentsComponent implements OnInit {
   }
 
   getAppointments(){
-    this.calendarApi.getAppointments()
+    this.calendarApi.getSchedules()
       .subscribe(
         res => {
           console.log(res);
@@ -54,25 +54,20 @@ export class AllAppointmentsComponent implements OnInit {
         dataSource: this.getAppointments(),
         dataFields:[
           'id: string',
-          'label: string',
-          'dateStart: string',
-          'dateEnd: string',
-          'status: string',
+          'calendar_name: string',
+          'date_created: string',
         ]
       }
     );
 
     this.columns = <GridColumn[]>[
-      { label: 'Appointment', dataField: 'label', width: '40%' },
-      { label: 'Start Date', dataField: 'dateStart', width: '22%' },
-      { label: 'End Date', dataField: 'dateEnd', width: '22%' },
-      { label: 'Status', dataField: 'status', columnGroup: 'order', width: '16%' },
+      { label: 'Calendar Name', dataField: 'calendar_name', width: '65%' },
+      { label: 'Date Created', dataField: 'date_created', width: '35%' },
     ]
   }
 
   onPrint(){
     console.log("lets start printing...");
-    // this.allAppointmentsPrint.print();
   }
 
 }

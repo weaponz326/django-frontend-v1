@@ -9,11 +9,11 @@ import { ConnectionPromptComponent } from '../../../module-utilities/connection-
 
 
 @Component({
-  selector: 'app-kanban-view',
-  templateUrl: './kanban-view.component.html',
-  styleUrls: ['./kanban-view.component.scss']
+  selector: 'app-new-task-group',
+  templateUrl: './new-task-group.component.html',
+  styleUrls: ['./new-task-group.component.scss']
 })
-export class KanbanViewComponent implements OnInit {
+export class NewTaskGroupComponent implements OnInit {
 
   constructor(private tasksApi: TasksApiService) { }
 
@@ -23,7 +23,7 @@ export class KanbanViewComponent implements OnInit {
   @ViewChild('connectionPromptComponentReference', { read: ConnectionPromptComponent, static: false }) connectionPrompt!: ConnectionPromptComponent;
 
   navHeading: any[] = [
-    { text: "Kanban View", url: "/home/tasks/kanban-view" },
+    { text: "New Task Group", url: "/home/tasks/new-task-group" },
   ];
 
   addNewButton = true;
