@@ -1,1 +1,59 @@
-<p>stock-item-form works!</p>
+<div class="row page-form">
+
+    <div class="col-md-12">
+        <h4>Stock Item Details</h4>
+    </div>
+
+    <div class="col-md-6">
+
+        <div class="row mb-1">
+            <div class="col-md-4"><label class="float-end">Item ID :</label></div>
+            <div class="col-md-8">
+                <smart-input #itemCodeInputReference class="w-100"></smart-input>
+            </div>
+        </div>
+
+        <div class="row mb-1">
+            <div class="col-md-4"><label class="float-end">Item Name :</label></div>
+            <div class="col-md-8">
+                <smart-input #itemNameInputReference class="w-100"></smart-input>
+            </div>
+        </div>
+
+        <div class="row mb-1">
+            <div class="col-md-4"><label class="float-end">Category :</label></div>
+            <div class="col-md-8">
+                <smart-input #categoryInputReference class="w-100"></smart-input>
+            </div>
+        </div>
+
+        <div class="row mb-1">
+            <div class="col-md-4"><label class="float-end">Item Type :</label></div>
+            <div class="col-md-8">
+                <smart-input #itemTypeInputReference class="w-100"></smart-input>
+            </div>
+        </div>
+
+        <div class="row mb-1">
+            <div class="col-md-4"><label class="float-end">Quantity :</label></div>
+            <div class="col-md-8">
+                <smart-numeric-text-box #quantityNumericTextBoxReference class="w-100"
+                [spinButtons]="true" [spinButtonsPosition]="'right'" [value]="0">
+                </smart-numeric-text-box>
+            </div>
+        </div>
+
+        <div class="row mb-1">
+            <div class="col-md-4"><label class="float-end">Refill Ordered :</label></div>
+            <div class="col-md-8">
+                <smart-numeric-text-box #refillOrderedNumericTextBoxReference class="w-100"
+                [spinButtons]="true" [spinButtonsPosition]="'right'" [value]="0">
+                </smart-numeric-text-box>
+            </div>
+        </div>
+
+        <hr />
+
+    </div>
+
+</div>

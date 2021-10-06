@@ -1,4 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
+
+import { ButtonComponent } from 'smart-webcomponents-angular/button';
+
+import { CustomersApiService } from 'projects/restaurant/src/app/services/modules/customers-api/customers-api.service';
+import { CustomerFormComponent } from '../customer-form/customer-form.component';
+import { ConnectionPromptComponent } from 'projects/personal/src/app/components/module-utilities/connection-prompt/connection-prompt.component'
+
 
 @Component({
   selector: 'app-new-customer',
@@ -7,9 +15,52 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NewCustomerComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private router: Router,
+    private customersApi: CustomersApiService
+  ) { }
+
+  @ViewChild('customerFormComponentReference', { read: CustomerFormComponent, static: false }) customerForm!: CustomerFormComponent;
+  @ViewChild('connectionPromptComponentReference', { read: ConnectionPromptComponent, static: false }) connectionPrompt!: ConnectionPromptComponent;
+
+  navHeading: any[] = [
+    { text: "New Customer", url: "/home/customers/new-customer" },
+  ];
 
   ngOnInit(): void {
+  }
+
+  saveCustomer(){
+    console.log('u are saving a new customer');
+
+    var customerData = {
+      account: localStorage.getItem('restaurant_id'),
+      customer_code: this.customerForm.customerCodeInput.value,
+      phone: this.customerForm.phoneInput.value,
+      email: this.customerForm.emailInput.value,
+      address: this.customerForm.addressTextBox.value,
+      state: this.customerForm.stateInput.value,
+      city: this.customerForm.cityInput.value,
+      post_code: this.customerForm.postCodeInput.value,
+      allergies: this.customerForm.allergiesTextBox.value,
+      preferences: this.customerForm.preferencesTextBox.value,
+    }
+
+    console.log(customerData);
+
+    this.customersApi.postCustomer(customerData)
+      .subscribe(
+        res => {
+          console.log(res);
+
+          sessionStorage.setItem('restaurant_customer_id', res.id);
+          this.router.navigateByUrl('/suite/customers/view-customer');
+        },
+        err => {
+          console.log(err);
+          this.connectionPrompt.toast.open();
+        }
+      )
   }
 
 }

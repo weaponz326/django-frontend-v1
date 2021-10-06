@@ -1,4 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
+
+import { ButtonComponent } from 'smart-webcomponents-angular/button';
+import { GridComponent, GridColumn, DataAdapter, Smart } from 'smart-webcomponents-angular/grid';
+
+import { DeliveriesApiService } from 'projects/restaurant/src/app/services/modules/deliveries-api/deliveries-api.service';
+import { ConnectionPromptComponent } from 'projects/personal/src/app/components/module-utilities/connection-prompt/connection-prompt.component'
+
 
 @Component({
   selector: 'app-all-deliveries',
@@ -7,9 +15,70 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AllDeliveriesComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private router: Router,
+    private deliveriesApi: DeliveriesApiService
+  ) { }
+
+  @ViewChild('newDeliveryButtonReference', { read: ButtonComponent, static: false }) newDeliveryButton!: ButtonComponent;
+  @ViewChild('deliveriesGridReference', { read: GridComponent, static: false }) deliveriesGrid!: GridComponent;
+
+  @ViewChild('connectionPromptComponentReference', { read: ConnectionPromptComponent, static: false }) connectionPrompt!: ConnectionPromptComponent;
+
+  navHeading: any[] = [
+    { text: "All Deliveries", url: "/home/deliveries/all-deliveries" },
+  ];
+
+  sorting = { enabled: true }
+  filtering = { enabled: true }
+  dataSource = [];
+  columns: GridColumn[] = <GridColumn[]>[];
+  editing = {}
 
   ngOnInit(): void {
+    this.initGrid();
   }
+
+  getDeliveries(){
+    this.deliveriesApi.getDeliveries()
+      .subscribe(
+        res => {
+          console.log(res);
+          this.dataSource = res;
+        },
+        err => {
+          console.log(err);
+          this.connectionPrompt.toast.open();
+        }
+      )
+  }
+
+  initGrid(){
+    this.dataSource = new Smart.DataAdapter (
+      <DataAdapter>{
+        id: 'id',
+        dataSource: this.getDeliveries(),
+        dataFields:[
+          'id: string',
+          'delivery_code: string',
+          'customer_name: string',
+          'delivery_date: string',
+          'delivery_status: string',
+        ]
+      }
+    );
+
+    this.columns = <GridColumn[]>[
+      { label: "Delivery ID", dataField: "delivery_code", width: "20%" },
+      { label: "Customer Name", dataField: "customer_name", width: "40%" },
+      { label: "Delivery Date", dataField: "delivery_date", width: "20%" },
+      { label: "Delivery Status", dataField: "delivery_status", width: "20%" },
+    ]
+  }
+
+  onPrint(){
+    console.log("lets start printing...");
+  }
+
 
 }

@@ -1,1 +1,187 @@
-<p>staff-form works!</p>
+<div class="row page-form">
+
+    <div class="col-md-12">
+        <h4>Personal Details</h4>
+    </div>
+
+    <div class="col-md-6">
+
+        <div class="row mb-1">
+            <div class="col-md-4"><label class="float-end">First Name :</label></div>
+            <div class="col-md-8">
+                <smart-input #firstNameInputReference class="w-100"></smart-input>
+            </div>
+        </div>
+
+        <div class="row mb-1">
+            <div class="col-md-4"><label class="float-end">Last Name :</label></div>
+            <div class="col-md-8">
+                <smart-input #lastNameInputReference class="w-100"></smart-input>
+            </div>
+        </div>
+
+        <div class="row mb-1">
+            <div class="col-md-4"><label class="float-end">Sex :</label></div>
+            <div class="col-md-8">
+                <smart-drop-down-list #sexDropDownListReference class="w-100">
+                    <smart-list-item [value]="'Male'">Male</smart-list-item>
+                    <smart-list-item [value]="'Female'">Female</smart-list-item>
+                </smart-drop-down-list>
+            </div>
+        </div>
+
+        <div class="row mb-1">
+            <div class="col-md-4"><label class="float-end">Date of Birth :</label></div>
+            <div class="col-md-8">
+                <app-dob-input #dobCustomWidgetReference></app-dob-input>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-md-6">
+
+        <div class="row mb-1">
+            <div class="col-md-4"><label class="float-end">Nationality :</label></div>
+            <div class="col-md-8">
+                <smart-input #nationalityInputReference class="w-100"></smart-input>
+            </div>
+        </div>
+
+        <div class="row mb-1">
+            <div class="col-md-4"><label class="float-end">Religion :</label></div>
+            <div class="col-md-8">
+                <smart-input #religionInputReference class="w-100"></smart-input>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<hr />
+
+<!-- --------------------------------------------------------------------------------------------
+photo -->
+
+<div class="row page-form-div">
+
+    <div class="col-md-6">
+        <div class="row mb-1">
+
+            <div class="col-md-4"><label class="float-end">Photo :</label></div>
+            <div class="col-md-8">
+                <app-image-upload #imageCustomWidgetUpload [width]="140" [height]="160" [imgType]="'photo'"></app-image-upload>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<hr />
+
+<!-- --------------------------------------------------------------------------------------------------
+contact details -->
+
+<div class="row page">
+
+    <div class="col-md-12">
+        <h4>Contact Details</h4>
+    </div>
+
+    <div class="col-md-6">
+
+        <div class="row mb-1">
+            <div class="col-md-4"><label class="float-end">Phone No. :</label></div>
+            <div class="col-md-8">
+                <smart-input #phoneInputReference class="w-100"></smart-input>
+            </div>
+        </div>
+
+        <div class="row mb-1">
+            <div class="col-md-4"><label class="float-end">Email :</label></div>
+            <div class="col-md-8">
+                <smart-input #emailInputReference class="w-100"></smart-input>
+            </div>
+        </div>
+
+        <div class="row mb-1">
+            <div class="col-md-4"><label class="float-end">Address :</label></div>
+            <div class="col-md-8">
+                <smart-multiline-text-box #addressTextBoxReference class="w-100" [rows]="3"></smart-multiline-text-box>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-md-6">
+
+        <div class="row mb-1">
+            <div class="col-md-4"><label class="float-end">State/Region :</label></div>
+            <div class="col-md-8">
+                <smart-input #stateInputReference class="w-100"></smart-input>
+            </div>
+        </div>
+
+        <div class="row mb-1">
+            <div class="col-md-4"><label class="float-end">City/Town :</label></div>
+            <div class="col-md-8">
+                <smart-input #cityInputReference class="w-100"></smart-input>
+            </div>
+        </div>
+
+        <div class="row mb-1">
+            <div class="col-md-4"><label class="float-end">Post Code :</label></div>
+            <div class="col-md-8">
+                <smart-input #postCodeInputReference class="w-100"></smart-input>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<hr />
+
+<!-- -------------------------------------------------------------------------------------------------
+staff details -->
+
+<div class="row page-form">
+
+    <div class="col-md-12">
+        <h4>Staff Details</h4>
+    </div>
+
+    <div class="col-md-6">
+
+        <div class="row mb-1">
+            <div class="col-md-4"><label class="float-end">Staff ID :</label></div>
+            <div class="col-md-8">
+                <smart-input #staffCodeInputReference class="w-100"></smart-input>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-md-6">
+
+        <div class="row mb-1">
+            <div class="col-md-4"><label class="float-end">Department :</label></div>
+            <div class="col-md-8">
+                <smart-input #departmentInputReference class="w-100"></smart-input>
+            </div>
+        </div>
+
+        <div class="row mb-1">
+            <div class="col-md-4"><label class="float-end">Job :</label></div>
+            <div class="col-md-8">
+                <smart-input #jobInputReference class="w-100"></smart-input>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<hr />

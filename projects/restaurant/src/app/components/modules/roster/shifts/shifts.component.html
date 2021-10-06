@@ -1,1 +1,17 @@
-<p>shifts works!</p>
+<div class="row mb-1">
+    <div class="col-md-12">
+        <smart-button #addShiftButtonReference>Add Shift</smart-button>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <smart-grid #shiftsGridReference class="w-100 h-auto"
+        [dataSource]="dataSource" [columns]="columns" [editing]="editing">
+        </smart-grid>
+    </div>
+</div>
+
+<!-- connection error prompt component -->
+
+<app-connection-prompt #connectionPromptComponentReference></app-connection-prompt>

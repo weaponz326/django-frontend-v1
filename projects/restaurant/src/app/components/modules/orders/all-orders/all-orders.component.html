@@ -1,1 +1,23 @@
-<p>all-orders works!</p>
+<app-module-topnav [headings]="navHeading" [showPrint]="true" (print)="onPrint()"></app-module-topnav>
+
+<div class="container">
+
+    <div class="row mb-3">
+        <div class="col-md-12">
+            <smart-button #addOrderReference>New Menu Group</smart-button>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8">
+            <smart-grid #ordersGridReference class="w-100"
+            [dataSource]="dataSource" [columns]="columns" [sorting]="sorting" [editing]="editing">
+            </smart-grid>
+        </div>
+    </div>
+
+</div>
+
+<!-- connection error prompt component -->
+
+<app-connection-prompt #connectionPromptComponentReference></app-connection-prompt>

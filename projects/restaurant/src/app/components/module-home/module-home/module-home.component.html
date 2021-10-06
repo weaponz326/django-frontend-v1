@@ -76,14 +76,14 @@
         </div>
 
         <div class="col-md-2 col-sm-6 text-center">
-            <smart-tooltip #deliveriesTooltipReference [selector]="'deliveries'" [arrow]="true">
-                Manage delivery operations
+            <smart-tooltip #kitchenStockTooltipReference [selector]="'kitchenStock'" [arrow]="true">
+                Keep track of the quantity dishes and items
             </smart-tooltip>
 
-            <a id="deliveries" routerLink="/home/deliveries/dashboard">
+            <a id="kitchenStock" routerLink="/home/kitchen-stock/dashboard">
                 <figure>
-                    <img src="../../../assets/images/modules/deliveries.png" class="home-icons" />
-                    <figcaption>Deliveries</figcaption>
+                    <img src="../../../assets/images/modules/kitchen_stock.png" class="home-icons" />
+                    <figcaption>Kitchen Stock</figcaption>
                 </figure>
             </a>
         </div>
@@ -109,27 +109,27 @@
         </div>
 
         <div class="col-md-2 col-sm-6 text-center">
-            <smart-tooltip #kitchenStockTooltipReference [selector]="'kitchenStock'" [arrow]="true">
-                Keep track of the quantity dishes and items
+            <smart-tooltip #deliveriesTooltipReference [selector]="'deliveries'" [arrow]="true">
+                Manage delivery operations
             </smart-tooltip>
 
-            <a id="kitchenStock" routerLink="/home/stock/dashboard">
+            <a id="deliveries" routerLink="/home/deliveries/dashboard">
                 <figure>
-                    <img src="../../../assets/images/modules/kitchen_stock.png" class="home-icons" />
-                    <figcaption>Kitchen Stock</figcaption>
+                    <img src="../../../assets/images/modules/deliveries.png" class="home-icons" />
+                    <figcaption>Deliveries</figcaption>
                 </figure>
             </a>
         </div>
 
         <div class="col-md-2 col-sm-6 text-center">
-            <smart-tooltip #sittingsTooltipReference [selector]="'sittings'" [arrow]="true">
-                Manage sitting sessions of guests
+            <smart-tooltip #customersTooltipReference [selector]="'customers'" [arrow]="true">
+                Keep track of all your guests and customers
             </smart-tooltip>
 
-            <a id="sittings" routerLink="/home/sittings/dashboard">
+            <a id="customers" routerLink="/home/customers/dashboard">
                 <figure>
-                    <img src="../../../assets/images/modules/sittings.png" class="home-icons" />
-                    <figcaption>Sittings</figcaption>
+                    <img src="../../../assets/images/modules/customers.png" class="home-icons" />
+                    <figcaption>Customers</figcaption>
                 </figure>
             </a>
         </div>
@@ -148,14 +148,14 @@
         </div>
 
         <div class="col-md-2 col-sm-6 text-center">
-            <smart-tooltip #customersTooltipReference [selector]="'customers'" [arrow]="true">
-                Keep track of all your guests and customers
+            <smart-tooltip #sittingsTooltipReference [selector]="'sittings'" [arrow]="true">
+                Manage sitting sessions of guests
             </smart-tooltip>
 
-            <a id="customers" routerLink="/home/customers/dashboard">
+            <a id="sittings" routerLink="/home/sittings/dashboard">
                 <figure>
-                    <img src="../../../assets/images/modules/customers.png" class="home-icons" />
-                    <figcaption>Customers</figcaption>
+                    <img src="../../../assets/images/modules/sittings.png" class="home-icons" />
+                    <figcaption>Sittings</figcaption>
                 </figure>
             </a>
         </div>
@@ -204,7 +204,7 @@
                     <figcaption>Tables</figcaption>
                 </figure>
             </a>
-        </div>            
+        </div>
 
     </div>
 

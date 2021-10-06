@@ -1,4 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+
+import { ButtonComponent } from 'smart-webcomponents-angular/button';
+import { GridComponent, GridColumn, DataAdapter, Smart } from 'smart-webcomponents-angular/grid';
+
+import { CustomersApiService } from 'projects/restaurant/src/app/services/modules/customers-api/customers-api.service';
+import { ConnectionPromptComponent } from 'projects/personal/src/app/components/module-utilities/connection-prompt/connection-prompt.component'
+
 
 @Component({
   selector: 'app-all-customers',
@@ -7,9 +14,64 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AllCustomersComponent implements OnInit {
 
-  constructor() { }
+  constructor(private customersApi: CustomersApiService) { }
+
+  @ViewChild('newMenuCustomerButtonReference', { read: ButtonComponent, static: false }) newCustomerButton!: ButtonComponent;
+  @ViewChild('customersGridReference', { read: GridComponent, static: false }) customersGrid!: GridComponent;
+
+  @ViewChild('connectionPromptComponentReference', { read: ConnectionPromptComponent, static: false }) connectionPrompt!: ConnectionPromptComponent;
+
+  navHeading: any[] = [
+    { text: "All Customers", url: "/home/customers/all-customers" },
+  ];
+
+  sorting = { enabled: true }
+  filtering = { enabled: true }
+  dataSource = [];
+  columns: GridColumn[] = <GridColumn[]>[];
+  editing = {}
 
   ngOnInit(): void {
+    this.initGrid();
+  }
+
+  getCustomers(){
+    this.customersApi.getCustomers()
+      .subscribe(
+        res => {
+          console.log(res);
+          this.dataSource = res;
+        },
+        err => {
+          console.log(err);
+          this.connectionPrompt.toast.open();
+        }
+      )
+  }
+
+  initGrid(){
+    this.dataSource = new Smart.DataAdapter (
+      <DataAdapter>{
+        id: 'id',
+        dataSource: this.getCustomers(),
+        dataFields:[
+          'id: string',
+          'customer_code: string',
+          'customer_date: string',
+          'phone: string',
+        ]
+      }
+    );
+
+    this.columns = <GridColumn[]>[
+      { label: "Customer ID", dataField: "customer_code", width: "25%" },
+      { label: "Customer Name", dataField: "customer_name", width: "50%" },
+      { label: "Phone No.", dataField: "phone", width: "25%" }
+    ]
+  }
+
+  onPrint(){
+    console.log("lets start printing...");
   }
 
 }

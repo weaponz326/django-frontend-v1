@@ -9,6 +9,10 @@ export class OrdersPageComponent implements OnInit {
 
   constructor() { }
 
+  navLinks: any[] = [
+    { text: "All Orders", url: "/home/orders/all-orders", icon: "bi bi-list-ul" },
+  ]
+
   ngOnInit(): void {
   }
 

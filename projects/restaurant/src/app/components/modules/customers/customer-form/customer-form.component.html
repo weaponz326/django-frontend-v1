@@ -1,1 +1,87 @@
-<p>customer-form works!</p>
+<div class="row page-form">
+
+    <div class="col-md-12">
+        <h4>Customer Details</h4>
+    </div>
+
+    <div class="col-md-6">
+
+        <div class="row mb-1">
+            <div class="col-md-4"><label class="float-end">Customer ID :</label></div>
+            <div class="col-md-8">
+                <smart-input #customerCodeInputReference class="w-100"></smart-input>
+            </div>
+        </div>
+
+        <div class="row mb-1">
+            <div class="col-md-4"><label class="float-end">Customer Name :</label></div>
+            <div class="col-md-8">
+                <smart-input #customerNameInputReference class="w-100"></smart-input>
+            </div>
+        </div>
+        
+        <div class="row mb-1">
+            <div class="col-md-4"><label class="float-end">Allergies :</label></div>
+            <div class="col-md-8 textarea-div">
+                <smart-multiline-text-box #allergiesTextBoxReference class="w-100" [rows]="3"></smart-multiline-text-box>
+            </div>
+        </div>
+
+        <div class="row mb-1">
+            <div class="col-md-4"><label class="float-end">Preferences :</label></div>
+            <div class="col-md-8">
+                <smart-multiline-text-box #preferencesTextBoxReference class="w-100" [rows]="3"></smart-multiline-text-box>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-md-6">
+
+        <div class="row mb-1">
+            <div class="col-md-4"><label class="float-end">Phone No. :</label></div>
+            <div class="col-md-8">
+                <smart-input #phoneInputReference class="w-100"></smart-input>
+            </div>
+        </div>
+
+        <div class="row mb-1">
+            <div class="col-md-4"><label class="float-end">Email :</label></div>
+            <div class="col-md-8">
+                <smart-input #emailInputReference class="w-100"></smart-input>
+            </div>
+        </div>
+
+        <div class="row mb-1">
+            <div class="col-md-4"><label class="float-end">Address :</label></div>
+            <div class="col-md-8">
+                <smart-multiline-text-box #addressTextBoxReference class="w-100" [rows]="3"></smart-multiline-text-box>
+            </div>
+        </div>
+
+        <div class="row mb-1">
+            <div class="col-md-4"><label class="float-end">State/Region :</label></div>
+            <div class="col-md-8">
+                <smart-input #stateInputReference class="w-100"></smart-input>
+            </div>
+        </div>
+
+        <div class="row mb-1">
+            <div class="col-md-4"><label class="float-end">City/Town :</label></div>
+            <div class="col-md-8">
+                <smart-input #cityInputReference class="w-100"></smart-input>
+            </div>
+        </div>
+
+        <div class="row mb-1">
+            <div class="col-md-4"><label class="float-end">Post Code :</label></div>
+            <div class="col-md-8">
+                <smart-input #postCodeInputReference class="w-100"></smart-input>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<hr />

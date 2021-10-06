@@ -1,1 +1,21 @@
-<p>view-staff works!</p>
+<app-module-topnav [headings]="navHeading"></app-module-topnav>
+
+<div class="container">
+
+    <!-- staff page form -->
+
+    <app-staff-form #staffFormComponentReference></app-staff-form>
+
+    <div class="row page-form">
+        <div class="col-md-12">
+            <smart-button #cancelButtonReference class="page-control-button float-end ms-1" routerLink="/home/staff/all-staff">Cancel</smart-button>
+            <smart-button #deleteButtonReference class="page-control-button float-end ms-1">Delete</smart-button>
+            <smart-button #saveButtonReference class="page-control-button float-end ms-1" (click)="saveStaff()">Save</smart-button>
+        </div>
+    </div>
+
+</div>
+
+<!-- connection error prompt component -->
+
+<app-connection-prompt #connectionPromptComponentReference></app-connection-prompt>

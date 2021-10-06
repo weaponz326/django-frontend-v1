@@ -225,6 +225,8 @@
 				+ menu (M)
 					- dashboard (C)
 					- settings (C)
+          - all menu groups (C)
+          - new menu group (C)
 					- all menu items (C)
 					- add menu item (C)
 					- view menu item (C)

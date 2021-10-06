@@ -1,1 +1,19 @@
-<p>manage-personnel works!</p>
+<h4>Roster Personnel</h4>
+
+<div class="row mb-2">
+    <div class="col-md-12">
+        <smart-button #addPersonnelButtonReference>Add Personnel</smart-button>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <smart-grid #personnelGridReference class="w-100 h-auto"
+        [dataSource]="dataSource" [columns]="columns" [editing]="editing">
+        </smart-grid>
+    </div>
+</div>
+
+<!-- connection error prompt component -->
+
+<app-connection-prompt #connectionPromptComponentReference></app-connection-prompt>

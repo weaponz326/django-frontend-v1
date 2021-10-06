@@ -29,6 +29,10 @@
 	text-decoration: none;
 }
 
+hr {
+  border-top: 0 !important;
+}
+
 .top-divider{
 	margin-bottom: 4px;
 }
@@ -45,6 +49,8 @@
 
 .page-form smart-input,
 .page-form smart-drop-down-list,
+.page-form smart-date-time-picker,
+.page-form smart-numeric-text-box,
 .page-form smart-button{
 	height: 32px;
 }

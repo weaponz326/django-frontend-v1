@@ -1,1 +1,18 @@
-<p>roster-sheet works!</p>
+<div class="row mb-2">
+    <div class="col-md-12">
+        <smart-button #addShiftButtonReference (click)="refreshSheet()">Refresh Roster</smart-button>
+        <smart-button #addShiftButtonReference class="float-end" routerLink="/home/roster/manage-batches">Manage Batches</smart-button>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <smart-grid #sheetGridReference class="w-100 h-auto"
+        [dataSource]="dataSource" [columns]="sheetColumns" [editing]="editing">
+        </smart-grid>
+    </div>
+</div>
+
+<!-- connection error prompt component -->
+
+<app-connection-prompt #connectionPromptComponentReference></app-connection-prompt>

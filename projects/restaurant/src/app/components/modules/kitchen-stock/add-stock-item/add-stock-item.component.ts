@@ -1,4 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
+
+import { ButtonComponent } from 'smart-webcomponents-angular/button';
+
+import { KitchenStockApiService } from 'projects/restaurant/src/app/services/modules/kitchen-stock-api/kitchen-stock-api.service';
+import { StockItemFormComponent } from '../stock-item-form/stock-item-form.component';
+import { ConnectionPromptComponent } from 'projects/personal/src/app/components/module-utilities/connection-prompt/connection-prompt.component'
+
 
 @Component({
   selector: 'app-add-stock-item',
@@ -7,9 +15,49 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddStockItemComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private router: Router,
+    private kitchenStockApi: KitchenStockApiService
+  ) { }
+
+  @ViewChild('stockItemFormComponentReference', { read: StockItemFormComponent, static: false }) stockItemForm!: StockItemFormComponent;
+  @ViewChild('connectionPromptComponentReference', { read: ConnectionPromptComponent, static: false }) connectionPrompt!: ConnectionPromptComponent;
+
+  navHeading: any[] = [
+    { text: "New Item", url: "/home/kitchen-stock/add-stock-item" },
+  ];
 
   ngOnInit(): void {
+  }
+
+  saveStockItem(){
+    console.log('u are saving a new payment');
+
+    var paymentData = {
+      account: localStorage.getItem('restaurant_id'),
+      item_code: this.stockItemForm.itemCodeInput.value,
+      item_name: this.stockItemForm.itemNameInput.value,
+      category: this.stockItemForm.categoryInput.value,
+      item_type: this.stockItemForm.itemTypeInput.value,
+      quantity: this.stockItemForm.quantityNumericTextBox.value,
+      refill_ordered: this.stockItemForm.refillOrderedNumericTextBox.value,
+    }
+
+    console.log(paymentData);
+
+    this.kitchenStockApi.postItem(paymentData)
+      .subscribe(
+        res => {
+          console.log(res);
+
+          sessionStorage.setItem('restaurant_stock_item_id', res.id);
+          this.router.navigateByUrl('/home/kitchen-stock/view-stock-item');
+        },
+        err => {
+          console.log(err);
+          this.connectionPrompt.toast.open();
+        }
+      )
   }
 
 }

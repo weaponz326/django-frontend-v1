@@ -1,4 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
+
+import { InputComponent } from 'smart-webcomponents-angular/input';
+import { ButtonComponent } from 'smart-webcomponents-angular/button';
+import { GridComponent, GridColumn, DataAdapter, Smart } from 'smart-webcomponents-angular/grid';
+
+import { RosterApiService } from 'projects/restaurant/src/app/services/modules/roster-api/roster-api.service';
+import { ConnectionPromptComponent } from 'projects/personal/src/app/components/module-utilities/connection-prompt/connection-prompt.component'
+import { ManagePersonnelComponent } from '../manage-personnel/manage-personnel.component';
+
 
 @Component({
   selector: 'app-manage-batches',
@@ -7,9 +17,92 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ManageBatchesComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private router: Router,
+    private rosterApi: RosterApiService
+  ) { }
+
+  @ViewChild('rosterCodeInputReference', { read: InputComponent, static: false }) rosterCodeInput!: InputComponent;
+  @ViewChild('rosterNameInputReference', { read: InputComponent, static: false }) rosterNameInput!: InputComponent;
+
+  @ViewChild('addBatchButtonReference', { read: ButtonComponent, static: false }) addBatchGroupButton!: ButtonComponent;
+  @ViewChild('batchesGridReference', { read: GridComponent, static: false }) batchesGrid!: GridComponent;
+
+  @ViewChild('managePersonnelComponentReference', { read: ManagePersonnelComponent, static: false }) managePersonnel!: ManagePersonnelComponent;
+  @ViewChild('connectionPromptComponentReference', { read: ConnectionPromptComponent, static: false }) connectionPrompt!: ConnectionPromptComponent;
+
+  navHeading: any[] = [
+    { text: "All Roster", url: "/home/roster/all-roster" },
+    { text: "View Roster", url: "/home/roster/view-roster" },
+    { text: "Manage Batches", url: "/home/roster/manage-batches" },
+  ];
+
+  dataSource = [];
+  columns: GridColumn[] = <GridColumn[]>[];
+  editing = {}
 
   ngOnInit(): void {
+    this.initGrid();
+  }
+
+  ngAfterViewInit(): void {
+    this.getSingleRoster();
+  }
+
+  getSingleRoster(){
+    this.rosterApi.getSingleRoster()
+      .subscribe(
+        res => {
+          console.log(res);
+
+          this.rosterCodeInput.value = res.roster_code;
+          this.rosterNameInput.value = res.roster_name;
+        },
+        err => {
+          console.log(err);
+          this.connectionPrompt.toast.open();
+        }
+      )
+  }
+
+  // --------------------------------------------------------------------------------------
+  // grid
+
+  getBatchs(){
+    this.rosterApi.getBatches()
+      .subscribe(
+        res => {
+          console.log(res);
+          this.dataSource = res;
+        },
+        err => {
+          console.log(err);
+          this.connectionPrompt.toast.open();
+        }
+      )
+  }
+
+  initGrid(){
+    this.dataSource = new Smart.DataAdapter (
+      <DataAdapter>{
+        id: 'id',
+        dataSource: this.getBatchs(),
+        dataFields:[
+          'id: string',
+          'batch_name: string',
+          'batch_symbol: string',
+        ]
+      }
+    );
+
+    this.columns = <GridColumn[]>[
+      { label: 'Batch Name', dataField: 'batch_name', width: "70%" },
+      { label: 'Batch Symbol', dataField: 'batch_symbol', width: "30%" },
+    ]
+  }
+
+  onPrint(){
+    console.log("lets start printing...");
   }
 
 }

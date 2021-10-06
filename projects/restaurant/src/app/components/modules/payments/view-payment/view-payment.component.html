@@ -1,1 +1,21 @@
-<p>view-payment works!</p>
+<app-module-topnav [headings]="navHeading"></app-module-topnav>
+
+<div class="container">
+
+    <!-- payment page form -->
+
+    <app-payment-form #paymentFormComponentReference></app-payment-form>
+
+    <div class="row page-form">
+        <div class="col-md-6">
+            <smart-button #cancelButtonReference class="page-control-button float-end ms-1" routerLink="/home/payments/all-payments">Cancel</smart-button>
+            <smart-button #deleteButtonReference class="page-control-button float-end ms-1">Delete</smart-button>
+            <smart-button #saveButtonReference class="page-control-button float-end ms-1" (click)="savePayment()">Save</smart-button>
+        </div>
+    </div>
+
+</div>
+
+<!-- connection error prompt component -->
+
+<app-connection-prompt #connectionPromptComponentReference></app-connection-prompt>

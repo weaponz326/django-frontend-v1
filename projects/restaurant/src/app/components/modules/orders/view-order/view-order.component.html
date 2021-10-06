@@ -1,1 +1,72 @@
-<p>view-order works!</p>
+<app-module-topnav [headings]="navHeading" [showPrint]="true" (print)="onPrint()"></app-module-topnav>
+
+<div class="container">
+
+    <div class="row page-form">
+        <div class="col-md-6">
+
+            <div class="row mb-1">
+                <div class="col-md-4"><label class="float-end">Order ID :</label></div>
+                <div class="col-md-8">
+                    <smart-input #orderCodeInputReference class="w-100"></smart-input>
+                </div>
+            </div>
+
+            <div class="row mb-4">
+                <div class="col-md-4"><label class="float-end">Order Date :</label></div>
+                <div class="col-md-8">
+                    <smart-date-time-picker #orderDateTimePickerReference class="w-100"
+                    [calendarButton]="true" [formatString]="'yyyy-MM-dd'"
+                    ></smart-date-time-picker>
+                </div>
+            </div>
+
+            <div class="row mb-1">
+                <div class="col-md-4"><label class="float-end">Customer Name :</label></div>
+                <div class="col-md-8">
+                    <smart-input #customerNameInputReference class="page-group-input"></smart-input>
+                    <smart-button #customerSelectButtonReference class="page-group-button">...</smart-button>
+                </div>
+            </div>
+
+            <div class="row mb-1">
+                <div class="col-md-4"><label class="float-end">Order Type :</label></div>
+                <div class="col-md-8">
+                    <smart-drop-down-list #orderTypeDropDownListReference class="w-100">
+                        <smart-list-item *ngFor="let type of orderTypeSource" [value]="type">{{type}}</smart-list-item>
+                    </smart-drop-down-list>
+                </div>
+            </div>
+
+            <div class="row mb-1">
+                <div class="col-md-4"><label class="float-end">Order Status :</label></div>
+                <div class="col-md-8">
+                    <smart-drop-down-list #orderStatusDropDownListReference class="w-100">
+                        <smart-list-item *ngFor="let status of orderStatusSource" [value]="status">{{status}}</smart-list-item>
+                    </smart-drop-down-list>
+                </div>
+            </div>
+
+            <hr />
+
+            <div class="row">
+                <div class="col-md-12">
+                    <smart-button #cancelButtonReference class="page-control-button float-end ms-1">Cancel</smart-button>
+                    <smart-button #cancelButtonReference class="page-control-button float-end ms-1">Delete</smart-button>
+                    <smart-button #cancelButtonReference class="page-control-button float-end ms-1">Save</smart-button>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- order items component -->
+
+    <app-order-items #orderItemsComponentReference></app-order-items>
+
+</div>
+
+<!-- connection error prompt component -->
+
+<app-connection-prompt #connectionPromptComponentReference></app-connection-prompt>

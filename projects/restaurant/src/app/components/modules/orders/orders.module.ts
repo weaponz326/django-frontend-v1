@@ -1,7 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-// import { ChartsModule } from 'ng2-charts';
+import { ChartsModule } from 'ng2-charts';
+import { GridModule } from 'smart-webcomponents-angular/grid';
+import { ButtonModule } from 'smart-webcomponents-angular/button';
+import { InputModule } from 'smart-webcomponents-angular/input';
+import { DropDownListModule } from 'smart-webcomponents-angular/dropdownlist';
+import { DateTimePickerModule } from 'smart-webcomponents-angular/datetimepicker';
 
 import { ModuleUtilitiesModule } from 'projects/personal/src/app/components/module-utilities/module-utilities.module';
 
@@ -31,7 +36,12 @@ import { ItemFormComponent } from './item-form/item-form.component';
   ],
   imports: [
     CommonModule,
-    // ChartsModule,
+    ChartsModule,
+    GridModule,
+    ButtonModule,
+    InputModule,
+    DropDownListModule,
+    DateTimePickerModule,
     ModuleUtilitiesModule,
   ]
 })

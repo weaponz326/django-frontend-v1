@@ -1,1 +1,21 @@
-<p>edit-stock-item works!</p>
+<app-module-topnav [headings]="navHeading"></app-module-topnav>
+
+<div class="container">
+
+    <!-- payment page form -->
+
+    <app-stock-item-form #stockItemFormComponentReference></app-stock-item-form>
+
+    <div class="row page-form">
+        <div class="col-md-6">
+            <smart-button #cancelButtonReference class="page-control-button float-end ms-1" routerLink="/home/kitchen-stock/all-stock-items">Cancel</smart-button>
+            <smart-button #deleteButtonReference class="page-control-button float-end ms-1">Save</smart-button>
+            <smart-button #saveButtonReference class="page-control-button float-end ms-1" (click)="saveStockItem()">Save</smart-button>
+        </div>
+    </div>
+
+</div>
+
+<!-- connection error prompt component -->
+
+<app-connection-prompt #connectionPromptComponentReference></app-connection-prompt>

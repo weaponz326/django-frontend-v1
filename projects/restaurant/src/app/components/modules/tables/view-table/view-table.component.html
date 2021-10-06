@@ -1,1 +1,21 @@
-<p>view-table works!</p>
+<app-module-topnav [headings]="navHeading"></app-module-topnav>
+
+<div class="container">
+
+    <!-- table page form -->
+
+    <app-table-form #tableFormComponentReference></app-table-form>
+
+    <div class="row page-form">
+        <div class="col-md-6">
+            <smart-button #cancelButtonReference class="page-control-button float-end ms-1" routerLink="/home/tables/all-tables">Cancel</smart-button>
+            <smart-button #deleteButtonReference class="page-control-button float-end ms-1">Delete</smart-button>
+            <smart-button #saveButtonReference class="page-control-button float-end ms-1" (click)="saveTable()">Save</smart-button>
+        </div>
+    </div>
+
+</div>
+
+<!-- connection error prompt component -->
+
+<app-connection-prompt #connectionPromptComponentReference></app-connection-prompt>

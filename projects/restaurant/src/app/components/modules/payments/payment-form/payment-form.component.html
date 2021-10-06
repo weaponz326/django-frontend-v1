@@ -1,0 +1,64 @@
+<div class="row page-form">
+
+    <div class="col-md-12">
+        <h4>Payment Details</h4>
+    </div>
+
+    <div class="col-md-6">
+
+        <div class="row mb-1">
+            <div class="col-md-4"><label class="float-end">Payment ID :</label></div>
+            <div class="col-md-8">
+                <smart-input #paymentCodeInputReference class="w-100"></smart-input>
+            </div>
+        </div>
+
+        <div class="row mb-4">
+            <div class="col-md-4"><label class="float-end">Payment Date :</label></div>
+            <div class="col-md-8">
+                <smart-date-time-picker #paymentDateTimePickerReference class="w-100"
+                [calendarButton]="true" [formatString]="'yyyy-MM-dd'">
+                </smart-date-time-picker>
+            </div>
+        </div>
+
+        <div class="row mb-1">
+            <div class="col-md-4"><label class="float-end">Order ID :</label></div>
+            <div class="col-md-8">
+                <smart-input #orderCodeInputReference class="page-group-input" [disabled]="true"></smart-input>
+                <smart-button #orderSelectButtonReference class="page-group-button">...</smart-button>
+            </div>
+        </div>
+
+        <div class="row mb-4">
+            <div class="col-md-4"><label class="float-end">Amount Due :</label></div>
+            <div class="col-md-8">
+                <smart-numeric-text-box #totalAmountNumericTextBoxReference class="w-100"
+                [disabled]="true" [inputFormat]="'floatingPoint'" [precisionDigits]="2" [unit]="'$'">
+                </smart-numeric-text-box>
+            </div>
+        </div>
+
+        <div class="row mb-1">
+            <div class="col-md-4"><label class="float-end">Amount Paid :</label></div>
+            <div class="col-md-8">
+                <smart-numeric-text-box #amountPaidNumericTextBoxReference class="w-100"
+                [inputFormat]="'floatingPoint'" [precisionDigits]="2" [unit]="'$'">
+                </smart-numeric-text-box>
+            </div>
+        </div>
+
+        <div class="row mb-1">
+            <div class="col-md-4"><label class="float-end">Balance :</label></div>
+            <div class="col-md-8">
+                <smart-numeric-text-box #balanceNumericTextBoxReference class="w-100"
+                [inputFormat]="'floatingPoint'" [precisionDigits]="2" [unit]="'$'">
+                </smart-numeric-text-box>
+            </div>
+        </div>
+
+        <hr />
+
+    </div>
+
+</div>

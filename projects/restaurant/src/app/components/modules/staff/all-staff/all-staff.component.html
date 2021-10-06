@@ -1,1 +1,24 @@
-<p>all-staff works!</p>
+<app-module-topnav [headings]="navHeading" [showPrint]="true" (print)="onPrint()"></app-module-topnav>
+
+<div class="container">
+
+    <div class="row mb-3">
+        <div class="col-md-12">
+            <smart-button #newStaffButtonReference routerLink="/home/staff/new-staff">New Staff</smart-button>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-9">
+            <smart-grid #staffGridReference class="w-100"
+            [dataSource]="dataSource" [columns]="columns" [sorting]="sorting" [editing]="editing"
+            (onRowDoubleClick)="viewStaff($event)">
+            </smart-grid>
+        </div>
+    </div>
+
+</div>
+
+<!-- connection error prompt component -->
+
+<app-connection-prompt #connectionPromptComponentReference></app-connection-prompt>

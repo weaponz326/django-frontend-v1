@@ -1,1 +1,76 @@
-<p>view-roster works!</p>
+<app-module-topnav [headings]="navHeading"></app-module-topnav>
+
+<div class="container">
+
+    <div class="row page-form">
+
+        <div class="col-md-12">
+            <h4>Roster Details</h4>
+        </div>
+
+        <div class="col-md-6">
+
+            <div class="row mb-1">
+                <div class="col-md-4"><label class="float-end">Roster ID :</label></div>
+                <div class="col-md-8">
+                    <smart-input #rosterCodeInputReference class="w-100"></smart-input>
+                </div>
+            </div>
+
+            <div class="row mb-1">
+                <div class="col-md-4"><label class="float-end">Roster Name :</label></div>
+                <div class="col-md-8">
+                    <smart-input #rosterNameInputReference class="w-100"></smart-input>
+                </div>
+            </div>
+
+            <div class="row mb-1">
+                <div class="col-md-4"><label class="float-end">From Date :</label></div>
+                <div class="col-md-8">
+                    <smart-date-time-picker #fromDateTimePickerReference class="w-100"
+                    [calendarButton]="true" [formatString]="'yyyy-MM-dd'">
+                    </smart-date-time-picker>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-4"><label class="float-end">To Date :</label></div>
+                <div class="col-md-8">
+                    <smart-date-time-picker #toDateTimePickerReference class="w-100"
+                    [calendarButton]="true" [formatString]="'yyyy-MM-dd'">
+                    </smart-date-time-picker>
+                </div>
+            </div>
+
+            <div class="row page-form">
+                <div class="col-md-12">
+                    <smart-button #cancelButtonReference class="page-control-button float-end ms-1" routerLink="/home/roster/all-roster">Cancel</smart-button>
+                    <smart-button #deleteButtonReference class="page-control-button float-end ms-1">Delete</smart-button>
+                    <smart-button #saveButtonReference class="page-control-button float-end ms-1" (click)="saveRoster()">Save</smart-button>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-md-6">
+
+            <!-- shifts component -->
+
+            <app-shifts #shiftsComponentReference></app-shifts>
+
+        </div>
+
+    </div>
+
+    <hr class="top-divider" />
+    <hr class="bottom-divider" />
+
+    <!-- roster sheet component -->
+
+    <app-roster-sheet #rosterSheetComponentReference></app-roster-sheet>
+
+</div>
+
+<!-- connection error prompt component -->
+
+<app-connection-prompt #connectionPromptComponentReference></app-connection-prompt>

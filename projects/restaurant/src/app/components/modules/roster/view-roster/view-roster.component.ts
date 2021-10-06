@@ -1,4 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
+
+import { InputComponent } from 'smart-webcomponents-angular/input';
+import { DateTimePickerComponent } from 'smart-webcomponents-angular/datetimepicker';
+
+import { RosterApiService } from 'projects/restaurant/src/app/services/modules/roster-api/roster-api.service';
+import { ConnectionPromptComponent } from 'projects/personal/src/app/components/module-utilities/connection-prompt/connection-prompt.component'
+import { RosterSheetComponent } from '../roster-sheet/roster-sheet.component';
+
 
 @Component({
   selector: 'app-view-roster',
@@ -7,9 +16,72 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ViewRosterComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private router: Router,
+    private rosterApi: RosterApiService
+  ) { }
+
+  @ViewChild('rosterCodeInputReference', { read: InputComponent, static: false }) rosterCodeInput!: InputComponent;
+  @ViewChild('rosterNameInputReference', { read: InputComponent, static: false }) rosterNameInput!: InputComponent;
+  @ViewChild('fromDateTimePickerReference', { read: DateTimePickerComponent, static: false }) fromDateTimePicker!: DateTimePickerComponent;
+  @ViewChild('toDateTimePickerReference', { read: DateTimePickerComponent, static: false }) toDateTimePicker!: DateTimePickerComponent;
+
+  @ViewChild('connectionPromptComponentReference', { read: ConnectionPromptComponent, static: false }) connectionPrompt!: ConnectionPromptComponent;
+  @ViewChild('rosterSheetComponentReference', { read: RosterSheetComponent, static: false }) rosterSheet!: RosterSheetComponent;
+
+  navHeading: any[] = [
+    { text: "All Roster", url: "/home/roster/all-roster" },
+    { text: "View Roster", url: "/home/roster/view-roster" },
+  ];
 
   ngOnInit(): void {
+  }
+
+  ngAfterViewInit(): void {
+    this.getSingleRoster();
+  }
+
+  getSingleRoster(){
+    this.rosterApi.getSingleRoster()
+      .subscribe(
+        res => {
+          console.log(res);
+
+          this.rosterCodeInput.value = res.roster_code;
+          this.rosterNameInput.value = res.roster_name;
+          this.fromDateTimePicker.value = res.from_date;
+          this.toDateTimePicker.value = res.to_date;
+        },
+        err => {
+          console.log(err);
+          this.connectionPrompt.toast.open();
+        }
+      )
+  }
+
+  saveRoster(){
+    let rosterData = {
+      account: localStorage.getItem('restaurant_id'),
+      roster_code: this.rosterCodeInput.value,
+      roster_name: this.rosterNameInput.value,
+      from_date: this.fromDateTimePicker.value,
+      to_date: this.toDateTimePicker.value,
+    }
+
+    this.rosterApi.putRoster(rosterData)
+      .subscribe(
+        res => {
+          console.log(res);
+        },
+        err => {
+          console.log(err);
+          this.connectionPrompt.toast.open();
+        }
+      )
+
+    console.log(rosterData);
+
+    // this.rosterSheet.postSheetData();
   }
 
 }

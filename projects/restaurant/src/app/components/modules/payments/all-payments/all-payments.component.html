@@ -1,1 +1,23 @@
-<p>all-payments works!</p>
+<app-module-topnav [headings]="navHeading" [showPrint]="true" (print)="onPrint()"></app-module-topnav>
+
+<div class="container">
+
+    <div class="row mb-3">
+        <div class="col-md-12">
+            <smart-button #newPaymentButtonReference routerLink="/home/payments/new-payment">New Payment</smart-button>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-9">
+            <smart-grid #paymentsGridReference class="w-100"
+            [dataSource]="dataSource" [columns]="columns" [sorting]="sorting" [editing]="editing">
+            </smart-grid>
+        </div>
+    </div>
+
+</div>
+
+<!-- connection error prompt component -->
+
+<app-connection-prompt #connectionPromptComponentReference></app-connection-prompt>

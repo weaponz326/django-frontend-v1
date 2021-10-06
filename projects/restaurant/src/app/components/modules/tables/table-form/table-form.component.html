@@ -1,1 +1,52 @@
-<p>table-form works!</p>
+<div class="row page-form">
+
+    <div class="col-md-12">
+        <h4>Payment Details</h4>
+    </div>
+
+    <div class="col-md-6">
+
+        <div class="row mb-1">
+            <div class="col-md-4"><label class="float-end">Table No. :</label></div>
+            <div class="col-md-8">
+                <smart-input #tableNumberInputReference class="w-100"></smart-input>
+            </div>
+        </div>
+
+        <div class="row mb-1">
+            <div class="col-md-4"><label class="float-end">Table Type :</label></div>
+            <div class="col-md-8">
+                <smart-input #tableTypeInputReference class="w-100"></smart-input>
+            </div>
+        </div>
+
+        <div class="row mb-1">
+            <div class="col-md-4"><label class="float-end">Capacity :</label></div>
+            <div class="col-md-8">
+                <smart-numeric-text-box #capacityNumericTextBoxReference class="w-100"
+                [spinButtons]="true" [spinButtonsPosition]="'right'">
+                </smart-numeric-text-box>
+            </div>
+        </div>
+
+        <div class="row mb-1">
+            <div class="col-md-4"><label class="float-end">Location :</label></div>
+            <div class="col-md-8">
+                <smart-input #locationInputReference class="w-100"></smart-input>
+            </div>
+        </div>
+
+        <div class="row mb-1">
+            <div class="col-md-4"><label class="float-end">Table Status :</label></div>
+            <div class="col-md-8">
+                <smart-drop-down-list #tableStatusDropDownListReference class="w-100">
+                    <smart-list-item *ngFor="let status of statusSource" [value]="status">{{status}}</smart-list-item>
+                </smart-drop-down-list>
+            </div>
+        </div>
+
+        <hr />
+
+    </div>
+
+</div>

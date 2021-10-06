@@ -1,7 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
-// import { ChartsModule } from 'ng2-charts';
+import { ChartsModule } from 'ng2-charts';
+import { GridModule } from 'smart-webcomponents-angular/grid';
+import { ButtonModule } from 'smart-webcomponents-angular/button';
+import { InputModule } from 'smart-webcomponents-angular/input';
+import { DateTimePickerModule } from 'smart-webcomponents-angular/datetimepicker';
+import { DropDownListModule } from 'smart-webcomponents-angular/dropdownlist';
 
 import { ModuleUtilitiesModule } from 'projects/personal/src/app/components/module-utilities/module-utilities.module';
 
@@ -19,7 +25,6 @@ import { EditPersonnelComponent } from './edit-personnel/edit-personnel.componen
 import { ManageBatchesComponent } from './manage-batches/manage-batches.component';
 import { AddBatchComponent } from './add-batch/add-batch.component';
 import { EditBatchComponent } from './edit-batch/edit-batch.component';
-
 
 
 @NgModule({
@@ -41,7 +46,13 @@ import { EditBatchComponent } from './edit-batch/edit-batch.component';
   ],
   imports: [
     CommonModule,
-    // ChartsModule,
+    RouterModule,
+    ChartsModule,
+    GridModule,
+    ButtonModule,
+    InputModule,
+    DateTimePickerModule,
+    DropDownListModule,
     ModuleUtilitiesModule,
   ]
 })

@@ -9,6 +9,10 @@ export class SittingsPageComponent implements OnInit {
 
   constructor() { }
 
+  navLinks: any[] = [
+    { text: "All Sittings", url: "/home/sittings/all-sittings", icon: "bi bi-list-ul" },
+  ]
+
   ngOnInit(): void {
   }
 
