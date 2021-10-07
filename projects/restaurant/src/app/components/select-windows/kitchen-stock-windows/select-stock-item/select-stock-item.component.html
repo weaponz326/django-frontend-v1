@@ -1,0 +1,13 @@
+<div class="module-select-window">
+
+    <smart-window #window [label]="'Select Restaurant Kitchen Stock Item'">
+        <smart-grid #grid class="w-100"
+        [dataSource]="dataSource" [columns]="columns" [sorting]="sorting" (onRowDoubleClick)="selectRow($event)">
+        </smart-grid>
+    </smart-window>
+
+</div>
+
+<!-- connection error prompt component -->
+
+<app-connection-prompt #connectionPromptComponentReference></app-connection-prompt>

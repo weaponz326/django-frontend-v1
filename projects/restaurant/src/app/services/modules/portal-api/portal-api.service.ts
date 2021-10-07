@@ -32,7 +32,7 @@ export class PortalApiService {
   // get search results
   public getSearch(input: string, filter: string): Observable<any>{
     // return this.http.get(this.restaurantUrl + "module-portal/search?input=" + input + "&filter=" + filter);
-    return this.http.get(this.restaurantUrl + "accounts/search/?search=" + input);
+    return this.http.get(this.restaurantUrl + "accounts/search/?search=" + input + "&account=" + localStorage.getItem('restaurant_id'));
   }
 
   // get search detail of selected account

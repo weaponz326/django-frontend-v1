@@ -9,6 +9,12 @@ import { InputModule } from 'smart-webcomponents-angular/input';
 import { MultilineTextBoxModule } from 'smart-webcomponents-angular/multilinetextbox';
 
 import { ModuleUtilitiesModule } from 'projects/personal/src/app/components/module-utilities/module-utilities.module';
+import { MenuWindowsModule } from '../../select-windows/menu-windows/menu-windows.module';
+import { StaffWindowsModule } from '../../select-windows/staff-windows/staff-windows.module';
+import { OrdersWindowsModule } from '../../select-windows/orders-windows/orders-windows.module';
+import { DeliveriesWindowsModule } from '../../select-windows/deliveries-windows/deliveries-windows.module';
+import { CustomersWindowsModule } from '../../select-windows/customers-windows/customers-windows.module';
+import { ReservationsWindowsModule } from '../../select-windows/reservations-windows/reservations-windows.module';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SettingsComponent } from './settings/settings.component';
@@ -23,7 +29,6 @@ import { StaffDetailsComponent } from './rink-details/staff-details/staff-detail
 import { CustomerDetailsComponent } from './rink-details/customer-details/customer-details.component';
 import { ReservationDetailsComponent } from './rink-details/reservation-details/reservation-details.component';
 import { OrderDetailsComponent } from './rink-details/order-details/order-details.component';
-
 
 
 @NgModule({
@@ -47,10 +52,16 @@ import { OrderDetailsComponent } from './rink-details/order-details/order-detail
     FormsModule,
     RouterModule,
     ChartsModule,
-    ModuleUtilitiesModule,
     ButtonModule,
     InputModule,
     MultilineTextBoxModule,
+    ModuleUtilitiesModule,
+    MenuWindowsModule,
+    StaffWindowsModule,
+    OrdersWindowsModule,
+    DeliveriesWindowsModule,
+    CustomersWindowsModule,
+    ReservationsWindowsModule,
   ]
 })
 export class PortalModule { }

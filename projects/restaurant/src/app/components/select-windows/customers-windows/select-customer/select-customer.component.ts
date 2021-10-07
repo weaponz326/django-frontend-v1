@@ -1,35 +1,32 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 
-import { ButtonComponent } from 'smart-webcomponents-angular/button';
+import { WindowComponent } from 'smart-webcomponents-angular/window';
 import { GridComponent, GridColumn, DataAdapter, Smart } from 'smart-webcomponents-angular/grid';
 
 import { CustomersApiService } from 'projects/restaurant/src/app/services/modules/customers-api/customers-api.service';
-import { ConnectionPromptComponent } from 'projects/personal/src/app/components/module-utilities/connection-prompt/connection-prompt.component'
+import { ConnectionPromptComponent } from 'projects/personal/src/app/components/module-utilities/connection-prompt/connection-prompt.component';
 
 
 @Component({
-  selector: 'app-all-customers',
-  templateUrl: './all-customers.component.html',
-  styleUrls: ['./all-customers.component.scss']
+  selector: 'app-select-customer',
+  templateUrl: './select-customer.component.html',
+  styleUrls: ['./select-customer.component.scss']
 })
-export class AllCustomersComponent implements OnInit {
+export class SelectCustomerComponent implements OnInit {
 
   constructor(private customersApi: CustomersApiService) { }
 
-  @ViewChild('newMenuCustomerButtonReference', { read: ButtonComponent, static: false }) newCustomerButton!: ButtonComponent;
-  @ViewChild('customersGridReference', { read: GridComponent, static: false }) customersGrid!: GridComponent;
+  @Output() rowSelected = new EventEmitter<object>();
+
+  @ViewChild('window', { read: WindowComponent, static: false }) window!: WindowComponent;
+  @ViewChild('grid', { read: GridComponent, static: false }) grid!: GridComponent;
 
   @ViewChild('connectionPromptComponentReference', { read: ConnectionPromptComponent, static: false }) connectionPrompt!: ConnectionPromptComponent;
-
-  navHeading: any[] = [
-    { text: "All Customers", url: "/home/customers/all-customers" },
-  ];
 
   sorting = { enabled: true }
   filtering = { enabled: true }
   dataSource = [];
   columns: GridColumn[] = <GridColumn[]>[];
-  editing = {}
 
   ngOnInit(): void {
     this.initGrid();
@@ -47,6 +44,12 @@ export class AllCustomersComponent implements OnInit {
           this.connectionPrompt.toast.open();
         }
       )
+  }
+
+  selectRow(event: any){
+    this.rowSelected.emit(event.detail.row.data);
+    this.window.close();
+    console.log(event);
   }
 
   initGrid(){
@@ -68,10 +71,6 @@ export class AllCustomersComponent implements OnInit {
       { label: "Customer Name", dataField: "customer_name", width: "50%" },
       { label: "Phone No.", dataField: "phone", width: "25%" }
     ]
-  }
-
-  onPrint(){
-    console.log("lets start printing...");
   }
 
 }

@@ -8,6 +8,14 @@ import { MultilineTextBoxComponent } from 'smart-webcomponents-angular/multiline
 import { PortalApiService } from 'projects/restaurant/src/app/services/modules/portal-api/portal-api.service';
 import { ConnectionPromptComponent } from 'projects/personal/src/app/components/module-utilities/connection-prompt/connection-prompt.component'
 
+import { SelectMenuGroupComponent } from '../../../select-windows/menu-windows/select-menu-group/select-menu-group.component';
+import { SelectMenuItemComponent } from '../../../select-windows/menu-windows/select-menu-item/select-menu-item.component';
+import { SelectStaffComponent } from '../../../select-windows/staff-windows/select-staff/select-staff.component';
+import { SelectOrderComponent } from '../../../select-windows/orders-windows/select-order/select-order.component';
+import { SelectDeliveryComponent } from '../../../select-windows/deliveries-windows/select-delivery/select-delivery.component';
+import { SelectCustomerComponent } from '../../../select-windows/customers-windows/select-customer/select-customer.component';
+import { SelectReservationComponent } from '../../../select-windows/reservations-windows/select-reservation/select-reservation.component';
+
 
 @Component({
   selector: 'app-new-rink',
@@ -25,18 +33,36 @@ export class NewRinkComponent implements OnInit {
   @ViewChild('locationInputReference', { read: InputComponent, static: false }) locationInput!: InputComponent;
   @ViewChild('typeDropDownListReference', { read: InputComponent, static: false }) typeDropDownList!: InputComponent;
   @ViewChild('sourceInputReference', { read: InputComponent, static: false }) sourceInput!: InputComponent;
+  @ViewChild('sourceButtonReference', { read: ButtonComponent, static: false }) sourceButton!: ButtonComponent;
   @ViewChild('commentTextAreaReference', { read: MultilineTextBoxComponent, static: false }) commentTextArea!: MultilineTextBoxComponent;
   @ViewChild('sendButtonReference', { read: ButtonComponent, static: false }) sendButton!: ButtonComponent;
   @ViewChild('cancelButtonReference', { read: ButtonComponent, static: false }) cancelButton!: ButtonComponent;
 
   @ViewChild('connectionPromptComponentReference', { read: ConnectionPromptComponent, static: false }) connectionPrompt!: ConnectionPromptComponent;
 
+  @ViewChild('selectMenuGroupComponentReference', { read: SelectMenuGroupComponent, static: false }) selectMenuGroup!: SelectMenuGroupComponent;
+  @ViewChild('selectMenuItemComponentReference', { read: SelectMenuItemComponent, static: false }) selectMenuItem!: SelectMenuItemComponent;
+  @ViewChild('selectStaffComponentReference', { read: SelectStaffComponent, static: false }) selectStaff!: SelectStaffComponent;
+  @ViewChild('selectOrderComponentReference', { read: SelectOrderComponent, static: false }) selectOrder!: SelectOrderComponent;
+  @ViewChild('selectDeliveryComponentReference', { read: SelectDeliveryComponent, static: false }) selectDelivery!: SelectDeliveryComponent;
+  @ViewChild('selectCustomerComponentReference', { read: SelectCustomerComponent, static: false }) selectCustomer!: SelectCustomerComponent;
+  @ViewChild('selectReservationComponentReference', { read: SelectReservationComponent, static: false }) selectReservation!: SelectReservationComponent;
+
   navHeading: any[] = [
     { text: "New Rink", url: "/home/portal/search" },
     { text: "Send Rink", url: "/home/portal/search/new-rink" },
   ];
 
-  typeSource: any[] = [];
+  selectedSourceId: any;
+  typeSource: any[] = [
+    'Customer', 
+    'Delivery', 
+    'Menu Item', 
+    'Menu Group', 
+    'Order', 
+    'Staff', 
+    'Reservation', 
+  ];
 
   ngOnInit(): void {
   }
@@ -89,6 +115,37 @@ export class NewRinkComponent implements OnInit {
           this.connectionPrompt.toast.open();
         }
       )
+  }
+
+onTypeSelected(event: any){
+    this.sourceButton.disabled = false;
+    this.sourceInput.value = "";
+  }
+
+  openSourceWindow(){
+    let type = this.typeDropDownList.value;
+
+    if (type == "Menu Group") this.selectMenuGroup.window.open();
+    else if (type == "Menu Item") this.selectMenuItem.window.open();
+    else if (type == "Staff") this.selectStaff.window.open();
+    else if (type == "Order") this.selectOrder.window.open();
+    else if (type == "Delivery") this.selectDelivery.window.open();
+    else if (type == "Customer") this.selectCustomer.window.open();
+    else if (type == "Reservation") this.selectReservation.window.open();
+  }
+
+  onSourceSelected(sourceData: any){
+    console.log(sourceData);
+    let type = this.typeDropDownList.value;
+    this.selectedSourceId = sourceData.id;
+
+    if (type == "Menu Group") this.sourceInput.value = sourceData.menu_group;
+    else if (type == "Menu Item") this.sourceInput.value = sourceData.item_name;  
+    else if (type == "Staff") this.sourceInput.value = sourceData.staff_name;
+    else if (type == "Order") this.sourceInput.value = sourceData.order_code;
+    else if (type == "Delivery") this.sourceInput.value = sourceData.delivery_code;
+    else if (type == "Customer") this.sourceInput.value = sourceData.customer_name;
+    else if (type == "Reservation") this.sourceInput.value = sourceData.reservation_code;
   }
 
 }
