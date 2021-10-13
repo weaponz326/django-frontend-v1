@@ -28,7 +28,7 @@
     "ngx-google-places-autocomplete": "^2.0.5",
     "pdfmake": "^0.2.2",
     "rxjs": "~6.6.0",
-    "smart-webcomponents-angular": "^10.0.25",
+    "smart-webcomponents-angular": "^10.0.50",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
   },

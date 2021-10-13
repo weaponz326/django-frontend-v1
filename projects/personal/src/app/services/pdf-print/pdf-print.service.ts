@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import * as pdfMake from 'pdfmake/build/pdfmake';
 import * as pdfFonts from 'pdfmake/build/vfs_fonts';
 (pdfMake as any).vfs = pdfFonts.pdfMake.vfs;
+import htmlToPdfmake from 'html-to-pdfmake';
+export default 'html-to-pdfmake';
 
 
 @Injectable({
@@ -30,17 +32,18 @@ export class PdfPrintService {
   //   this.pdfMake.createPdf(def).open();
   // }
 
-  async generatePdf(documentDefinition: any) {
-    const def = { content: documentDefinition };
-    pdfMake.createPdf(def).open();
+  generatePdf(html: any) {
+    var content = htmlToPdfmake(html);
+    const documentDefinition = { content: content };
+    pdfMake.createPdf(documentDefinition).open();
   }
 
-  async printPdf(documentDefinition: any) {
+  printPdf(documentDefinition: any) {
     const def = { content: documentDefinition };
     pdfMake.createPdf(def).print();
   }
 
-  async downloadPdf(documentDefinition: any) {
+  downloadPdf(documentDefinition: any) {
     const def = { content: documentDefinition };
     pdfMake.createPdf(def).download();
   }

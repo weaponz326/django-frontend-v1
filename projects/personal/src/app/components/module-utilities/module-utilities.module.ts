@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 import { ToastModule } from 'smart-webcomponents-angular/toast';
+import { WindowModule } from 'smart-webcomponents-angular/window';
 
 import { ModuleSidenavComponent } from './module-sidenav/module-sidenav.component';
 import { ModuleTopnavComponent } from './module-topnav/module-topnav.component';
@@ -23,6 +24,7 @@ import { DeleteConfirmationComponent } from './delete-confirmation/delete-confir
     CommonModule,
     RouterModule,
     ToastModule,
+    WindowModule,
   ],
   exports: [
     ModuleSidenavComponent,

@@ -23,9 +23,9 @@
 
             <div class="row">
                 <div class="col-md-12">
-                    <smart-button #cancelButtonReference class="page-control-button float-end ms-1">Cancel</smart-button>
-                    <smart-button #cancelButtonReference class="page-control-button float-end ms-1">Delete</smart-button>
-                    <smart-button #cancelButtonReference class="page-control-button float-end ms-1">Save</smart-button>
+                    <smart-button #cancelButtonReference class="page-control-button float-end ms-1" routerLink="/home/menu/all-menu-groups">Cancel</smart-button>
+                    <smart-button #deleteButtonReference class="page-control-button float-end ms-1" (click)="deleteMenuGroup()">Delete</smart-button>
+                    <smart-button #saveButtonReference class="page-control-button float-end ms-1" (click)="saveMenuGroup()">Save</smart-button>
                 </div>
             </div>
 
@@ -60,3 +60,7 @@
 <!-- connection error prompt component -->
 
 <app-connection-prompt #connectionPromptComponentReference></app-connection-prompt>
+
+<!-- delete confirmation window component -->
+
+<app-delete-confirmation #deleteConfirmationComponentReference (confirmEvent)="deleteConfirmationSelected($event)"></app-delete-confirmation>

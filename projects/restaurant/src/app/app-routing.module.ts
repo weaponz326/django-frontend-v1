@@ -81,10 +81,6 @@ const routes: Routes = [
         path: "kitchen-stock",
         loadChildren: () => import("./pages/modules/kitchen-stock-page/kitchen-stock-page.module").then(m => m.KitchenStockPageModule)
       },
-      {
-        path: "sittings",
-        loadChildren: () => import("./pages/modules/sittings-page/sittings-page.module").then(m => m.SittingsPageModule)
-      },
     ]
   }
 ];

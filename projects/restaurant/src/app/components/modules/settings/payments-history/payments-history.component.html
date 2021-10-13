@@ -1,1 +1,42 @@
 <app-module-topnav [headings]="navHeading"></app-module-topnav>
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-8">
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Payment ID</th>
+                        <th scope="col">Payment Date</th>
+                        <th scope="col">Amount</th>
+                        <th scope="col">Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let history of historyData">
+                        <td>{{history.payment_code}}</td>
+                        <td>{{history.payment_date}}</td>
+                        <td>{{history.amount}}</td>
+                        <td>{{history.status}}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+        <div class="col-md-4">
+            <div class="row mb-3">
+                <div class="col">
+                    <smart-button #buttonReference class="float-right" routerLink="/home/settings/billing">Billing</smart-button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- connection error prompt component -->
+
+<app-connection-prompt #connectionPromptComponentReference></app-connection-prompt>

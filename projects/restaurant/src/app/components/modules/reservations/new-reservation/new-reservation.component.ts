@@ -1,4 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
+
+import { ButtonComponent } from 'smart-webcomponents-angular/button';
+
+import { ReservationsApiService } from 'projects/restaurant/src/app/services/modules/reservations-api/reservations-api.service';
+import { ReservationFormComponent } from '../reservation-form/reservation-form.component';
+import { ConnectionPromptComponent } from 'projects/personal/src/app/components/module-utilities/connection-prompt/connection-prompt.component'
+
 
 @Component({
   selector: 'app-new-reservation',
@@ -7,9 +15,51 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NewReservationComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private router: Router,
+    private reservationsApi: ReservationsApiService
+  ) { }
+
+  @ViewChild('reservationFormComponentReference', { read: ReservationFormComponent, static: false }) reservationForm!: ReservationFormComponent;
+  @ViewChild('connectionPromptComponentReference', { read: ConnectionPromptComponent, static: false }) connectionPrompt!: ConnectionPromptComponent;
+
+  navHeading: any[] = [
+    { text: "New Reservation", url: "/home/reservations/new-reservation" },
+  ];
 
   ngOnInit(): void {
+  }
+
+  saveReservation(){
+    console.log('u are saving a new reservation');
+
+    var reservationData = {
+      account: localStorage.getItem('restaurant_id'),
+      customer: this.reservationForm.selectedCustomerId,
+      reservation_code: this.reservationForm.reservationCodeInput.value,
+      reservation_date: this.reservationForm.reservationDateTimePicker.value,
+      customer_name: this.reservationForm.customerNameInput.value,
+      number_guests: this.reservationForm.numberGuestsNumericTextBox.value,
+      number_tables: this.reservationForm.numberTablesNumericTextBox.value,
+      arrival_date: this.reservationForm.arrivalDateTimePicker.value,
+      reservation_status: this.reservationForm.reservationStatusDropDownList.value,
+    }
+
+    console.log(reservationData);
+
+    this.reservationsApi.postReservation(reservationData)
+      .subscribe(
+        res => {
+          console.log(res);
+
+          sessionStorage.setItem('restaurant_reservation_id', res.id);
+          this.router.navigateByUrl('/suite/reservations/view-reservation');
+        },
+        err => {
+          console.log(err);
+          this.connectionPrompt.toast.open();
+        }
+      )
   }
 
 }

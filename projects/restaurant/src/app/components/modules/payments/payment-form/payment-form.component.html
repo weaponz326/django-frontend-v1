@@ -26,7 +26,7 @@
             <div class="col-md-4"><label class="float-end">Order ID :</label></div>
             <div class="col-md-8">
                 <smart-input #orderCodeInputReference class="page-group-input" [disabled]="true"></smart-input>
-                <smart-button #orderSelectButtonReference class="page-group-button">...</smart-button>
+                <smart-button #orderSelectButtonReference class="page-group-button" (click)="selectOrder.window.open()">...</smart-button>
             </div>
         </div>
 
@@ -62,3 +62,7 @@
     </div>
 
 </div>
+
+<!-- select order window component reference -->
+
+<app-select-order #selectOrderComponentReference (rowSelected)="onOrderSelected($event)"></app-select-order>

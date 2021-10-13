@@ -11,7 +11,6 @@ export class KitchenStockPageComponent implements OnInit {
 
   navLinks: any[] = [
     { text: "All Items", url: "/home/kitchen-stock/all-stock-items", icon: "bi bi-list-ul" },
-    { text: "New Item", url: "/home/kitchen-stock/add-stock-item", icon: "bi bi-plus-square" }
   ]
 
   ngOnInit(): void {

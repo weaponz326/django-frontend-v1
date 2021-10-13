@@ -1,10 +1,10 @@
 <app-module-topnav [headings]="navHeading" [showPrint]="true" (print)="onPrint()"></app-module-topnav>
 
-<div class="container">
+<div #print class="container">
 
     <div class="row mb-3">
         <div class="col-md-12">
-            <smart-button #newMenuGroupButtonReference>New Menu Group</smart-button>
+            <smart-button #newMenuGroupButtonReference (click)="menuGroupGrid.beginEdit(1)">New Menu Group</smart-button>
         </div>
     </div>
 

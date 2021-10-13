@@ -41,7 +41,7 @@ export class ViewUserComponent implements OnInit {
       .subscribe(
         res => {
           console.log(res);
-          this.userNameInput.value = res.user_name;
+          this.userNameInput.value = res.personal_name;
           this.accessLevelDropDownList.value = res.user_level;
 
           this.accessFormComponent.initAccessLevel();
@@ -73,9 +73,9 @@ export class ViewUserComponent implements OnInit {
   }
 
   changeLevel(event: any)  {
-    console.log(event.args.item.value);
+    console.log(event.detail.value);
 
-    this.accessFormComponent.setLevelAccess(event.args.item.value);
+    this.accessFormComponent.setLevelAccess(event.detail.value);
   }
 
 }

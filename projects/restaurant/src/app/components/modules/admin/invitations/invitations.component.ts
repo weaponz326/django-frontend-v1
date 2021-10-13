@@ -29,6 +29,11 @@ export class InvitationsComponent implements OnInit {
     { text: "Invitations", url: "/home/admin/invitations" },
   ];
 
+  sorting = { enabled: true }
+  filtering = { enabled: true }
+  dataSource = [];
+  columns: GridColumn[] = <GridColumn[]>[];
+
   ngOnInit(): void {
   }
 
@@ -41,7 +46,7 @@ export class InvitationsComponent implements OnInit {
       .subscribe(
         res => {
           console.log(res);
-          return res;
+          this.dataSource = res;
         },
         err => {
           console.log(err);
@@ -51,8 +56,8 @@ export class InvitationsComponent implements OnInit {
   }
 
   viewInvitation(event: any){
-    console.log(event.args.row.bounddata);
-    sessionStorage.setItem('restaurant_invitation_id', event.args.row.bounddata.id);
+    console.log(event.detail.row.data);
+    sessionStorage.setItem('restaurant_invitation_id', event.detail.row.data.id);
 
     this.router.navigateByUrl('/home/admin/view-invitation');
   }
@@ -61,7 +66,7 @@ export class InvitationsComponent implements OnInit {
   // grid config
 
   setGridConfig(){
-    this.grid.dataSource = new Smart.DataAdapter(
+    this.dataSource = new Smart.DataAdapter(
       <DataAdapter>{
         id: 'id',
         dataSource: this.getAllInvitations(),
@@ -74,15 +79,11 @@ export class InvitationsComponent implements OnInit {
       }
     );
 
-    this.grid.columns = <GridColumn[]>[
+    this.columns = <GridColumn[]>[
       { label: "Invitation Date", dataField: "date_sent", width: "25%" },
       { label: "User's Name", dataField: "invitee_name", width: "50%" },
       { label: "Invitation Status", dataField: "invitation_status", width: "25%" },
     ];
-
-    this.grid.paging.enabled = true;
-    this.grid.sorting.enabled = true;
-    this.grid.filtering.enabled = true;
   }
-  
+
 }

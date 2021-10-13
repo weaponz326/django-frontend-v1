@@ -1,13 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 
 import { ButtonComponent } from 'smart-webcomponents-angular/button';
-import { GridComponent, GridColumn, DataAdapter, Smart } from 'smart-webcomponents-angular/grid';
-import { InputComponent } from 'smart-webcomponents-angular/input';
-import { DropDownListComponent } from 'smart-webcomponents-angular/dropdownlist';
-import { DateTimePickerComponent } from 'smart-webcomponents-angular/datetimepicker';
 
 import { OrdersApiService } from 'projects/restaurant/src/app/services/modules/orders-api/orders-api.service';
 import { ConnectionPromptComponent } from 'projects/personal/src/app/components/module-utilities/connection-prompt/connection-prompt.component'
+import { OrderFormComponent } from '../order-form/order-form.component';
 import { OrderItemsComponent } from '../order-items/order-items.component';
 
 
@@ -20,22 +17,14 @@ export class ViewOrderComponent implements OnInit {
 
   constructor(private ordersApi: OrdersApiService) { }
 
-  @ViewChild('orderCodeInputReference', { read: InputComponent, static: false }) orderCodeInput!: InputComponent;
-  @ViewChild('orderDateTimePickerReference', { read: DateTimePickerComponent, static: false }) orderDateTimePicker!: DateTimePickerComponent;
-  @ViewChild('customerNameInputReference', { read: InputComponent, static: false }) customerNameInput!: InputComponent;
-  @ViewChild('orderTypeDropDownListReference', { read: DropDownListComponent, static: false }) orderTypeDropDownList!: DropDownListComponent;
-  @ViewChild('orderStatusDropDownListReference', { read: DropDownListComponent, static: false }) orderStatusDropDownList!: DropDownListComponent;
-
   @ViewChild('connectionPromptComponentReference', { read: ConnectionPromptComponent, static: false }) connectionPrompt!: ConnectionPromptComponent;
+  @ViewChild('orderFormComponentReference', { read: OrderFormComponent, static: false }) orderForm!: OrderFormComponent;
   @ViewChild('orderItemsComponentReference', { read: OrderItemsComponent, static: false }) orderItems!: OrderItemsComponent;
 
   navHeading: any[] = [
     { text: "All Orders", url: "/home/orders/all-orders" },
     { text: "View Order", url: "/home/orders/view-order" },
   ];
-
-  orderTypeSource: any[] = ["Sitting", "Delivery", "Drive Through", "Take Away"];
-  orderStatusSource: any[] = ["Ordered", "Processing", "Delivered"];
 
   ngOnInit(): void {
   }
@@ -46,11 +35,13 @@ export class ViewOrderComponent implements OnInit {
         res => {
           console.log(res);
 
-          this.orderCodeInput.value = res.order_code;
-          this.orderDateTimePicker.value = res.order_date;
-          this.customerNameInput.value = res.customer_name;
-          this.orderTypeDropDownList.value = res.order_type;
-          this.orderStatusDropDownList.value = res.order_status;
+          this.orderForm.orderCodeInput.value = res.order_code;
+          this.orderForm.orderDateTimePicker.value = res.order_date;
+          this.orderForm.orderTypeDropDownList.value = res.order_type;
+          this.orderForm.orderStatusDropDownList.value = res.order_status;
+
+          this.orderForm.selectedCustomerId = res.customer.id;
+          this.orderForm.customerNameInput.value = res.customer.customer_name;
         },
         err => {
           console.log(err);
@@ -62,11 +53,12 @@ export class ViewOrderComponent implements OnInit {
   saveOrder(){
     let orderData = {
       account: sessionStorage.getItem('restaurant_id'),
-      order_code: this.orderCodeInput.value,
-      order_date: this.orderDateTimePicker.value,
-      customer_name: this.customerNameInput.value,
-      order_type: this.orderTypeDropDownList.value,
-      order_status: this.orderStatusDropDownList.value,
+      order_code: this.orderForm.orderCodeInput.value,
+      order_date: this.orderForm.orderDateTimePicker.value,
+      customer: this.orderForm.selectedCustomerId,
+      customer_name: this.orderForm.customerNameInput.value,
+      order_type: this.orderForm.orderTypeDropDownList.value,
+      order_status: this.orderForm.orderStatusDropDownList.value,
       // order_total: this.orderDetails.grid.getcolumnaggregateddata('total_price', ['sum'])['sum'],
     }
 

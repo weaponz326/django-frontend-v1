@@ -8,6 +8,7 @@ import { ButtonModule } from 'smart-webcomponents-angular/button';
 import { InputModule } from 'smart-webcomponents-angular/input';
 import { MultilineTextBoxModule } from 'smart-webcomponents-angular/multilinetextbox';
 import { DropDownListModule } from 'smart-webcomponents-angular/dropdownlist';
+import { NumericTextBoxModule } from 'smart-webcomponents-angular/numerictextbox';
 
 import { ModuleUtilitiesModule } from 'projects/personal/src/app/components/module-utilities/module-utilities.module';
 import { CustomWidgetsModule } from 'projects/personal/src/app/components/custom-widgets/custom-widgets.module';
@@ -47,6 +48,7 @@ import { PaymentsHistoryComponent } from './payments-history/payments-history.co
     InputModule,
     MultilineTextBoxModule,
     DropDownListModule,
+    NumericTextBoxModule,
     ModuleUtilitiesModule,
     CustomWidgetsModule,
   ]

@@ -181,7 +181,6 @@
 				- reservations page (Mr)(C)
 				- orders page (Mr)(C)
 				- kitchen stock page (Mr)(C)
-				- sittings page (Mr)(C)
 		+ components
 			+ register form (M)
 				- register form (C)
@@ -304,13 +303,6 @@
 					- add stock item (C)
 					- edit stock item (C)
 					- stock item form (C)
-				+ sittings (M)
-					- dashboard (C)
-					- settings (C)
-					- all sittings (C)
-					- new sitting (C)
-					- view sitting (C)
-					- sitting form (C)
 			+ select windows
 				+ menu windows (M)
           			- select menu group (C)
@@ -333,8 +325,6 @@
           			- select order (C)
 				+ kitchen stock windows (M)
           			- select kitchen stock (C)
-				+ sittings windows (M)
-          			- select sitting (C)
       		+ printing
 				+ menu print (M)
           			- all menu print (C)
@@ -366,9 +356,6 @@
 				+ kitchen stock print (M)
           			- all kitchen stock print (C)
           			- view kitchen stock print (C)
-				+ sittings print (M)
-          			- all sittings
-          			- view sitting
 		+ services
 			- register api (S)
 			+ modules
@@ -385,7 +372,6 @@
 				- reservations api (S)
 				- orders api (S)
 				- kitchen stock api (S)
-				- sittings api (S)
 		+ models
 			- admin model
 			- portal model
@@ -399,7 +385,6 @@
 			- reservations model
 			- orders model
 			- kitchen stock model
-			- sittings model
 		+ guards
 			- account (G)
 			+ modules access
@@ -415,7 +400,6 @@
 				- reservations (G)
 				- orders (G)
 				- kitchen stock (G)
-				- sittings (G)
 	+ school (A)
 		+ pages
 			- guest landing page (Mr)(C)

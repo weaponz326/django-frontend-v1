@@ -42,8 +42,11 @@ export class ViewPaymentComponent implements OnInit {
 
           this.paymentForm.paymentCodeInput.value = res.payment_code;
           this.paymentForm.paymentDateTimePicker.value = res.payment_date;
-          this.paymentForm.paymentCodeInput.value = res.order_code;
           this.paymentForm.amountPaidNumericTextBox.value = res.amount_paid;
+
+          this.paymentForm.selectedOrderId = res.order.id;
+          this.paymentForm.paymentCodeInput.value = res.order.order_code;
+          this.paymentForm.totalAmountNumericTextBox.value = res.order.total_amount;
         },
         err => {
           console.log(err);
@@ -59,7 +62,7 @@ export class ViewPaymentComponent implements OnInit {
       account: localStorage.getItem('restaurant_id'),
       payment_code: this.paymentForm.paymentCodeInput.value,
       payment_date: this.paymentForm.paymentDateTimePicker.value,
-      order_code: this.paymentForm.paymentCodeInput.value,
+      order: this.paymentForm.selectedOrderId,
       amount_paid: this.paymentForm.amountPaidNumericTextBox.value,
     }
 

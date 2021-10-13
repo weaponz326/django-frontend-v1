@@ -1,1 +1,79 @@
-<p>reservation-form works!</p>
+<div class="row page-form">
+
+    <div class="col-md-12">
+        <h4>Reservation Details</h4>
+    </div>
+
+    <div class="col-md-6">
+
+        <div class="row mb-1">
+            <div class="col-md-4"><label class="float-end">Reservation ID :</label></div>
+            <div class="col-md-8">
+                <smart-input #reservationCodeInputReference class="w-100"></smart-input>
+            </div>
+        </div>
+
+        <div class="row mb-1">
+            <div class="col-md-4"><label class="float-end">Reservation Date :</label></div>
+            <div class="col-md-8">
+                <smart-date-time-picker #reservationDateTimePickerReference class="w-100"
+                [calendarButton]="true" [formatString]="'yyyy-MM-dd'">
+                </smart-date-time-picker>
+            </div>
+        </div>
+
+        <div class="row mb-1">
+            <div class="col-md-4"><label class="float-end">Customer Name :</label></div>
+            <div class="col-md-8">
+                <smart-input #customerNameInputReference class="page-group-input"></smart-input>
+                <smart-button #customerSelectButtonReference class="page-group-button" (click)="selectCustomer.window.open()">...</smart-button>
+            </div>
+        </div>
+
+        <div class="row mb-1">
+            <div class="col-md-4"><label class="float-end">Number of Guests :</label></div>
+            <div class="col-md-8">
+                <smart-numeric-text-box #guestsNumberNumericTextBoxReference class="w-100"
+                [spinButtons]="true" [spinButtonsPosition]="'right'">
+                </smart-numeric-text-box>
+            </div>
+        </div>
+
+        <div class="row mb-1">
+            <div class="col-md-4"><label class="float-end">Number of Tables :</label></div>
+            <div class="col-md-8">
+                <smart-numeric-text-box #tablesNumberNumericTextBoxReference class="w-100"
+                [spinButtons]="true" [spinButtonsPosition]="'right'">
+                </smart-numeric-text-box>
+            </div>
+        </div>
+
+        <div class="row mb-1">
+            <div class="col-md-4"><label class="float-end">Arrival Date :</label></div>
+            <div class="col-md-8">
+                <smart-date-time-picker #arrivalDateTimePickerReference class="w-100"
+                [calendarButton]="true" [formatString]="'yyyy-MM-dd'">
+                </smart-date-time-picker>
+            </div>
+        </div>
+
+        <div class="row mb-1">
+            <div class="col-md-4"><label class="float-end">Reservation ID :</label></div>
+            <div class="col-md-8">
+                <smart-drop-down-list #reservationStatusDropDownListReference class="w-100">
+                    <smart-list-item [value]="'Expecting'">Expecting</smart-list-item>
+                    <smart-list-item [value]="'Arrived'">Arrived</smart-list-item>
+                    <smart-list-item [value]="'Cancelled'">Cancelled</smart-list-item>
+                </smart-drop-down-list>
+            </div>
+        </div>
+
+        <hr />
+
+    </div>
+
+</div>
+
+<!-- select customer window component reference -->
+
+<app-select-customer #selectCustomerComponentReference (rowSelected)="onCustomerSelected($event)"></app-select-customer>

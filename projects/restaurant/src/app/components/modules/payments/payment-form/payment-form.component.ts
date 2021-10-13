@@ -4,6 +4,8 @@ import { InputComponent } from 'smart-webcomponents-angular/input';
 import { NumericTextBoxComponent } from 'smart-webcomponents-angular/numerictextbox';
 import { DateTimePickerComponent } from 'smart-webcomponents-angular/datetimepicker';
 
+import { SelectOrderComponent } from '../../../select-windows/orders-windows/select-order/select-order.component';
+
 
 @Component({
   selector: 'app-payment-form',
@@ -21,7 +23,19 @@ export class PaymentFormComponent implements OnInit {
   @ViewChild('amountPaidNumericTextBoxReference', { read: NumericTextBoxComponent, static: false }) amountPaidNumericTextBox!: NumericTextBoxComponent;
   @ViewChild('balanceNumericTextBoxReference', { read: NumericTextBoxComponent, static: false }) balanceNumericTextBox!: NumericTextBoxComponent;
 
+  @ViewChild('selectOrderComponentReference', { read: SelectOrderComponent, static: false }) selectOrder!: SelectOrderComponent;
+
+  selectedOrderId: any;
+
   ngOnInit(): void {
+  }
+
+  onOrderSelected(orderData: any){
+    console.log(orderData);
+
+    this.selectedOrderId = orderData.id;
+    this.orderCodeInput.value = orderData.order_code;
+    this.totalAmountNumericTextBox.value = orderData.total_amount;
   }
 
 }

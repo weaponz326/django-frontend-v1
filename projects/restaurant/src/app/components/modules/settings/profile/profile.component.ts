@@ -39,19 +39,19 @@ export class ProfileComponent implements OnInit {
   }
 
   getBasic(){
-  this.settingsApi.getAccount()
-    .subscribe(
-      res => {
-        console.log(res);
-        this.basic.nameInput.value = res.name;
-        this.basic.locationInput.value = res.location;
-        this.basic.aboutTextArea.value = res.about;
-      },
-      err => {
-        console.log(err);
-        this.connectionPrompt.toast.open();
-      }
-    )
+    this.settingsApi.getAccount()
+      .subscribe(
+        res => {
+          console.log(res);
+          this.basic.nameInput.value = res.name;
+          this.basic.locationInput.value = res.location;
+          this.basic.aboutTextArea.value = res.about;
+        },
+        err => {
+          console.log(err);
+          this.connectionPrompt.toast.open();
+        }
+      )
   }
 
   getExtended(){

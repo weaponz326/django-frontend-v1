@@ -10,7 +10,10 @@
 
     <div class="row">
         <div class="col-md-8">
-            <smart-grid #gridReference class="w-100"></smart-grid>
+            <smart-grid #gridReference class="w-100"
+            [dataSource]="dataSource" [columns]="columns" [sorting]="sorting" [filtering]="filtering"
+            (onRowDoubleClick)="viewInvitation($event)">
+            </smart-grid>
         </div>
     </div>
 

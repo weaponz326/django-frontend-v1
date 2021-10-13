@@ -119,6 +119,8 @@ hr {
 }
 
 .billing-form smart-input,
+.billing-form smart-drop-down-list,
+.billing-form smart-numeric-text-box,
 .billing-form smart-button{
 	height: 36px;
 }

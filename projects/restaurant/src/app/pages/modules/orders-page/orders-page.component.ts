@@ -11,6 +11,7 @@ export class OrdersPageComponent implements OnInit {
 
   navLinks: any[] = [
     { text: "All Orders", url: "/home/orders/all-orders", icon: "bi bi-list-ul" },
+    { text: "Add Order", url: "/home/orders/add-order", icon: "bi bi-plus-square" },
   ]
 
   ngOnInit(): void {

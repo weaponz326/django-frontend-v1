@@ -21,25 +21,25 @@ export class KitchenStockApiService {
   // create and get all items belonging to user
 
   public getItems(): Observable<any>{
-    return this.http.get(this.restaurantUrl + "module-stock/stock-item?account=" + localStorage.getItem('restaurant_id'));
+    return this.http.get(this.restaurantUrl + "module-kitchen-stock/stock-item?account=" + localStorage.getItem('restaurant_id'));
   }
 
   public postItem(item: any): Observable<any>{
-    return this.http.post(this.restaurantUrl + "module-stock/stock-item/", item);
+    return this.http.post(this.restaurantUrl + "module-kitchen-stock/stock-item/", item);
   }
 
   // retreive, update and delete item
 
   public getSingleItem(): Observable<any>{
-    return this.http.get(this.restaurantUrl + "module-stock/stock-item/" + sessionStorage.getItem('restaurant_stock_item_id'));
+    return this.http.get(this.restaurantUrl + "module-kitchen-stock/stock-item/" + sessionStorage.getItem('restaurant_stock_item_id'));
   }
 
   public putItem(itemData: any): Observable<any>{
-    return this.http.put(this.restaurantUrl + "module-stock/stock-item/" + sessionStorage.getItem('restaurant_stock_item_id'), itemData);
+    return this.http.put(this.restaurantUrl + "module-kitchen-stock/stock-item/" + sessionStorage.getItem('restaurant_stock_item_id'), itemData);
   }
 
   public deleteItem(): Observable<any>{
-    return this.http.delete(this.restaurantUrl + "module-stock/stock-item/" + sessionStorage.getItem('restaurant_stock_item_id'));
+    return this.http.delete(this.restaurantUrl + "module-kitchen-stock/stock-item/" + sessionStorage.getItem('restaurant_stock_item_id'));
   }
 
 }

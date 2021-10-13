@@ -18,7 +18,7 @@ export class MenuApiService {
 
   restaurantUrl = environment.restaurantUrl;
 
-  // create and get all menu items belonging to user
+  // create and get all menu groups belonging to user
 
   public getMenuGroups(): Observable<any>{
     return this.http.get(this.restaurantUrl + "module-menu/menu-group?account=" + localStorage.getItem('restaurant_id'));
@@ -26,6 +26,20 @@ export class MenuApiService {
 
   public postMenuGroup(group: any): Observable<any>{
     return this.http.post(this.restaurantUrl + "module-menu/menu-group/", group);
+  }
+
+  // retreive, update and delete menu item
+
+  public getSingleMenuGroup(): Observable<any>{
+    return this.http.get(this.restaurantUrl + "module-menu/menu-item/" + sessionStorage.getItem('restaurant_menu_group_id'));
+  }
+
+  public putMenuGroup(item: any): Observable<any>{
+    return this.http.put(this.restaurantUrl + "module-menu/menu-item/" + sessionStorage.getItem('restaurant_menu_group_id'), item);
+  }
+
+  public deleteMenuGroup(): Observable<any>{
+    return this.http.delete(this.restaurantUrl + "module-menu/menu-item/" + sessionStorage.getItem('restaurant_menu_group_id'));
   }
 
   // create and get all menu items belonging to user

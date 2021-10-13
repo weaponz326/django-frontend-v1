@@ -19,8 +19,6 @@ export class SettingsApiService {
   restaurantUrl = environment.restaurantUrl;
   personalUrl = environment.personalUrl;
 
-  // get all profile categories
-
   public getAccount(): Observable<any>{
     return this.http.get(this.restaurantUrl + "accounts/account/" + localStorage.getItem('restaurant_id'));
   }
@@ -37,6 +35,21 @@ export class SettingsApiService {
   // send extended profile
   public putExtendedProfile(extended: any): Observable<any>{
     return this.http.put(this.restaurantUrl + "module-settings/extended-profile/" + localStorage.getItem('restaurant_id'), extended);
+  }
+
+  // subscriptions
+
+  public getSubscription(): Observable<any>{
+    return this.http.get(this.restaurantUrl + "module-settings/subscription/" + localStorage.getItem('restaurant_id'));
+  }
+
+  public putSubscription(subscription: any): Observable<any>{
+    return this.http.put(this.restaurantUrl + "module-settings/subscription/" + localStorage.getItem('restaurant_id'), subscription);
+  }
+
+  // history
+  public getHistory(): Observable<any>{
+    return this.http.get(this.restaurantUrl + "module-settings/history/" + localStorage.getItem('restaurant_id'));
   }
 
 }

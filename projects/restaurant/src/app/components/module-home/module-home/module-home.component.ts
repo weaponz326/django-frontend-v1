@@ -25,7 +25,6 @@ export class ModuleHomeComponent implements OnInit {
   @ViewChild('reservationsTooltipReference', { read: TooltipComponent, static: false }) reservationsTooltip!: TooltipComponent;
   @ViewChild('ordersTooltipReference', { read: TooltipComponent, static: false }) ordersTooltip!: TooltipComponent;
   @ViewChild('kitchenStockTooltipReference', { read: TooltipComponent, static: false }) kitchenStockTooltip!: TooltipComponent;
-  @ViewChild('sittingsTooltipReference', { read: TooltipComponent, static: false }) sittingsTooltip!: TooltipComponent;
 
   ngOnInit(): void {
   }

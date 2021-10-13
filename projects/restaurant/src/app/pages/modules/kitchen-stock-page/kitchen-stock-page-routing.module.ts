@@ -16,8 +16,6 @@ const routes: Routes = [
       { path: "", component: DashboardComponent },
       { path: "dashboard", component: DashboardComponent },
       { path: "all-stock-items", component: AllStockItemsComponent },
-      { path: "add-stock-item", component: AddStockItemComponent },
-      { path: "view-stock-item", component: EditStockItemComponent }
     ]
   }
 ];

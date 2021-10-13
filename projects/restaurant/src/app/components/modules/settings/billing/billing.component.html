@@ -5,46 +5,54 @@
     <div class="row">
         <div class="col-md-8">
 
-            <div class="row mb-3">
-                <div class="col-md-3" [class.active-panel]="selectedSubscription=='Individual'">
-                    <div class="card text-center shadow subscription-panel list-pointer" (click)="setSubscription('Individual')">
-                        <p class="h6 my-3">Individual Subscription</p>
+            <div class="row billing-form">
+                <div class="col-md-9">
+
+                    <h3 class="mb-3">Subscription Details</h3>
+
+                    <div class="row mb-2">
+                        <div class="col-md-4"><label>Subscription Type :</label></div>
+                        <div class="col-md-8">
+                            <smart-drop-down-list #subscriptionDropDownListReference class="w-100"
+                            (change)="setSubscription($event)">
+                                <smart-list-item *ngFor="let subscription of subscriptionSource" [value]="subscription">{{subscription}}</smart-list-item>
+                            </smart-drop-down-list>
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-3" [class.active-panel]="selectedSubscription=='Small Team'">
-                    <div class="card text-center shadow subscription-panel list-pointer" (click)="setSubscription('Small Team')">
-                        <p class="h6 my-3">Small Team Subscription</p>
+
+                    <div class="row mb-2">
+                        <div class="col-md-4"><label>Billing Frequency :</label></div>
+                        <div class="col-md-8">
+                            <smart-drop-down-list #frequencyDropDownListReference class="w-100"
+                            (change)="setFrequency($event)">
+                                <smart-list-item *ngFor="let frequency of frequencySource" [value]="frequency">{{frequency}}</smart-list-item>
+                            </smart-drop-down-list>
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-3" [class.active-panel]="selectedSubscription=='Large Team'">
-                    <div class="card text-center shadow subscription-panel list-pointer" (click)="setSubscription('Large Team')">
-                        <p class="h6 my-3">Large Team Subscription</p>
+
+                    <div class="row mb-2">
+                        <div class="col-md-4"><label>No. of Users :</label></div>
+                        <div class="col-md-4">
+                            <smart-numeric-text-box #usersNumericTextBoxReference class="w-100"
+                            [spinButtons]="true" [spinButtonsPosition]="'right'" [spinButtonsStep]="usersTextBoxIncrement">
+                            </smart-numeric-text-box>
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-3" [class.active-panel]="selectedSubscription=='Comprehensive'">
-                    <div class="card text-center shadow subscription-panel list-pointer" (click)="setSubscription('Comprehensive')">
-                        <p class="h6 my-3">Comprehensive Subscription</p>
+
+                    <div class="row mb-2">
+                        <div class="col">
+                            <smart-button #buttonReference class="float-end page-control-button" (click)="saveSubscription()">Save</smart-button>
+                        </div>
                     </div>
+
                 </div>
             </div>
 
-            <div class="row">
-                <div class="col-md-3" [class.active-panel]="selectedPlan=='Monthly' && !(selectedSubscription=='Individual' || selectedSubscription=='Comprehensive')">
-                    <div class="card text-center shadow subscription-panel list-pointer" (click)="setPlan('Monthly')">
-                        <p class="h6 my-3">Monthly Plan</p>
-                    </div>
-                </div>
-                <div class="col-md-3" [class.active-panel]="selectedPlan=='Yearly' && !(selectedSubscription=='Individual' || selectedSubscription=='Comprehensive')">
-                    <div class="card text-center shadow subscription-panel list-pointer" (click)="setPlan('Yearly')">
-                        <p class="h6 my-3">Yearly Plan</p>
-                    </div>
-                </div>
-            </div>
+            <hr />
 
-            <hr class="top-divider" />
-            <hr class="bottom-divider" />
+            <!-- paymetn form component -->
 
-            <app-payment-form></app-payment-form>
+            <app-payment-form #paymentFormCompnentReference></app-payment-form>
 
         </div>
 
@@ -52,7 +60,7 @@
 
             <div class="row mb-3">
                 <div class="col">
-                    <smart-button #buttonReference class="float-right" routerLink="/home/settings/payments-history">Payments History</smart-button>
+                    <smart-button #buttonReference class="float-right" routerLink="/home/settings/payments-history">Billing History</smart-button>
                 </div>
             </div>
 
@@ -60,6 +68,7 @@
                 <div class="card-body">
 
                     <p class="h4">Billing Summary</p>
+
                     <hr />
 
                     <div *ngIf="selectedSubscription=='Individual'">
@@ -95,34 +104,62 @@
 
                     <div *ngIf="selectedSubscription=='Individual'">
                         <p class="h5"><strong>Free</strong></p>
-                        <button class="btn btn-primary mt-3" (click)="saveSubscription()">Save Plan</button>
                     </div>
                     <div *ngIf="selectedSubscription=='Small Team'">
-                        <div *ngIf="selectedPlan=='Monthly'">
+                        <div *ngIf="selectedFrequency=='Monthly'">
                             <p class="h5 mb-2">Monthly Plan</p>
                             <p class="h4 m-0"><strong>$19.99</strong></p>
                         </div>
-                        <div *ngIf="selectedPlan=='Yearly'">
+                        <div *ngIf="selectedFrequency=='Yearly'">
                             <p class="h5 mb-2">Yearly Plan</p>
                             <p class="h4 m-0"><strong>$199.99</strong></p>
-                            <p class="m-0">Save $39.89</p>
+                            <p class="m-0">Save $39.89 per 10 Users</p>
                         </div>
-                        <button class="btn btn-primary mt-3" (click)="saveSubscription()">Save Plan</button>
                     </div>
                     <div *ngIf="selectedSubscription=='Large Team'">
-                        <div *ngIf="selectedPlan=='Monthly'">
+                        <div *ngIf="selectedFrequency=='Monthly'">
                             <p class="h5 mb-2">Monthly Plan</p>
                             <p class="h4 m-0"><strong>$74.99</strong></p>
                         </div>
-                        <div *ngIf="selectedPlan=='Yearly'">
+                        <div *ngIf="selectedFrequency=='Yearly'">
                             <p class="h5 mb-2">Yearly Plan</p>
                             <p class="h4 m-0"><strong>$749.99</strong></p>
-                            <p class="m-0">Save $149.89</p>
+                            <p class="m-0">Save $149.89 per 50 Users</p>
                         </div>
-                        <button class="btn btn-primary mt-3" (click)="saveSubscription()">Save Plan</button>
                     </div>
                     <div *ngIf="selectedSubscription=='Comprehensive'">
                         <button class="btn btn-primary">Contact Us</button>
+                    </div>
+
+                    <br />
+
+                    <div *ngIf="selectedSubscription=='Small Team'">
+                        <div *ngIf="selectedFrequency=='Monthly'">
+                            <p class="mb-2">Total Bill :</p>
+                            <p class="h3 m-0">
+                                ${{19.99 * (usersNumericTextBox.value / 10)}} / yonth
+                            </p>
+                        </div>
+                        <div *ngIf="selectedFrequency=='Yearly'">
+                            <p class="mb-2">Total Bill :</p>
+                            <p class="h3 m-0">
+                                ${{199.99 * (usersNumericTextBox.value / 10)}} / year
+                            </p>
+                        </div>
+                    </div>
+                    <div *ngIf="selectedSubscription=='Large Team'">
+                        <div *ngIf="selectedFrequency=='Monthly'">
+                            <p class="mb-2">Total Bill :</p>
+                            <p class="h3 m-0">
+                                ${{74.99 * (usersNumericTextBox.value / 50)}} / month
+                            </p>
+                        </div>
+                        <div *ngIf="selectedFrequency=='Yearly'">
+                            <p class="mb-2">Total Bill :</p>
+                            <p class="h3 m-0">
+                                ${{749.99 * (usersNumericTextBox.value / 50)}} / year
+                            </p>
+                        </div>
                     </div>
 
                 </div>
@@ -131,3 +168,7 @@
     </div>
 
 </div>
+
+<!-- connection error prompt component -->
+
+<app-connection-prompt #connectionPromptComponentReference></app-connection-prompt>

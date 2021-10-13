@@ -27,7 +27,12 @@ export class AllUsersComponent implements OnInit {
     { text: "All Users", url: "/home/admin/all-users" },
   ];
 
-  ngOnInit(): void {    
+  sorting = { enabled: true }
+  filtering = { enabled: true }
+  dataSource = [];
+  columns: GridColumn[] = <GridColumn[]>[];
+
+  ngOnInit(): void {
   }
 
   ngAfterViewInit(): void {
@@ -39,7 +44,7 @@ export class AllUsersComponent implements OnInit {
       .subscribe(
         res => {
           console.log(res);
-          return res;
+          this.dataSource = res;
         },
         err => {
           console.log(err);
@@ -49,8 +54,8 @@ export class AllUsersComponent implements OnInit {
   }
 
   viewUser(event: any){
-    console.log(event.args.row.bounddata);
-    sessionStorage.setItem('restaurant_admin_user_id', event.args.row.bounddata.id);
+    console.log(event.detail.row.data);
+    sessionStorage.setItem('restaurant_admin_user_id', event.detail.row.data.id);
 
     this.router.navigateByUrl('/home/admin/view-user');
   }
@@ -59,7 +64,7 @@ export class AllUsersComponent implements OnInit {
   // grid config
 
   setGridConfig(){
-    this.grid.dataSource = new Smart.DataAdapter(
+    this.dataSource = new Smart.DataAdapter(
       <DataAdapter>{
         id: 'id',
         dataSource: this.getAllUsers(),
@@ -71,14 +76,10 @@ export class AllUsersComponent implements OnInit {
       }
     );
 
-    this.grid.columns = <GridColumn[]>[
+    this.columns = <GridColumn[]>[
       { label: "User's Name", dataField: "personal_name", width: "60%" },
       { label: "User Level", dataField: "user_level", width: "40%" },
     ];
-
-    this.grid.paging.enabled = true;
-    this.grid.sorting.enabled = true;
-    this.grid.filtering.enabled = true;
   }
 
 }

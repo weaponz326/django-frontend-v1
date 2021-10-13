@@ -30,16 +30,16 @@ export class ReservationsApiService {
 
   // retreive, update and delete reservation
 
-  public getSingleReservation(reservationId: any): Observable<any>{
-    return this.http.get(this.restaurantUrl + "module-reservations/reservation/" + reservationId);
+  public getSingleReservation(): Observable<any>{
+    return this.http.get(this.restaurantUrl + "module-reservations/reservation/" + sessionStorage.getItem("restaurant_reservation_id"));
   }
 
-  public putReservation(reservationId: any, reservationData: any): Observable<any>{
-    return this.http.put(this.restaurantUrl + "module-reservations/reservation/" + reservationId, reservationData);
+  public putReservation(reservationData: any): Observable<any>{
+    return this.http.put(this.restaurantUrl + "module-reservations/reservation/" + sessionStorage.getItem("restaurant_reservation_id"), reservationData);
   }
 
-  public deleteReservation(reservationId: any): Observable<any>{
-    return this.http.delete(this.restaurantUrl + "module-reservations/reservation/" + reservationId);
+  public deleteReservation(): Observable<any>{
+    return this.http.delete(this.restaurantUrl + "module-reservations/reservation/" + sessionStorage.getItem("restaurant_reservation_id"));
   }
 
 }

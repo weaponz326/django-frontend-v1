@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 import { ChartsModule } from 'ng2-charts';
 import { GridModule } from 'smart-webcomponents-angular/grid';
@@ -20,7 +21,6 @@ import { NewMenuGroupComponent } from './new-menu-group/new-menu-group.component
 import { ViewMenuGroupComponent } from './view-menu-group/view-menu-group.component';
 
 
-
 @NgModule({
   declarations: [
     DashboardComponent,
@@ -35,6 +35,7 @@ import { ViewMenuGroupComponent } from './view-menu-group/view-menu-group.compon
   ],
   imports: [
     CommonModule,
+    RouterModule,
     ChartsModule,
     GridModule,
     ButtonModule,

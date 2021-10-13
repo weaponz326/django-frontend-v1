@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 import { ChartsModule } from 'ng2-charts';
 import { GridModule } from 'smart-webcomponents-angular/grid';
@@ -27,6 +28,7 @@ import { DeliveryFormComponent } from './delivery-form/delivery-form.component';
   ],
   imports: [
     CommonModule,
+    RouterModule,
     ChartsModule,
     GridModule,
     ButtonModule,

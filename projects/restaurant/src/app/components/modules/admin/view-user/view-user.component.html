@@ -8,7 +8,7 @@
             <div class="row mb-2">
                 <div class="col-md-4"><label class="float-end">User Name :</label></div>
                 <div class="col-md-8">
-                    <smart-input #userNameReference class="w-100"></smart-input>
+                    <smart-input #userNameInputReference class="w-100"></smart-input>
                 </div>
             </div>
 
@@ -33,7 +33,8 @@
 
     </div>
 
-    <hr />
+    <hr class="top-divider" />
+    <hr class="bottom-divider" />
 
     <div class="row">
         <div class="col-md-6">
@@ -43,7 +44,7 @@
 
     <div class="row page-form">
         <div class="col-md-6">
-            <smart-button #saveReference class="float-end page-control-button ms-1" routerLink="/suite/admin/all-users">Cancel</smart-button>
+            <smart-button #saveReference class="float-end page-control-button ms-1" routerLink="/home/admin/all-users">Cancel</smart-button>
             <smart-button #saveReference class="float-end page-control-button ms-1">Delete</smart-button>
             <smart-button #saveReference class="float-end page-control-button ms-1" (click)="saveUser()">Save</smart-button>
         </div>

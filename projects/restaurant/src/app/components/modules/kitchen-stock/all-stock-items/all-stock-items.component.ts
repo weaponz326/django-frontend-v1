@@ -63,6 +63,18 @@ export class AllStockItemsComponent implements OnInit {
       }
     );
 
+    this.editing = {
+      enabled: true,
+      action: 'click',
+      addDialog: {
+        enabled: true
+      },
+      addNewRow: {
+        visible: true,
+        position: 'near'
+      }
+    }
+
     this.columns = <GridColumn[]>[
       { label: "Item ID", dataField: "item_code", width: "20%" },
       { label: "Item Name", dataField: "item_name", width: "60%" },

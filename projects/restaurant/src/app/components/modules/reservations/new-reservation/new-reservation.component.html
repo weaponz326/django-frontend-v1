@@ -1,1 +1,20 @@
-<p>new-reservation works!</p>
+<app-module-topnav [headings]="navHeading"></app-module-topnav>
+
+<div class="container">
+
+    <!-- reservation page form -->
+
+    <app-reservation-form #reservationFormComponentReference></app-reservation-form>
+
+    <div class="row page-form">
+        <div class="col-md-6">
+            <smart-button #cancelButtonReference class="page-control-button float-end ms-1" routerLink="/home/reservations/all-reservations">Cancel</smart-button>
+            <smart-button #saveButtonReference class="page-control-button float-end ms-1" (click)="saveReservation()">Save</smart-button>
+        </div>
+    </div>
+
+</div>
+
+<!-- connection error prompt component -->
+
+<app-connection-prompt #connectionPromptComponentReference></app-connection-prompt>

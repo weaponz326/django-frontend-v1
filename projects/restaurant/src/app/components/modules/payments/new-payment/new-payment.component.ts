@@ -35,9 +35,9 @@ export class NewPaymentComponent implements OnInit {
 
     var paymentData = {
       account: localStorage.getItem('restaurant_id'),
+      order: this.paymentForm.selectedOrderId,
       payment_code: this.paymentForm.paymentCodeInput.value,
       payment_date: this.paymentForm.paymentDateTimePicker.value,
-      order_code: this.paymentForm.orderCodeInput.value,
       amount_paid: this.paymentForm.amountPaidNumericTextBox.value,
     }
 

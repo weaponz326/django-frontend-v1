@@ -55,13 +55,13 @@ export class NewRinkComponent implements OnInit {
 
   selectedSourceId: any;
   typeSource: any[] = [
-    'Customer', 
-    'Delivery', 
-    'Menu Item', 
-    'Menu Group', 
-    'Order', 
-    'Staff', 
-    'Reservation', 
+    'Customer',
+    'Delivery',
+    'Menu Item',
+    'Menu Group',
+    'Order',
+    'Staff',
+    'Reservation',
   ];
 
   ngOnInit(): void {
@@ -117,7 +117,7 @@ export class NewRinkComponent implements OnInit {
       )
   }
 
-onTypeSelected(event: any){
+  onTypeSelected(event: any){
     this.sourceButton.disabled = false;
     this.sourceInput.value = "";
   }
@@ -140,7 +140,7 @@ onTypeSelected(event: any){
     this.selectedSourceId = sourceData.id;
 
     if (type == "Menu Group") this.sourceInput.value = sourceData.menu_group;
-    else if (type == "Menu Item") this.sourceInput.value = sourceData.item_name;  
+    else if (type == "Menu Item") this.sourceInput.value = sourceData.item_name;
     else if (type == "Staff") this.sourceInput.value = sourceData.staff_name;
     else if (type == "Order") this.sourceInput.value = sourceData.order_code;
     else if (type == "Delivery") this.sourceInput.value = sourceData.delivery_code;

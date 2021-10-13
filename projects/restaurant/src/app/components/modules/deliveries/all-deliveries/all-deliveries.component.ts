@@ -80,5 +80,4 @@ export class AllDeliveriesComponent implements OnInit {
     console.log("lets start printing...");
   }
 
-
 }

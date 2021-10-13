@@ -55,6 +55,22 @@
 
 </div>
 
+<!-- module sect windows -->
+
+<app-select-menu-group #selectMenuGroupComponentReference (rowSelected)="onSourceSelected($event)"></app-select-menu-group>
+
+<app-select-menu-item #selectMenuItemComponentReference (rowSelected)="onSourceSelected($event)"></app-select-menu-item>
+
+<app-select-staff #selectStaffComponentReference (rowSelected)="onSourceSelected($event)"></app-select-staff>
+
+<app-select-order #selectOrderComponentReference (rowSelected)="onSourceSelected($event)"></app-select-order>
+
+<app-select-delivery #selectDeliveryComponentReference (rowSelected)="onSourceSelected($event)"></app-select-delivery>
+
+<app-select-customer #selectCustomerComponentReference (rowSelected)="onSourceSelected($event)"></app-select-customer>
+
+<app-select-reservation #selectReservationComponentReference (rowSelected)="onSourceSelected($event)"></app-select-reservation>
+
 <!-- connection error prompt component -->
 
 <app-connection-prompt #connectionPromptComponentReference></app-connection-prompt>
