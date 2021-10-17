@@ -22,7 +22,43 @@ export class DashboardComponent implements OnInit {
     { text: "Dashboard", url: "/home/tasks/dashboard" },
   ];
 
+  allTaskGroupsCount: number = 0;
+  allTaskItemsCount: number = 0;
+
   ngOnInit(): void {
+  }
+
+  ngAfterViewInit(): void {
+    this.getTaskGroupsCount();
+    this.getTaskItemsCount();
+  }
+
+  getTaskGroupsCount(){
+    this.tasksApi.getCounts("Task Group")
+      .subscribe(
+        res => {
+          console.log(res);
+          this.allTaskGroupsCount = res;
+        },
+        err => {
+          console.log(err);
+          this.connectionPrompt.toast.open();
+        }
+      )
+  }
+
+  getTaskItemsCount(){
+    this.tasksApi.getCounts("Task Item")
+      .subscribe(
+        res => {
+          console.log(res);
+          this.allTaskItemsCount = res;
+        },
+        err => {
+          console.log(err);
+          this.connectionPrompt.toast.open();
+        }
+      )
   }
 
 }

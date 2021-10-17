@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { ButtonComponent } from 'smart-webcomponents-angular/button';
 import { GridComponent, GridColumn, DataAdapter, Smart } from 'smart-webcomponents-angular/grid';
@@ -15,7 +16,10 @@ import { NewBudgetComponent } from '../new-budget/new-budget.component'
 })
 export class AllBudgetComponent implements OnInit {
 
-  constructor(private budgetApi: BudgetApiService) { }
+  constructor(
+    private router: Router,
+    private budgetApi: BudgetApiService
+  ) { }
 
   @ViewChild('newBudgetButtonReference', { read: ButtonComponent, static: false }) newBudgetButton!: ButtonComponent;
   @ViewChild('budgetsGridReference', { read: GridComponent, static: false }) budgetsGrid!: GridComponent;
@@ -29,6 +33,7 @@ export class AllBudgetComponent implements OnInit {
 
   sorting = { enabled: true }
   filtering = { enabled: true }
+  editing = {};
   dataSource = [];
   columns: GridColumn[] = <GridColumn[]>[];
 
@@ -50,6 +55,13 @@ export class AllBudgetComponent implements OnInit {
       )
   }
 
+  viewBudget(e: any){
+    console.log(e);
+
+    sessionStorage.setItem("personal_budget_id", e.detail.row.data.id);
+    this.router.navigateByUrl("/home/budgets/view-budget");
+  }
+
   initGrid(){
     this.dataSource = new Smart.DataAdapter (
       <DataAdapter>{
@@ -63,6 +75,14 @@ export class AllBudgetComponent implements OnInit {
         ]
       }
     );
+
+    this.editing = {
+      enabled: true,
+      addDialog: {
+        enabled: true,
+        position: 'both',
+      },
+    }
 
     this.columns = <GridColumn[]>[
       { label: "Budget ID", dataField: "budget_code", width: "20%" },

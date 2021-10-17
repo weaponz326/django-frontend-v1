@@ -22,7 +22,58 @@ export class DashboardComponent implements OnInit {
     { text: "Dashboard", url: "/home/calendar/dashboard" },
   ];
 
+  allCalendarsCount: number = 0;
+  allSchedulesCount: number = 0;
+
   ngOnInit(): void {
+  }
+
+  ngAfterViewInit(): void {
+    this.getCalendarsCount();
+    this.getSchedulesCount();
+    this.getScheduleAnnotation();
+  }
+
+  getCalendarsCount(){
+    this.calendarApi.getCounts("Calendar")
+      .subscribe(
+        res => {
+          console.log(res);
+          this.allCalendarsCount = res;
+        },
+        err => {
+          console.log(err);
+          this.connectionPrompt.toast.open();
+        }
+      )
+  }
+
+  getSchedulesCount(){
+    this.calendarApi.getCounts("Schedule")
+      .subscribe(
+        res => {
+          console.log(res);
+          this.allSchedulesCount = res;
+        },
+        err => {
+          console.log(err);
+          this.connectionPrompt.toast.open();
+        }
+      )
+  }
+
+  getScheduleAnnotation(){
+    this.calendarApi.getAnnotation()
+      .subscribe(
+        res => {
+          console.log(res);
+          // this.allSchedulesCount = res;
+        },
+        err => {
+          console.log(err);
+          this.connectionPrompt.toast.open();
+        }
+      )
   }
 
 }

@@ -66,4 +66,10 @@ export class AccountsApiService {
     return this.http.get(this.personalUrl + "module-accounts/all-transactions?user=" + localStorage.getItem('personal_id'), this.endpoints.headers);
   }
 
+  // dashboard
+
+  public getCounts(model: any): Observable<any>{
+    return this.http.get(this.personalUrl + "module-accounts/count?user=" + localStorage.getItem('personal_id') + "&model=" + model, this.endpoints.headers);
+  }
+
 }

@@ -78,4 +78,10 @@ export class BudgetApiService {
     return this.http.delete(this.personalUrl + "module-budget/expenditure/" + expenditureId, this.endpoints.headers);
   }
 
+  // dashboard
+
+  public getCounts(model: any): Observable<any>{
+    return this.http.get(this.personalUrl + "module-budget/count?user=" + localStorage.getItem('personal_id') + "&model=" + model, this.endpoints.headers);
+  }
+
 }

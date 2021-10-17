@@ -55,4 +55,14 @@ export class NotesApiService {
     return this.http.delete(this.personalUrl + "module-notes/file/" + fileId, this.endpoints.headers);
   }
 
+  // dashboard
+
+  public getCounts(model: any): Observable<any>{
+    return this.http.get(this.personalUrl + "module-notes/count?user=" + localStorage.getItem('personal_id') + "&model=" + model, this.endpoints.headers);
+  }
+
+  public getAnnotation(): Observable<any>{
+    return this.http.get(this.personalUrl + "module-notes/date-annotate?user=" + localStorage.getItem('personal_id'), this.endpoints.headers);
+  }
+
 }

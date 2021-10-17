@@ -22,7 +22,43 @@ export class DashboardComponent implements OnInit {
     { text: "Dashboard", url: "/home/notes/dashboard" },
   ];
 
+  allNotesCount: any;
+
   ngOnInit(): void {
   }
+
+  ngAfterViewInit(): void {
+    this.getNotesCount();
+    this.getNoteAnnotation();
+  }
+
+  getNotesCount(){
+    this.notesApi.getCounts("Note")
+      .subscribe(
+        res => {
+          console.log(res);
+          this.allNotesCount = res;
+        },
+        err => {
+          console.log(err);
+          this.connectionPrompt.toast.open();
+        }
+      )
+  }
+
+  getNoteAnnotation(){
+    this.notesApi.getAnnotation()
+      .subscribe(
+        res => {
+          console.log(res);
+          // this.allSchedulesCount = res;
+        },
+        err => {
+          console.log(err);
+          this.connectionPrompt.toast.open();
+        }
+      )
+  }
+
 
 }

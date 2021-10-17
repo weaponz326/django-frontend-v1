@@ -22,21 +22,43 @@ export class DashboardComponent implements OnInit {
     { text: "Dashboard", url: "/home/portal/dashboard" },
   ];
 
+  allRinkOutCount: number = 0;
+  allRinkInCount: number = 0;
+
   ngOnInit(): void {
-    this.getCountRinkDate();
   }
 
-  getCountRinkDate(){
-    // this.portalApi.getCountRinkDate()
-    //   .subscribe(
-    //     res => {
-    //       console.log(res);
-    //     },
-    //     err => {
-    //       console.log(err);
-    //       this.connectionPrompt.toast.open();
-    //     }
-    //   )
+  ngAfterViewInit(): void {
+    this.getRinkOutCount();
+    this.getRinkInCount();
+  }
+
+  getRinkOutCount(){
+    this.portalApi.getCounts("Rink Out")
+      .subscribe(
+        res => {
+          console.log(res);
+          this.allRinkOutCount = res;
+        },
+        err => {
+          console.log(err);
+          this.connectionPrompt.toast.open();
+        }
+      )
+  }
+
+  getRinkInCount(){
+    this.portalApi.getCounts("Rink In")
+      .subscribe(
+        res => {
+          console.log(res);
+          this.allRinkInCount = res;
+        },
+        err => {
+          console.log(err);
+          this.connectionPrompt.toast.open();
+        }
+      )
   }
 
 }

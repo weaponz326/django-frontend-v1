@@ -22,7 +22,56 @@ export class DashboardComponent implements OnInit {
     { text: "Dashboard", url: "/home/budget/dashboard" },
   ];
 
+  allBudgetCount = 0;
+  allIncomeCount = 0;
+  allExpenditureCount = 0;
+
   ngOnInit(): void {
+    this.getAllBudgetCount();
+    this.getAllIncomeCount();
+    this.getAllExpenditureCount();
+  }
+
+  getAllBudgetCount(){
+    this.budgetApi.getCounts("Budget")
+      .subscribe(
+        res => {
+          console.log(res);
+          this.allBudgetCount = res;
+        },
+        err => {
+          console.log(err);
+          this.connectionPrompt.toast.open();
+        }
+      )
+  }
+
+  getAllIncomeCount(){
+    this.budgetApi.getCounts("Income")
+      .subscribe(
+        res => {
+          console.log(res);
+          this.allIncomeCount = res;
+        },
+        err => {
+          console.log(err);
+          this.connectionPrompt.toast.open();
+        }
+      )
+  }
+
+  getAllExpenditureCount(){
+    this.budgetApi.getCounts("Expenditure")
+      .subscribe(
+        res => {
+          console.log(res);
+          this.allExpenditureCount = res;
+        },
+        err => {
+          console.log(err);
+          this.connectionPrompt.toast.open();
+        }
+      )
   }
 
 }

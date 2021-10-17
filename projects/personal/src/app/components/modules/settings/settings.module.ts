@@ -19,6 +19,7 @@ import { AdditionalComponent } from './profile-content/additional/additional.com
 import { PhotoComponent } from './profile-content/photo/photo.component';
 import { ContactComponent } from './profile-content/contact/contact.component';
 import { LocationComponent } from './profile-content/location/location.component';
+import { AllAccountsComponent } from './all-accounts/all-accounts.component';
 
 
 
@@ -31,7 +32,8 @@ import { LocationComponent } from './profile-content/location/location.component
     AdditionalComponent,
     PhotoComponent,
     ContactComponent,
-    LocationComponent
+    LocationComponent,
+    AllAccountsComponent
   ],
   imports: [
     CommonModule,

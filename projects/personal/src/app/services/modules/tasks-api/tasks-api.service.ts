@@ -29,15 +29,21 @@ export class TasksApiService {
   // retreive, update and delete task
 
   public getSingleTask(taskId: any): Observable<any>{
-    return this.http.get(this.personalUrl + "module-task/task/" + taskId, this.endpoints.headers);
+    return this.http.get(this.personalUrl + "module-tasks/task/" + taskId, this.endpoints.headers);
   }
 
   public putTask(taskId: any, task: any): Observable<any>{
-    return this.http.put(this.personalUrl + "module-task/task/" + taskId, task, this.endpoints.headers);
+    return this.http.put(this.personalUrl + "module-tasks/task/" + taskId, task, this.endpoints.headers);
   }
 
   public deleteTask(taskId: any): Observable<any>{
-    return this.http.delete(this.personalUrl + "module-task/task/" + taskId, this.endpoints.headers);
+    return this.http.delete(this.personalUrl + "module-tasks/task/" + taskId, this.endpoints.headers);
+  }
+
+  // dashboard
+
+  public getCounts(model: any): Observable<any>{
+    return this.http.get(this.personalUrl + "module-tasks/count?user=" + localStorage.getItem('personal_id') + "&model=" + model, this.endpoints.headers);
   }
 
 }
