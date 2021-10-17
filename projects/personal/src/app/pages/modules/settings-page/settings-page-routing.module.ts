@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { SettingsPageComponent } from './settings-page.component';
 import { DashboardComponent } from '../../../components/modules/settings/dashboard/dashboard.component';
-import { SettingsComponent } from '../../../components/modules/settings/settings/settings.component';
+import { AllAccountsComponent } from '../../../components/modules/settings/all-accounts/all-accounts.component';
 import { ProfileComponent } from '../../../components/modules/settings/profile/profile.component';
 
 const routes: Routes = [
@@ -14,7 +14,7 @@ const routes: Routes = [
       { path: "", component: DashboardComponent },
       { path: "dashboard", component: DashboardComponent },
       { path: "profile", component: ProfileComponent },
-      { path: "settings", component: SettingsComponent },
+      { path: "all-accounts", component: AllAccountsComponent },
     ]
   }
 ];

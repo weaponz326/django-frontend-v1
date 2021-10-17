@@ -1,1 +1,56 @@
-<p>all-accounts works!</p>
+<app-module-topnav [headings]="navHeading"></app-module-topnav>
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-8">
+
+            <div class="mb-4">
+                <h5 class="mb-1">Personal Account</h5>
+
+                <table class="table table-sm">
+                    <thead>
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Email</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{personalData?.first_name}} {{personalData?.last_name}}</td>
+                            <td>{{personalData?.email}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div *ngFor="let data of suiteData; index as i" class="mb-4">
+                <h5 class="mb-1">{{suiteNames[i]}} Accounts</h5>
+
+                <table class="table table-sm">
+                    <thead *ngIf="data != []">
+                        <tr>
+                            <th scope="col">Account Name</th>
+                            <th scope="col">Location</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngIf="data != []">
+                            <td>{{data.name}}</td>
+                            <td>{{data.location}}</td>
+                        </tr>
+                        <tr *ngIf="data == []">
+                            <td class="text-center text-muted">You do not have any {{suiteNames[i]}} accounts</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<!-- connection error prompt component -->
+
+<app-connection-prompt #connectionPromptComponentReference></app-connection-prompt>

@@ -41,21 +41,21 @@ export class ProfileComponent implements OnInit {
   }
 
   getBasic(){
-  this.settingsApi.getUser()
-    .subscribe(
-      res => {
-        console.log(res);
-        this.basic.firstNameInput.value = res.first_name;
-        this.basic.lastNameInput.value = res.last_name;
-        this.basic.locationInput.value = res.location;
-        this.basic.aboutTextArea.value = res.about;
-        this.contact.emailInput.value = res.email;
-      },
-      err => {
-        console.log(err);
-        this.connectionPrompt.toast.open();
-      }
-    )
+    this.settingsApi.getUser()
+      .subscribe(
+        res => {
+          console.log(res);
+          this.basic.firstNameInput.value = res.first_name;
+          this.basic.lastNameInput.value = res.last_name;
+          this.basic.locationInput.value = res.location;
+          this.basic.aboutTextArea.value = res.about;
+          this.contact.emailInput.value = res.email;
+        },
+        err => {
+          console.log(err);
+          this.connectionPrompt.toast.open();
+        }
+      )
   }
 
   getExtended(){
@@ -119,7 +119,7 @@ export class ProfileComponent implements OnInit {
           this.additional.saveButton.disabled = false;
           this.location.saveButton.disabled = false;
           this.contact.saveButton.disabled = false;
-          
+
           this.connectionPrompt.toast.open();
         }
       )

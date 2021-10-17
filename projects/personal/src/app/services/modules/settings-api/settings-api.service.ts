@@ -21,8 +21,7 @@ export class SettingsApiService {
   // get all profile categories
 
   public getUser(): Observable<any>{
-    // return this.http.get(this.personalUrl + "users/user/" + localStorage.getItem('personal_id'), this.endpoints.headers);
-      return this.http.get(this.personalUrl + "users/rest-auth/user/", this.endpoints.headers);
+    return this.http.get(this.personalUrl + "users/rest-auth/user/", this.endpoints.headers);
   }
 
   public getExtendedProfile(): Observable<any>{
@@ -37,6 +36,11 @@ export class SettingsApiService {
   // send extended profile
   public putExtendedProfile(extended: any): Observable<any>{
     return this.http.put(this.personalUrl + "module-settings/extended-profile/" + localStorage.getItem('personal_id'), extended, this.endpoints.headers);
+  }
+
+  // get all suite accounts
+  public getUserAccounts(suiteUrl: any): Observable<any>{
+    return this.http.get(suiteUrl + "accounts/user-accounts?personal_id=" + localStorage.getItem('personal_id'));
   }
 
 }
