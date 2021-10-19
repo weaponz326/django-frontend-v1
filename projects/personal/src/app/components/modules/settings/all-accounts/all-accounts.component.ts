@@ -22,14 +22,14 @@ export class AllAccountsComponent implements OnInit {
   ];
 
   personalData: any;
-  restaurantUrl: any = [];
-  schoolUrl: any = [];
-  enterpriseUrl: any = [];
-  associationUrl: any = [];
-  hospitalUrl: any = [];
-  hotelUrl: any = [];
-  shopUrl: any = [];
-  productionUrl: any = [];
+  restaurantData: any = [];
+  schoolData: any = [];
+  enterpriseData: any = [];
+  associationData: any = [];
+  hospitalData: any = [];
+  hotelData: any = [];
+  shopData: any = [];
+  productionData: any = [];
 
   suiteUrls = [
     environment.restaurantUrl,
@@ -43,14 +43,14 @@ export class AllAccountsComponent implements OnInit {
   ]
 
   suiteData = [
-    this.restaurantUrl,
-    this.schoolUrl,
-    this.enterpriseUrl,
-    this.associationUrl,
-    this.hospitalUrl,
-    this.hotelUrl,
-    this.shopUrl,
-    this.productionUrl,
+    this.restaurantData,
+    this.schoolData,
+    this.enterpriseData,
+    this.associationData,
+    this.hospitalData,
+    this.hotelData,
+    this.shopData,
+    this.productionData,
   ]
 
   suiteNames = [

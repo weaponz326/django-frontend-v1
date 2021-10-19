@@ -1,1 +1,49 @@
 <app-module-topnav [headings]="navHeading"></app-module-topnav>
+
+<div class="container">
+
+    <div class="row">
+
+        <div class="col-md-3 mb-4">
+            <div class="card border-left-secondary shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-uppercase mb-1">All Accounts</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{allAccounts}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-8">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold">Total Transactions by Month</h6>
+                </div>
+                <div class="card-body">
+                    <div class="chart-area">
+                        <canvas baseChart
+                            [datasets]="accountsBarChartData"
+                            [labels]="accountsBarChartLabels"
+                            [options]="chartOptions"
+                            [legend]="true"
+                            [chartType]="'bar'"
+                        ></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- connection error prompt component -->
+
+<app-connection-prompt #connectionPromptComponentReference></app-connection-prompt>

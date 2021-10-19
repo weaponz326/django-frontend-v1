@@ -27,19 +27,24 @@
             <div *ngFor="let data of suiteData; index as i" class="mb-4">
                 <h5 class="mb-1">{{suiteNames[i]}} Accounts</h5>
 
-                <table class="table table-sm">
-                    <thead *ngIf="data != []">
+                <table *ngIf="data != []" class="table table-sm">
+                    <thead>
                         <tr>
                             <th scope="col">Account Name</th>
                             <th scope="col">Location</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngIf="data != []">
-                            <td>{{data.name}}</td>
-                            <td>{{data.location}}</td>
+                        <tr *ngFor="let account of data">
+                            <td>{{account.account.name}}</td>
+                            <td>{{account.account.location}}</td>
                         </tr>
-                        <tr *ngIf="data == []">
+                    </tbody>
+                </table>
+
+                <table *ngIf="data == []" class="table table-sm">
+                    <tbody>
+                        <tr>
                             <td class="text-center text-muted">You do not have any {{suiteNames[i]}} accounts</td>
                         </tr>
                     </tbody>

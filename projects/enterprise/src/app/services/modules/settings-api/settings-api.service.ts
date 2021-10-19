@@ -39,4 +39,19 @@ export class SettingsApiService {
     return this.http.put(this.enterpriseUrl + "module-settings/extended-profile/" + localStorage.getItem('enterprise_id'), extended);
   }
 
+  // subscriptions
+
+  public getSubscription(): Observable<any>{
+    return this.http.get(this.enterpriseUrl + "module-settings/subscription/" + localStorage.getItem('enterprise_id'));
+  }
+
+  public putSubscription(subscription: any): Observable<any>{
+    return this.http.put(this.enterpriseUrl + "module-settings/subscription/" + localStorage.getItem('enterprise_id'), subscription);
+  }
+
+  // history
+  public getHistory(): Observable<any>{
+    return this.http.get(this.enterpriseUrl + "module-settings/history/" + localStorage.getItem('enterprise_id'));
+  }
+
 }
