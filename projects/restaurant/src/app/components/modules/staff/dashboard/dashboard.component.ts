@@ -22,7 +22,28 @@ export class DashboardComponent implements OnInit {
     { text: "Dashboard", url: "/home/staff/dashboard" },
   ];
 
+  allStaffCount: number = 0;
+
   ngOnInit(): void {
   }
+
+  ngAfterViewInit(): void {
+    this.getStaffCount();
+  }
+
+  getStaffCount(){
+    this.staffApi.getCounts("Staff")
+      .subscribe(
+        res => {
+          console.log(res);
+          this.allStaffCount = res;
+        },
+        err => {
+          console.log(err);
+          this.connectionPrompt.toast.open();
+        }
+      )
+  }
+
 
 }

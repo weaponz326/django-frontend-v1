@@ -42,4 +42,10 @@ export class StaffApiService {
     return this.http.delete(this.restaurantUrl + "module-staff/staff/" + sessionStorage.getItem('restaurant_staff_id'));
   }
 
+  // dashboard
+
+  public getCounts(model: any): Observable<any>{
+    return this.http.get(this.restaurantUrl + "module-staff/count?account=" + localStorage.getItem('restaurant_id') + "&model=" + model);
+  }
+
 }

@@ -22,7 +22,27 @@ export class DashboardComponent implements OnInit {
     { text: "Dashboard", url: "/home/customers/dashboard" },
   ];
 
+  allCustomersCount: number = 0;
+
   ngOnInit(): void {
+  }
+
+  ngAfterViewInit(): void {
+    this.getCustomersCount();
+  }
+
+  getCustomersCount(){
+    this.customersApi.getCounts("Customer")
+      .subscribe(
+        res => {
+          console.log(res);
+          this.allCustomersCount = res;
+        },
+        err => {
+          console.log(err);
+          this.connectionPrompt.toast.open();
+        }
+      )
   }
 
 }

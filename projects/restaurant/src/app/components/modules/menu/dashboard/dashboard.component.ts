@@ -22,7 +22,43 @@ export class DashboardComponent implements OnInit {
     { text: "Dashboard", url: "/home/menu/dashboard" },
   ];
 
+  allMenuGroupsCount: number = 0;
+  allMenuItemsCount: number = 0;
+
   ngOnInit(): void {
+  }
+
+  ngAfterViewInit(): void {
+    this.getMenuGroupsCount();
+    this.getMenuItemsCount();
+  }
+
+  getMenuGroupsCount(){
+    this.menuApi.getCounts("Menu Group")
+      .subscribe(
+        res => {
+          console.log(res);
+          this.allMenuGroupsCount = res;
+        },
+        err => {
+          console.log(err);
+          this.connectionPrompt.toast.open();
+        }
+      )
+  }
+
+  getMenuItemsCount(){
+    this.menuApi.getCounts("Menu Item")
+      .subscribe(
+        res => {
+          console.log(res);
+          this.allMenuItemsCount = res;
+        },
+        err => {
+          console.log(err);
+          this.connectionPrompt.toast.open();
+        }
+      )
   }
 
 }

@@ -22,7 +22,27 @@ export class DashboardComponent implements OnInit {
     { text: "Dashboard", url: "/home/kitchen-stock/dashboard" },
   ];
 
+  allStockItemsCount: number = 0;
+
   ngOnInit(): void {
+  }
+
+  ngAfterViewInit(): void {
+    this.getStockItemsCount();
+  }
+
+  getStockItemsCount(){
+    this.kitchenStockApi.getCounts("Stock Item")
+      .subscribe(
+        res => {
+          console.log(res);
+          this.allStockItemsCount = res;
+        },
+        err => {
+          console.log(err);
+          this.connectionPrompt.toast.open();
+        }
+      )
   }
 
 }

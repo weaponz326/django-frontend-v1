@@ -42,4 +42,10 @@ export class PaymentsApiService {
     return this.http.delete(this.restaurantUrl + "module-payments/payment/" + sessionStorage.getItem('restaurant_payment_id'));
   }
 
+  // dashboard
+
+  public getCounts(model: any): Observable<any>{
+    return this.http.get(this.restaurantUrl + "module-payments/count?account=" + localStorage.getItem('restaurant_id') + "&model=" + model);
+  }
+
 }

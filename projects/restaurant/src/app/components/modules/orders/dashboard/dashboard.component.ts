@@ -14,7 +14,7 @@ import { ConnectionPromptComponent } from 'projects/personal/src/app/components/
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(private menuApi: OrdersApiService) { }
+  constructor(private ordersApi: OrdersApiService) { }
 
   @ViewChild('connectionPromptComponentReference', { read: ConnectionPromptComponent, static: false }) connectionPrompt!: ConnectionPromptComponent;
 
@@ -22,8 +22,27 @@ export class DashboardComponent implements OnInit {
     { text: "Dashboard", url: "/home/orders/dashboard" },
   ];
 
+  allOrdersCount: number = 0;
 
   ngOnInit(): void {
+  }
+
+  ngAfterViewInit(): void {
+    this.getOrdersCount();
+  }
+
+  getOrdersCount(){
+    this.ordersApi.getCounts("Order")
+      .subscribe(
+        res => {
+          console.log(res);
+          this.allOrdersCount = res;
+        },
+        err => {
+          console.log(err);
+          this.connectionPrompt.toast.open();
+        }
+      )
   }
 
 }

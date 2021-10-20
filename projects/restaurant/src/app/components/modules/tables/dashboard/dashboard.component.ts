@@ -22,7 +22,27 @@ export class DashboardComponent implements OnInit {
     { text: "Dashboard", url: "/home/tables/dashboard" },
   ];
 
+  allTablesCount: number = 0;
+
   ngOnInit(): void {
+  }
+
+  ngAfterViewInit(): void {
+    this.getTablesCount();
+  }
+
+  getTablesCount(){
+    this.tablesApi.getCounts("Table")
+      .subscribe(
+        res => {
+          console.log(res);
+          this.allTablesCount = res;
+        },
+        err => {
+          console.log(err);
+          this.connectionPrompt.toast.open();
+        }
+      )
   }
 
 }

@@ -65,4 +65,10 @@ export class AdminApiService {
     return this.http.put(this.restaurantUrl + "module-admin/user-access/" + sessionStorage.getItem('restaurant_admin_user_id'), userAccess);
   }
 
+  // dashboard
+
+  public getCounts(model: any): Observable<any>{
+    return this.http.get(this.restaurantUrl + "module-admin/count?account=" + localStorage.getItem('restaurant_id') + "&model=" + model);
+  }
+
 }

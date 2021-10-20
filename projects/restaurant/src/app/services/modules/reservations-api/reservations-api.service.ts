@@ -42,4 +42,10 @@ export class ReservationsApiService {
     return this.http.delete(this.restaurantUrl + "module-reservations/reservation/" + sessionStorage.getItem("restaurant_reservation_id"));
   }
 
+  // dashboard
+
+  public getCounts(model: any): Observable<any>{
+    return this.http.get(this.restaurantUrl + "module-reservations/count?account=" + localStorage.getItem('restaurant_id') + "&model=" + model);
+  }
+
 }

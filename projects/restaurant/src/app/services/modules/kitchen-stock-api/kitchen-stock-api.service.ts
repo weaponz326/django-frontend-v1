@@ -42,4 +42,10 @@ export class KitchenStockApiService {
     return this.http.delete(this.restaurantUrl + "module-kitchen-stock/stock-item/" + sessionStorage.getItem('restaurant_stock_item_id'));
   }
 
+  // dashboard
+
+  public getCounts(model: any): Observable<any>{
+    return this.http.get(this.restaurantUrl + "module-kitchen-stock/count?account=" + localStorage.getItem('restaurant_id') + "&model=" + model);
+  }
+
 }

@@ -74,4 +74,10 @@ export class OrdersApiService {
     return this.http.patch(this.restaurantUrl + "module-orders/order-total/" + sessionStorage.getItem('restaurant_order_id'), totalData);
   }
 
+  // dashboard
+
+  public getCounts(model: any): Observable<any>{
+    return this.http.get(this.restaurantUrl + "module-orders/count?account=" + localStorage.getItem('restaurant_id') + "&model=" + model);
+  }
+
 }

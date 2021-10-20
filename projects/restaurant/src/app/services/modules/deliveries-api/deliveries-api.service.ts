@@ -42,4 +42,10 @@ export class DeliveriesApiService {
     return this.http.delete(this.restaurantUrl + "module-deliveries/delivery/" + itemId);
   }
 
+  // dashboard
+
+  public getCounts(model: any): Observable<any>{
+    return this.http.get(this.restaurantUrl + "module-deliveries/count?account=" + localStorage.getItem('restaurant_id') + "&model=" + model);
+  }
+
 }

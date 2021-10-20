@@ -22,7 +22,27 @@ export class DashboardComponent implements OnInit {
     { text: "Dashboard", url: "/home/reservations/dashboard" },
   ];
 
+  allReservationsCount: number = 0;
+
   ngOnInit(): void {
+  }
+
+  ngAfterViewInit(): void {
+    this.getReservationsCount();
+  }
+
+  getReservationsCount(){
+    this.reservationsApi.getCounts("Reservation")
+      .subscribe(
+        res => {
+          console.log(res);
+          this.allReservationsCount = res;
+        },
+        err => {
+          console.log(err);
+          this.connectionPrompt.toast.open();
+        }
+      )
   }
 
 }

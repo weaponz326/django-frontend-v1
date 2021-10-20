@@ -47,8 +47,8 @@ export class PortalApiService {
 
   // dashboard
 
-  public getCountRinkDate(): Observable<any>{
-    return this.http.get(this.restaurantUrl + "module-portal/count-rink-date/");
+  public getCounts(model: any): Observable<any>{
+    return this.http.get(this.restaurantUrl + "module-portal/count?account=" + localStorage.getItem('restaurant_id') + "&model=" + model);
   }
 
 }

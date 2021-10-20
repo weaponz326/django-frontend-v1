@@ -22,7 +22,27 @@ export class DashboardComponent implements OnInit {
     { text: "Dashboard", url: "/home/payments/dashboard" },
   ];
 
+  allPaymentsCount: number = 0;
+
   ngOnInit(): void {
+  }
+
+  ngAfterViewInit(): void {
+    this.getPaymentsCount();
+  }
+
+  getPaymentsCount(){
+    this.paymentsApi.getCounts("Payment")
+      .subscribe(
+        res => {
+          console.log(res);
+          this.allPaymentsCount = res;
+        },
+        err => {
+          console.log(err);
+          this.connectionPrompt.toast.open();
+        }
+      )
   }
 
 }

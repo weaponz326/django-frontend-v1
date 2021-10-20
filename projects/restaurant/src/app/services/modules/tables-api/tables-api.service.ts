@@ -40,4 +40,10 @@ export class TablesApiService {
     return this.http.delete(this.restaurantUrl + "module-tables/table/" + sessionStorage.getItem('restaurant_table_id'));
   }
 
+  // dashboard
+
+  public getCounts(model: any): Observable<any>{
+    return this.http.get(this.restaurantUrl + "module-tables/count?account=" + localStorage.getItem('restaurant_id') + "&model=" + model);
+  }
+
 }

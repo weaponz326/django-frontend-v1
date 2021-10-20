@@ -66,4 +66,10 @@ export class MenuApiService {
     return this.http.delete(this.restaurantUrl + "module-menu/menu-item/" + sessionStorage.getItem('restaurant_menu_item_id'));
   }
 
+  // dashboard
+
+  public getCounts(model: any): Observable<any>{
+    return this.http.get(this.restaurantUrl + "module-menu/count?account=" + localStorage.getItem('restaurant_id') + "&model=" + model);
+  }
+
 }
