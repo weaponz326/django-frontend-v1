@@ -10,6 +10,7 @@ import { ButtonModule } from 'smart-webcomponents-angular/button';
 import { InputModule } from 'smart-webcomponents-angular/input';
 
 import { ModuleUtilitiesModule } from '../../module-utilities/module-utilities.module';
+import { TasksPrintModule } from '../../printing/tasks-print/tasks-print.module';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SettingsComponent } from './settings/settings.component';
@@ -19,7 +20,6 @@ import { EditTaskComponent } from './edit-task/edit-task.component';
 import { TaskFormComponent } from './task-form/task-form.component';
 import { ChecklistViewComponent } from './checklist-view/checklist-view.component';
 import { AllTaskGroupsComponent } from './all-task-groups/all-task-groups.component';
-import { NewTaskGroupComponent } from './new-task-group/new-task-group.component';
 import { AllTaskItemsComponent } from './all-task-items/all-task-items.component';
 
 
@@ -33,7 +33,6 @@ import { AllTaskItemsComponent } from './all-task-items/all-task-items.component
     TaskFormComponent,
     ChecklistViewComponent,
     AllTaskGroupsComponent,
-    NewTaskGroupComponent,
     AllTaskItemsComponent
   ],
   imports: [
@@ -46,6 +45,7 @@ import { AllTaskItemsComponent } from './all-task-items/all-task-items.component
     ButtonModule,
     InputModule,
     ModuleUtilitiesModule,
+    TasksPrintModule,
   ]
 })
 export class TasksModule { }

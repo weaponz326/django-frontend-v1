@@ -12,6 +12,10 @@ import { ViewBudgetPrintComponent } from './view-budget-print/view-budget-print.
   ],
   imports: [
     CommonModule
+  ],
+  exports: [
+    AllBudgetPrintComponent,
+    ViewBudgetPrintComponent
   ]
 })
 export class BudgetPrintModule { }

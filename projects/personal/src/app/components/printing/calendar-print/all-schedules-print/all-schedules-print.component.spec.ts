@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ChecklistViewPrintComponent } from './checklist-view-print.component';
+import { AllSchedulesPrintComponent } from './all-schedules-print.component';
 
-describe('ChecklistViewPrintComponent', () => {
-  let component: ChecklistViewPrintComponent;
-  let fixture: ComponentFixture<ChecklistViewPrintComponent>;
+describe('AllSchedulesPrintComponent', () => {
+  let component: AllSchedulesPrintComponent;
+  let fixture: ComponentFixture<AllSchedulesPrintComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ChecklistViewPrintComponent ]
+      declarations: [ AllSchedulesPrintComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ChecklistViewPrintComponent);
+    fixture = TestBed.createComponent(AllSchedulesPrintComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

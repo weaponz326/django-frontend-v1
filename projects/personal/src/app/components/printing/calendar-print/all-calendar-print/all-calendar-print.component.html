@@ -1,0 +1,24 @@
+<div #printElementReference class="container">
+
+    <div class="row">
+        <div class="col">
+
+            <table class="table table-sm w-100">
+                <thead>
+                    <tr>
+                        <th>Calendar Name</th>
+                        <th>Date Created</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let data of calendarGridData">
+                        <td>{{data.calendar_name}}</td>
+                        <td>{{data.created_at | date:"yyyy-MM-dd hh:mm"}}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+</div>

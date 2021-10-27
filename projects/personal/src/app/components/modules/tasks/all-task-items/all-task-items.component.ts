@@ -3,6 +3,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { GridComponent, GridColumn, DataAdapter, Smart } from 'smart-webcomponents-angular/grid';
 
 import { TasksApiService } from 'projects/personal/src/app/services/modules/tasks-api/tasks-api.service';
+
+import { AllTaskItemsPrintComponent } from 'projects/personal/src/app/components/printing/tasks-print/all-task-items-print/all-task-items-print.component'
 import { ConnectionPromptComponent } from '../../../module-utilities/connection-prompt/connection-prompt.component'
 
 
@@ -17,6 +19,7 @@ export class AllTaskItemsComponent implements OnInit {
 
   @ViewChild('taskItemsGridReference', { read: GridComponent, static: false }) subjectInput!: GridComponent;
 
+  @ViewChild('allTaskItemsPrintComponentReference', { read: AllTaskItemsPrintComponent, static: false }) allTaskItemsPrint!: AllTaskItemsPrintComponent;
   @ViewChild('connectionPromptComponentReference', { read: ConnectionPromptComponent, static: false }) connectionPrompt!: ConnectionPromptComponent;
 
   navHeading: any[] = [
@@ -27,6 +30,8 @@ export class AllTaskItemsComponent implements OnInit {
   filtering = { enabled: true }
   dataSource = [];
   columns: GridColumn[] = <GridColumn[]>[];
+
+  taskItemsGridData = [];
 
   ngOnInit(): void {
     this.initGrid();
@@ -58,6 +63,7 @@ export class AllTaskItemsComponent implements OnInit {
 
   onPrint(){
     console.log("lets start printing...");
+    this.allTaskItemsPrint.print();
   }
 
 }

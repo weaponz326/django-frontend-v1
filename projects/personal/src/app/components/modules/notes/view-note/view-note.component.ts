@@ -6,6 +6,8 @@ import { InputComponent } from 'smart-webcomponents-angular/input';
 import { EditorComponent } from 'smart-webcomponents-angular/editor';
 
 import { NotesApiService } from 'projects/personal/src/app/services/modules/notes-api/notes-api.service';
+
+import { ViewNotePrintComponent } from 'projects/personal/src/app/components/printing/notes-print/view-note-print/view-note-print.component'
 import { ConnectionPromptComponent } from '../../../module-utilities/connection-prompt/connection-prompt.component'
 
 
@@ -24,9 +26,11 @@ export class ViewNoteComponent implements OnInit {
   @ViewChild('subjectInputReference', { read: InputComponent, static: false }) subjectInput!: InputComponent;
   @ViewChild('bodyEditorReference', { read: EditorComponent, static: false }) bodyEditor!: EditorComponent;
 
+  @ViewChild('viewNotePrintComponentReference', { read: ViewNotePrintComponent, static: false }) viewNotePrint!: ViewNotePrintComponent;
   @ViewChild('connectionPromptComponentReference', { read: ConnectionPromptComponent, static: false }) connectionPrompt!: ConnectionPromptComponent;
 
   navHeading: any[] = [
+    { text: "All Notes", url: "/home/notes/all-notes" },
     { text: "Note View", url: "/home/notes/view-note" },
   ];
 
@@ -34,6 +38,8 @@ export class ViewNoteComponent implements OnInit {
   filesToUpload: File[] = [];
 
   toolbarItems: any[] = [];
+
+  noteViewData = [];
 
   ngOnInit(): void {
     this.initEditor();
@@ -51,6 +57,8 @@ export class ViewNoteComponent implements OnInit {
           console.log(res);
           this.subjectInput.value = res.subject;
           this.bodyEditor.value = res.body;
+
+          this.noteViewData = res;
         },
         err => {
           console.log(err);
@@ -177,6 +185,7 @@ export class ViewNoteComponent implements OnInit {
 
   onPrint(){
     console.log("lets start printing...");
+    this.viewNotePrint.print();
   }
 
 }

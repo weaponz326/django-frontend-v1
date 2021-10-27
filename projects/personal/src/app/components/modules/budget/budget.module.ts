@@ -9,6 +9,7 @@ import { GridModule } from 'smart-webcomponents-angular/grid';
 import { WindowModule } from 'smart-webcomponents-angular/window';
 
 import { ModuleUtilitiesModule } from '../../module-utilities/module-utilities.module';
+import { BudgetPrintModule } from '../../printing/budget-print/budget-print.module';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SettingsComponent } from './settings/settings.component';
@@ -45,6 +46,7 @@ import { EditExpenditureComponent } from './edit-expenditure/edit-expenditure.co
     GridModule,
     WindowModule,
     ModuleUtilitiesModule,
+    BudgetPrintModule,
   ]
 })
 export class BudgetModule { }

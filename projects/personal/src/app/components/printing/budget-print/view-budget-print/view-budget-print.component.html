@@ -1,1 +1,88 @@
-<p>view-budget-print works!</p>
+<div #printElementReference class="container">
+
+    <div class="row mb-4">
+        <div class="col">
+
+            <div class="row mb-1">
+                <div class="col-md-3">
+                    <label>Budget ID :</label>
+                </div>
+                <div class="col-md-6">
+                    {{budgetFormData?.budget_code}}
+                </div>
+            </div>
+
+            <div class="row mb-1">
+                <div class="col-md-3">
+                    <label>Budget Name :</label>
+                </div>
+                <div class="col-md-6">
+                    {{budgetFormData?.budget_name}}
+                </div>
+            </div>
+
+            <div class="row mb-1">
+                <div class="col-md-3">
+                    <label>Budget Type :</label>
+                </div>
+                <div class="col-md-6">
+                    {{budgetFormData?.budget_type}}
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <br />
+
+    <div class="row">
+        <div class="col">
+
+            <div class="row">
+                <div class="col">
+
+                    <table class="table table-sm w-100">
+                        <caption>Income</caption>
+                        <thead>
+                            <tr>
+                                <th>Item Description</th>
+                                <th>Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let data of incomeGridData">
+                                <td>{{data.item}}</td>
+                                <td>{{data.amount}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+
+                    <table class="table table-sm w-100">
+                        <caption>Expenditure</caption>
+                        <thead>
+                            <tr>
+                                <th>Item Description</th>
+                                <th>Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let data of expenditureGridData">
+                                <td>{{data.item}}</td>
+                                <td>{{data.amount}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>

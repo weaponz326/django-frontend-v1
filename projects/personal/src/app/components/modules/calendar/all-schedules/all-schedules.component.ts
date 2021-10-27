@@ -3,6 +3,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { GridComponent, GridColumn, DataAdapter, Smart } from 'smart-webcomponents-angular/grid';
 
 import { CalendarApiService } from 'projects/personal/src/app/services/modules/calendar-api/calendar-api.service';
+
+import { AllSchedulesPrintComponent } from 'projects/personal/src/app/components/printing/calendar-print/all-schedules-print/all-schedules-print.component'
 import { ConnectionPromptComponent } from '../../../module-utilities/connection-prompt/connection-prompt.component'
 
 
@@ -17,6 +19,7 @@ export class AllSchedulesComponent implements OnInit {
 
   @ViewChild('schedulesGridReference', { read: GridComponent, static: false }) schedulesGrid!: GridComponent;
 
+  @ViewChild('allSchedulesPrintComponentReference', { read: AllSchedulesPrintComponent, static: false }) allSchedulesPrint!: AllSchedulesPrintComponent;
   @ViewChild('connectionPromptComponentReference', { read: ConnectionPromptComponent, static: false }) connectionPrompt!: ConnectionPromptComponent;
 
   navHeading: any[] = [
@@ -28,6 +31,8 @@ export class AllSchedulesComponent implements OnInit {
   dataSource = [];
   columns: GridColumn[] = <GridColumn[]>[];
 
+  schedulesGridData = [];
+
   ngOnInit(): void {
     this.initGrid();
   }
@@ -38,6 +43,7 @@ export class AllSchedulesComponent implements OnInit {
         res => {
           console.log(res);
           this.dataSource = res;
+          this.schedulesGridData = res;
         },
         err => {
           console.log(err);
@@ -70,7 +76,7 @@ export class AllSchedulesComponent implements OnInit {
 
   onPrint(){
     console.log("lets start printing...");
-    // this.allSchedulesPrint.print();
+    this.allSchedulesPrint.print();
   }
 
 }

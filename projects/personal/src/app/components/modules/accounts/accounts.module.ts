@@ -9,6 +9,7 @@ import { GridModule } from 'smart-webcomponents-angular/grid';
 import { WindowModule } from 'smart-webcomponents-angular/window';
 
 import { ModuleUtilitiesModule } from '../../module-utilities/module-utilities.module';
+import { AccountsPrintModule } from '../../printing/accounts-print/accounts-print.module';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SettingsComponent } from './settings/settings.component';
@@ -45,6 +46,7 @@ import { AllTransactionsComponent } from './all-transactions/all-transactions.co
     GridModule,
     WindowModule,
     ModuleUtilitiesModule,
+    AccountsPrintModule,
   ]
 })
 export class AccountsModule { }

@@ -1,1 +1,72 @@
-<p>view-account-print works!</p>
+<div #printElementReference class="container">
+
+    <div class="row mb-4">
+        <div class="col">
+
+            <div class="row mb-3">
+                <div class="col-md-3">
+                    <label>Account Name :</label>
+                </div>
+                <div class="col-md-6">
+                    {{accountFormData?.account_name}}
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-3">
+                    <label>Account No. :</label>
+                </div>
+                <div class="col-md-6">
+                    {{accountFormData?.account_number}}
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-3">
+                    <label>Bank Name :</label>
+                </div>
+                <div class="col-md-6">
+                    {{accountFormData?.bank_name}}
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-3">
+                    <label>Account Type :</label>
+                </div>
+                <div class="col-md-6">
+                    {{accountFormData?.account_type}}
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <br />
+
+    <div class="row">
+        <div class="col">
+
+            <table class="table table-sm w-100">
+                <thead>
+                    <tr>
+                        <th>Transaction Date</th>
+                        <th>Description</th>
+                        <th>Transaction Type</th>
+                        <th>Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let data of transactionsGridData">
+                        <td>{{data.transaction_date}}</td>
+                        <td>{{data.description}}</td>
+                        <td>{{data.transaction_type}}</td>
+                        <td>{{data.amount}}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+</div>

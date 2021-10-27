@@ -5,6 +5,8 @@ import { ButtonComponent } from 'smart-webcomponents-angular/button';
 import { GridComponent, GridColumn, DataAdapter, Smart } from 'smart-webcomponents-angular/grid';
 
 import { NotesApiService } from 'projects/personal/src/app/services/modules/notes-api/notes-api.service';
+
+import { AllNotesPrintComponent } from 'projects/personal/src/app/components/printing/notes-print/all-notes-print/all-notes-print.component'
 import { ConnectionPromptComponent } from '../../../module-utilities/connection-prompt/connection-prompt.component'
 
 
@@ -22,6 +24,7 @@ export class AllNotesComponent implements OnInit {
 
   @ViewChild('notesGridReference', { read: GridComponent, static: false }) subjectInput!: GridComponent;
 
+  @ViewChild('allNotesPrintComponentReference', { read: AllNotesPrintComponent, static: false }) allNotesPrint!: AllNotesPrintComponent;
   @ViewChild('connectionPromptComponentReference', { read: ConnectionPromptComponent, static: false }) connectionPrompt!: ConnectionPromptComponent;
 
   navHeading: any[] = [
@@ -33,6 +36,8 @@ export class AllNotesComponent implements OnInit {
   dataSource = [];
   columns: GridColumn[] = <GridColumn[]>[];
 
+  notesGridData = [];
+
   ngOnInit(): void {
     this.initGrid();
   }
@@ -43,6 +48,7 @@ export class AllNotesComponent implements OnInit {
         res => {
           console.log(res);
           this.dataSource = res;
+          this.notesGridData = res;
         },
         err => {
           console.log(err);
@@ -81,6 +87,7 @@ export class AllNotesComponent implements OnInit {
 
   onPrint(){
     console.log("lets start printing...");
+    this.allNotesPrint.print();
   }
 
 }

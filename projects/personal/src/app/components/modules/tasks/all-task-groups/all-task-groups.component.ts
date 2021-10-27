@@ -4,6 +4,8 @@ import { GridComponent, GridColumn, DataAdapter, Smart } from 'smart-webcomponen
 import { ButtonComponent } from 'smart-webcomponents-angular/button';
 
 import { TasksApiService } from 'projects/personal/src/app/services/modules/tasks-api/tasks-api.service';
+
+import { AllTaskGroupsPrintComponent } from 'projects/personal/src/app/components/printing/tasks-print/all-task-groups-print/all-task-groups-print.component'
 import { ConnectionPromptComponent } from '../../../module-utilities/connection-prompt/connection-prompt.component'
 
 
@@ -19,16 +21,19 @@ export class AllTaskGroupsComponent implements OnInit {
   @ViewChild('taskGroupsGridReference', { read: GridComponent, static: false }) taskGroupsGrid!: GridComponent;
   @ViewChild('newCalendarButtonReference', { read: ButtonComponent, static: false }) newCalendarButton!: ButtonComponent;
 
+  @ViewChild('allTaskGroupsPrintComponentReference', { read: AllTaskGroupsPrintComponent, static: false }) allTaskGroupsPrint!: AllTaskGroupsPrintComponent;
   @ViewChild('connectionPromptComponentReference', { read: ConnectionPromptComponent, static: false }) connectionPrompt!: ConnectionPromptComponent;
 
   navHeading: any[] = [
-    { text: "All Calendars", url: "/home/calendar/all-calendars" },
+    { text: "All Task Groups", url: "/home/tasks/all-task-groups" },
   ];
 
   sorting = { enabled: true }
   filtering = { enabled: true }
   dataSource = [];
   columns: GridColumn[] = <GridColumn[]>[];
+
+  taskGroupsGridData = [];
 
   ngOnInit(): void {
     this.initGrid();
@@ -54,6 +59,7 @@ export class AllTaskGroupsComponent implements OnInit {
 
   onPrint(){
     console.log("lets start printing...");
+    this.allTaskGroupsPrint.print();
   }
 
 }

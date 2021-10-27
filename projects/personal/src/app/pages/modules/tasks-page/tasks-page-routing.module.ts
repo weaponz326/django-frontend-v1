@@ -6,7 +6,6 @@ import { KanbanViewComponent } from '../../../components/modules/tasks/kanban-vi
 import { ChecklistViewComponent } from '../../../components/modules/tasks/checklist-view/checklist-view.component';
 import { DashboardComponent } from '../../../components/modules/tasks/dashboard/dashboard.component';
 import { AllTaskGroupsComponent } from '../../../components/modules/tasks/all-task-groups/all-task-groups.component';
-import { NewTaskGroupComponent } from '../../../components/modules/tasks/new-task-group/new-task-group.component';
 import { AllTaskItemsComponent } from '../../../components/modules/tasks/all-task-items/all-task-items.component';
 
 
@@ -18,7 +17,6 @@ const routes: Routes = [
       { path: "", component: DashboardComponent },
       { path: "dashboard", component: DashboardComponent },
       { path: "all-task-groups", component: AllTaskGroupsComponent },
-      { path: "new-task-group", component: NewTaskGroupComponent },
       { path: "kanban-view", component: KanbanViewComponent },
       { path: "checklist-view", component: ChecklistViewComponent },
       { path: "all-task-items", component: AllTaskItemsComponent },

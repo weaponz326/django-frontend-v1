@@ -4,6 +4,8 @@ import { ButtonComponent } from 'smart-webcomponents-angular/button';
 import { GridComponent, GridColumn, DataAdapter, Smart } from 'smart-webcomponents-angular/grid';
 
 import { AccountsApiService } from 'projects/personal/src/app/services/modules/accounts-api/accounts-api.service';
+
+import { AllAccountsPrintComponent } from 'projects/personal/src/app/components/printing/accounts-print/all-accounts-print/all-accounts-print.component'
 import { ConnectionPromptComponent } from '../../../module-utilities/connection-prompt/connection-prompt.component'
 
 
@@ -19,6 +21,7 @@ export class AllAccountsComponent implements OnInit {
   @ViewChild('newAccountButtonReference', { read: ButtonComponent, static: false }) newAccountButton!: ButtonComponent;
   @ViewChild('accountsGridReference', { read: GridComponent, static: false }) accountsGrid!: GridComponent;
 
+  @ViewChild('allAccountsPrintComponentReference', { read: AllAccountsPrintComponent, static: false }) allAccountsPrint!: AllAccountsPrintComponent;
   @ViewChild('connectionPromptComponentReference', { read: ConnectionPromptComponent, static: false }) connectionPrompt!: ConnectionPromptComponent;
 
   navHeading: any[] = [
@@ -31,6 +34,8 @@ export class AllAccountsComponent implements OnInit {
   columns: GridColumn[] = <GridColumn[]>[];
   editing = {}
 
+  accountsGridData = [];
+
   ngOnInit(): void {
     this.initGrid();
   }
@@ -41,6 +46,7 @@ export class AllAccountsComponent implements OnInit {
         res => {
           console.log(res);
           this.dataSource = res;
+          this.accountsGridData = res;
         },
         err => {
           console.log(err);
@@ -86,6 +92,7 @@ export class AllAccountsComponent implements OnInit {
 
   onPrint(){
     console.log("lets start printing...");
+    this.allAccountsPrint.print();
   }
 
 }

@@ -5,12 +5,20 @@
     <div class="row">
         <div class="col-md-9">
 
-            <smart-grid #schedulesGridReference class="w-100" [dataSource]="dataSource" [columns]="columns" [sorting]="sorting"></smart-grid>
+            <smart-grid #schedulesGridReference class="w-100"
+            [dataSource]="dataSource" [columns]="columns" [sorting]="sorting">
+            </smart-grid>
 
         </div>
     </div>
 
 </div>
+
+<!-- printing components -->
+
+<app-all-schedules-print #allSchedulesPrintComponentReference
+[hidden]="true" [schedulesGridData]="schedulesGridData">
+</app-all-schedules-print>
 
 <!-- connection error prompt component -->
 

@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NewTaskGroupComponent } from './new-task-group.component';
+import { AllTaskItemsPrintComponent } from './all-task-items-print.component';
 
-describe('NewTaskGroupComponent', () => {
-  let component: NewTaskGroupComponent;
-  let fixture: ComponentFixture<NewTaskGroupComponent>;
+describe('AllTaskItemsPrintComponent', () => {
+  let component: AllTaskItemsPrintComponent;
+  let fixture: ComponentFixture<AllTaskItemsPrintComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NewTaskGroupComponent ]
+      declarations: [ AllTaskItemsPrintComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NewTaskGroupComponent);
+    fixture = TestBed.createComponent(AllTaskItemsPrintComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

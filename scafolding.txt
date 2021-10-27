@@ -138,22 +138,21 @@
 						- checklist view print (C)
 		+ services
 			+ auth api (S)
-            + pdf print (S)
+            + pdf print
 			+ modules
-                + api
-				    - portal api (S)
-				    - settings api (S)
-				    - calendar api (S)
-				    - budget api (S)
-				    - notes api (S)
-				    - accounts api (S)
-				    - tasks api (S)
-                + print
-				    - calendar print (S)
-				    - budget print (S)
-				    - notes print (S)
-				    - accounts print (S)
-				    - tasks print (S)
+				- portal api (S)
+				- settings api (S)
+				- calendar api (S)
+				- budget api (S)
+				- notes api (S)
+				- accounts api (S)
+				- tasks api (S)
+            + printing
+				- calendar print (S)
+				- budget print (S)
+				- notes print (S)
+				- accounts print (S)
+				- tasks print (S)
 		+ models
 			- portal model
 			- settings model

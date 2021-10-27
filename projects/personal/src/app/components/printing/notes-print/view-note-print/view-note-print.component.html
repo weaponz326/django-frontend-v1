@@ -1,1 +1,26 @@
-<p>view-note-print works!</p>
+<div #printElementReference class="container">
+
+    <div class="row">
+        <div class="col">
+
+            <div class="row mb-3">
+                <div class="col-md-3">
+                    <label>Subject :</label>
+                </div>
+                <div class="col-md-6">
+                    {{noteViewData?.subject}}
+                </div>
+            </div>
+
+            <br />
+
+            <div class="row mb-3">
+                <div class="col-md-9">
+                    {{noteViewData?.body}}
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>

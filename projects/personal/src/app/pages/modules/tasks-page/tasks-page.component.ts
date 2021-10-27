@@ -11,7 +11,6 @@ export class TasksPageComponent implements OnInit {
 
   navLinks: any[] = [
     { text: "All Task Groups", url: "/home/tasks/all-task-groups", icon: "bi bi-list-ul" },
-    { text: "New Task Group", url: "/home/tasks/new-task-group", icon: "bi bi-plus-square" },
     { text: "All Task Items", url: "/home/tasks/all-task-items", icon: "bi bi-list-ul" }
   ]
 

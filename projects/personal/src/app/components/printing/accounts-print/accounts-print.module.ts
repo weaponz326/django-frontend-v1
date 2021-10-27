@@ -12,6 +12,10 @@ import { ViewAccountPrintComponent } from './view-account-print/view-account-pri
   ],
   imports: [
     CommonModule
+  ],
+  exports: [
+    AllAccountsPrintComponent,
+    ViewAccountPrintComponent
   ]
 })
 export class AccountsPrintModule { }

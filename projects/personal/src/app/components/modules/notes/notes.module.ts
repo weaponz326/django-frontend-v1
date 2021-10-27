@@ -9,6 +9,7 @@ import { EditorModule } from 'smart-webcomponents-angular/editor';
 import { GridModule } from 'smart-webcomponents-angular/grid';
 
 import { ModuleUtilitiesModule } from '../../module-utilities/module-utilities.module';
+import { NotesPrintModule } from '../../printing/notes-print/notes-print.module';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SettingsComponent } from './settings/settings.component';
@@ -35,6 +36,7 @@ import { NewNoteComponent } from './new-note/new-note.component';
     EditorModule,
     GridModule,
     ModuleUtilitiesModule,
+    NotesPrintModule,
   ]
 })
 export class NotesModule { }

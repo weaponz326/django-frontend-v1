@@ -10,11 +10,20 @@
 
     <div class="row">
         <div class="col-md-7">
-            <smart-grid #appointmentsGridReference class="w-100" [dataSource]="dataSource" [columns]="columns" [sorting]="sorting"></smart-grid>
+            <smart-grid #appointmentsGridReference class="w-100"
+            [dataSource]="dataSource" [columns]="columns" [sorting]="sorting"
+            (onRowDoubleClick)="viewCalendar($event)">
+            </smart-grid>
         </div>
     </div>
 
 </div>
+
+<!-- printing components -->
+
+<app-all-calendar-print #allCalendarPrintComponentReference
+[hidden]="true" [calendarGridData]="calendarGridData">
+</app-all-calendar-print>
 
 <!-- connection error prompt component -->
 

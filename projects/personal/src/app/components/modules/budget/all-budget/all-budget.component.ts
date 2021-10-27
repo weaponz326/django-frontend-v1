@@ -5,6 +5,8 @@ import { ButtonComponent } from 'smart-webcomponents-angular/button';
 import { GridComponent, GridColumn, DataAdapter, Smart } from 'smart-webcomponents-angular/grid';
 
 import { BudgetApiService } from 'projects/personal/src/app/services/modules/budget-api/budget-api.service';
+
+import { AllBudgetPrintComponent } from 'projects/personal/src/app/components/printing/budget-print/all-budget-print/all-budget-print.component'
 import { ConnectionPromptComponent } from '../../../module-utilities/connection-prompt/connection-prompt.component'
 import { NewBudgetComponent } from '../new-budget/new-budget.component'
 
@@ -24,6 +26,7 @@ export class AllBudgetComponent implements OnInit {
   @ViewChild('newBudgetButtonReference', { read: ButtonComponent, static: false }) newBudgetButton!: ButtonComponent;
   @ViewChild('budgetsGridReference', { read: GridComponent, static: false }) budgetsGrid!: GridComponent;
 
+  @ViewChild('allBudgetPrintComponentReference', { read: AllBudgetPrintComponent, static: false }) allBudgetPrint!: AllBudgetPrintComponent;
   @ViewChild('connectionPromptComponentReference', { read: ConnectionPromptComponent, static: false }) connectionPrompt!: ConnectionPromptComponent;
   @ViewChild('newBudgetComponentReference', { read: NewBudgetComponent, static: false }) newBudget!: NewBudgetComponent;
 
@@ -37,6 +40,8 @@ export class AllBudgetComponent implements OnInit {
   dataSource = [];
   columns: GridColumn[] = <GridColumn[]>[];
 
+  budgetGridData = [];
+
   ngOnInit(): void {
     this.initGrid();
   }
@@ -47,6 +52,7 @@ export class AllBudgetComponent implements OnInit {
         res => {
           console.log(res);
           this.dataSource = res;
+          this.budgetGridData = res;
         },
         err => {
           console.log(err);
@@ -93,6 +99,7 @@ export class AllBudgetComponent implements OnInit {
 
   onPrint(){
     console.log("lets start printing...");
+    this.allBudgetPrint.print();
   }
 
 }

@@ -34,8 +34,8 @@ export class PdfPrintService {
 
   generatePdf(html: any) {
     var content = htmlToPdfmake(html);
-    const documentDefinition = { content: content };
-    pdfMake.createPdf(documentDefinition).open();
+    const def = { content: content };
+    pdfMake.createPdf(def).open();
   }
 
   printPdf(documentDefinition: any) {

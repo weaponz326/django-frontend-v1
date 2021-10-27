@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AllTasksPrintComponent } from './all-tasks-print.component';
+import { ViewCalendarPrintComponent } from './view-calendar-print.component';
 
-describe('AllTasksPrintComponent', () => {
-  let component: AllTasksPrintComponent;
-  let fixture: ComponentFixture<AllTasksPrintComponent>;
+describe('ViewCalendarPrintComponent', () => {
+  let component: ViewCalendarPrintComponent;
+  let fixture: ComponentFixture<ViewCalendarPrintComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AllTasksPrintComponent ]
+      declarations: [ ViewCalendarPrintComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AllTasksPrintComponent);
+    fixture = TestBed.createComponent(ViewCalendarPrintComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

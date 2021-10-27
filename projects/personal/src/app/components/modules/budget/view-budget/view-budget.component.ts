@@ -5,6 +5,8 @@ import { InputComponent } from 'smart-webcomponents-angular/input';
 import { DropDownListComponent } from 'smart-webcomponents-angular/dropdownlist';
 
 import { BudgetApiService } from 'projects/personal/src/app/services/modules/budget-api/budget-api.service';
+
+import { ViewBudgetPrintComponent } from 'projects/personal/src/app/components/printing/budget-print/view-budget-print/view-budget-print.component'
 import { ConnectionPromptComponent } from '../../../module-utilities/connection-prompt/connection-prompt.component'
 
 
@@ -21,6 +23,7 @@ export class ViewBudgetComponent implements OnInit {
   @ViewChild('budgetNameInputReference', { read: InputComponent, static: false }) budgetNameInput!: InputComponent;
   @ViewChild('budgetTypeDropDownListReference', { read: DropDownListComponent, static: false }) budgetTypeDropDownList!: DropDownListComponent;
 
+  @ViewChild('viewBudgetPrintComponentReference', { read: ViewBudgetPrintComponent, static: false }) viewBudgetPrint!: ViewBudgetPrintComponent;
   @ViewChild('connectionPromptComponentReference', { read: ConnectionPromptComponent, static: false }) connectionPrompt!: ConnectionPromptComponent;
 
   navHeading: any[] = [
@@ -31,8 +34,13 @@ export class ViewBudgetComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  // TODO:
+  // get all budgets
+  // get income and expenditure here and pass to view and print grids
+
   onPrint(){
     console.log("lets start printing...");
+    this.viewBudgetPrint.print();
   }
 
 }

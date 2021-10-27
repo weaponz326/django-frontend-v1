@@ -12,6 +12,10 @@ import { ViewNotePrintComponent } from './view-note-print/view-note-print.compon
   ],
   imports: [
     CommonModule
+  ],
+  exports: [
+    AllNotesPrintComponent,
+    ViewNotePrintComponent
   ]
 })
 export class NotesPrintModule { }

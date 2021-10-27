@@ -1,4 +1,4 @@
-<app-module-topnav [headings]="navHeading"></app-module-topnav>
+<app-module-topnav [headings]="navHeading" [showPrint]="true" (print)="onPrint()"></app-module-topnav>
 
 <div class="container">
 
@@ -40,6 +40,12 @@
     </div>
 
 </div>
+
+<!-- printing components -->
+
+<app-view-calendar-print #viewCalendarPrintComponentReference
+[hidden]="true" [calendarFormData]="calendarFormData" [schedulesGridData]="schedulesGridData">
+</app-view-calendar-print>
 
 <!-- connection error prompt component -->
 

@@ -60,6 +60,12 @@
 
 </div>
 
+<!-- print components -->
+
+<app-view-account-print #viewAccountPrintComponentReference
+[hidden]="true" [accountFormData]="accountFormData" [transactionsGridData]="transactionsGridData">
+</app-view-account-print>
+
 <!-- connection error prompt component -->
 
 <app-connection-prompt #connectionPromptComponentReference></app-connection-prompt>

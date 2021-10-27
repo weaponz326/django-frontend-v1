@@ -5,6 +5,8 @@ import { InputComponent } from 'smart-webcomponents-angular/input';
 import { ButtonComponent } from 'smart-webcomponents-angular/button';
 
 import { CalendarApiService } from 'projects/personal/src/app/services/modules/calendar-api/calendar-api.service';
+
+import { ViewCalendarPrintComponent } from 'projects/personal/src/app/components/printing/calendar-print/view-calendar-print/view-calendar-print.component'
 import { ConnectionPromptComponent } from '../../../module-utilities/connection-prompt/connection-prompt.component'
 
 
@@ -20,6 +22,7 @@ export class ViewCalendarComponent implements OnInit {
   @ViewChild('schedulerReference', { read: SchedulerComponent, static: false }) scheduler!: SchedulerComponent;
   @ViewChild('calendarNameInputReference', { read: InputComponent, static: false }) calendarNameInput!: InputComponent;
 
+  @ViewChild('viewCalendarPrintComponentReference', { read: ViewCalendarPrintComponent, static: false }) ViewCalendarPrint!: ViewCalendarPrintComponent;
   @ViewChild('connectionPromptComponentReference', { read: ConnectionPromptComponent, static: false }) connectionPrompt!: ConnectionPromptComponent;
 
   navHeading: any[] = [
@@ -33,12 +36,32 @@ export class ViewCalendarComponent implements OnInit {
   currentTimeIndicator: boolean = true;
   scrollButtonsPosition: string = 'far';
 
+  schedulesGridData = [];
+  calendarFormData = [];
+
   ngOnInit(): void {
   }
 
   ngAfterViewInit(): void {
     this.getSchedules();
+    this.getCalendar();
   }
+
+  getCalendar(){
+    // this.calendarApi.getCalendar()
+    //   .subscribe(
+    //     res => {
+    //       console.log(res);
+    //       this.dataSource = res;
+    //       this.calendarFormData = res;
+    //     },
+    //     err => {
+    //       console.log(err);
+    //       this.connectionPrompt.toast.open();
+    //     }
+    //   )
+  }
+
 
   getSchedules(){
     this.calendarApi.getSchedules()
@@ -46,6 +69,7 @@ export class ViewCalendarComponent implements OnInit {
         res => {
           console.log(res);
           this.dataSource = res;
+          this.schedulesGridData = res;
         },
         err => {
           console.log(err);
@@ -97,6 +121,11 @@ export class ViewCalendarComponent implements OnInit {
             return;
         }
     }
+  }
+
+  onPrint(){
+    console.log("lets start printing...");
+    this.ViewCalendarPrint.print();
   }
 
 }
