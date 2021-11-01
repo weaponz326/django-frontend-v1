@@ -361,6 +361,17 @@
 				- reservations api (S)
 				- orders api (S)
 				- kitchen stock api (S)
+            + printing
+				- menu print (S)
+				- staff print (S)
+				- tables print (S)
+				- customers print (S)
+				- deliveries print (S)
+				- payments print (S)
+				- roster print (S)
+				- reservations print (S)
+				- orders print (S)
+				- kitchen stock print (S)
 		+ models
 			- admin model
 			- portal model
@@ -636,6 +647,20 @@
 				- timetable api (S)
 				- fees api (S)
 				- sections api (S)
+            + printing
+				- parents print (S)
+				- assessment print (S)
+				- subjects print (S)
+				- attendance print (S)
+				- students print (S)
+				- reports print (S)
+				- teachers print (S)
+				- staff print (S)
+				- payments print (S)
+				- classes print (S)
+				- timetable print (S)
+				- fees print (S)
+				- sections print (S)
 		+ models
 			- admin model
 			- portal model
@@ -936,6 +961,21 @@
 				- ledger api (S)
 				- reception api (S)
 				- year api (S)
+            + printing
+				- accounts print (S)
+				- payroll print (S)
+				- attendance print (S)
+				- assets print (S)
+				- leave print (S)
+				- budget print (S)
+				- procurement print (S)
+				- letters print (S)
+				- appraisal print (S)
+				- files print (S)
+				- employees print (S)
+				- ledger print (S)
+				- reception print (S)
+				- year print (S)
 		+ models
 			- admin model
 			- portal model
@@ -1169,6 +1209,17 @@
 				- meetings api (S)
 				- groups api (S)
 				- year api (S)
+            + printing
+				- accounts print (S)
+				- members print (S)
+				- committees print (S)
+				- dues print (S)
+				- executives print (S)
+				- action plan print (S)
+				- attendance print (S)
+				- meetings print (S)
+				- groups print (S)
+				- year print (S)
 		+ models
 			- admin model
 			- portal model
@@ -1481,6 +1532,22 @@
 				- admissions api (S)
 				- dispensary api (S)
 				- roster api (S)
+            + printing
+				- patients print (S)
+				- appointments print (S)
+				- staff print (S)
+				- bills print (S)
+				- doctors print (S)
+				- laboratory print (S)
+				- payments print (S)
+				- nurses print (S)
+				- prescriptions print (S)
+				- diagnosis print (S)
+				- drugs print (S)
+				- wards print (S)
+				- admissions print (S)
+				- dispensary print (S)
+				- roster print (S)
 		+ models
 			- admin model
 			- portal model
@@ -1734,6 +1801,18 @@
 				- rooms api (S)
 				- assets api (S)
 				- housekeeping api (S)
+            + printing
+				- bills print (S)
+				- staff print (S)
+				- roster print (S)
+				- guests print (S)
+				- payments print (S)
+				- services print (S)
+				- checkin print (S)
+				- bookings print (S)
+				- rooms print (S)
+				- assets print (S)
+				- housekeeping print (S)
 		+ models
 			- admin model
 			- portal model
@@ -2021,6 +2100,21 @@
 				- purchasing api (S)
 				- cashflow api (S)
 				- staff api (S)
+            + printing
+				- receivables print (S)
+				- products print (S)
+				- invoice print (S)
+				- marketting print (S)
+				- payables print (S)
+				- sales print (S)
+				- customers print (S)
+				- payments print (S)
+				- orders print (S)
+				- inventory print (S)
+				- suppliers print (S)
+				- purchasing print (S)
+				- cashflow print (S)
+				- staff print (S)
 		+ models
 			- admin model
 			- portal model
@@ -2269,6 +2363,19 @@
 				- roster api (S)
 				- materials api (S)
 				- staff api (S)
+            + printing
+				- stock print (S)
+				- equipment print (S)
+				- purchasing print (S)
+				- orders print (S)
+				- manufacturing print (S)
+				- contractors print (S)
+				- projects print (S)
+				- workers print (S)
+				- tasks print (S)
+				- roster print (S)
+				- materials print (S)
+				- staff print (S)
 		+ models
 			- admin model
 			- portal model
