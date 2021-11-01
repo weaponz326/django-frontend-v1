@@ -25,12 +25,19 @@ export class DashboardComponent implements OnInit {
   allTaskGroupsCount: number = 0;
   allTaskItemsCount: number = 0;
 
+  taskGroupsLineChartData: ChartDataSets[] = [{ data: [0], label: 'Task Groups' }];
+  taskGroupsLineChartLabels: Label[] = [""]
+  taskItemsLineChartData: ChartDataSets[] = [{ data: [0], label: 'Task Items' }];
+  taskItemsLineChartLabels: Label[] = [""]
+
   ngOnInit(): void {
   }
 
   ngAfterViewInit(): void {
     this.getTaskGroupsCount();
     this.getTaskItemsCount();
+    this.getTaskGroupAnnotation();
+    this.getTaskItemAnnotation();
   }
 
   getTaskGroupsCount(){
@@ -60,5 +67,76 @@ export class DashboardComponent implements OnInit {
         }
       )
   }
+
+  getTaskGroupAnnotation(){
+    this.tasksApi.getAnnotation("Task Group")
+      .subscribe(
+        res => {
+          console.log(res);
+          this.setTaskGroupChartData(res);
+        },
+        err => {
+          console.log(err);
+          this.connectionPrompt.toast.open();
+        }
+      )
+  }
+
+  getTaskItemAnnotation(){
+    this.tasksApi.getAnnotation("Task Item")
+      .subscribe(
+        res => {
+          console.log(res);
+          this.setTaskItemChartData(res);
+        },
+        err => {
+          console.log(err);
+          this.connectionPrompt.toast.open();
+        }
+      )
+  }
+
+  setTaskGroupChartData(data: any){
+    this.taskGroupsLineChartLabels = [];
+    for(let x = 0; x < data.length; x++){
+      this.taskGroupsLineChartLabels.push(data[x].date);
+    }
+    console.log(this.taskGroupsLineChartLabels);
+
+    let rawTaskGroupData = [];
+    for(let x = 0; x < data.length; x++){
+      rawTaskGroupData.push(data[x].count);
+    }
+    console.log(rawTaskGroupData);
+    this.taskGroupsLineChartData = [{ data: rawTaskGroupData, label: 'Task Groups' }];
+  }
+
+  setTaskItemChartData(data: any){
+    this.taskItemsLineChartLabels = [];
+    for(let x = 0; x < data.length; x++){
+      this.taskItemsLineChartLabels.push(data[x].date);
+    }
+    console.log(this.taskItemsLineChartLabels);
+
+    let rawTaskItemData = [];
+    for(let x = 0; x < data.length; x++){
+      rawTaskItemData.push(data[x].count);
+    }
+    console.log(rawTaskItemData);
+    this.taskItemsLineChartData = [{ data: rawTaskItemData, label: 'Task Items' }];
+  }
+
+  chartOptions = {
+    responsive: true,
+    scales: {
+      yAxes: [{
+        beginAtZero: true,
+        min: 0,
+        ticks: {
+          stepSize: 1
+        }
+      }]
+    }
+  };
 
 }

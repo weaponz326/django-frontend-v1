@@ -84,4 +84,8 @@ export class BudgetApiService {
     return this.http.get(this.personalUrl + "module-budget/count?user=" + localStorage.getItem('personal_id') + "&model=" + model, this.endpoints.headers);
   }
 
+  public getAnnotation(model: any): Observable<any>{
+    return this.http.get(this.personalUrl + "module-budget/annotate?user=" + localStorage.getItem('personal_id') + "&model=" + model, this.endpoints.headers);
+  }
+
 }

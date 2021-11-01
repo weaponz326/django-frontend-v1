@@ -32,6 +32,52 @@
 
     </div>
 
+    <div class="row">
+
+        <div class="col-md-8">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold">Total Task Groups by Day</h6>
+                </div>
+                <div class="card-body">
+                    <div class="chart-area">
+                        <canvas baseChart
+                            [datasets]="taskGroupsLineChartData"
+                            [labels]="taskGroupsLineChartLabels"
+                            [options]="chartOptions"
+                            [legend]="true"
+                            [chartType]="'line'"
+                        ></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-8">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold">Total Task Items by Day</h6>
+                </div>
+                <div class="card-body">
+                    <div class="chart-area">
+                        <canvas baseChart
+                            [datasets]="taskItemsLineChartData"
+                            [labels]="taskItemsLineChartLabels"
+                            [options]="chartOptions"
+                            [legend]="true"
+                            [chartType]="'line'"
+                        ></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
 </div>
 
 

@@ -65,5 +65,8 @@ export class PortalApiService {
     return this.http.get(this.personalUrl + "module-portal/count?user=" + localStorage.getItem('personal_id') + "&model=" + model, this.endpoints.headers);
   }
 
+  public getAnnotation(model: any): Observable<any>{
+    return this.http.get(this.personalUrl + "module-portal/annotate?user=" + localStorage.getItem('personal_id') + "&model=" + model, this.endpoints.headers);
+  }
 
 }

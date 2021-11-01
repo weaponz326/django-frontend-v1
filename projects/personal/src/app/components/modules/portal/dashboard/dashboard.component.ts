@@ -25,12 +25,19 @@ export class DashboardComponent implements OnInit {
   allRinkOutCount: number = 0;
   allRinkInCount: number = 0;
 
+  rinksLineChartData: ChartDataSets[] = [{ data: [0], label: 'Rink In' }, { data: [0], label: 'Rink Out' }];
+  rinksLineChartLabels: Label[] = [""];
+  rinkInGlobalData: any[] = [];
+  rinkOutGlobalData: any[] = [];
+
   ngOnInit(): void {
   }
 
   ngAfterViewInit(): void {
     this.getRinkOutCount();
     this.getRinkInCount();
+    this.getRinkOutAnnotation();
+    this.getRinkInAnnotation();
   }
 
   getRinkOutCount(){
@@ -60,5 +67,84 @@ export class DashboardComponent implements OnInit {
         }
       )
   }
+
+  getRinkInAnnotation(){
+    this.portalApi.getAnnotation("Rink In")
+      .subscribe(
+        res => {
+          console.log(res);
+          this.setRinkLineChartLabels(res);
+          this.setRinkInChartData(res);
+        },
+        err => {
+          console.log(err);
+          this.connectionPrompt.toast.open();
+        }
+      )
+  }
+
+  getRinkOutAnnotation(){
+    this.portalApi.getAnnotation("Rink Out")
+      .subscribe(
+        res => {
+          console.log(res);
+          this.setRinkLineChartLabels(res);
+          this.setRinkOutChartData(res);
+        },
+        err => {
+          console.log(err);
+          this.connectionPrompt.toast.open();
+        }
+      )
+  }
+
+  setRinkLineChartLabels(data: any){
+    this.rinksLineChartLabels = [];
+    for(let x = 0; x < data.length; x++){
+      this.rinksLineChartLabels.push(data[x].date);
+    }
+    console.log(this.rinksLineChartLabels);
+  }
+
+  setRinkInChartData(data: any){
+    let rawRinkInData = [];
+    for(let x = 0; x < data.length; x++){
+      rawRinkInData.push(data[x].count);
+    }
+    console.log(rawRinkInData);
+
+    this.rinkInGlobalData = rawRinkInData;
+    this.rinksLineChartData = [
+      { data: this.rinkOutGlobalData, label: 'Rink In' },
+      { data: rawRinkInData, label: 'Rink Out' }
+    ];
+  }
+
+  setRinkOutChartData(data: any){
+    let rawRinkOutData = [];
+    for(let x = 0; x < data.length; x++){
+      rawRinkOutData.push(data[x].count);
+    }
+    console.log(rawRinkOutData);
+
+    this.rinkOutGlobalData = rawRinkOutData;
+    this.rinksLineChartData = [
+      { data: rawRinkOutData, label: 'Rink In' },
+      { data: this.rinkInGlobalData, label: 'Rink Out' }
+    ];
+  }
+
+  chartOptions = {
+    responsive: true,
+    scales: {
+      yAxes: [{
+        beginAtZero: true,
+        min: 0,
+        ticks: {
+          stepSize: 1
+        }
+      }]
+    }
+  };
 
 }

@@ -72,4 +72,8 @@ export class AccountsApiService {
     return this.http.get(this.personalUrl + "module-accounts/count?user=" + localStorage.getItem('personal_id') + "&model=" + model, this.endpoints.headers);
   }
 
+  public getAnnotation(model: any): Observable<any>{
+    return this.http.get(this.personalUrl + "module-accounts/annotate?user=" + localStorage.getItem('personal_id') + "&model=" + model, this.endpoints.headers);
+  }
+
 }

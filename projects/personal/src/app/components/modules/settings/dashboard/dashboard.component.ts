@@ -66,14 +66,14 @@ export class DashboardComponent implements OnInit {
 
   chartOptions = {
     responsive: true,
-    // scales: {
-    //   y: {
-    //     min: 0,
-    //     ticks: {
-    //       stepSize: 1
-    //     }
-    //   }
-    // }
+    scales: {
+      yAxes: [{
+        min: 0,
+        ticks: {
+          stepSize: 1
+        }
+      }]
+    }
   };
 
   accountsBarChartData: ChartDataSets[] = [

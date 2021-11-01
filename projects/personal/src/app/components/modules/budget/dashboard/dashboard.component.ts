@@ -26,10 +26,19 @@ export class DashboardComponent implements OnInit {
   allIncomeCount = 0;
   allExpenditureCount = 0;
 
+  incomeGlobalData: any[] = [];
+  expenditureGlobalData: any[] = [];
+  ieBarChartData: ChartDataSets[] = [{ data: [0], label: 'Income' }, { data: [0], label: 'Expendture' }];
+  ieBarChartLabels: Label[] = [""];
+  iePieChartLabels: Label[] = ['Income', 'Expenditure'];
+  iePieChartData: SingleDataSet = [0, 0];
+
   ngOnInit(): void {
     this.getAllBudgetCount();
     this.getAllIncomeCount();
     this.getAllExpenditureCount();
+    this.getIncomeAnnotation();
+    this.getExpenditureAnnotation();
   }
 
   getAllBudgetCount(){
@@ -52,6 +61,7 @@ export class DashboardComponent implements OnInit {
         res => {
           console.log(res);
           this.allIncomeCount = res;
+          this.iePieChartData[0] = res;
         },
         err => {
           console.log(err);
@@ -66,6 +76,7 @@ export class DashboardComponent implements OnInit {
         res => {
           console.log(res);
           this.allExpenditureCount = res;
+          this.iePieChartData[1] = res;
         },
         err => {
           console.log(err);
@@ -73,5 +84,74 @@ export class DashboardComponent implements OnInit {
         }
       )
   }
+
+  getIncomeAnnotation(){
+    this.budgetApi.getAnnotation("Income")
+      .subscribe(
+        res => {
+          console.log(res);
+          this.setIEtaskBarChartLabels(res);
+          this.setIncomeChartData(res);
+        },
+        err => {
+          console.log(err);
+          this.connectionPrompt.toast.open();
+        }
+      )
+  }
+
+  getExpenditureAnnotation(){
+    this.budgetApi.getAnnotation("Expenditure")
+      .subscribe(
+        res => {
+          console.log(res);
+          this.setIEtaskBarChartLabels(res);
+          this.setExpenditureChartData(res);
+        },
+        err => {
+          console.log(err);
+          this.connectionPrompt.toast.open();
+        }
+      )
+  }
+
+  setIEtaskBarChartLabels(data: any){
+    this.ieBarChartLabels = [];
+    for(let x = 0; x < data.length; x++){
+      this.ieBarChartLabels.push(data[x].date);
+    }
+    console.log(this.ieBarChartLabels);
+  }
+
+  setIncomeChartData(data: any){
+    let rawIncomeData = [];
+    for(let x = 0; x < data.length; x++){
+      rawIncomeData.push(data[x].count);
+    }
+    console.log(rawIncomeData);
+    this.incomeGlobalData = rawIncomeData;
+  }
+
+  setExpenditureChartData(data: any){
+    let rawExpenditureData = [];
+    for(let x = 0; x < data.length; x++){
+      rawExpenditureData.push(data[x].count);
+    }
+    console.log(rawExpenditureData);
+    this.expenditureGlobalData = rawExpenditureData;
+  }
+
+  chartOptions = {
+    responsive: true,
+    scales: {
+      yAxes: [{
+        beginAtZero: true,
+        min: 0,
+        ticks: {
+          stepSize: 1
+        }
+      }]
+    }
+  };
 
 }

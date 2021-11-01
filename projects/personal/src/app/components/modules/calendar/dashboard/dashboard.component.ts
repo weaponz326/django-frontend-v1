@@ -25,6 +25,9 @@ export class DashboardComponent implements OnInit {
   allCalendarsCount: number = 0;
   allSchedulesCount: number = 0;
 
+  schedulesLineChartData: ChartDataSets[] = [{ data: [0], label: 'Schedules' }];
+  schedulesLineChartLabels: Label[] = [""]
+
   ngOnInit(): void {
   }
 
@@ -32,6 +35,8 @@ export class DashboardComponent implements OnInit {
     this.getCalendarsCount();
     this.getSchedulesCount();
     this.getScheduleAnnotation();
+
+    // this.initChart();
   }
 
   getCalendarsCount(){
@@ -63,11 +68,11 @@ export class DashboardComponent implements OnInit {
   }
 
   getScheduleAnnotation(){
-    this.calendarApi.getAnnotation()
+    this.calendarApi.getAnnotation("Schedule")
       .subscribe(
         res => {
           console.log(res);
-          // this.allSchedulesCount = res;
+          this.setScheduleChartData(res);
         },
         err => {
           console.log(err);
@@ -75,5 +80,36 @@ export class DashboardComponent implements OnInit {
         }
       )
   }
+
+  setScheduleChartData(data: any){
+    this.schedulesLineChartLabels = [];
+    for(let x = 0; x < data.length; x++){
+      this.schedulesLineChartLabels.push(data[x].date);
+    }
+    console.log(this.schedulesLineChartLabels);
+
+    let rawData = [];
+    for(let x = 0; x < data.length; x++){
+      rawData.push(data[x].count);
+    }
+    console.log(rawData);
+    this.schedulesLineChartData = [{ data: rawData, label: 'Schedules' }];
+  }
+
+  // initChart(){
+    // this.chartOptions = {
+    chartOptions = {
+      responsive: true,
+      scales: {
+        yAxes: [{
+          beginAtZero: true,
+          min: 0,
+          ticks: {
+            stepSize: 1
+          }
+        }]
+      }
+    };
+  // }
 
 }

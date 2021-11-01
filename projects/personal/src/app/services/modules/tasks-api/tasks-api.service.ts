@@ -46,4 +46,8 @@ export class TasksApiService {
     return this.http.get(this.personalUrl + "module-tasks/count?user=" + localStorage.getItem('personal_id') + "&model=" + model, this.endpoints.headers);
   }
 
+  public getAnnotation(model: any): Observable<any>{
+    return this.http.get(this.personalUrl + "module-tasks/annotate?user=" + localStorage.getItem('personal_id') + "&model=" + model, this.endpoints.headers);
+  }
+
 }

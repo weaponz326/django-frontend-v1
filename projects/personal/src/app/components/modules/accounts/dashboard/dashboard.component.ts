@@ -25,12 +25,16 @@ export class DashboardComponent implements OnInit {
   allAccountsCount: number = 0;
   allTransactionsCount: number = 0;
 
+  transactionsLineChartData: ChartDataSets[] = [{ data: [0], label: 'Transactions' }];
+  transactionsLineChartLabels: Label[] = [""]
+
   ngOnInit(): void {
   }
 
   ngAfterViewInit(): void {
     this.getAccountsCount();
     this.getTransactionsCount();
+    this.getTransactionAnnotation();
   }
 
   getAccountsCount(){
@@ -60,5 +64,47 @@ export class DashboardComponent implements OnInit {
         }
       )
   }
+
+  getTransactionAnnotation(){
+    this.accountsApi.getAnnotation("Transaction")
+      .subscribe(
+        res => {
+          console.log(res);
+          this.setTransactionChartData(res);
+        },
+        err => {
+          console.log(err);
+          this.connectionPrompt.toast.open();
+        }
+      )
+  }
+
+  setTransactionChartData(data: any){
+    this.transactionsLineChartLabels = [];
+    for(let x = 0; x < data.length; x++){
+      this.transactionsLineChartLabels.push(data[x].date);
+    }
+    console.log(this.transactionsLineChartLabels);
+
+    let rawData = [];
+    for(let x = 0; x < data.length; x++){
+      rawData.push(data[x].count);
+    }
+    console.log(rawData);
+    this.transactionsLineChartData = [{ data: rawData, label: 'Transactions' }];
+  }
+
+  chartOptions = {
+    responsive: true,
+    scales: {
+      yAxes: [{
+        beginAtZero: true,
+        min: 0,
+        ticks: {
+          stepSize: 1
+        }
+      }]
+    }
+  };
 
 }

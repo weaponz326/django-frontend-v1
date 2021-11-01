@@ -24,6 +24,9 @@ export class DashboardComponent implements OnInit {
 
   allNotesCount: any;
 
+  notesLineChartData: ChartDataSets[] = [{ data: [0], label: 'Notes' }];
+  notesLineChartLabels: Label[] = [""]
+
   ngOnInit(): void {
   }
 
@@ -47,11 +50,11 @@ export class DashboardComponent implements OnInit {
   }
 
   getNoteAnnotation(){
-    this.notesApi.getAnnotation()
+    this.notesApi.getAnnotation("Note")
       .subscribe(
         res => {
           console.log(res);
-          // this.allSchedulesCount = res;
+          this.setNoteChartData(res);
         },
         err => {
           console.log(err);
@@ -60,5 +63,32 @@ export class DashboardComponent implements OnInit {
       )
   }
 
+  setNoteChartData(data: any){
+    this.notesLineChartLabels = [];
+    for(let x = 0; x < data.length; x++){
+      this.notesLineChartLabels.push(data[x].date);
+    }
+    console.log(this.notesLineChartLabels);
+
+    let rawData = [];
+    for(let x = 0; x < data.length; x++){
+      rawData.push(data[x].count);
+    }
+    console.log(rawData);
+    this.notesLineChartData = [{ data: rawData, label: 'Notes' }];
+  }
+
+  chartOptions = {
+    responsive: true,
+    scales: {
+      yAxes: [{
+        beginAtZero: true,
+        min: 0,
+        ticks: {
+          stepSize: 1
+        }
+      }]
+    }
+  };
 
 }
