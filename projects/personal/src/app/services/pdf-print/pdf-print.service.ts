@@ -14,24 +14,6 @@ export class PdfPrintService {
 
   constructor() { }
 
-  // pdfMake: any;
-
-  // async loadPdfMaker() {
-  //   if (!this.pdfMake) {
-  //     const pdfMakeModule = await import('pdfmake/build/pdfmake');
-  //     const pdfFontsModule = await import('pdfmake/build/vfs_fonts');
-  //     this.pdfMake = pdfMakeModule.default;
-  //     this.pdfMake.vfs = pdfFontsModule.default.pdfMake.vfs;
-  //   }
-  // }
-
-  // async generatePdf(documentDefinition: any) {
-  //   await this.loadPdfMaker();
-
-  //   const def = { content: documentDefinition };
-  //   this.pdfMake.createPdf(def).open();
-  // }
-
   generatePdf(html: any) {
     var content = htmlToPdfmake(html);
     const def = { content: content };

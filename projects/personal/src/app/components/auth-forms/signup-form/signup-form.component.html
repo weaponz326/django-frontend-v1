@@ -13,7 +13,7 @@
                             <mat-stepper [linear]="true" #stepper>
 
                                 <mat-step>
-                                    <div class="row mb-3">
+                                    <div class="row gx-2 mb-3">
                                         <div class="col-md-6">
                                             <mat-form-field appearance="outline" class="w-100">
                                                 <mat-label>First Name</mat-label>
@@ -29,7 +29,7 @@
                                             <mat-error *ngFor="let lnErr of lnErrors">{{lnErr}}</mat-error>
                                         </div>
                                     </div>
-        
+
                                     <div class="row mb-3">
                                         <div class="col">
                                             <mat-form-field appearance="outline" class="w-100">
@@ -39,7 +39,7 @@
                                             <mat-error *ngFor="let locErr of locErrors">{{locErr}}</mat-error>
                                         </div>
                                     </div>
-        
+
                                     <div class="row mb-3">
                                         <div class="col">
                                             <mat-form-field appearance="outline" class="w-100">
@@ -50,10 +50,10 @@
                                             <mat-error *ngFor="let abtErr of abtErrors">{{abtErr}}</mat-error>
                                         </div>
                                     </div>
-        
+
                                     <div class="row mb-3">
                                         <div class="col">
-                                            <button mat-raised-button matStepperNext type="button" color="primary" class="float-end form-button">Next</button>                                            
+                                            <button mat-raised-button matStepperNext type="button" color="primary" class="float-end form-button">Next</button>
                                         </div>
                                     </div>
 
@@ -100,7 +100,7 @@
                                     </div>
 
                                     <p class="small text-center mb-3">Already have an account? <a href="#"routerLink="/auth/login">Log in</a></p>
-                                </mat-step>                                
+                                </mat-step>
 
                             </mat-stepper>
                         </form>
