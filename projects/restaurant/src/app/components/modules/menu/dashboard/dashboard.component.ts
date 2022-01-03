@@ -25,12 +25,16 @@ export class DashboardComponent implements OnInit {
   allMenuGroupsCount: number = 0;
   allMenuItemsCount: number = 0;
 
+  doughnutChartLabels: Label[] = [''];
+  doughnutChartData: ChartDataSets[] = [];
+
   ngOnInit(): void {
   }
 
   ngAfterViewInit(): void {
     this.getMenuGroupsCount();
     this.getMenuItemsCount();
+    this.getItemGroupAnnotation();
   }
 
   getMenuGroupsCount(){
@@ -60,5 +64,33 @@ export class DashboardComponent implements OnInit {
         }
       )
   }
+
+  getItemGroupAnnotation(){
+    this.menuApi.getAnnotation("MenuItem")
+      .subscribe(
+        res => {
+          console.log(res);
+          // this.setDoughnutChartLabels(res);
+          // this.setDoughnutChartData(res);
+        },
+        err => {
+          console.log(err);
+          this.connectionPrompt.toast.open();
+        }
+      )
+  }
+
+  chartOptions = {
+    responsive: true,
+    // scales: {
+    //   yAxes: [{
+    //     beginAtZero: true,
+    //     min: 0,
+    //     ticks: {
+    //       stepSize: 1
+    //     }
+    //   }]
+    // }
+  };
 
 }

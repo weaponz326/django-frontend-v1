@@ -9,6 +9,7 @@ import { InputModule } from 'smart-webcomponents-angular/input';
 import { DropDownListModule } from 'smart-webcomponents-angular/dropdownlist';
 
 import { ModuleUtilitiesModule } from 'projects/personal/src/app/components/module-utilities/module-utilities.module';
+import { MenuPrintModule } from '../../printing/menu-print/menu-print.module';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SettingsComponent } from './settings/settings.component';
@@ -42,6 +43,7 @@ import { ViewMenuGroupComponent } from './view-menu-group/view-menu-group.compon
     InputModule,
     DropDownListModule,
     ModuleUtilitiesModule,
+    MenuPrintModule,
   ]
 })
 export class MenuModule { }

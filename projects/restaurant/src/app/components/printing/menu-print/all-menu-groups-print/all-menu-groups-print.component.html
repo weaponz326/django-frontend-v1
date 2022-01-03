@@ -1,0 +1,24 @@
+<div #printElementReference class="container">
+
+    <div class="row">
+        <div class="col">
+
+            <table class="table table-sm w-100">
+                <thead>
+                    <tr>
+                        <th>Menu Group</th>
+                        <th>Category</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let data of menuGroupGridData">
+                        <td>{{data.menu_group}}</td>
+                        <td>{{data.category}}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+</div>

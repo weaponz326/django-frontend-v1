@@ -21,7 +21,6 @@ import { BasicComponent } from './profile-content/basic/basic.component';
 import { LogoComponent } from './profile-content/logo/logo.component';
 import { LocationComponent } from './profile-content/location/location.component';
 import { ContactComponent } from './profile-content/contact/contact.component';
-import { PaymentFormComponent } from './payment-form/payment-form.component';
 import { PaymentsHistoryComponent } from './payments-history/payments-history.component';
 
 
@@ -36,7 +35,6 @@ import { PaymentsHistoryComponent } from './payments-history/payments-history.co
     LogoComponent,
     LocationComponent,
     ContactComponent,
-    PaymentFormComponent,
     PaymentsHistoryComponent
   ],
   imports: [

@@ -131,6 +131,7 @@ hr {
 	padding-bottom: 0 !important;
 }
 
+/* TODO: only works when placed in components scss */
 ::ng-deep .settings-tabs .smart-tabs-content-section,
 ::ng-deep .settings-tabs .smart-tabs-header-section{
   border: none;

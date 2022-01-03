@@ -6,7 +6,6 @@ import { GridComponent, GridColumn, DataAdapter, Smart } from 'smart-webcomponen
 import { InputComponent } from 'smart-webcomponents-angular/input';
 
 import { MenuApiService } from 'projects/restaurant/src/app/services/modules/menu-api/menu-api.service';
-import { AllMenuPrintComponent } from '../../../printing/menu-print/all-menu-print/all-menu-print.component';
 import { ConnectionPromptComponent } from 'projects/personal/src/app/components/module-utilities/connection-prompt/connection-prompt.component'
 import { DeleteConfirmationComponent } from 'projects/personal/src/app/components/module-utilities/delete-confirmation/delete-confirmation.component'
 
@@ -21,7 +20,6 @@ export class ViewMenuGroupComponent implements OnInit {
   constructor(
     private router: Router,
     private menuApi: MenuApiService,
-    private allMenuPrint: AllMenuPrintComponent,
   ) { }
 
   @ViewChild('menuGroupInputReference', { read: InputComponent, static: false }) menuGroupInput!: InputComponent;
@@ -142,13 +140,32 @@ export class ViewMenuGroupComponent implements OnInit {
     this.columns = <GridColumn[]>[
       { label: "Item ID", dataField: "item_code", width: "25%" },
       { label: "Item Name", dataField: "item_name", width: "50%" },
-      { label: "Price", dataField: "price", width: "25%" },
+      { label: "Price", dataField: "price", width: "25%", cellsFormat: "c2", editor: "numberInput" },
     ]
+
+    this.editing = {
+      enabled: true,
+      action: "none",
+      addNewRow: {
+        visible: true,
+        position: 'near',
+      },
+      addDialog: {
+        enabled: true,
+        header: "Add New Menu Item"
+      },
+      dialog: {
+        enabled: true
+      },
+      commandColumn: {
+        visible: true,
+        position: 'far'
+      }
+    }
   }
 
   onPrint(){
     console.log("lets start printing...");
-    this.allMenuPrint.print();
   }
 
 }

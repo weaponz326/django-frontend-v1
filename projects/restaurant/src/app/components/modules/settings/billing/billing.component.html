@@ -39,9 +39,40 @@
                         </div>
                     </div>
 
+                </div>
+            </div>
+
+            <hr />
+
+            <!-- TODO: delete! component no longer being used -->
+
+            <!-- paymetn form component -->
+
+            <!-- <app-payment-form #paymentFormCompnentReference></app-payment-form> -->
+
+            <div class="row billing-form">
+                <div class="col-md-9">
+
+                    <h3 class="mb-3">Billing Details</h3>
+
                     <div class="row mb-2">
-                        <div class="col">
-                            <smart-button #buttonReference class="float-end page-control-button" (click)="saveSubscription()">Save</smart-button>
+                        <div class="col-md-4"><label>First Name :</label></div>
+                        <div class="col-md-8">
+                            <smart-input #firstNameInputReference class="w-100"></smart-input>
+                        </div>
+                    </div>
+
+                    <div class="row mb-2">
+                        <div class="col-md-4"><label>Last Name :</label></div>
+                        <div class="col-md-8">
+                            <smart-input #lastNamerInputReference class="w-100"></smart-input>
+                        </div>
+                    </div>
+
+                    <div class="row mb-2">
+                        <div class="col-md-4"><label>Email :</label></div>
+                        <div class="col-md-8">
+                            <smart-input #emailInputReference class="w-100"></smart-input>
                         </div>
                     </div>
 
@@ -50,9 +81,11 @@
 
             <hr />
 
-            <!-- paymetn form component -->
-
-            <app-payment-form #paymentFormCompnentReference></app-payment-form>
+            <div class="row my-4">
+                <div class="col-md-9">
+                    <smart-button #buttonReference class="float-end page-control-button" (click)="saveSubscription()">Save</smart-button>
+                </div>
+            </div>
 
         </div>
 

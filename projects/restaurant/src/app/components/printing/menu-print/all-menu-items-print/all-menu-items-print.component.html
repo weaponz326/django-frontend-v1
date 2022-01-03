@@ -1,0 +1,28 @@
+<div #printElementReference class="container">
+
+    <div class="row">
+        <div class="col">
+
+            <table class="table table-sm w-100">
+                <thead>
+                    <tr>
+                        <th>Item ID</th>
+                        <th>Item Name</th>
+                        <th>Item Price</th>
+                        <th>Category</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let data of menuItemGridData">
+                        <td>{{data.item_code}}</td>
+                        <td>{{data.item_name}}</td>
+                        <td>{{data.price}}</td>
+                        <td>{{data.category}}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+</div>

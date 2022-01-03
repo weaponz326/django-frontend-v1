@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AllMenuPrintComponent } from './all-menu-print.component';
+import { AllMenuItemsPrintComponent } from './all-menu-items-print.component';
 
-describe('AllMenuPrintComponent', () => {
-  let component: AllMenuPrintComponent;
-  let fixture: ComponentFixture<AllMenuPrintComponent>;
+describe('AllMenuItemsPrintComponent', () => {
+  let component: AllMenuItemsPrintComponent;
+  let fixture: ComponentFixture<AllMenuItemsPrintComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AllMenuPrintComponent ]
+      declarations: [ AllMenuItemsPrintComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AllMenuPrintComponent);
+    fixture = TestBed.createComponent(AllMenuItemsPrintComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

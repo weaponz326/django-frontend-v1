@@ -2,21 +2,28 @@
 
 <div #print class="container">
 
-    <div class="row mb-3">
+    <!-- <div class="row mb-3">
         <div class="col-md-12">
             <smart-button #newMenuGroupButtonReference (click)="menuGroupGrid.beginEdit(1)">New Menu Group</smart-button>
         </div>
-    </div>
+    </div> -->
 
     <div class="row">
         <div class="col-md-8">
             <smart-grid #menuGroupGridReference class="w-100"
-            [dataSource]="dataSource" [columns]="columns" [sorting]="sorting" [editing]="editing">
+            [dataSource]="dataSource" [columns]="columns" [sorting]="sorting" [editing]="editing" [onRowInserted]="onRowInserted"
+            (rowDoubleClick)="onRowDoubleClick($event)">
             </smart-grid>
         </div>
     </div>
 
 </div>
+
+<!-- print components -->
+
+<app-all-menu-groups-print #allMenuGroupsPrintComponentReference
+[hidden]="true" [menuGroupGridData]="menuGroupGridData">
+</app-all-menu-groups-print>
 
 <!-- connection error prompt component -->
 

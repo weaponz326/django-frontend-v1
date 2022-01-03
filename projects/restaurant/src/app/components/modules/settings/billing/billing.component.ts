@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 
 import { DropDownListComponent } from 'smart-webcomponents-angular/dropdownlist';
 import { NumericTextBoxComponent } from 'smart-webcomponents-angular/numerictextbox';
+import { InputComponent } from 'smart-webcomponents-angular/input';
 import { ButtonComponent } from 'smart-webcomponents-angular/button';
 
 import { SettingsApiService } from 'projects/restaurant/src/app/services/modules/settings-api/settings-api.service';
@@ -20,6 +21,10 @@ export class BillingComponent implements OnInit {
   @ViewChild('subscriptionDropDownListReference', { read: DropDownListComponent, static: false }) subscriptionDropDownList!: DropDownListComponent;
   @ViewChild('frequencyDropDownListReference', { read: DropDownListComponent, static: false }) frequencyDropDownList!: DropDownListComponent;
   @ViewChild('usersNumericTextBoxReference', { read: NumericTextBoxComponent, static: false }) usersNumericTextBox!: NumericTextBoxComponent;
+  @ViewChild('firstNameInputReference', { read: InputComponent, static: false }) firstNameInput!: InputComponent;
+  @ViewChild('lastNameInputReference', { read: InputComponent, static: false }) lastNameInput!: InputComponent;
+  @ViewChild('emailInputReference', { read: InputComponent, static: false }) emailInput!: InputComponent;
+
   @ViewChild('buttonReference', { read: ButtonComponent, static: false }) button!: ButtonComponent;
 
   @ViewChild('connectionPromptComponentReference', { read: ConnectionPromptComponent, static: false }) connectionPrompt!: ConnectionPromptComponent;
@@ -50,6 +55,9 @@ export class BillingComponent implements OnInit {
           this.subscriptionDropDownList.value = res.subscription_type;
           this.frequencyDropDownList.value = res.billing_frequency;
           this.usersNumericTextBox.value = res.number_users;
+          this.firstNameInput.value = res.first_name;
+          this.lastNameInput.value = res.last_name;
+          this.emailInput.value = res.email_name;
         },
         err => {
           console.log(err);
@@ -63,6 +71,9 @@ export class BillingComponent implements OnInit {
       subscription_type: this.subscriptionDropDownList.value,
       billing_frequency: this.frequencyDropDownList.value,
       number_users: this.usersNumericTextBox.value,
+      first_name: this.firstNameInput.value,
+      last_name: this.lastNameInput.value,
+      email: this.emailInput.value,
     }
 
     this.settingsApi.putSubscription(data)

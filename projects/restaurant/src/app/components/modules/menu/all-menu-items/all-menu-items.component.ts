@@ -4,6 +4,7 @@ import { ButtonComponent } from 'smart-webcomponents-angular/button';
 import { GridComponent, GridColumn, DataAdapter, Smart } from 'smart-webcomponents-angular/grid';
 
 import { MenuApiService } from 'projects/restaurant/src/app/services/modules/menu-api/menu-api.service';
+import { AllMenuItemsPrintComponent } from 'projects/restaurant/src/app/components/printing/menu-print/all-menu-items-print/all-menu-items-print.component'
 import { ConnectionPromptComponent } from 'projects/personal/src/app/components/module-utilities/connection-prompt/connection-prompt.component'
 
 
@@ -19,6 +20,7 @@ export class AllMenuItemsComponent implements OnInit {
   @ViewChild('menuItemsGridReference', { read: GridComponent, static: false }) menuItemsGrid!: GridComponent;
 
   @ViewChild('connectionPromptComponentReference', { read: ConnectionPromptComponent, static: false }) connectionPrompt!: ConnectionPromptComponent;
+  @ViewChild('allMenuItemsPrintComponentReference', { read: AllMenuItemsPrintComponent, static: false }) allMenuItemsPrint!: AllMenuItemsPrintComponent;
 
   navHeading: any[] = [
     { text: "All Menu Items", url: "/home/menu/all-menu-items" },
@@ -30,6 +32,8 @@ export class AllMenuItemsComponent implements OnInit {
   columns: GridColumn[] = <GridColumn[]>[];
   editing = {}
 
+  menuItemGridData = [];
+
   ngOnInit(): void {
     this.initGrid();
   }
@@ -40,6 +44,7 @@ export class AllMenuItemsComponent implements OnInit {
         res => {
           console.log(res);
           this.dataSource = res;
+          this.menuItemGridData = res;
         },
         err => {
           console.log(err);
@@ -73,6 +78,7 @@ export class AllMenuItemsComponent implements OnInit {
 
   onPrint(){
     console.log("lets start printing...");
+    this.allMenuItemsPrint.print();
   }
 
 }
