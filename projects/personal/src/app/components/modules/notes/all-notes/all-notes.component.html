@@ -2,31 +2,33 @@
 
 <div class="container">
 
-    <!-- <div class="row">
-        <div class="col-md-9">
-            <div class="row">
-                <div class="col-md-6 mx-auto">
-
-                </div>
-            </div>
-
-            <hr />
+    <div class="row mb-3">
+        <div class="col-md-12">
+            <button class="btn btn-secondary page-add-btn" routerLink="/home/notes/new-note">New Note</button>
         </div>
-    </div> -->
+    </div>
 
     <div class="row">
-        <div class="col-md-9">
-            <smart-grid #notesGridReference class="w-100"
-            [dataSource]="dataSource" [columns]="columns" [sorting]="sorting" [filtering]="filtering"
-            (onRowDoubleClick)="viewNote($event)">
-            </smart-grid>
+        <div class="col-md-8">
+
+            <table class="table table-bordered table-sm w-100 page-table">
+                <thead>
+                    <tr class="bg-light">
+                        <th width="50%">Subject</th>
+                        <th width="25%">Created At</th>
+                        <th width="25%">Last Updated</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let data of notesGridData" (dblclick)="viewNote(data.id)" class="table-pointer">
+                        <td>{{data?.subject}}</td>
+                        <td>{{data?.created_at | date}}</td>
+                        <td>{{data?.updated_at | date}}</td>
+                    </tr>
+                </tbody>
+            </table>
+
         </div>
     </div>
 
 </div>
-
-<!-- print components -->
-
-<app-all-notes-print #allNotesPrintComponentReference
-[hidden]="true" [notesGridData]="notesGridData">
-</app-all-notes-print>

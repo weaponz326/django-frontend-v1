@@ -1,1 +1,66 @@
-<p>add-account works!</p>
+<button [hidden]="true" #buttonElementReference data-bs-toggle="modal" data-bs-target="#newAccountModal">
+    Launch demo modal
+</button>
+
+<div class="modal fade form-modal" id="newAccountModal" tabindex="-1" aria-labelledby="newAccountModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <form class="page-form" [formGroup]="accountForm" (ngSubmit)="postAccount()">
+
+                <div class="modal-header bg-light">
+                    <span class="modal-title" id="newAccountModalLabel">Add New Account</span>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+                    <div class="row mb-1">
+                        <div class="col-md-4">
+                            <label class="float-end mt-1">Account Name :</label>
+                        </div>
+                        <div class="col-md-8">
+                            <input formControlName="accountName" class="form-control form-control-sm w-100">
+                        </div>
+                    </div>
+
+                    <div class="row mb-1">
+                        <div class="col-md-4">
+                            <label class="float-end mt-1">Account Number :</label>
+                        </div>
+                        <div class="col-md-8">
+                            <input formControlName="accountNumber" class="form-control form-control-sm w-100">
+                        </div>
+                    </div>
+
+                    <div class="row mb-1">
+                        <div class="col-md-4">
+                            <label class="float-end mt-1">Bank Name :</label>
+                        </div>
+                        <div class="col-md-8">
+                            <input formControlName="bankName" class="form-control form-control-sm w-100">
+                        </div>
+                    </div>
+
+                    <div class="row mb-1">
+                        <div class="col-md-4">
+                            <label class="float-end mt-1">Account Type :</label>
+                        </div>
+                        <div class="col-md-8">
+                            <select formControlName="accountType" class="form-control form-control-sm w-100">
+                                <option>Current</option>
+                                <option>Savings</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-sm btn-secondary modal-form-btn" data-bs-dismiss="modal">Save</button>
+                    <button type="button" class="btn btn-sm btn-secondary modal-form-btn" data-bs-dismiss="modal">Cancel</button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>

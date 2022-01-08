@@ -1,12 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { ChartsModule } from 'ng2-charts';
-import { SchedulerModule } from 'smart-webcomponents-angular/scheduler';
-import { GridModule } from 'smart-webcomponents-angular/grid';
-import { InputModule } from 'smart-webcomponents-angular/input';
-import { ButtonModule } from 'smart-webcomponents-angular/button';
 
 import { ModuleUtilitiesModule } from '../../module-utilities/module-utilities.module';
 import { CalendarPrintModule } from '../../printing/calendar-print/calendar-print.module';
@@ -31,11 +29,9 @@ import { AllSchedulesComponent } from './all-schedules/all-schedules.component';
   imports: [
     CommonModule,
     RouterModule,
+    FormsModule,
+    ReactiveFormsModule,
     ChartsModule,
-    SchedulerModule,
-    GridModule,
-    InputModule,
-    ButtonModule,
     ModuleUtilitiesModule,
     CalendarPrintModule,
   ]

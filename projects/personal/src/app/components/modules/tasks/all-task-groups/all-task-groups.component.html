@@ -4,24 +4,33 @@
 
     <div class="row mb-3">
         <div class="col-md-12">
-            <smart-button #newCalendarButtonReference routerLink="/home/tasks/new-task-group">New Task Group</smart-button>
+            <button class="btn btn-secondary page-add-btn" (click)="newTaskGroup.openModal()">New Task Group</button>
         </div>
     </div>
 
     <div class="row">
         <div class="col-md-7">
-            <smart-grid #taskGroupsGridReference class="w-100" [dataSource]="dataSource" [columns]="columns" [sorting]="sorting"></smart-grid>
+
+            <table class="table table-bordered table-sm w-100 page-table">
+                <thead>
+                    <tr class="bg-light">
+                        <th width="65%">Task Group</th>
+                        <th width="35%">Created At</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let data of taskGroupsGridData" (dblclick)="viewTaskGroup(data.id)" class="table-pointer">
+                        <td>{{data?.task_group}}</td>
+                        <td>{{data?.created_at | date}}</td>
+                    </tr>
+                </tbody>
+            </table>
+
         </div>
     </div>
 
 </div>
 
-<!-- printing components -->
+<!-- new task group modal component -->
 
-<app-all-task-groups-print #allTaskGroupsPrintComponentReference
-[hidden]="true" [taskGroupsGridData]="taskGroupsGridData">
-</app-all-task-groups-print>
-
-<!-- connection error prompt component -->
-
-<app-connection-prompt #connectionPromptComponentReference></app-connection-prompt>
+<app-new-task-group #newTaskGroupComponentReference></app-new-task-group>

@@ -7,16 +7,96 @@
         <div class="row">
 
             <div class="col-md-6">
+
                 <h4 class="mb-3">Income</h4>
-                <smart-grid #incomeGridReference class="w-100" [dataSource]="incomeDataSource" [columns]="incomeColumns" [editing]="incomeEditing"></smart-grid>
+
+                <table class="table table-bordered table-sm w-100 page-table">
+                    <thead>
+                        <tr class="bg-light">
+                            <th width="10%">No.</th>
+                            <th width="55%">Item</th>
+                            <th width="20%">Amount</th>
+                            <th width="15%" class="p-0">
+                                <button class="btn btn-secondary btn-sm w-100" (click)="addIncome.openModal()">
+                                    <i class="bi bi-plus"></i>
+                                </button>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let data of incomeGridData; index as i">
+                            <td>{{data?.item_number}}</td>
+                            <td>{{data?.item_description}}</td>
+                            <td>{{data?.amount}}</td>
+                            <td class="p-0">
+                                <button class="btn btn-sm border w-50" (click)="openEditIncome(i)"><i class="bi bi-pen"></i></button>
+                                <button class="btn btn-sm border w-50" (click)="deleteIncome(i, data.id)"><i class="bi bi-trash"></i></button>
+                            </td>
+                        </tr>
+                        <tr class="bg-light">
+                            <td colspan="2"></td>
+                            <td>{{totalIncome}}</td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+
             </div>
 
             <div class="col-md-6">
+
                 <h4 class="mb-3">Expenditure</h4>
-                <smart-grid #expenditureGridReference class="w-100" [dataSource]="expenditureDataSource" [columns]="expenditureColumns" [editing]="expenditureEditing"></smart-grid>
+
+                <table class="table table-bordered table-sm w-100 page-table">
+                    <thead>
+                        <tr class="bg-light">
+                            <th width="10%">No.</th>
+                            <th width="55%">Item</th>
+                            <th width="20%">Amount</th>
+                            <th width="15%" class="p-0">
+                                <button class="btn btn-secondary btn-sm w-100" (click)="addExpenditure.openModal()">
+                                    <i class="bi bi-plus"></i>
+                                </button>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let data of expenditureGridData; index as i">
+                            <td>{{data?.item_number}}</td>
+                            <td>{{data?.item_description}}</td>
+                            <td>{{data?.amount}}</td>
+                            <td class="p-0">
+                                <button class="btn btn-sm border w-50" (click)="openEditExpenditure(i)"><i class="bi bi-pen"></i></button>
+                                <button class="btn btn-sm border w-50" (click)="deleteExpenditure(i, data.id)"><i class="bi bi-trash"></i></button>
+                            </td>
+                        </tr>
+                        <tr class="bg-light">
+                            <td colspan="2"></td>
+                            <td>{{totalExpenditure}}</td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+
             </div>
 
         </div>
 
     </div>
 </div>
+
+<!-- add income modal component -->
+
+<app-add-income #addIncomeComponentReference (saveIncomeEvent)="postIncome($event)"></app-add-income>
+
+<!-- edit income modal component -->
+
+<app-edit-income #editIncomeComponentReference (saveIncomeEvent)="putIncome($event)"></app-edit-income>
+
+<!-- add expenditure modal component -->
+
+<app-add-expenditure #addExpenditureComponentReference (saveExpenditureEvent)="postExpenditure($event)"></app-add-expenditure>
+
+<!-- edit expenditure modal component -->
+
+<app-edit-expenditure #editExpenditureComponentReference (saveExpenditureEvent)="putExpenditure($event)"></app-edit-expenditure>

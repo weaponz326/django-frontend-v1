@@ -1,13 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { ButtonComponent } from 'smart-webcomponents-angular/button';
-import { InputComponent } from 'smart-webcomponents-angular/input';
-import { EditorComponent } from 'smart-webcomponents-angular/editor';
-
 import { NotesApiService } from 'projects/personal/src/app/services/modules/notes-api/notes-api.service';
-import { ConnectionPromptComponent } from '../../../module-utilities/connection-prompt/connection-prompt.component'
-
 
 @Component({
   selector: 'app-new-note',
@@ -21,29 +15,23 @@ export class NewNoteComponent implements OnInit {
     private notesApi: NotesApiService
   ) { }
 
-  @ViewChild('subjectInputReference', { read: InputComponent, static: false }) subjectInput!: InputComponent;
-  @ViewChild('bodyEditorReference', { read: EditorComponent, static: false }) bodyEditor!: EditorComponent;
-
-  @ViewChild('connectionPromptComponentReference', { read: ConnectionPromptComponent, static: false }) connectionPrompt!: ConnectionPromptComponent;
-
   navHeading: any[] = [
     { text: "New Note", url: "/home/notes/new-note" },
   ];
 
+  subject = "";
+
   isFileSave: boolean = false;
   filesToUpload: File[] = [];
 
-  toolbarItems: any[] = [];
-
   ngOnInit(): void {
-    this.initEditor();
   }
 
   saveNote(){
     let noteData = {
       user: localStorage.getItem('personal_id'),
-      subject: this.subjectInput.value,
-      body: this.bodyEditor.value
+      subject: this.subject,
+      // body: this.bodyEditor.value
     }
 
     console.log(noteData);
@@ -62,7 +50,6 @@ export class NewNoteComponent implements OnInit {
         },
         err => {
           console.log(err);
-          this.connectionPrompt.toast.open();
         }
       )
   }
@@ -80,7 +67,6 @@ export class NewNoteComponent implements OnInit {
         },
         err => {
           console.log(err);
-          this.connectionPrompt.toast.open();
         }
       )
   }
@@ -93,24 +79,9 @@ export class NewNoteComponent implements OnInit {
     this.setFileSave();
   }
 
-
   setFileSave(){
     this.isFileSave = true;
     this.saveNote();
-  }
-
-  initEditor(){
-    this.toolbarItems = [
-      'Bold', 'Italic', 'Underline', 'StrikeThrough',
-      'FontName', 'FontSize', 'FontColor', 'BackgroundColor',
-      'LowerCase', 'UpperCase', '|',
-      'Formats', 'Alignment', 'OrderedList', 'UnorderedList',
-      'Outdent', 'Indent', '|',
-      'hyperlink', 'table', 'Image', '|',
-      'ClearFormat', 'Print',
-      'SourceCode', 'splitmode', 'FullScreen', '|',
-      'Undo', 'Redo', 'subscript', 'superscript', 'delete'
-    ];
   }
 
 }

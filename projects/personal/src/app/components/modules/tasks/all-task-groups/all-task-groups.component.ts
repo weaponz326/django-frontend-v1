@@ -1,12 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-
-import { GridComponent, GridColumn, DataAdapter, Smart } from 'smart-webcomponents-angular/grid';
-import { ButtonComponent } from 'smart-webcomponents-angular/button';
+import { Router } from '@angular/router';
 
 import { TasksApiService } from 'projects/personal/src/app/services/modules/tasks-api/tasks-api.service';
+import { TasksPrintService } from 'projects/personal/src/app/services/printing/tasks-print/tasks-print.service';
 
-import { AllTaskGroupsPrintComponent } from 'projects/personal/src/app/components/printing/tasks-print/all-task-groups-print/all-task-groups-print.component'
-import { ConnectionPromptComponent } from '../../../module-utilities/connection-prompt/connection-prompt.component'
+import { NewTaskGroupComponent } from '../new-task-group/new-task-group.component'
 
 
 @Component({
@@ -16,50 +14,50 @@ import { ConnectionPromptComponent } from '../../../module-utilities/connection-
 })
 export class AllTaskGroupsComponent implements OnInit {
 
-  constructor(private tasksApi: TasksApiService) { }
+  constructor(
+    private router: Router,
+    private tasksApi: TasksApiService,
+    private tasksPrint: TasksPrintService
+  ) { }
 
-  @ViewChild('taskGroupsGridReference', { read: GridComponent, static: false }) taskGroupsGrid!: GridComponent;
-  @ViewChild('newCalendarButtonReference', { read: ButtonComponent, static: false }) newCalendarButton!: ButtonComponent;
-
-  @ViewChild('allTaskGroupsPrintComponentReference', { read: AllTaskGroupsPrintComponent, static: false }) allTaskGroupsPrint!: AllTaskGroupsPrintComponent;
-  @ViewChild('connectionPromptComponentReference', { read: ConnectionPromptComponent, static: false }) connectionPrompt!: ConnectionPromptComponent;
+  @ViewChild('newTaskGroupComponentReference', { read: NewTaskGroupComponent, static: false }) newTaskGroup!: NewTaskGroupComponent;
 
   navHeading: any[] = [
     { text: "All Task Groups", url: "/home/tasks/all-task-groups" },
   ];
 
-  sorting = { enabled: true }
-  filtering = { enabled: true }
-  dataSource = [];
-  columns: GridColumn[] = <GridColumn[]>[];
-
-  taskGroupsGridData = [];
+  taskGroupsGridData: any[] = [];
 
   ngOnInit(): void {
-    this.initGrid();
   }
 
-  initGrid(){
-    this.dataSource = new Smart.DataAdapter (
-      <DataAdapter>{
-        dataSource: [],
-        dataFields:[
-          'id: string',
-          'task_group_name: string',
-          'date_created: string',
-        ]
-      }
-    );
+  ngAfterViewInit(): void {
+    this.getTaskGroups();
+  }
 
-    this.columns = <GridColumn[]>[
-      { label: 'Task Group', dataField: 'task_group_name', width: '65%' },
-      { label: 'Date Created', dataField: 'date_created', width: '35%' },
-    ]
+  getTaskGroups(){
+    this.tasksApi.getTaskGroups()
+      .subscribe(
+        res => {
+          console.log(res);
+          this.taskGroupsGridData = res;
+        },
+        err => {
+          console.log(err);
+        }
+      )
+  }
+
+  viewTaskGroup(id: any){
+    console.log(id);
+    sessionStorage.setItem('personal_task_group_id', id);
+
+    this.router.navigateByUrl('/home/tasks/view-task-group/kanban-view')
   }
 
   onPrint(){
     console.log("lets start printing...");
-    this.allTaskGroupsPrint.print();
+    this.tasksPrint.printAllTaskGroups(this.taskGroupsGridData);
   }
 
 }

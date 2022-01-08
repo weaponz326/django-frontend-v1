@@ -1,3 +1,7 @@
+.nr-standard-font{
+	font-size: 14px;
+}
+
 .module-heading a{
 	color: #7f7f7f;
 }
@@ -47,6 +51,16 @@ hr {
 
 /* forms */
 
+.page-form{
+  font-size: 14px;
+}
+
+.page-form .page-form-btn{
+	width: 80px;
+}
+
+/* ----------------------------------- */
+
 .page-form smart-input,
 .page-form smart-drop-down-list,
 .page-form smart-date-time-picker,
@@ -75,6 +89,31 @@ hr {
 .module-select-window smart-window{
   width: 555px;
   height: 600px;
+}
+
+/* tables */
+
+.page-add-btn{
+  font-size: 14px;
+  width: 150px;
+}
+
+table.page-table{
+  font-size: 14px;
+}
+
+.table-pointer td{
+  cursor: pointer;
+}
+
+/* modals */
+
+.form-modal{
+  font-size: 14px;
+}
+
+.form-modal .modal-form-btn{
+  width: 60px;
 }
 
 /* grid dialog forms */

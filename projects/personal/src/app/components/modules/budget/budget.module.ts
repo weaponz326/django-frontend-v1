@@ -1,12 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { ChartsModule } from 'ng2-charts';
-import { ButtonModule } from 'smart-webcomponents-angular/button';
-import { InputModule } from 'smart-webcomponents-angular/input';
-import { DropDownListModule } from 'smart-webcomponents-angular/dropdownlist';
-import { GridModule } from 'smart-webcomponents-angular/grid';
-import { WindowModule } from 'smart-webcomponents-angular/window';
 
 import { ModuleUtilitiesModule } from '../../module-utilities/module-utilities.module';
 import { BudgetPrintModule } from '../../printing/budget-print/budget-print.module';
@@ -39,12 +37,10 @@ import { EditExpenditureComponent } from './edit-expenditure/edit-expenditure.co
   ],
   imports: [
     CommonModule,
+    RouterModule,
+    FormsModule,
+    ReactiveFormsModule,
     ChartsModule,
-    ButtonModule,
-    InputModule,
-    DropDownListModule,
-    GridModule,
-    WindowModule,
     ModuleUtilitiesModule,
     BudgetPrintModule,
   ]

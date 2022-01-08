@@ -1,12 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-
-import { ButtonComponent } from 'smart-webcomponents-angular/button';
-import { GridComponent, GridColumn, DataAdapter, Smart } from 'smart-webcomponents-angular/grid';
+import { Router } from '@angular/router';
 
 import { AccountsApiService } from 'projects/personal/src/app/services/modules/accounts-api/accounts-api.service';
+import { AccountsPrintService } from 'projects/personal/src/app/services/printing/accounts-print/accounts-print.service';
 
-import { AllAccountsPrintComponent } from 'projects/personal/src/app/components/printing/accounts-print/all-accounts-print/all-accounts-print.component'
-import { ConnectionPromptComponent } from '../../../module-utilities/connection-prompt/connection-prompt.component'
+import { AddAccountComponent } from '../add-account/add-account.component'
 
 
 @Component({
@@ -16,28 +14,25 @@ import { ConnectionPromptComponent } from '../../../module-utilities/connection-
 })
 export class AllAccountsComponent implements OnInit {
 
-  constructor(private accountsApi: AccountsApiService) { }
+  constructor(
+    private router: Router,
+    private accountsApi: AccountsApiService,
+    private accountsPrint: AccountsPrintService,
+  ) { }
 
-  @ViewChild('newAccountButtonReference', { read: ButtonComponent, static: false }) newAccountButton!: ButtonComponent;
-  @ViewChild('accountsGridReference', { read: GridComponent, static: false }) accountsGrid!: GridComponent;
-
-  @ViewChild('allAccountsPrintComponentReference', { read: AllAccountsPrintComponent, static: false }) allAccountsPrint!: AllAccountsPrintComponent;
-  @ViewChild('connectionPromptComponentReference', { read: ConnectionPromptComponent, static: false }) connectionPrompt!: ConnectionPromptComponent;
+  @ViewChild('addAccountComponentReference', { read: AddAccountComponent, static: false }) addAccount!: AddAccountComponent;
 
   navHeading: any[] = [
     { text: "All Accounts", url: "/home/accounts/all-accounts" },
   ];
 
-  sorting = { enabled: true }
-  filtering = { enabled: true }
-  dataSource = [];
-  columns: GridColumn[] = <GridColumn[]>[];
-  editing = {}
-
-  accountsGridData = [];
+  accountsGridData: any[] = [];
 
   ngOnInit(): void {
-    this.initGrid();
+  }
+
+  ngAfterViewInit(): void {
+    this.getAccounts();
   }
 
   getAccounts(){
@@ -45,54 +40,24 @@ export class AllAccountsComponent implements OnInit {
       .subscribe(
         res => {
           console.log(res);
-          this.dataSource = res;
           this.accountsGridData = res;
         },
         err => {
           console.log(err);
-          this.connectionPrompt.toast.open();
         }
       )
   }
 
-  initGrid(){
-    this.dataSource = new Smart.DataAdapter (
-      <DataAdapter>{
-        id: 'id',
-        dataSource: this.getAccounts(),
-        dataFields:[
-          'id: string',
-          'account_name: string',
-          'account_number: string',
-          'bank_name: string',
-        ]
-      }
-    );
+  viewAccount(accountId: any){
+    console.log(accountId);
 
-    this.columns = <GridColumn[]>[
-      { label: "Account Name", dataField: "account_name", width: "45%" },
-      { label: "Account No.", dataField: "account_number", width: "25%" },
-      { label: "Bank Name", dataField: "bank_name", width: "30%" },
-    ]
-
-    this.editing = {
-      enabled: true,
-      action: 'click',
-      addDialog: {
-        enabled: true,
-      },
-      addNewRow: {
-        visible: true,
-        position: 'near',
-        // displayMode: 'button',
-        // header: "Add New Account"
-      }
-    }
+    sessionStorage.setItem("personal_account_id", accountId);
+    this.router.navigateByUrl("/home/accounts/view-account");
   }
 
   onPrint(){
     console.log("lets start printing...");
-    this.allAccountsPrint.print();
+    this.accountsPrint.printAllAccounts(this.accountsGridData);
   }
 
 }

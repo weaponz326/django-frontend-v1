@@ -5,11 +5,42 @@
         <hr class="bottom-divider" />
 
         <h4 class="mb-3">Transactions</h4>
-        <smart-grid #transactionsGridReference class="w-100" [dataSource]="dataSource" [columns]="columns" [editing]="editing"></smart-grid>
+
+        <table class="table table-bordered table-sm w-100 page-table">
+            <thead>
+                <tr class="bg-light">
+                    <th width="20%">Transaction Date</th>
+                    <th width="37%">Description</th>
+                    <th width="18%">Transaction Type</th>
+                    <th width="15%">Amount</th>
+                    <th width="10%" class="p-0">
+                        <button class="btn btn-secondary btn-sm w-100" (click)="addTransaction.openModal()">
+                            <i class="bi bi-plus"></i>
+                        </button>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let data of transactionsGridData; index as i">
+                    <td>{{data?.transaction_date | date}}</td>
+                    <td>{{data?.description}}</td>
+                    <td>{{data?.transaction_type}}</td>
+                    <td>{{data?.amount}}</td>
+                    <td class="p-0">
+                        <button class="btn btn-sm border w-50" (click)="openEditTransaction(i)"><i class="bi bi-pen"></i></button>
+                        <button class="btn btn-sm border w-50" (click)="deleteTransaction(i, data.id)"><i class="bi bi-trash"></i></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
 
     </div>
 </div>
 
-<!-- connection error prompt component -->
+<!-- add transaction modal component -->
 
-<app-connection-prompt #connectionPromptComponentReference></app-connection-prompt>
+<app-add-transaction #addTransactionComponentReference (saveTransactionEvent)="postTransaction($event)"></app-add-transaction>
+
+<!-- edit transaction modal component -->
+
+<app-edit-transaction #editTransactionComponentReference (saveTransactionEvent)="putTransaction($event)"></app-edit-transaction>

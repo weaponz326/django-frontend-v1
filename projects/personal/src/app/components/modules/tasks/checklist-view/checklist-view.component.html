@@ -1,42 +1,7 @@
-<app-module-topnav [headings]="navHeading" [showPrint]="true" (print)="onPrint()"></app-module-topnav>
-
-<div class="container">
-
-    <div class="row page-form">
-        <div class="col-md-9">
-
-            <div class="row mb-3">
-                <div class="col-md-3">
-                    <label class="float-end">Task Group :</label>
-                </div>
-                <div class="col-md-6">
-                    <smart-input #calendarNameInputReference class="w-100"></smart-input>
-                </div>
-                <div class="col-md-3">
-                    <smart-button #cancelButtonReference class="page-control-button">Save</smart-button>
-                </div>
-            </div>
-
-        </div>
+<div class="row mb-3">
+    <div class="col-md-12">
+        <button class="btn btn-secondary float-end nr-standard-font" routerLink="/home/tasks/view-task-group/kanban-view">
+            <i class="bi bi-arrow-left-right me-2"></i> Kanban View
+        </button>
     </div>
-
-    <div class="row">
-        <div class="col-md-9">
-
-            <smart-tree #tasksTreeReference id="tree" class="w-100" [selectionMode]="'checkBox'">
-                <smart-tree-item>Task 1</smart-tree-item>
-                <smart-tree-items-group [expanded]="true" [selected]="true">Task 2
-                    <smart-tree-item>Sub Task 2.1</smart-tree-item>
-                    <smart-tree-item>Sub Task 2.2</smart-tree-item>
-                    <smart-tree-item>Sub Task 2.3</smart-tree-item>
-                </smart-tree-items-group>
-            </smart-tree>
-
-        </div>
-    </div>
-
 </div>
-
-<!-- connection error prompt component -->
-
-<app-connection-prompt #connectionPromptComponentReference></app-connection-prompt>

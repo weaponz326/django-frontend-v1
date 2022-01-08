@@ -5,62 +5,55 @@
     <div class="row page-form">
         <div class="col-md-6">
 
-            <h4 class="mb-3">Budget Details</h4>
+            <form class="page-form" [formGroup]="budgetForm" (ngSubmit)="putBudget()">
 
-            <div class="row mb-1">
-                <div class="col-md-4"><label class="float-end">Budget ID :</label></div>
-                <div class="col-md-8">
-                    <smart-input #budgetCodeInputReference class="w-100"></smart-input>
+                <h4 class="mb-3">Budget Details</h4>
+
+                <div class="row mb-1">
+                    <div class="col-md-4">
+                        <label class="float-end mt-1">Budget Name :</label>
+                    </div>
+                    <div class="col-md-8">
+                        <input formControlName="budgetName" class="form-control form-control-sm w-100">
+                    </div>
                 </div>
-            </div>
 
-            <div class="row mb-1">
-                <div class="col-md-4"><label class="float-end">Budget Name :</label></div>
-                <div class="col-md-8">
-                    <smart-input #budgetNameInputReference class="w-100"></smart-input>
+                <div class="row mb-1">
+                    <div class="col-md-4">
+                        <label class="float-end mt-1">Budget Type :</label>
+                    </div>
+                    <div class="col-md-8">
+                        <select formControlName="budgetType" class="form-control form-control-sm w-100">
+                            <option>Daily</option>
+                            <option>Weekly</option>
+                            <option>Monthly</option>
+                            <option>Quarterly</option>
+                        </select>
+                    </div>
                 </div>
-            </div>
 
-            <div class="row mb-1">
-                <div class="col-md-4"><label class="float-end">Budget Type :</label></div>
-                <div class="col-md-8">
-                    <smart-drop-down-list #budgetTypeDropDownListReference class="w-100">
-                        <smart-list-item [value]="'Daily'">Daily</smart-list-item>
-                        <smart-list-item [value]="'Weekly'">Weekly</smart-list-item>
-                        <smart-list-item [value]="'Monthly'">Monthly</smart-list-item>
-                        <smart-list-item [value]="'Quaterly'">Quaterly</smart-list-item>
-                        <smart-list-item [value]="'Yearly'">Yearly</smart-list-item>
-                    </smart-drop-down-list>
+                <hr />
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <button type="button" class="btn btn-secondary btn-sm float-end ms-1 page-form-btn" routerLink="/home/budget/all-budget">Cancel</button>
+                        <button type="button" class="btn btn-secondary btn-sm float-end ms-1 page-form-btn" (click)="deleteBudget()">Delete</button>
+                        <button [disabled]="isBudgetSaving" type="submit" class="btn btn-secondary btn-sm float-end ms-1 page-form-btn">Save</button>
+                    </div>
                 </div>
-            </div>
 
-            <hr />
-
-            <div class="row">
-                <div class="col-md-12">
-                    <smart-button #cancelButtonReference class="page-control-button float-end ms-1">Cancel</smart-button>
-                    <smart-button #cancelButtonReference class="page-control-button float-end ms-1">Delete</smart-button>
-                    <smart-button #cancelButtonReference class="page-control-button float-end ms-1">Save</smart-button>
-                </div>
-            </div>
+            </form>
 
         </div>
 
         <div class="col-md-6 text-center">
-            <p class="h3">Income over Expenditure :</p>
-            <p class="h1">$ </p>
+            <h4>Income over Expenditure :</h4>
+            <p class="h1">$ {{ioe}}</p>
         </div>
     </div>
 
     <!-- budget tables comopnent -->
 
-    <app-budget-tables></app-budget-tables>
+    <app-budget-tables #budgetTablesComponentReference (ioeEvent)="ioe = $event"></app-budget-tables>
 
 </div>
-
-
-<!-- print components -->
-
-<app-view-budget-print #viewBudgetPrintComponentReference
-[hidden]="true">
-</app-view-budget-print>

@@ -18,26 +18,54 @@ export class TasksApiService {
 
   personalUrl = environment.personalUrl;
 
+  public getTaskGroups(): Observable<any>{
+    return this.http.get(this.personalUrl + "module-tasks/task-group?user=" + localStorage.getItem('personal_id'), this.endpoints.headers);
+  }
+
+  public postTaskGroup(task: any): Observable<any>{
+    return this.http.post(this.personalUrl + "module-tasks/task-group/", task, this.endpoints.headers);
+  }
+
+  // retreive, update and delete task
+
+  public getSingleTaskGroup(): Observable<any>{
+    return this.http.get(this.personalUrl + "module-tasks/task-group/" + sessionStorage.getItem('personal_task_group_id'), this.endpoints.headers);
+  }
+
+  public putTaskGroup(task: any): Observable<any>{
+    return this.http.put(this.personalUrl + "module-tasks/task-group/" + sessionStorage.getItem('personal_task_group_id'), task, this.endpoints.headers);
+  }
+
+  public deleteTaskGroup(): Observable<any>{
+    return this.http.delete(this.personalUrl + "module-tasks/task-group/" + sessionStorage.getItem('personal_task_group_id'), this.endpoints.headers);
+  }
+
+  // tasks
+
+  public getAllTaskItems(): Observable<any>{
+    return this.http.get(this.personalUrl + "module-tasks/all-task-item?user=" + localStorage.getItem('personal_id'), this.endpoints.headers);
+  }
+
   public getTasks(): Observable<any>{
-    return this.http.get(this.personalUrl + "module-tasks/task?user=" + localStorage.getItem('personal_id'), this.endpoints.headers);
+    return this.http.get(this.personalUrl + "module-tasks/task-item?task_group=" + sessionStorage.getItem('personal_task_group_id'), this.endpoints.headers);
   }
 
   public postTask(task: any): Observable<any>{
-    return this.http.post(this.personalUrl + "module-tasks/task/", task, this.endpoints.headers);
+    return this.http.post(this.personalUrl + "module-tasks/task-item/", task, this.endpoints.headers);
   }
 
   // retreive, update and delete task
 
   public getSingleTask(taskId: any): Observable<any>{
-    return this.http.get(this.personalUrl + "module-tasks/task/" + taskId, this.endpoints.headers);
+    return this.http.get(this.personalUrl + "module-tasks/task-item/" + taskId, this.endpoints.headers);
   }
 
   public putTask(taskId: any, task: any): Observable<any>{
-    return this.http.put(this.personalUrl + "module-tasks/task/" + taskId, task, this.endpoints.headers);
+    return this.http.put(this.personalUrl + "module-tasks/task-item/" + taskId, task, this.endpoints.headers);
   }
 
   public deleteTask(taskId: any): Observable<any>{
-    return this.http.delete(this.personalUrl + "module-tasks/task/" + taskId, this.endpoints.headers);
+    return this.http.delete(this.personalUrl + "module-tasks/task-item/" + taskId, this.endpoints.headers);
   }
 
   // dashboard

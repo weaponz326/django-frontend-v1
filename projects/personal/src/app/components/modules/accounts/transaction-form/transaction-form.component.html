@@ -1,1 +1,34 @@
-<p>transaction-form works!</p>
+<form class="page-form" [formGroup]="transactionForm">
+                
+    <div class="row mb-1">
+        <div class="col-md-4"><label class="float-end mt-1">Transaction Date :</label></div>
+        <div class="col-md-8">
+            <input type="datetime-local" formControlName="transactionDate" class="form-control form-control-sm w-100">
+        </div>
+    </div>
+
+    <div class="row mb-1">
+        <div class="col-md-4"><label class="float-end mt-1">Description :</label></div>
+        <div class="col-md-8">
+            <input formControlName="description" class="form-control form-control-sm w-100">
+        </div>
+    </div>
+
+    <div class="row mb-1">
+        <div class="col-md-4"><label class="float-end mt-1">Transaction Type :</label></div>
+        <div class="col-md-8">
+            <select formControlName="transactionType" class="form-control form-control-sm w-100">
+                <option>Credit</option>
+                <option>Debit</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="row mb-1">
+        <div class="col-md-4"><label class="float-end mt-1">Amount :</label></div>
+        <div class="col-md-8">
+            <input type="number" formControlName="amount" class="form-control form-control-sm w-100">
+        </div>
+    </div>
+
+</form>

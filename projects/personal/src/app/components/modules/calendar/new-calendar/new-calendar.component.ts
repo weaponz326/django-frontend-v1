@@ -1,11 +1,8 @@
-import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
-
-import { SchedulerComponent, SchedulerViewType } from 'smart-webcomponents-angular/scheduler';
-import { InputComponent } from 'smart-webcomponents-angular/input';
-import { ButtonComponent } from 'smart-webcomponents-angular/button';
+import { Component, OnInit, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
+import { Router } from '@angular/router';
+import { FormControl, FormGroup } from '@angular/forms';
 
 import { CalendarApiService } from 'projects/personal/src/app/services/modules/calendar-api/calendar-api.service';
-import { ConnectionPromptComponent } from '../../../module-utilities/connection-prompt/connection-prompt.component'
 
 
 @Component({
@@ -15,60 +12,51 @@ import { ConnectionPromptComponent } from '../../../module-utilities/connection-
 })
 export class NewCalendarComponent implements OnInit {
 
-  constructor(private calendarApi: CalendarApiService) { }
+  constructor(
+    private router: Router,
+    private calendarApi: CalendarApiService
+  ) { }
 
-  @ViewChild('schedulerReference', { read: SchedulerComponent, static: false }) scheduler!: SchedulerComponent;
-  @ViewChild('calendarNameInputReference', { read: InputComponent, static: false }) calendarNameInput!: InputComponent;
+  @ViewChild('buttonElementReference', { read: ElementRef, static: false }) buttonElement!: ElementRef;
 
-  @ViewChild('connectionPromptComponentReference', { read: ConnectionPromptComponent, static: false }) connectionPrompt!: ConnectionPromptComponent;
-
-  navHeading: any[] = [
-    { text: "New Calendar", url: "/home/calendar/new-calendar" },
-  ];
-
-  view: SchedulerViewType = 'month';
-  dataSource: any[] = [];
-  firstDayOfWeek: number = 1;
-  disableDateMenu: boolean = true;
-  currentTimeIndicator: boolean = true;
-  scrollButtonsPosition: string = 'far';
+  calendarForm: FormGroup = new FormGroup({});
 
   ngOnInit(): void {
+    this.initClendarForm();
   }
 
-  postSchedule(event: CustomEvent){
-    let userData = { user: localStorage.getItem('personal_id') }
-    let mergedData = Object.assign(event.detail.item, userData);
-    console.log(mergedData);
+  openModal(){
+    this.buttonElement.nativeElement.click();
+  }
 
-    this.calendarApi.postSchedule(mergedData)
+  initClendarForm(){
+    this.calendarForm = new FormGroup({
+      calendarName: new FormControl('')
+    })
+  }
+
+  postCalendar(){
+    let data = {
+      user: localStorage.getItem('personal_id'),
+      calendar_name: this.calendarForm.controls.calendarName.value
+    }
+
+    console.log(data);
+
+    this.calendarApi.postCalendar(data)
       .subscribe(
         res => {
           console.log(res);
-          this.updateData(event);
+
+          if(res.id){
+            sessionStorage.setItem('personal_calendar_id', res.id);
+            this.router.navigateByUrl('/home/calendar/view-calendar');
+          }
         },
         err => {
           console.log(err);
-          this.connectionPrompt.toast.open();
         }
       )
-  }
-
-  updateData(event: CustomEvent) {
-    console.log(event);
-
-    const
-      item = event.detail.item,
-      data = this.dataSource;
-
-    for (let i = 0; i < data.length; i++) {
-        const dataItem = data[i];
-
-        if (dataItem.label === item.label && dataItem.class === item.class) {
-            event.type === 'itemRemove' ? data.splice(i, 1) : data.splice(i, 1, item);
-            return;
-        }
-    }
   }
 
 }

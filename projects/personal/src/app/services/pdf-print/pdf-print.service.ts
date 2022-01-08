@@ -20,13 +20,18 @@ export class PdfPrintService {
     pdfMake.createPdf(def).open();
   }
 
-  printPdf(documentDefinition: any) {
-    const def = { content: documentDefinition };
+  openPdf(content: any) {
+    const def = { content: content };
+    pdfMake.createPdf(def).open();
+  }
+
+  printPdf(content: any) {
+    const def = { content: content };
     pdfMake.createPdf(def).print();
   }
 
-  downloadPdf(documentDefinition: any) {
-    const def = { content: documentDefinition };
+  downloadPdf(content: any) {
+    const def = { content: content };
     pdfMake.createPdf(def).download();
   }
 

@@ -1,17 +1,34 @@
-<app-module-topnav [headings]="navHeading"></app-module-topnav>
+<app-module-topnav [headings]="navHeading" [showPrint]="true" (print)="onPrint()"></app-module-topnav>
 
 <div class="container">
 
     <div class="row">
         <div class="col-md-12">
 
-            <smart-grid #transactionsGridReference class="w-100" [dataSource]="dataSource" [columns]="columns" [editing]="editing"></smart-grid>
+            <table class="table table-bordered table-sm w-100 page-table">
+                <thead>
+                    <tr class="bg-light">
+                        <th width="15%">Transaction Date</th>
+                        <th width="20%">Account Name</th>
+                        <th width="18%">Bank</th>
+                        <th width="23%">Description</th>
+                        <th width="12%">Transaction Type</th>
+                        <th width="12%">Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let data of allTransactionsGridData; index as i">
+                        <td>{{data?.transaction_date | date}}</td>
+                        <td>{{data?.account.account_name}}</td>
+                        <td>{{data?.account.bank_name}}</td>
+                        <td>{{data?.description}}</td>
+                        <td>{{data?.transaction_type}}</td>
+                        <td>{{data?.amount}}</td>
+                    </tr>
+                </tbody>
+            </table>
 
         </div>
     </div>
 
 </div>
-
-<!-- connection error prompt component -->
-
-<app-connection-prompt #connectionPromptComponentReference></app-connection-prompt>

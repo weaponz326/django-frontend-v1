@@ -1,9 +1,9 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-
-import { GridComponent, GridColumn, DataAdapter, Smart } from 'smart-webcomponents-angular/grid';
+import { Component, OnInit, ViewChild, Output, EventEmitter } from '@angular/core';
 
 import { AccountsApiService } from 'projects/personal/src/app/services/modules/accounts-api/accounts-api.service';
-import { ConnectionPromptComponent } from '../../../module-utilities/connection-prompt/connection-prompt.component'
+
+import { AddTransactionComponent } from '../add-transaction/add-transaction.component'
+import { EditTransactionComponent } from '../edit-transaction/edit-transaction.component'
 
 
 @Component({
@@ -15,38 +15,102 @@ export class AccountTransactionsComponent implements OnInit {
 
   constructor(private accountsApi: AccountsApiService) { }
 
-  @ViewChild('transactionsGridReference', { read: GridComponent, static: false }) transactionsGrid!: GridComponent;
+  @Output() balanceEvent = new EventEmitter<any>();
 
-  @ViewChild('connectionPromptComponentReference', { read: ConnectionPromptComponent, static: false }) connectionPrompt!: ConnectionPromptComponent;
+  @ViewChild('addTransactionComponentReference', { read: AddTransactionComponent, static: false }) addTransaction!: AddTransactionComponent;
+  @ViewChild('editTransactionComponentReference', { read: EditTransactionComponent, static: false }) editTransaction!: EditTransactionComponent;
 
-  columns: GridColumn[] = <GridColumn[]>[];
-  dataSource = [];
-  editing = {};
+  transactionsGridData: any[] = [];
 
   ngOnInit(): void {
-    this.initGrid();
   }
 
-  initGrid(){
-    this.dataSource = new Smart.DataAdapter (
-      <DataAdapter>{
-        dataSource: [],
-        dataFields:[
-          'id: string',
-          'trasanction_date: string',
-          'description: string',
-          'trasanction_type: string',
-          'amount: string',
-        ]
-      }
-    );
+  ngAfterViewInit(): void {
+    this.getTransactions();
+  }
 
-    this.columns = <GridColumn[]>[
-      { label: "Transaction Date", dataField: "transaction_date", width: "25%" },
-      { label: "Description", dataField: "description", width: "40%" },
-      { label: "Transaction Type", dataField: "transaction_type", width: "15%" },
-      { label: "Amount", dataField: "amount", width: "20%" },
-    ]
+  calculateBalance(){
+    let balance = this.transactionsGridData.reduce((total, transaction) => {
+      (transaction.transaction_type == "Credit") ? 
+        total + transaction.amount : total - transaction.amount;
+    });
+
+    this.balanceEvent.emit(balance);
+    console.log(balance);
+  }
+
+  getTransactions(){
+    this.accountsApi.getTransactions()
+      .subscribe(
+        res => {
+          console.log(res);
+          this.transactionsGridData = res;
+          this.calculateBalance();
+        },
+        err => {
+          console.log(err);
+        }
+      )
+  }
+
+  postTransaction(data: any){
+    console.log(data);
+
+    this.accountsApi.postTransaction(data)
+      .subscribe(
+        res => {
+          console.log(res);
+
+          if(res.id){
+            this.transactionsGridData.push(res);
+            this.calculateBalance();
+            this.addTransaction.resetForm();
+          }
+        },
+        err => {
+          console.log(err);
+        }
+      )
+  }
+
+  putTransaction(data: any){
+    console.log(data);
+
+    this.accountsApi.putTransaction(data.id, data)
+      .subscribe(
+        res => {
+          console.log(res);
+
+          if(res.id){
+            this.transactionsGridData[data.index] = res;
+            this.calculateBalance();
+          }
+        },
+        err => {
+          console.log(err);
+        }
+      )
+  }
+
+  deleteTransaction(index: any, id: any){
+    console.log(id);
+
+    this.accountsApi.deleteTransaction(id)
+      .subscribe(
+        res => {
+          console.log(res);
+          this.transactionsGridData.splice(index, 1);
+          this.calculateBalance();
+        },
+        err => {
+          console.log(err);
+        }
+      )
+  }
+
+  openEditTransaction(index: any){
+    console.log(index);
+    this.editTransaction.openModal(index, this.transactionsGridData[index]);
   }
 
 }

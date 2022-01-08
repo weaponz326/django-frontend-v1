@@ -31,22 +31,22 @@ export class AccountsApiService {
   // retreive, update and delete account
 
   public getSingleAccount(): Observable<any>{
-    return this.http.get(this.personalUrl + "module-accounts/account/" + sessionStorage.getItem('account_id'), this.endpoints.headers);
+    return this.http.get(this.personalUrl + "module-accounts/account/" + sessionStorage.getItem('personal_account_id'), this.endpoints.headers);
   }
 
   public putAccount(account: any): Observable<any>{
-    return this.http.put(this.personalUrl + "module-accounts/account/" + sessionStorage.getItem('account_id'), account, this.endpoints.headers);
+    return this.http.put(this.personalUrl + "module-accounts/account/" + sessionStorage.getItem('personal_account_id'), account, this.endpoints.headers);
   }
 
   public deleteAccount(): Observable<any>{
-    return this.http.delete(this.personalUrl + "module-accounts/account/" + sessionStorage.getItem('account_id'), this.endpoints.headers);
+    return this.http.delete(this.personalUrl + "module-accounts/account/" + sessionStorage.getItem('personal_account_id'), this.endpoints.headers);
   }
 
   // -----------------------------------------------------------------------------------------------------------------------------------------
   // transactions
 
   public getTransactions(): Observable<any>{
-    return this.http.get(this.personalUrl + "module-accounts/transaction?account=" + sessionStorage.getItem('account_id'), this.endpoints.headers);
+    return this.http.get(this.personalUrl + "module-accounts/transaction?account=" + sessionStorage.getItem('personal_account_id'), this.endpoints.headers);
   }
 
   public postTransaction(transactionData: any): Observable<any>{

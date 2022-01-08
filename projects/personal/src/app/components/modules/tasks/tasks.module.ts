@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { ChartsModule } from 'ng2-charts';
 import { KanbanModule } from 'smart-webcomponents-angular/kanban';
@@ -21,6 +23,8 @@ import { TaskFormComponent } from './task-form/task-form.component';
 import { ChecklistViewComponent } from './checklist-view/checklist-view.component';
 import { AllTaskGroupsComponent } from './all-task-groups/all-task-groups.component';
 import { AllTaskItemsComponent } from './all-task-items/all-task-items.component';
+import { NewTaskGroupComponent } from './new-task-group/new-task-group.component';
+import { ViewTaskGroupComponent } from './view-task-group/view-task-group.component';
 
 
 @NgModule({
@@ -33,11 +37,15 @@ import { AllTaskItemsComponent } from './all-task-items/all-task-items.component
     TaskFormComponent,
     ChecklistViewComponent,
     AllTaskGroupsComponent,
-    AllTaskItemsComponent
+    AllTaskItemsComponent,
+    NewTaskGroupComponent,
+    ViewTaskGroupComponent
   ],
   imports: [
     CommonModule,
     RouterModule,
+    FormsModule,
+    ReactiveFormsModule,
     ChartsModule,
     KanbanModule,
     GridModule,

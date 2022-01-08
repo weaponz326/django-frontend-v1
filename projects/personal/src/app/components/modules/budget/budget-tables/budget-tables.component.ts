@@ -1,9 +1,10 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-
-import { GridComponent, GridColumn, DataAdapter, Smart } from 'smart-webcomponents-angular/grid';
+import { Component, OnInit, ViewChild, Output, EventEmitter } from '@angular/core';
 
 import { BudgetApiService } from 'projects/personal/src/app/services/modules/budget-api/budget-api.service';
-import { ConnectionPromptComponent } from '../../../module-utilities/connection-prompt/connection-prompt.component'
+import { AddIncomeComponent } from '../add-income/add-income.component'
+import { EditIncomeComponent } from '../edit-income/edit-income.component'
+import { AddExpenditureComponent } from '../add-expenditure/add-expenditure.component'
+import { EditExpenditureComponent } from '../edit-expenditure/edit-expenditure.component'
 
 
 @Component({
@@ -15,57 +16,194 @@ export class BudgetTablesComponent implements OnInit {
 
   constructor(private budgetApi: BudgetApiService) { }
 
-  @ViewChild('incomeGridReference', { read: GridComponent, static: false }) incomeGrid!: GridComponent;
-  @ViewChild('expenditureGridReference', { read: GridComponent, static: false }) expenditureGrid!: GridComponent;
+  @Output() ioeEvent = new EventEmitter<any>();
 
-  @ViewChild('connectionPromptComponentReference', { read: ConnectionPromptComponent, static: false }) connectionPrompt!: ConnectionPromptComponent;
+  @ViewChild('addIncomeComponentReference', { read: AddIncomeComponent, static: false }) addIncome!: AddIncomeComponent;
+  @ViewChild('editIncomeComponentReference', { read: EditIncomeComponent, static: false }) editIncome!: EditIncomeComponent;
+  @ViewChild('addExpenditureComponentReference', { read: AddExpenditureComponent, static: false }) addExpenditure!: AddExpenditureComponent;
+  @ViewChild('editExpenditureComponentReference', { read: EditExpenditureComponent, static: false }) editExpenditure!: EditExpenditureComponent;
 
-  incomeColumns: GridColumn[] = <GridColumn[]>[];
-  expenditureColumns: GridColumn[] = <GridColumn[]>[];
-  incomeDataSource = [];
-  expenditureDataSource = [];
-  incomeEditing = {};
-  expenditureEditing = {};
+  incomeGridData: any[] = [];
+  expenditureGridData: any[] = [];
+  totalIncome = 0;
+  totalExpenditure = 0;
 
   ngOnInit(): void {
-    this.initIncomeGrid();
-    this.initExpenditureGrid();
   }
 
-  initIncomeGrid(){
-    this.incomeDataSource = new Smart.DataAdapter (
-      <DataAdapter>{
-        dataSource: [],
-        dataFields:[
-          'id: string',
-          'item: string',
-          'amount: string',
-        ]
-      }
-    );
-
-    this.incomeColumns = <GridColumn[]>[
-      { label: "Item Description", dataField: "item", width: "70%" },
-      { label: "Amount", dataField: "amount", width: "30%" },
-    ]
+  ngAfterViewInit(): void {
+    this.getIncome();
+    this.getExpenditure();
   }
 
-  initExpenditureGrid(){
-    this.expenditureDataSource = new Smart.DataAdapter (
-      <DataAdapter>{
-        dataSource: [],
-        dataFields:[
-          'id: string',
-          'item: string',
-          'amount: string',
-        ]
-      }
-    );
+  calculateIoe(){
+    let ioe = this.totalIncome - this.totalExpenditure;
+    this.ioeEvent.emit(ioe);
+    console.log(ioe);
+  }
 
-    this.expenditureColumns = <GridColumn[]>[
-      { label: "Item Description", dataField: "item", width: "70%" },
-      { label: "Amount", dataField: "amount", width: "30%" },
-    ]
+  // income
+
+  calculateTotalIncome(){
+    this.totalIncome = this.incomeGridData.reduce((total, {amount}) => total + Number(amount), 0);
+    console.log(this.totalIncome);
+    this.calculateIoe();
+  }
+
+  getIncome(){
+    this.budgetApi.getIncome()
+      .subscribe(
+        res => {
+          console.log(res);
+          this.incomeGridData = res;
+          this.calculateTotalIncome();
+        },
+        err => {
+          console.log(err);
+        }
+      )
+  }
+
+  postIncome(data: any){
+    console.log(data);
+
+    this.budgetApi.postIncome(data)
+      .subscribe(
+        res => {
+          console.log(res);
+
+          if(res.id){
+            this.incomeGridData.push(res);
+            this.calculateTotalIncome();
+            this.addIncome.resetForm();
+          }
+        },
+        err => {
+          console.log(err);
+        }
+      )
+  }
+
+  putIncome(data: any){
+    console.log(data);
+
+    this.budgetApi.putIncome(data.id, data)
+      .subscribe(
+        res => {
+          console.log(res);
+
+          if(res.id){
+            this.incomeGridData[data.index] = res;
+            this.calculateTotalIncome();
+          }
+        },
+        err => {
+          console.log(err);
+        }
+      )
+  }
+
+  deleteIncome(index: any, id: any){
+    console.log(id);
+
+    this.budgetApi.deleteIncome(id)
+      .subscribe(
+        res => {
+          console.log(res);
+          this.incomeGridData.splice(index, 1);
+          this.calculateTotalIncome();
+        },
+        err => {
+          console.log(err);
+        }
+      )
+  }
+
+  openEditIncome(index: any){
+    console.log(index);
+    this.editIncome.openModal(index, this.incomeGridData[index]);
+  }
+
+  // expenditure
+
+  calculateTotalExpenditure(){
+    this.totalExpenditure = this.expenditureGridData.reduce((total, {amount}) => total + Number(amount), 0);
+    console.log(this.totalExpenditure);
+    this.calculateIoe();
+  }
+
+  getExpenditure(){
+    this.budgetApi.getExpenditure()
+      .subscribe(
+        res => {
+          console.log(res);
+          this.expenditureGridData = res;
+          this.calculateTotalExpenditure();
+        },
+        err => {
+          console.log(err);
+        }
+      )
+  }
+
+  postExpenditure(data: any){
+    console.log(data);
+
+    this.budgetApi.postExpenditure(data)
+      .subscribe(
+        res => {
+          console.log(res);
+
+          if(res.id){
+            this.expenditureGridData.push(res);
+            this.calculateTotalExpenditure();
+            this.addExpenditure.resetForm();
+          }
+        },
+        err => {
+          console.log(err);
+        }
+      )
+  }
+
+  putExpenditure(data: any){
+    console.log(data);
+
+    this.budgetApi.putExpenditure(data.id, data)
+      .subscribe(
+        res => {
+          console.log(res);
+
+          if(res.id){
+            this.expenditureGridData[data.index] = res;
+            this.calculateTotalExpenditure();
+          }
+        },
+        err => {
+          console.log(err);
+        }
+      )
+  }
+
+  deleteExpenditure(index: any, id: any){
+    console.log(id);
+
+    this.budgetApi.deleteExpenditure(id)
+      .subscribe(
+        res => {
+          console.log(res);
+          this.expenditureGridData.splice(index, 1);
+          this.calculateTotalExpenditure();
+        },
+        err => {
+          console.log(err);
+        }
+      )
+  }
+
+  openEditExpenditure(index: any){
+    console.log(index);
+    this.editExpenditure.openModal(index, this.expenditureGridData[index]);
   }
 
 }

@@ -1,14 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { ButtonComponent } from 'smart-webcomponents-angular/button';
-import { InputComponent } from 'smart-webcomponents-angular/input';
-import { EditorComponent } from 'smart-webcomponents-angular/editor';
-
 import { NotesApiService } from 'projects/personal/src/app/services/modules/notes-api/notes-api.service';
 
 import { ViewNotePrintComponent } from 'projects/personal/src/app/components/printing/notes-print/view-note-print/view-note-print.component'
-import { ConnectionPromptComponent } from '../../../module-utilities/connection-prompt/connection-prompt.component'
 
 
 @Component({
@@ -23,26 +18,21 @@ export class ViewNoteComponent implements OnInit {
     private notesApi: NotesApiService
   ) { }
 
-  @ViewChild('subjectInputReference', { read: InputComponent, static: false }) subjectInput!: InputComponent;
-  @ViewChild('bodyEditorReference', { read: EditorComponent, static: false }) bodyEditor!: EditorComponent;
-
   @ViewChild('viewNotePrintComponentReference', { read: ViewNotePrintComponent, static: false }) viewNotePrint!: ViewNotePrintComponent;
-  @ViewChild('connectionPromptComponentReference', { read: ConnectionPromptComponent, static: false }) connectionPrompt!: ConnectionPromptComponent;
 
   navHeading: any[] = [
     { text: "All Notes", url: "/home/notes/all-notes" },
     { text: "Note View", url: "/home/notes/view-note" },
   ];
 
+  subject = "";
+
   fileNames: any;
   filesToUpload: File[] = [];
-
-  toolbarItems: any[] = [];
 
   noteViewData = [];
 
   ngOnInit(): void {
-    this.initEditor();
   }
 
   ngAfterViewInit(): void {
@@ -55,14 +45,13 @@ export class ViewNoteComponent implements OnInit {
       .subscribe(
         res => {
           console.log(res);
-          this.subjectInput.value = res.subject;
-          this.bodyEditor.value = res.body;
+          this.subject = res.subject;
+          // this.bodyEditor.value = res.body;
 
           this.noteViewData = res;
         },
         err => {
           console.log(err);
-          this.connectionPrompt.toast.open();
         }
       )
   }
@@ -76,7 +65,6 @@ export class ViewNoteComponent implements OnInit {
         },
         err => {
           console.log(err);
-          this.connectionPrompt.toast.open();
         }
       )
   }
@@ -84,8 +72,8 @@ export class ViewNoteComponent implements OnInit {
   saveNote(){
     let noteData = {
       user: localStorage.getItem('personal_id'),
-      subject: this.subjectInput.value,
-      body: this.bodyEditor.value
+      subject: this.subject,
+      // body: this.bodyEditor.value
     }
 
     console.log(noteData);
@@ -97,7 +85,6 @@ export class ViewNoteComponent implements OnInit {
         },
         err => {
           console.log(err);
-          this.connectionPrompt.toast.open();
         }
       )
   }
@@ -112,7 +99,6 @@ export class ViewNoteComponent implements OnInit {
         },
         err => {
           console.log(err);
-          this.connectionPrompt.toast.open();
         }
       )
   }
@@ -131,7 +117,7 @@ export class ViewNoteComponent implements OnInit {
         },
         err => {
           console.log(err);
-          this.connectionPrompt.toast.open();
+          // this.connectionPrompt.toast.open();
         }
       )
   }
@@ -156,7 +142,7 @@ export class ViewNoteComponent implements OnInit {
         },
         err => {
           console.log(err);
-          this.connectionPrompt.toast.open();
+          // this.connectionPrompt.toast.open();
         }
       )
   }
@@ -167,20 +153,6 @@ export class ViewNoteComponent implements OnInit {
 
   formatFileName(name: any){
     return name.replace('/notes/', '');
-  }
-
-  initEditor(){
-    this.toolbarItems = [
-      'Bold', 'Italic', 'Underline', 'StrikeThrough',
-      'FontName', 'FontSize', 'FontColor', 'BackgroundColor',
-      'LowerCase', 'UpperCase', '|',
-      'Formats', 'Alignment', 'OrderedList', 'UnorderedList',
-      'Outdent', 'Indent', '|',
-      'hyperlink', 'table', 'Image', '|',
-      'ClearFormat', 'Print',
-      'SourceCode', 'splitmode', 'FullScreen', '|',
-      'Undo', 'Redo', 'subscript', 'superscript', 'delete'
-    ];
   }
 
   onPrint(){

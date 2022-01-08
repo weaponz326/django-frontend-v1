@@ -4,26 +4,35 @@
 
     <div class="row mb-3">
         <div class="col-md-12">
-            <smart-button #buttonReference>New Account</smart-button>
+            <button class="btn btn-secondary page-add-btn" (click)="addAccount.openModal()">New Account</button>
         </div>
     </div>
 
     <div class="row">
         <div class="col-md-9">
-            <smart-grid #gridReference class="w-100"
-            [dataSource]="dataSource" [columns]="columns" [sorting]="sorting" [editing]="editing">
-            </smart-grid>
+
+            <table class="table table-bordered table-sm w-100 page-table">
+                <thead>
+                    <tr class="bg-light">
+                        <th width="45%">Account Name</th>
+                        <th width="25%">Account No.</th>
+                        <th width="30%">Bank Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let data of accountsGridData" (dblclick)="viewAccount(data.id)" class="table-pointer">
+                        <td>{{data?.account_name}}</td>
+                        <td>{{data?.account_number}}</td>
+                        <td>{{data?.bank_name}}</td>
+                    </tr>
+                </tbody>
+            </table>
+
         </div>
     </div>
 
 </div>
 
-<!-- print components -->
+<!-- add account modal component -->
 
-<app-all-accounts-print #allAccountsPrintComponentReference
-[hidden]="true" [accountsGridData]="accountsGridData">
-</app-all-accounts-print>
-
-<!-- connection error prompt component -->
-
-<app-connection-prompt #connectionPromptComponentReference></app-connection-prompt>
+<app-add-account #addAccountComponentReference></app-add-account>

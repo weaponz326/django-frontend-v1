@@ -1,0 +1,33 @@
+<app-module-topnav [headings]="navHeading" [showPrint]="true"></app-module-topnav>
+
+<div class="container">
+
+    <div class="row page-form">
+        <div class="col-md-9">
+
+            <form class="page-form" [formGroup]="taskGroupForm" (ngSubmit)="putTaskGroup()">
+
+                <div class="row mb-3">
+                    <div class="col-md-3">
+                        <label class="float-end mt-1">Task Group Name :</label>
+                    </div>
+                    <div class="col-md-6">
+                        <input formControlName="taskGroupName" class="form-control form-control-sm w-100">
+                    </div>
+                    <div class="col-md-3">
+                        <button [disabled]="isTaskGroupSaving" type="submit" class="btn btn-sm btn-secondary page-form-btn">Save</button>
+                    </div>
+                </div>
+
+            </form>
+
+            <hr />
+
+        </div>
+    </div>
+
+    <!-- router outlet -->
+
+    <router-outlet></router-outlet>
+
+</div>

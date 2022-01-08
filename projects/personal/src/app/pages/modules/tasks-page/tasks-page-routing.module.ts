@@ -7,6 +7,7 @@ import { ChecklistViewComponent } from '../../../components/modules/tasks/checkl
 import { DashboardComponent } from '../../../components/modules/tasks/dashboard/dashboard.component';
 import { AllTaskGroupsComponent } from '../../../components/modules/tasks/all-task-groups/all-task-groups.component';
 import { AllTaskItemsComponent } from '../../../components/modules/tasks/all-task-items/all-task-items.component';
+import { ViewTaskGroupComponent } from '../../../components/modules/tasks/view-task-group/view-task-group.component';
 
 
 const routes: Routes = [
@@ -17,8 +18,14 @@ const routes: Routes = [
       { path: "", component: DashboardComponent },
       { path: "dashboard", component: DashboardComponent },
       { path: "all-task-groups", component: AllTaskGroupsComponent },
-      { path: "kanban-view", component: KanbanViewComponent },
-      { path: "checklist-view", component: ChecklistViewComponent },
+      { 
+        path: "view-task-group", 
+        component: ViewTaskGroupComponent,
+        children: [
+          { path: "kanban-view", component: KanbanViewComponent },
+          { path: "checklist-view", component: ChecklistViewComponent },
+        ]
+      },
       { path: "all-task-items", component: AllTaskItemsComponent },
     ]
   }

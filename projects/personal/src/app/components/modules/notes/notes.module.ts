@@ -1,12 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 import { ChartsModule } from 'ng2-charts';
-import { InputModule } from 'smart-webcomponents-angular/input';
-import { ButtonModule } from 'smart-webcomponents-angular/button';
-import { EditorModule } from 'smart-webcomponents-angular/editor';
-import { GridModule } from 'smart-webcomponents-angular/grid';
 
 import { ModuleUtilitiesModule } from '../../module-utilities/module-utilities.module';
 import { NotesPrintModule } from '../../printing/notes-print/notes-print.module';
@@ -30,11 +27,8 @@ import { NewNoteComponent } from './new-note/new-note.component';
   imports: [
     CommonModule,
     RouterModule,
+    FormsModule,
     ChartsModule,
-    InputModule,
-    ButtonModule,
-    EditorModule,
-    GridModule,
     ModuleUtilitiesModule,
     NotesPrintModule,
   ]

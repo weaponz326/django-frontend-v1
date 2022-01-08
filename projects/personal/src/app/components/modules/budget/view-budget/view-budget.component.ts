@@ -1,13 +1,12 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-
-import { ButtonComponent } from 'smart-webcomponents-angular/button';
-import { InputComponent } from 'smart-webcomponents-angular/input';
-import { DropDownListComponent } from 'smart-webcomponents-angular/dropdownlist';
+import { Router } from '@angular/router';
+import { FormControl, FormGroup } from '@angular/forms';
 
 import { BudgetApiService } from 'projects/personal/src/app/services/modules/budget-api/budget-api.service';
 
-import { ViewBudgetPrintComponent } from 'projects/personal/src/app/components/printing/budget-print/view-budget-print/view-budget-print.component'
-import { ConnectionPromptComponent } from '../../../module-utilities/connection-prompt/connection-prompt.component'
+import { BudgetPrintService } from 'projects/personal/src/app/services/printing/budget-print/budget-print.service';
+
+import { BudgetTablesComponent } from '../budget-tables/budget-tables.component'
 
 
 @Component({
@@ -17,30 +16,97 @@ import { ConnectionPromptComponent } from '../../../module-utilities/connection-
 })
 export class ViewBudgetComponent implements OnInit {
 
-  constructor(private budgetApi: BudgetApiService) { }
+  constructor(
+    private router: Router,
+    private budgetApi: BudgetApiService,
+    private budgetPrint: BudgetPrintService
+  ) { }
 
-  @ViewChild('budgetCodeInputReference', { read: InputComponent, static: false }) budgetCodeInput!: InputComponent;
-  @ViewChild('budgetNameInputReference', { read: InputComponent, static: false }) budgetNameInput!: InputComponent;
-  @ViewChild('budgetTypeDropDownListReference', { read: DropDownListComponent, static: false }) budgetTypeDropDownList!: DropDownListComponent;
-
-  @ViewChild('viewBudgetPrintComponentReference', { read: ViewBudgetPrintComponent, static: false }) viewBudgetPrint!: ViewBudgetPrintComponent;
-  @ViewChild('connectionPromptComponentReference', { read: ConnectionPromptComponent, static: false }) connectionPrompt!: ConnectionPromptComponent;
+  @ViewChild('budgetTablesComponentReference', { read: BudgetTablesComponent, static: false }) budgetTables!: BudgetTablesComponent;
 
   navHeading: any[] = [
-    { text: "All Budgets", url: "/suite/budget/all-budget" },
-    { text: "View Budget", url: "/suite/budget/view-budget" },
+    { text: "All Budgets", url: "/home/budget/all-budget" },
+    { text: "View Budget", url: "/home/budget/view-budget" },
   ];
 
+  budgetForm: FormGroup = new FormGroup({});
+
+  ioe = 0;
+
+  isBudgetSaving: boolean = false;
+  isBudgetDeleting: boolean = false;
+
   ngOnInit(): void {
+    this.initBudgetForm();
   }
 
-  // TODO:
-  // get all budgets
-  // get income and expenditure here and pass to view and print grids
+  ngAfterViewInit(): void {
+    this.getBudget();
+  }
+
+  initBudgetForm(){
+    this.budgetForm = new FormGroup({
+      budgetName: new FormControl(''),
+      budgetType: new FormControl('')
+    })
+  }
+
+  getBudget(){
+    this.budgetApi.getSingleBudget()
+      .subscribe(
+        res => {
+          console.log(res);
+          this.budgetForm.controls.budgetName.setValue(res.budget_name);
+          this.budgetForm.controls.budgetType.setValue(res.budget_type);
+        },
+        err => {
+          console.log(err);
+        }
+      )
+  }
+
+  putBudget(){
+    let data = {
+      user: localStorage.getItem('personal_id'),
+      budget_name: this.budgetForm.controls.budgetName.value,
+      budget_type: this.budgetForm.controls.budgetType.value
+    }
+
+    console.log(data);
+    this.isBudgetSaving = true;
+
+    this.budgetApi.putBudget(data)
+      .subscribe(
+        res => {
+          console.log(res);
+          this.isBudgetSaving = false;
+        },
+        err => {
+          console.log(err);
+          this.isBudgetSaving = false;
+        }
+      )
+  }
+
+  deleteBudget(){
+    this.isBudgetDeleting = true;
+
+    this.budgetApi.deleteBudget()
+      .subscribe(
+        res => {
+          console.log(res);
+          this.router.navigateByUrl('/home/budget/all-budget');
+        },
+        err => {
+          console.log(err);
+          this.isBudgetDeleting = false;
+        }
+      )
+  }
 
   onPrint(){
     console.log("lets start printing...");
-    this.viewBudgetPrint.print();
+    this.budgetPrint.printViewBudget(this.budgetForm.value, this.budgetTables.incomeGridData, this.budgetTables.expenditureGridData);
   }
 
 }

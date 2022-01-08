@@ -5,21 +5,26 @@
     <div class="row">
         <div class="col-md-9">
 
-            <smart-grid #schedulesGridReference class="w-100"
-            [dataSource]="dataSource" [columns]="columns" [sorting]="sorting">
-            </smart-grid>
+            <table class="table table-bordered table-sm w-100 page-table">
+                <thead>
+                    <tr class="bg-light">
+                        <th width="35%">Schedule</th>
+                        <th width="23%">Start Date</th>
+                        <th width="23%">End Date</th>
+                        <th width="19%">Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let data of schedulesGridData">
+                        <td>{{data?.schedule_name}}</td>
+                        <td>{{data?.start_date | date}}</td>
+                        <td>{{data?.end_date | date}}</td>
+                        <td>{{data?.status}}</td>
+                    </tr>
+                </tbody>
+            </table>
 
         </div>
     </div>
 
 </div>
-
-<!-- printing components -->
-
-<app-all-schedules-print #allSchedulesPrintComponentReference
-[hidden]="true" [schedulesGridData]="schedulesGridData">
-</app-all-schedules-print>
-
-<!-- connection error prompt component -->
-
-<app-connection-prompt #connectionPromptComponentReference></app-connection-prompt>

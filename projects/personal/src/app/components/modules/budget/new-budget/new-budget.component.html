@@ -1,4 +1,50 @@
-<smart-dialog-window #windowReference id="window" [label]="'Icon Dialog Window'">
-    <div class="smart-icon-dialog-icon"></div>
-    <div class="smart-icon-dialog-content">Continue ?</div>
-</smart-dialog-window>
+<button [hidden]="true" #buttonElementReference data-bs-toggle="modal" data-bs-target="#newBudgetModal">
+    Launch demo modal
+</button>
+
+<div class="modal fade form-modal" id="newBudgetModal" tabindex="-1" aria-labelledby="newBudgetModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <form class="page-form" [formGroup]="budgetForm" (ngSubmit)="postBudget()">
+
+                <div class="modal-header bg-light">
+                    <span class="modal-title" id="newBudgetModalLabel">Add New Budget</span>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+                    <div class="row mb-1">
+                        <div class="col-md-4">
+                            <label class="float-end mt-1">Budget Name :</label>
+                        </div>
+                        <div class="col-md-8">
+                            <input formControlName="budgetName" class="form-control form-control-sm w-100">
+                        </div>
+                    </div>
+
+                    <div class="row mb-1">
+                        <div class="col-md-4">
+                            <label class="float-end mt-1">Budget Type :</label>
+                        </div>
+                        <div class="col-md-8">
+                            <select formControlName="budgetType" class="form-control form-control-sm w-100">
+                                <option>Daily</option>
+                                <option>Weekly</option>
+                                <option>Monthly</option>
+                                <option>Quarterly</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-sm btn-secondary modal-form-btn" data-bs-dismiss="modal">Save</button>
+                    <button type="button" class="btn btn-sm btn-secondary modal-form-btn" data-bs-dismiss="modal">Cancel</button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>

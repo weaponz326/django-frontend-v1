@@ -31,21 +31,21 @@ export class BudgetApiService {
   // retreive, update and delete budget
 
   public getSingleBudget(): Observable<any>{
-    return this.http.get(this.personalUrl + "module-budget/budget/" + sessionStorage.getItem('budget_id'), this.endpoints.headers);
+    return this.http.get(this.personalUrl + "module-budget/budget/" + sessionStorage.getItem('personal_budget_id'), this.endpoints.headers);
   }
 
   public putBudget(budget: any): Observable<any>{
-    return this.http.put(this.personalUrl + "module-budget/budget/" + sessionStorage.getItem('budget_id'), budget, this.endpoints.headers);
+    return this.http.put(this.personalUrl + "module-budget/budget/" + sessionStorage.getItem('personal_budget_id'), budget, this.endpoints.headers);
   }
 
   public deleteBudget(): Observable<any>{
-    return this.http.delete(this.personalUrl + "module-budget/budget/" + sessionStorage.getItem('budget_id'), this.endpoints.headers);
+    return this.http.delete(this.personalUrl + "module-budget/budget/" + sessionStorage.getItem('personal_budget_id'), this.endpoints.headers);
   }
 
   // get budget's income, add, update and delete income
 
   public getIncome(): Observable<any>{
-    return this.http.get(this.personalUrl + "module-budget/income?budget=" + sessionStorage.getItem('budget_id'), this.endpoints.headers);
+    return this.http.get(this.personalUrl + "module-budget/income?budget=" + sessionStorage.getItem('personal_budget_id'), this.endpoints.headers);
   }
 
   public postIncome(incomeData: any): Observable<any>{
@@ -63,7 +63,7 @@ export class BudgetApiService {
   // get budget's expenditure, add, update and delete expenditure
 
   public getExpenditure(): Observable<any>{
-    return this.http.get(this.personalUrl + "module-budget/expenditure?budget=" + sessionStorage.getItem('budget_id'), this.endpoints.headers);
+    return this.http.get(this.personalUrl + "module-budget/expenditure?budget=" + sessionStorage.getItem('personal_budget_id'), this.endpoints.headers);
   }
 
   public postExpenditure(expenditureData: any): Observable<any>{

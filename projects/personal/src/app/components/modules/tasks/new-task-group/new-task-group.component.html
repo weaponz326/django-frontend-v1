@@ -1,25 +1,25 @@
-<button [hidden]="true" #buttonElementReference data-bs-toggle="modal" data-bs-target="#newCalendarModal">
+<button [hidden]="true" #buttonElementReference data-bs-toggle="modal" data-bs-target="#newTaskGroupModal">
     Launch demo modal
 </button>
 
-<div class="modal fade form-modal" id="newCalendarModal" tabindex="-1" aria-labelledby="newCalendarModalLabel" aria-hidden="true">
+<div class="modal fade form-modal" id="newTaskGroupModal" tabindex="-1" aria-labelledby="newTaskGroupModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
 
-            <form class="page-form" [formGroup]="calendarForm" (ngSubmit)="postCalendar()">
+            <form class="page-form" [formGroup]="taskGroupForm" (ngSubmit)="postTaskGroup()">
 
                 <div class="modal-header bg-light">
-                    <span class="modal-title" id="newCalendarModalLabel">Add New Calendar</span>
+                    <span class="modal-title" id="newTaskGroupModalLabel">Add New Task Group</span>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 
                 <div class="modal-body">
                     <div class="row mb-1">
                         <div class="col-md-4">
-                            <label class="float-end mt-1">Calendar Name :</label>
+                            <label class="float-end mt-1">Task Group Name :</label>
                         </div>
                         <div class="col-md-8">
-                            <input formControlName="calendarName" class="form-control form-control-sm w-100">
+                            <input formControlName="taskGroupName" class="form-control form-control-sm w-100">
                         </div>
                     </div>
 

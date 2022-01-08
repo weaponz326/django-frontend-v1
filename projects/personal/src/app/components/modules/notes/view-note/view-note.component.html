@@ -6,23 +6,21 @@
         <div class="col-md-7">
 
             <div class="row mb-3 page-form">
-                <div class="col-md-3"><label class="float-end">Subject :</label></div>
+                <div class="col-md-3"><label class="float-end mt-1">Subject :</label></div>
                 <div class="col-md-7">
-                    <smart-input #subjectInputReference class="w-100"></smart-input>
+                    <input class="form-control form-control-sm w-100" [(ngModel)]="subject">
                 </div>
             </div>
 
-            <div class="row mb-3">
-                <div class="col-md-12">
-                    <smart-editor #bodyEditorReference id="editor" class="w-100" [toolbarItems]="toolbarItems"></smart-editor>
-                </div>
-            </div>
+            <!-- ==============================
+            editor component comes here
+            ============================== -->
 
             <div class="row mb-3 page-form">
                 <div class="col-md-12">
-                    <smart-button #cancelButtonReference class="page-control-button float-end ms-1">Cancel</smart-button>
-                    <smart-button #saveButtonReference class="page-control-button float-end ms-1" (click)="saveNote()">Save</smart-button>
-                    <smart-button #deleteButtonReference class="page-control-button float-end ms-1" (click)="deleteNote()">Delete</smart-button>
+                    <button class="btn btn-secondary btn-sm float-end ms-1 page-form-btn" routerLink="/home/notes/all-notes">Cancel</button>
+                    <button class="btn btn-secondary btn-sm float-end ms-1 page-form-btn" (click)="deleteNote()">Delete</button>
+                    <button class="btn btn-secondary btn-sm float-end ms-1 page-form-btn" (click)="saveNote()">Save</button>
                 </div>
             </div>
 
@@ -32,10 +30,10 @@
             <div class="row mb-3">
                 <div class="col-md-12">
                     <input #fileUploadReference type="file" requiredFileType="file" class="file-upload-element d-none" multiple (change)="onFileSelected($event) "/>
-                    <smart-button #attachmentButtonReference (click)="fileUploadReference.click()">
+                    <button class="btn btn-secondary attachment-btn" (click)="fileUploadReference.click()">
                         Add Attachment
                         <i class="bi bi-paperclip ms-2"></i>
-                    </smart-button>
+                    </button>
                 </div>
             </div>
 
@@ -58,7 +56,3 @@
 <app-view-note-print #viewNotePrintComponentReference
 [hidden]="true" [noteViewData]="noteViewData">
 </app-view-note-print>
-
-<!-- connection error prompt component -->
-
-<app-connection-prompt #connectionPromptComponentReference></app-connection-prompt>

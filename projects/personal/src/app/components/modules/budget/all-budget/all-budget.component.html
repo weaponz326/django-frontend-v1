@@ -4,30 +4,33 @@
 
     <div class="row mb-3">
         <div class="col-md-12">
-            <smart-button #buttonReference (click)="budgetsGrid.beginEdit(1)">New Budget</smart-button>
+            <button class="btn btn-secondary page-add-btn" (click)="newBudget.openModal()">New Budget</button>
         </div>
     </div>
 
     <div class="row">
-        <div class="col-md-8">
-            <smart-grid #gridReference class="w-100"
-            [dataSource]="dataSource" [columns]="columns" [sorting]="sorting"
-            (onRowDoubleClick)="viewBudget($event)"></smart-grid>
+        <div class="col-md-7">
+
+            <table class="table table-bordered table-sm w-100 page-table">
+                <thead>
+                    <tr class="bg-light">
+                        <th width="60%">Budget Name</th>
+                        <th width="40%">Budget Type</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let data of budgetGridData" (dblclick)="viewBudget(data.id)" class="table-pointer">
+                        <td>{{data?.budget_name}}</td>
+                        <td>{{data?.budget_type}}</td>
+                    </tr>
+                </tbody>
+            </table>
+
         </div>
     </div>
 
 </div>
 
-<!-- print components -->
-
-<app-all-budget-print #allBudgetPrintComponentReference
-[hidden]="true" [budgetGridData]="budgetGridData">
-</app-all-budget-print>
-
-<!-- new budget window component -->
+<!-- new budget modal component -->
 
 <app-new-budget #newBudgetComponentReference></app-new-budget>
-
-<!-- connection error prompt component -->
-
-<app-connection-prompt #connectionPromptComponentReference></app-connection-prompt>
