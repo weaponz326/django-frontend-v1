@@ -1,0 +1,39 @@
+<div class="row">
+    <div class="col-md-7">
+
+        <div class="card shadow py-3">
+            <div class="card-body">
+
+                <p class="lead">Personal - Account</p>
+
+                <div class="row mb-1">
+                    <div class="col-md-4"><em><small class="float-end">Account Name :</small></em></div>
+                    <div class="col-md-8">{{accountData.account_name}}</div>
+                </div>
+                <div class="row mb-1">
+                    <div class="col-md-4"><em><small class="float-end">Account Number :</small></em></div>
+                    <div class="col-md-8">{{accountData.account_number}}</div>
+                </div>
+                <div class="row mb-1">
+                    <div class="col-md-4"><em><small class="float-end">Bank Name :</small></em></div>
+                    <div class="col-md-8">{{accountData.bank_name}}</div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-4"><em><small class="float-end">Account Type :</small></em></div>
+                    <div class="col-md-8">{{accountData.account_type}}</div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4"><em><small class="float-end">No. of Transactions :</small></em></div>
+                    <div class="col-md-8">{{transactionsGridData.length}}</div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- connection error prompt component -->
+
+<app-connection-prompt #connectionPromptComponentReference></app-connection-prompt>

@@ -1,27 +1,25 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { GridModule } from 'smart-webcomponents-angular/grid';
-import { WindowModule } from 'smart-webcomponents-angular/window';
-
 import { ModuleUtilitiesModule } from '../../module-utilities/module-utilities.module';
 
-import { SelectTaskComponent } from './select-task/select-task.component';
+import { SelectTaskGroupComponent } from './select-task-group/select-task-group.component';
+import { SelectTaskItemComponent } from './select-task-item/select-task-item.component';
 
 
 
 @NgModule({
   declarations: [
-    SelectTaskComponent
+    SelectTaskGroupComponent,
+    SelectTaskItemComponent
   ],
   imports: [
     CommonModule,
-    GridModule,
-    WindowModule,
     ModuleUtilitiesModule,
   ],
   exports: [
-    SelectTaskComponent
+    SelectTaskGroupComponent,
+    SelectTaskItemComponent
   ]
 })
 export class TasksWindowsModule { }

@@ -1,0 +1,20 @@
+<button [hidden]="true" #buttonElementReference data-bs-toggle="modal" data-bs-target="#deleteConfirmationModal">
+    Launch demo modal
+</button>
+
+<div class="modal fade form-modal" id="deleteConfirmationModal" tabindex="-1" aria-labelledby="deleteConfirmationModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+                <div class="modal-body">
+                    <p class="p-4">Are you sure you want to delete this item?</p>
+                </div>
+
+                <div class="modal-footer">
+                    <button class="btn btn-sm btn-secondary modal-form-btn" data-bs-dismiss="modal" (click)="onConfirm()">OK</button>
+                    <button class="btn btn-sm btn-secondary modal-form-btn" data-bs-dismiss="modal">Cancel</button>
+                </div>
+
+        </div>
+    </div>
+</div>

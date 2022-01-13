@@ -1,38 +1,42 @@
 <div class="row m-2 page-form">
     <div class="col-md-6">
 
-        <div class="row mb-3">
-            <div class="col-md-12">
-                <h5>Contact Details</h5>
-            </div>
-        </div>
+        <form class="page-form" [formGroup]="contactForm" (ngSubmit)="emitContact()">
 
-        <div class="row mb-2">
-            <div class="col-md-4"><label>Email :</label></div>
-            <div class="col-md-8">
-                <smart-input #emailInputReference class="w-100" [disabled]="true"></smart-input>
+            <div class="row mb-3">
+                <div class="col-md-12">
+                    <h5>Contact Details</h5>
+                </div>
             </div>
-        </div>
 
-        <div class="row mb-2">
-            <div class="col-md-4"><label>Phone No. :</label></div>
-            <div class="col-md-8">
-                <smart-input #phoneInputReference class="w-100"></smart-input>
+            <div class="row mb-2">
+                <div class="col-md-4"><label class="mt-1">Email :</label></div>
+                <div class="col-md-8">
+                    <input formControlName="email" [disabled]="true" class="form-control form-control-sm w-100">
+                </div>
             </div>
-        </div>
 
-        <div class="row mb-2">
-            <div class="col-md-4"><label>Address :</label></div>
-            <div class="col-md-8">
-                <smart-multiline-text-box #addressTextAreaReference class="w-100" [rows]="3"></smart-multiline-text-box>
+            <div class="row mb-2">
+                <div class="col-md-4"><label class="mt-1">Phone No. :</label></div>
+                <div class="col-md-8">
+                    <input formControlName="phone" class="form-control form-control-sm w-100">
+                </div>
             </div>
-        </div>
 
-        <div class="row mt-3 page-form-div">
-            <div class="col-md-12">
-                <smart-button #saveButtonReference class="float-end page-control-button" (click)="emitContact()">Save</smart-button>
+            <div class="row mb-2">
+                <div class="col-md-4"><label class="mt-1">Address :</label></div>
+                <div class="col-md-8">
+                    <teaxtarea formControlName="address" class="form-control form-control-sm w-100" rows="3"></teaxtarea>
+                </div>
             </div>
-        </div>
+
+            <div class="row mt-3 page-form-div">
+                <div class="col-md-12">
+                    <button type="submit" class="btn btn-secondary btn-sm float-end page-form-btn">Save</button>
+                </div>
+            </div>
+
+        </form>
 
     </div>
 </div>

@@ -6,7 +6,6 @@ import { FormsModule } from '@angular/forms';
 import { ChartsModule } from 'ng2-charts';
 
 import { ModuleUtilitiesModule } from '../../module-utilities/module-utilities.module';
-import { NotesPrintModule } from '../../printing/notes-print/notes-print.module';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SettingsComponent } from './settings/settings.component';
@@ -30,7 +29,6 @@ import { NewNoteComponent } from './new-note/new-note.component';
     FormsModule,
     ChartsModule,
     ModuleUtilitiesModule,
-    NotesPrintModule,
   ]
 })
 export class NotesModule { }

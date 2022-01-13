@@ -24,7 +24,7 @@
                             </div>
                             <input [(ngModel)]="searchInput" [ngModelOptions]="{standalone: true}" type="text" class="form-control" placeholder="Search for users" aria-label="Search for users" aria-describedby="button-addon2">
                             <div class="input-group-append">
-                                <button class="btn btn-secondary" type="submit" id="button-addon2">Search</button>
+                                <button class="btn btn-secondary" type="submit" id="button-addon">Search</button>
                             </div>
                         </div>
                     </form>
@@ -57,6 +57,6 @@
 
 </div>
 
-<!-- connection error prompt component -->
+<!-- connection error toast component -->
 
-<app-connection-prompt #connectionPromptComponentReference></app-connection-prompt>
+<app-connection-toast #connectionToastComponentReference></app-connection-toast>

@@ -1,1 +1,42 @@
-<p>select-budget works!</p>
+<button [hidden]="true" #openButtonElementReference data-bs-toggle="modal" data-bs-target="#selectBudgetModal">
+    Launch demo modal
+</button>
+
+<div class="modal fade select-table-modal" id="selectBudgetModal" tabindex="-1" aria-labelledby="selectBudgetModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+            <div class="modal-header bg-light">
+                <span class="modal-title" id="selectBudgetModalLabel">Select Personal Budget</span>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+                <table class="table table-bordered table-sm w-100 page-table">
+                    <thead>
+                        <tr class="bg-light">
+                            <th width="60%">Budget Name</th>
+                            <th width="40%">Budget Type</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let data of budgetGridData" (dblclick)="selectRow(data)" class="table-pointer">
+                            <td>{{data?.budget_name}}</td>
+                            <td>{{data?.budget_type}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <button [hidden]="true" #closeButtonElementReference data-bs-toggle="modal" data-bs-target="#selectBudgetModal">
+                Launch demo modal
+            </button>
+
+
+        </div>
+    </div>
+</div>
+
+<!-- connection error toast component -->
+
+<app-connection-toast #connectionToastComponentReference></app-connection-toast>

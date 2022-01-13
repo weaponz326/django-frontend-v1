@@ -1,16 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import { ChartsModule } from 'ng2-charts';
-import { ButtonModule } from 'smart-webcomponents-angular/button';
-import { InputModule } from 'smart-webcomponents-angular/input';
-import { MultilineTextBoxModule } from 'smart-webcomponents-angular/multilinetextbox';
 
 import { ModuleUtilitiesModule } from '../../module-utilities/module-utilities.module';
 import { CalendarWindowsModule } from '../../select-windows/calendar-windows/calendar-windows.module';
+import { BudgetWindowsModule } from '../../select-windows/budget-windows/budget-windows.module';
 import { NotesWindowsModule } from '../../select-windows/notes-windows/notes-windows.module';
+import { AccountsWindowsModule } from '../../select-windows/accounts-windows/accounts-windows.module';
 import { TasksWindowsModule } from '../../select-windows/tasks-windows/tasks-windows.module';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -21,9 +20,14 @@ import { ViewRinkComponent } from './view-rink/view-rink.component';
 import { SearchViewComponent } from './search-view/search-view.component';
 import { SearchResultsComponent } from './search-results/search-results.component';
 import { SearchDetailComponent } from './search-detail/search-detail.component';
-import { AppointmentDetailsComponent } from './rink-details/appointment-details/appointment-details.component';
+import { CalendarDetailsComponent } from './rink-details/calendar-details/calendar-details.component';
+import { ScheduleDetailsComponent } from './rink-details/schedule-details/schedule-details.component';
+import { BudgetDetailsComponent } from './rink-details/budget-details/budget-details.component';
 import { NoteDetailsComponent } from './rink-details/note-details/note-details.component';
-import { TaskDetailsComponent } from './rink-details/task-details/task-details.component';
+import { AccountDetailsComponent } from './rink-details/account-details/account-details.component';
+import { TransactionDetailsComponent } from './rink-details/transaction-details/transaction-details.component';
+import { TaskGroupDetailsComponent } from './rink-details/task-group-details/task-group-details.component';
+import { TaskItemDetailsComponent } from './rink-details/task-item-details/task-item-details.component';
 
 
 @NgModule({
@@ -36,22 +40,27 @@ import { TaskDetailsComponent } from './rink-details/task-details/task-details.c
     SearchViewComponent,
     SearchResultsComponent,
     SearchDetailComponent,
-    AppointmentDetailsComponent,
+    CalendarDetailsComponent,
+    ScheduleDetailsComponent,
+    BudgetDetailsComponent,
     NoteDetailsComponent,
-    TaskDetailsComponent
+    AccountDetailsComponent,
+    TransactionDetailsComponent,
+    TaskGroupDetailsComponent,
+    TaskItemDetailsComponent,
   ],
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     RouterModule,
     ChartsModule,
     ModuleUtilitiesModule,
     CalendarWindowsModule,
+    BudgetWindowsModule,
     NotesWindowsModule,
+    AccountsWindowsModule,
     TasksWindowsModule,
-    ButtonModule,
-    InputModule,
-    MultilineTextBoxModule,
   ]
 })
 export class PortalModule { }

@@ -1,0 +1,31 @@
+<div class="row">
+    <div class="col-md-7">
+
+        <div class="card shadow py-3">
+            <div class="card-body">
+
+                <p class="lead">Personal - Task Group</p>
+
+                <div class="row mb-1">
+                    <div class="col-md-4"><em><small class="float-end">Task Group Name :</small></em></div>
+                    <div class="col-md-8">{{taskGroupData.task_group}}</div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-4"><em><small class="float-end">Date Created :</small></em></div>
+                    <div class="col-md-8">{{taskGroupData.created_at | date}}</div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4"><em><small class="float-end">No. of Task Items :</small></em></div>
+                    <div class="col-md-8">{{taskItemsGridData.length}}</div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- connection error prompt component -->
+
+<app-connection-prompt #connectionPromptComponentReference></app-connection-prompt>

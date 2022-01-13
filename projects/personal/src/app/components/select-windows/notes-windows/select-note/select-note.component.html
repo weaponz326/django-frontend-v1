@@ -1,13 +1,44 @@
-<div class="module-select-window">
+<button [hidden]="true" #openButtonElementReference data-bs-toggle="modal" data-bs-target="#selectNoteModal">
+    Launch demo modal
+</button>
 
-    <smart-window #window [label]="'Select Personal Note'">
-        <smart-grid #grid class="w-100"
-        [dataSource]="dataSource" [columns]="columns" [sorting]="sorting" (onRowDoubleClick)="selectRow($event)">
-        </smart-grid>
-    </smart-window>
+<div class="modal fade select-table-modal" id="selectNoteModal" tabindex="-1" aria-labelledby="selectNoteModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
 
+            <div class="modal-header bg-light">
+                <span class="modal-title" id="selectNoteModalLabel">Select Personal Note</span>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+                <table class="table table-bordered table-sm w-100 page-table">
+                    <thead>
+                        <tr class="bg-light">
+                            <th width="50%">Subject</th>
+                            <th width="25%">Created At</th>
+                            <th width="25%">Last Updated</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let data of notesGridData" (dblclick)="selectRow(data)" class="table-pointer">
+                            <td>{{data?.subject}}</td>
+                            <td>{{data?.created_at | date}}</td>
+                            <td>{{data?.updated_at | date}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <button [hidden]="true" #closeButtonElementReference data-bs-toggle="modal" data-bs-target="#selectNoteModal">
+                Launch demo modal
+            </button>
+
+
+        </div>
+    </div>
 </div>
 
-<!-- connection error prompt component -->
+<!-- connection error toast component -->
 
-<app-connection-prompt #connectionPromptComponentReference></app-connection-prompt>
+<app-connection-toast #connectionToastComponentReference></app-connection-toast>

@@ -1,38 +1,50 @@
 <div class="row m-2 page-form">
     <div class="col-md-6">
 
-        <div class="row mb-3">
-            <div class="col-md-12">
-                <h5>Location Details</h5>
-            </div>
-        </div>
+        <form class="page-form" [formGroup]="locationForm" (ngSubmit)="emitLocation()">
 
-        <div class="row mb-2">
-            <div class="col-md-4"><label>Country :</label></div>
-            <div class="col-md-8">
-                <smart-input #countrySelectReference class="w-100"></smart-input>
+            <div class="row mb-3">
+                <div class="col-md-12">
+                    <h5>Location Details</h5>
+                </div>
             </div>
-        </div>
 
-        <div class="row mb-2">
-            <div class="col-md-4"><label>Region / State :</label></div>
-            <div class="col-md-8">
-                <smart-input #stateSelectReference class="w-100"></smart-input>
+            <div class="row mb-2">
+                <div class="col-md-4"><label class="mt-1">Country :</label></div>
+                <div class="col-md-8">
+                    <input formControlName="country" class="form-control form-control-sm w-100">
+                </div>
             </div>
-        </div>
 
-        <div class="row mb-2">
-            <div class="col-md-4"><label>City / Town :</label></div>
-            <div class="col-md-8">
-                <smart-input #citySelectReference class="w-100"></smart-input>
+            <div class="row mb-2">
+                <div class="col-md-4"><label class="mt-1">Region / State :</label></div>
+                <div class="col-md-8">
+                    <input formControlName="state" class="form-control form-control-sm w-100">
+                </div>
             </div>
-        </div>
 
-        <div class="row mt-3 page-form-div">
-            <div class="col-md-12">
-                <smart-button #saveButtonReference class="float-end page-control-button" (click)="emitLocation()">Save</smart-button>                
+            <div class="row mb-2">
+                <div class="col-md-4"><label class="mt-1">City / Town :</label></div>
+                <div class="col-md-8">
+                    <input formControlName="city" class="form-control form-control-sm w-100">
+                </div>
             </div>
-        </div>
+
+            <div class="row mb-2">
+                <div class="col-md-4"><label class="mt-1">Location :</label></div>
+                <div class="col-md-8">
+                    <input [(ngModel)]="location" [ngModelOptions]="{standalone: true}" class="form-control form-control-sm w-100"
+                    ngx-google-places-autocomplete #placesRef="ngx-places" (onAddressChange)="onAddressChange($event)">
+                </div>
+            </div>
+
+            <div class="row mt-3 page-form-div">
+                <div class="col-md-12">
+                    <button type="submit" class="btn btn-secondary btn-sm float-end page-form-btn">Save</button>
+                </div>
+            </div>
+
+        </form>
 
     </div>
 </div>

@@ -18,10 +18,10 @@
                 <tbody>
                     <tr *ngFor="let data of taskItemsGridData">
                         <td>{{data?.task_item}}</td>
-                        <td>{{data?.priority | date}}</td>
+                        <td>{{data?.priority}}</td>
                         <td>{{data?.start_date | date}}</td>
                         <td>{{data?.end_date | date}}</td>
-                        <td>{{data?.status | date}}</td>
+                        <td>{{data?.status}}</td>
                     </tr>
                 </tbody>
             </table>
@@ -30,9 +30,3 @@
     </div>
 
 </div>
-
-<!-- printing components -->
-
-<app-all-task-items-print #allTaskItemsPrintComponentReference
-[hidden]="true" [taskItemsGridData]="taskItemsGridData">
-</app-all-task-items-print>

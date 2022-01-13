@@ -2,7 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { PortalApiService } from 'projects/personal/src/app/services/modules/portal-api/portal-api.service';
-import { ConnectionPromptComponent } from '../../../module-utilities/connection-prompt/connection-prompt.component'
+
+import { ConnectionToastComponent } from '../../../module-utilities/connection-toast/connection-toast.component'
 
 
 @Component({
@@ -17,7 +18,7 @@ export class SearchViewComponent implements OnInit {
     private portalApi: PortalApiService
   ) { }
 
-  @ViewChild('connectionPromptComponentReference', { read: ConnectionPromptComponent, static: false }) connectionPrompt!: ConnectionPromptComponent;
+  @ViewChild('connectionToastComponentReference', { read: ConnectionToastComponent, static: false }) connectionToast!: ConnectionToastComponent;
 
   navHeading: any[] = [
     { text: "New Rink", url: "/home/portal/search" },
@@ -47,14 +48,16 @@ export class SearchViewComponent implements OnInit {
   }
 
   doSearch(){
-    // put search input in url
-    this.router.navigate(['/home/portal/search', { input: this.searchInput, filter: this.searchFilter }]);
+    if(this.searchInput.trim() != ""){
+      // put search input in url
+      this.router.navigate(['/home/portal/search', { input: this.searchInput, filter: this.searchFilter }]);
 
-    sessionStorage.setItem('personalSearchInput', this.searchInput);
-    sessionStorage.setItem('personalSearchFilter', this.searchFilter);
-    this.searchQuery = this.searchInput;
+      sessionStorage.setItem('personalSearchInput', this.searchInput);
+      sessionStorage.setItem('personalSearchFilter', this.searchFilter);
+      this.searchQuery = this.searchInput;
 
-    this.getSearch();
+      this.getSearch();
+    }
   }
 
   setSearchFilter(event: any, value: any){
@@ -74,7 +77,7 @@ export class SearchViewComponent implements OnInit {
         },
         err => {
           console.log(err);
-          this.connectionPrompt.toast.open();
+          this.connectionToast.openToast();
         }
       )
   }
@@ -93,7 +96,7 @@ export class SearchViewComponent implements OnInit {
         },
         err => {
           console.log(err);
-          this.connectionPrompt.toast.open();
+          this.connectionToast.openToast();
         }
       )
   }

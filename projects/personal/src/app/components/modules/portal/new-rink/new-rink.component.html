@@ -5,50 +5,58 @@
     <div class="row page-form">
         <div class="col-md-8">
 
-            <div class="row mb-1">
-                <div class="col-md-3"><label class="float-end">Recipient Name :</label></div>
-                <div class="col-md-6">
-                    <smart-input #nameInputReference class="w-100" [disabled]="true"></smart-input>
-                </div>
-            </div>
+            <form class="page-form" [formGroup]="rinkForm" (ngSubmit)="sendRink()">
 
-            <div class="row mb-3">
-                <div class="col-md-3"><label class="float-end">Recipient Location :</label></div>
-                <div class="col-md-6">
-                    <smart-input #locationInputReference class="w-100" [disabled]="true"></smart-input>
+                <div class="row mb-1">
+                    <div class="col-md-3"><label class="float-end mt-1">Recipient's Name :</label></div>
+                    <div class="col-md-6">
+                        <input formControlName="recipientName" [disabled]="true" class="form-control form-control-sm w-100">
+                    </div>
                 </div>
-            </div>
 
-            <div class="row mb-1">
-                <div class="col-md-3"><label class="float-end">Rink Type :</label></div>
-                <div class="col-md-6">
-                    <smart-input #typeDropDownListReference class="w-100"
-                    [dataSource]="typeSource" [dropDownButtonPosition]='"right"' (change)="onTypeSelected($event)">
-                    </smart-input>
+                <div class="row mb-3">
+                    <div class="col-md-3"><label class="float-end mt-1">Recipient's Location :</label></div>
+                    <div class="col-md-6">
+                        <input formControlName="recipientLocation" [disabled]="true" class="form-control form-control-sm w-100">
+                    </div>
                 </div>
-            </div>
 
-            <div class="row mb-1">
-                <div class="col-md-3"><label class="float-end">Rink Source :</label></div>
-                <div class="col-md-6">
-                    <smart-input #sourceInputReference class="page-group-input" [disabled]="true"></smart-input>
-                    <smart-button #sourceButtonReference class="page-group-button" [disabled]="true" (click)="openSourceWindow()">...</smart-button>
+                <div class="row mb-1">
+                    <div class="col-md-3"><label class="float-end mt-1">Rink Type :</label></div>
+                    <div class="col-md-6">
+                        <select formControlName="rinkType" class="form-control form-control-sm w-100" (change)="onTypeSelected()">
+                            <option *ngFor="let type of typeSource">{{type}}</option>
+                        </select>
+                    </div>
                 </div>
-            </div>
 
-            <div class="row mb-1">
-                <div class="col-md-3"><label class="float-end">Comment :</label></div>
-                <div class="col-md-6">
-                    <smart-multiline-text-box #commentTextAreaReference class="w-100" enter-key-behavior="newLine" [rows]="3"></smart-multiline-text-box>
+                <div class="row mb-1">
+                    <div class="col-md-3"><label class="float-end mt-1">Rink Source :</label></div>
+                    <div class="col-md-6">
+                        <div class="input-group input-group-sm w-100">
+                            <input formControlName="rinkSource" [disabled]="true" class="form-control">
+                            <button type="button" class="btn btn-secondary" (click)="openSourceWindow()">
+                                <i class="bi bi-three-dots"></i>
+                            </button>
+                        </div>
+                    </div>
                 </div>
-            </div>
 
-            <div class="row mt-3">
-                <div class="col-md-9">
-                    <smart-button #cancelButtonReference class="page-control-button float-end ms-1" routerLink="/home/portal/search">Cancel</smart-button>
-                    <smart-button #sendButtonReference class="page-control-button float-end ms-1" (click)="sendRink()">Send</smart-button>
+                <div class="row mb-2">
+                    <div class="col-md-3"><label class="float-end mt-1">Comment :</label></div>
+                    <div class="col-md-6">
+                        <textarea rows="3" formControlName="comment" class="form-control form-control-sm w-100"></textarea>
+                    </div>
                 </div>
-            </div>
+
+                <div class="row mt-3">
+                    <div class="col-md-9">
+                        <button type="button" class="btn btn-secondary btn-sm float-end ms-1 page-form-btn" routerLink="/home/portal/search">Cancel</button>
+                        <button [disabled]="isRinkSending" type="submit" class="btn btn-secondary btn-sm float-end ms-1 page-form-btn">Send</button>
+                    </div>
+                </div>
+
+            </form>
 
         </div>
     </div>
@@ -57,12 +65,15 @@
 
 <!-- module sect windows -->
 
-<app-select-appointment #selectAppointmentComponentReference (appointmentSelected)="onSourceSelected($event)"></app-select-appointment>
-
+<app-select-calendar #selectCalendarComponentReference (calendarSelected)="onSourceSelected($event)"></app-select-calendar>
+<app-select-schedule #selectScheduleComponentReference (scheduleSelected)="onSourceSelected($event)"></app-select-schedule>
+<app-select-budget #selectBudgetComponentReference (budgetSelected)="onSourceSelected($event)"></app-select-budget>
 <app-select-note #selectNoteComponentReference (noteSelected)="onSourceSelected($event)"></app-select-note>
+<app-select-account #selectAccountComponentReference (accountSelected)="onSourceSelected($event)"></app-select-account>
+<app-select-transaction #selectTransactionComponentReference (transactionSelected)="onSourceSelected($event)"></app-select-transaction>
+<app-select-task-group #selectTaskGroupComponentReference (taskGroupSelected)="onSourceSelected($event)"></app-select-task-group>
+<app-select-task-item #selectTaskItemComponentReference (taskItemSelected)="onSourceSelected($event)"></app-select-task-item>
 
-<app-select-task #selectTaskComponentReference (taskSelected)="onSourceSelected($event)"></app-select-task>
+<!-- connection error toast component -->
 
-<!-- connection error prompt component -->
-
-<app-connection-prompt #connectionPromptComponentReference></app-connection-prompt>
+<app-connection-toast #connectionToastComponentReference></app-connection-toast>

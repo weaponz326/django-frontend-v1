@@ -1,0 +1,42 @@
+<button [hidden]="true" #openButtonElementReference data-bs-toggle="modal" data-bs-target="#selectCalendarModal">
+    Launch demo modal
+</button>
+
+<div class="modal fade select-table-modal" id="selectCalendarModal" tabindex="-1" aria-labelledby="selectCalendarModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+            <div class="modal-header bg-light">
+                <span class="modal-title" id="selectCalendarModalLabel">Select Personal Calendar</span>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+                <table class="table table-bordered table-sm w-100 page-table">
+                    <thead>
+                        <tr class="bg-light">
+                            <th width="65%">Calendar Name</th>
+                            <th width="35%">Created At</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let data of calendarGridData" (dblclick)="selectRow(data)" class="table-pointer">
+                            <td>{{data?.calendar_name}}</td>
+                            <td>{{data?.created_at | date}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <button [hidden]="true" #closeButtonElementReference data-bs-toggle="modal" data-bs-target="#selectCalendarModal">
+                Launch demo modal
+            </button>
+
+
+        </div>
+    </div>
+</div>
+
+<!-- connection error toast component -->
+
+<app-connection-toast #connectionToastComponentReference></app-connection-toast>

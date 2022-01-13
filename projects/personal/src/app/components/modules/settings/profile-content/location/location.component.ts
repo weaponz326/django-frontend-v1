@@ -1,7 +1,5 @@
 import { Component, OnInit, ViewChild, Output, EventEmitter } from '@angular/core';
-
-import { InputComponent } from 'smart-webcomponents-angular/input';
-import { ButtonComponent } from 'smart-webcomponents-angular/button';
+import { FormControl, FormGroup } from '@angular/forms';
 
 
 @Component({
@@ -13,24 +11,36 @@ export class LocationComponent implements OnInit {
 
   constructor() { }
 
-  @ViewChild('countrySelectReference', { read: InputComponent, static: false }) countrySelectInput!: InputComponent;
-  @ViewChild('stateSelectReference', { read: InputComponent, static: false }) stateSelectInput!: InputComponent;
-  @ViewChild('citySelectReference', { read: InputComponent, static: false }) citySelectInput!: InputComponent;
-  @ViewChild('saveButtonference', { read: ButtonComponent, static: false }) saveButton!: ButtonComponent;
-
   @Output() locationEvent = new EventEmitter<any>();
 
+  locationForm: FormGroup = new FormGroup({});
+  location = "";
+
   ngOnInit(): void {
+    this.initLocationForm();
+  }
+
+  initLocationForm(){
+    this.locationForm = new FormGroup({
+      country: new FormControl(),
+      state: new FormControl(),
+      city: new FormControl(),
+    })
   }
 
   emitLocation(){
     let data = {
-      country: this.countrySelectInput.value,
-      state: this.stateSelectInput.value,
-      city: this.citySelectInput.value,
+      country: this.locationForm.controls.country.value,
+      state: this.locationForm.controls.state.value,
+      city: this.locationForm.controls.city.value,
     }
 
   	this.locationEvent.emit(data);
+  }
+
+  onAddressChange(address: any) {
+    this.location = address.formatted_address;
+    console.log(address);
   }
 
 }

@@ -48,6 +48,7 @@ export class ViewCalendarComponent implements OnInit {
       .subscribe(
         res => {
           console.log(res);
+          this.calendarFormData = res;
           this.calendarForm.controls.calendarName.setValue(res.calendar_name);
         },
         err => {

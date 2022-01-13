@@ -1,16 +1,19 @@
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
-
-import { ButtonComponent } from 'smart-webcomponents-angular/button';
-import { InputComponent } from 'smart-webcomponents-angular/input';
-import { MultilineTextBoxComponent } from 'smart-webcomponents-angular/multilinetextbox';
+import { FormControl, FormGroup } from '@angular/forms';
 
 import { PortalApiService } from 'projects/personal/src/app/services/modules/portal-api/portal-api.service';
-import { ConnectionPromptComponent } from '../../../module-utilities/connection-prompt/connection-prompt.component';
 
-import { SelectAppointmentComponent } from '../../../select-windows/calendar-windows/select-appointment/select-appointment.component';
+import { ConnectionToastComponent } from '../../../module-utilities/connection-toast/connection-toast.component';
+
+import { SelectCalendarComponent } from '../../../select-windows/calendar-windows/select-calendar/select-calendar.component';
+import { SelectScheduleComponent } from '../../../select-windows/calendar-windows/select-schedule/select-schedule.component';
+import { SelectBudgetComponent } from '../../../select-windows/budget-windows/select-budget/select-budget.component';
 import { SelectNoteComponent } from '../../../select-windows/notes-windows/select-note/select-note.component';
-import { SelectTaskComponent } from '../../../select-windows/tasks-windows/select-task/select-task.component';
+import { SelectAccountComponent } from '../../../select-windows/accounts-windows/select-account/select-account.component';
+import { SelectTransactionComponent } from '../../../select-windows/accounts-windows/select-transaction/select-transaction.component';
+import { SelectTaskGroupComponent } from '../../../select-windows/tasks-windows/select-task-group/select-task-group.component';
+import { SelectTaskItemComponent } from '../../../select-windows/tasks-windows/select-task-item/select-task-item.component';
 
 
 @Component({
@@ -25,33 +28,45 @@ export class NewRinkComponent implements OnInit {
     private portalApi: PortalApiService,
   ) { }
 
-  @ViewChild('nameInputReference', { read: InputComponent, static: false }) nameInput!: InputComponent;
-  @ViewChild('locationInputReference', { read: InputComponent, static: false }) locationInput!: InputComponent;
-  @ViewChild('typeDropDownListReference', { read: InputComponent, static: false }) typeDropDownList!: InputComponent;
-  @ViewChild('sourceInputReference', { read: InputComponent, static: false }) sourceInput!: InputComponent;
-  @ViewChild('sourceButtonReference', { read: ButtonComponent, static: false }) sourceButton!: ButtonComponent;
-  @ViewChild('commentTextAreaReference', { read: MultilineTextBoxComponent, static: false }) commentTextArea!: MultilineTextBoxComponent;
-  @ViewChild('sendButtonReference', { read: ButtonComponent, static: false }) sendButton!: ButtonComponent;
-  @ViewChild('cancelButtonReference', { read: ButtonComponent, static: false }) cancelButton!: ButtonComponent;
+  @ViewChild('connectionToastComponentReference', { read: ConnectionToastComponent, static: false }) connectionToast!: ConnectionToastComponent;
 
-  @ViewChild('connectionPromptComponentReference', { read: ConnectionPromptComponent, static: false }) connectionPrompt!: ConnectionPromptComponent;
-  @ViewChild('selectAppointmentComponentReference', { read: SelectAppointmentComponent, static: false }) selectAppointment!: SelectAppointmentComponent;
+  @ViewChild('selectCalendarComponentReference', { read: SelectCalendarComponent, static: false }) selectCalendar!: SelectCalendarComponent;
+  @ViewChild('selectScheduleComponentReference', { read: SelectScheduleComponent, static: false }) selectSchedule!: SelectScheduleComponent;
+  @ViewChild('selectBudgetComponentReference', { read: SelectBudgetComponent, static: false }) selectBudget!: SelectBudgetComponent;
   @ViewChild('selectNoteComponentReference', { read: SelectNoteComponent, static: false }) selectNote!: SelectNoteComponent;
-  @ViewChild('selectTaskComponentReference', { read: SelectTaskComponent, static: false }) selectTask!: SelectTaskComponent;
+  @ViewChild('selectAccountComponentReference', { read: SelectAccountComponent, static: false }) selectAccount!: SelectAccountComponent;
+  @ViewChild('selectTransactionComponentReference', { read: SelectTransactionComponent, static: false }) selectTransaction!: SelectTransactionComponent;
+  @ViewChild('selectTaskGroupComponentReference', { read: SelectTaskGroupComponent, static: false }) selectTaskGroup!: SelectTaskGroupComponent;
+  @ViewChild('selectTaskItemComponentReference', { read: SelectTaskItemComponent, static: false }) selectTaskItem!: SelectTaskItemComponent;
 
   navHeading: any[] = [
     { text: "New Rink", url: "/home/portal/search" },
     { text: "Send Rink", url: "/home/portal/search/new-rink" },
   ];
 
-  typeSource: any[] = ['Appointment', 'Note', 'Task'];
+  rinkForm: FormGroup = new FormGroup({});
+
   selectedSourceId: any;
+  typeSource: any[] = ['Calendar', 'Schedule', 'Budget', 'Note', 'Account', 'Transaction', 'Task Group', 'Task Item'];
+
+  isRinkSending = false;
 
   ngOnInit(): void {
+    this.initRinkForm();
   }
 
   ngAfterViewInit(): void {
     this.getDetail();
+  }
+
+  initRinkForm(){
+    this.rinkForm = new FormGroup({
+      recipientName: new FormControl(''),
+      recipientLocation: new FormControl(''),
+      rinkType: new FormControl('Calendar'),
+      rinkSource: new FormControl(''),
+      comment: new FormControl('')
+    })
   }
 
   getDetail(){
@@ -59,12 +74,12 @@ export class NewRinkComponent implements OnInit {
       .subscribe(
         res => {
           console.log(res);
-          this.nameInput.value = res.first_name + " " + res.last_name;
-          this.locationInput.value = res.location;
+          this.rinkForm.controls.recipientName.setValue(res.first_name + " " + res.last_name);
+          this.rinkForm.controls.recipientLocation.setValue(res.location);
         },
         err => {
           console.log(err);
-          this.connectionPrompt.toast.open();
+          this.connectionToast.openToast();
         }
       )
   }
@@ -73,67 +88,81 @@ export class NewRinkComponent implements OnInit {
     let rinkData = {
       sender: localStorage.getItem('personal_id'),
       recipient: sessionStorage.getItem('personal_rink_recipient'),
-      rink_type: this.typeDropDownList.value,
+      rink_type: this.rinkForm.controls.rinkType.value,
       rink_source: this.selectedSourceId,
-      comment: this.commentTextArea.value
+      comment: this.rinkForm.controls.comment.value,
     }
 
     console.log(rinkData);
-    this.sendButton.disabled = true;
+    this.isRinkSending = true;
 
     this.portalApi.postRink(rinkData)
       .subscribe(
         res => {
           console.log(res);
-          this.sendButton.disabled = false;
+          this.isRinkSending = false;
 
-          if (res.message == "OK"){
+          if (res.id){
             sessionStorage.setItem('personal_rink_id', res.data.id);
             this.router.navigateByUrl('/home/portal/view-rink');
           }
         },
         err => {
           console.log(err);
-          this.sendButton.disabled = false;
-          this.connectionPrompt.toast.open();
+          this.isRinkSending = false;
+          this.connectionToast.openToast();
         }
       )
   }
 
-  onTypeSelected(event: any){
-    this.sourceButton.disabled = false;
-    this.sourceInput.value = "";
+  onTypeSelected(){
+    console.log("why did u change the type?");
+    this.rinkForm.controls.rinkSource.setValue("");
   }
 
   openSourceWindow(){
-    let type = this.typeDropDownList.value;
+    let type = this.rinkForm.controls.rinkType.value;
+    console.log("You are opening a " + type + " rink type")
 
-    if (type == "Task") {
-      console.log("u are opening task source window");
-      this.selectTask.window.open();
-    }else if (type == "Appointment") {
-      console.log("u are opening appointment source window");
-      this.selectAppointment.window.open();
-    }else if (type == "Note") {
-      console.log("u are opening note source window");
-      this.selectNote.window.open();
-    }
+    if (type == "Calendar")
+      this.selectCalendar.openModal();
+    else if (type == "Schedule")
+      this.selectSchedule.openModal();
+    else if (type == "Budget")
+      this.selectBudget.openModal();
+    else if (type == "Note")
+      this.selectNote.openModal();
+    else if (type == "Account")
+      this.selectAccount.openModal();
+    else if (type == "Transaction")
+      this.selectTransaction.openModal();
+    else if (type == "Task Group")
+      this.selectTaskGroup.openModal();
+    else if (type == "Task Item")
+      this.selectTaskItem.openModal();
   }
 
   onSourceSelected(sourceData: any){
     console.log(sourceData);
-    let type = this.typeDropDownList.value;
+    let type = this.rinkForm.controls.rinkType.value;
+    this.selectedSourceId = sourceData.id;
 
-    if (type == "Task") {
-      this.selectedSourceId = sourceData.id;
-      this.sourceInput.value = sourceData.task_name;
-    }else if (type == "Appointment") {
-      this.selectedSourceId = sourceData.id;
-      this.sourceInput.value = sourceData.label;
-    }else if (type == "Note") {
-      this.selectedSourceId = sourceData.id;
-      this.sourceInput.value = sourceData.subject;
-    }
+    if (type == "Calendar")
+      this.rinkForm.controls.rinkSource.setValue(sourceData.calendar_name);
+    else if (type == "Schedule")
+      this.rinkForm.controls.rinkSource.setValue(sourceData.schedule_name);
+    else if (type == "Budget")
+      this.rinkForm.controls.rinkSource.setValue(sourceData.budget_name);
+    else if (type == "Note")
+      this.rinkForm.controls.rinkSource.setValue(sourceData.subject);
+    else if (type == "Account")
+      this.rinkForm.controls.rinkSource.setValue(sourceData.account_name);
+    else if (type == "Transaction")
+      this.rinkForm.controls.rinkSource.setValue(sourceData.description);
+    else if (type == "Task Group")
+      this.rinkForm.controls.rinkSource.setValue(sourceData.task_group);
+    else if (type == "Task Item")
+      this.rinkForm.controls.rinkSource.setValue(sourceData.item_description);
   }
 
 }

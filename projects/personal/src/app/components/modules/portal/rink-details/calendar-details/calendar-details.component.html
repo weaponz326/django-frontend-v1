@@ -1,0 +1,30 @@
+<div class="row">
+    <div class="col-md-7">
+
+        <div class="card shadow py-3">
+            <div class="card-body">
+
+                <p class="lead">Personal - Calendar</p>
+
+                <div class="row mb-1">
+                    <div class="col-md-4"><em><small class="float-end">Calendar Name :</small></em></div>
+                    <div class="col-md-8">{{calendarData.calendar_name}}</div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-4"><em><small class="float-end">Date Created :</small></em></div>
+                    <div class="col-md-8">{{calendarData.created_at | date}}</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4"><em><small class="float-end">No. of Schedules :</small></em></div>
+                    <div class="col-md-8">{{schedulesGridData.length}}</div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- connection error prompt component -->
+
+<app-connection-prompt #connectionPromptComponentReference></app-connection-prompt>

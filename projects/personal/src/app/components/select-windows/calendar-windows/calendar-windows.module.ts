@@ -1,27 +1,24 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { GridModule } from 'smart-webcomponents-angular/grid';
-import { WindowModule } from 'smart-webcomponents-angular/window';
-
 import { ModuleUtilitiesModule } from '../../module-utilities/module-utilities.module';
 
-import { SelectAppointmentComponent } from './select-appointment/select-appointment.component';
-
+import { SelectCalendarComponent } from './select-calendar/select-calendar.component';
+import { SelectScheduleComponent } from './select-schedule/select-schedule.component';
 
 
 @NgModule({
   declarations: [
-    SelectAppointmentComponent
+    SelectCalendarComponent,
+    SelectScheduleComponent
   ],
   imports: [
     CommonModule,
-    GridModule,
-    WindowModule,
     ModuleUtilitiesModule,
   ],
   exports: [
-    SelectAppointmentComponent
+    SelectCalendarComponent,
+    SelectScheduleComponent
   ]
 })
 export class CalendarWindowsModule { }

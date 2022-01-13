@@ -3,8 +3,6 @@ import { Router } from '@angular/router';
 
 import { NotesApiService } from 'projects/personal/src/app/services/modules/notes-api/notes-api.service';
 
-import { ViewNotePrintComponent } from 'projects/personal/src/app/components/printing/notes-print/view-note-print/view-note-print.component'
-
 
 @Component({
   selector: 'app-view-note',
@@ -17,8 +15,6 @@ export class ViewNoteComponent implements OnInit {
     private router: Router,
     private notesApi: NotesApiService
   ) { }
-
-  @ViewChild('viewNotePrintComponentReference', { read: ViewNotePrintComponent, static: false }) viewNotePrint!: ViewNotePrintComponent;
 
   navHeading: any[] = [
     { text: "All Notes", url: "/home/notes/all-notes" },
@@ -157,7 +153,6 @@ export class ViewNoteComponent implements OnInit {
 
   onPrint(){
     console.log("lets start printing...");
-    this.viewNotePrint.print();
   }
 
 }

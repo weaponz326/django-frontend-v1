@@ -1,0 +1,44 @@
+<button [hidden]="true" #openButtonElementReference data-bs-toggle="modal" data-bs-target="#selectTaskItemModal">
+    Launch demo modal
+</button>
+
+<div class="modal fade select-table-modal" id="selectTaskItemModal" tabindex="-1" aria-labelledby="selectTaskItemModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+            <div class="modal-header bg-light">
+                <span class="modal-title" id="selectTaskItemModalLabel">Select Personal TaskItem</span>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+                <table class="table table-bordered table-sm w-100 page-table">
+                    <thead>
+                        <tr class="bg-light">
+                            <th width="50%">Task Item</th>
+                            <th width="25%">Priority</th>
+                            <th width="25%">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let data of taskItemsGridData" (dblclick)="selectRow(data)" class="table-pointer">
+                            <td>{{data?.task_item}}</td>
+                            <td>{{data?.priority}}</td>
+                            <td>{{data?.status}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <button [hidden]="true" #closeButtonElementReference data-bs-toggle="modal" data-bs-target="#selectTaskItemModal">
+                Launch demo modal
+            </button>
+
+
+        </div>
+    </div>
+</div>
+
+<!-- connection error toast component -->
+
+<app-connection-toast #connectionToastComponentReference></app-connection-toast>

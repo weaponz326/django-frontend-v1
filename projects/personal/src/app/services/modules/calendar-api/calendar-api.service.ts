@@ -21,8 +21,8 @@ export class CalendarApiService {
   // calendar
 
   // get all calendars belonging to a user
-  public getCalendars(): Observable<any>{
-    return this.http.get(this.personalUrl + "module-calendar/calendar?user=" + localStorage.getItem('personal_id'), this.endpoints.headers);
+  public getCalendars(page: any, sortField: any): Observable<any>{
+    return this.http.get(this.personalUrl + "module-calendar/calendar?user=" + localStorage.getItem('personal_id') + "&page=" + page + "&ordering=" + sortField, this.endpoints.headers);
   }
 
   // get single calendar
@@ -54,6 +54,11 @@ export class CalendarApiService {
   // get all schedules of a calendar
   public getSchedules(): Observable<any>{
     return this.http.get(this.personalUrl + "module-calendar/schedule?user=" + sessionStorage.getItem('personal_calendar_id'), this.endpoints.headers);
+  }
+
+  // get single schedule
+  public getSchedule(schedule_id: any): Observable<any>{
+    return this.http.get(this.personalUrl + "module-calendar/schedule/=" + schedule_id, this.endpoints.headers);
   }
 
   // create update and delete calendar

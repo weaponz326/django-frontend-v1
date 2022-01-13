@@ -45,8 +45,14 @@ export class AccountsApiService {
   // -----------------------------------------------------------------------------------------------------------------------------------------
   // transactions
 
+  // get transactions belonging to user
   public getTransactions(): Observable<any>{
     return this.http.get(this.personalUrl + "module-accounts/transaction?account=" + sessionStorage.getItem('personal_account_id'), this.endpoints.headers);
+  }
+
+  // getsingle transaction
+  public getSingleTransaction(transactionId: any): Observable<any>{
+    return this.http.get(this.personalUrl + "module-accounts/transaction/" + transactionId, this.endpoints.headers);
   }
 
   public postTransaction(transactionData: any): Observable<any>{

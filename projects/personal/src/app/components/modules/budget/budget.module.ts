@@ -1,13 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { ChartsModule } from 'ng2-charts';
 
 import { ModuleUtilitiesModule } from '../../module-utilities/module-utilities.module';
-import { BudgetPrintModule } from '../../printing/budget-print/budget-print.module';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SettingsComponent } from './settings/settings.component';
@@ -42,7 +40,6 @@ import { EditExpenditureComponent } from './edit-expenditure/edit-expenditure.co
     ReactiveFormsModule,
     ChartsModule,
     ModuleUtilitiesModule,
-    BudgetPrintModule,
   ]
 })
 export class BudgetModule { }

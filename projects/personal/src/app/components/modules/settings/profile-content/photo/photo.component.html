@@ -9,13 +9,13 @@
 
         <div class="row mt-3 page-form-div">
             <div class="col-md-12">
-                <app-image-upload [width]="180" [height]="200" [imgType]="'photo'"></app-image-upload>
+                <app-image-input [width]="180" [height]="200" [imgType]="'photo'"></app-image-input>
             </div>
-        </div>        
+        </div>
 
         <div class="row mt-3 page-form-div">
             <div class="col-md-12">
-                <smart-button #saveButtonReference class="page-control-button" (click)="emitPhoto()">Save</smart-button>                
+                <button class="btn btn-secondary btn-sm page-form-btn" (click)="emitPhoto()">Save</button>
             </div>
         </div>
 

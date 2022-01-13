@@ -1,1 +1,44 @@
-<p>select-account works!</p>
+<button [hidden]="true" #openButtonElementReference data-bs-toggle="modal" data-bs-target="#selectAccountModal">
+    Launch demo modal
+</button>
+
+<div class="modal fade select-table-modal" id="selectAccountModal" tabindex="-1" aria-labelledby="selectAccountModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+            <div class="modal-header bg-light">
+                <span class="modal-title" id="selectAccountModalLabel">Select Personal Account</span>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+                <table class="table table-bordered table-sm w-100 page-table">
+                    <thead>
+                        <tr class="bg-light">
+                            <th width="45%">Account Name</th>
+                            <th width="25%">Account No.</th>
+                            <th width="30%">Bank Name</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let data of accountsGridData" (dblclick)="selectRow(data)" class="table-pointer">
+                            <td>{{data?.account_name}}</td>
+                            <td>{{data?.account_number}}</td>
+                            <td>{{data?.bank_name}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <button [hidden]="true" #closeButtonElementReference data-bs-toggle="modal" data-bs-target="#selectAccountModal">
+                Launch demo modal
+            </button>
+
+
+        </div>
+    </div>
+</div>
+
+<!-- connection error toast component -->
+
+<app-connection-toast #connectionToastComponentReference></app-connection-toast>

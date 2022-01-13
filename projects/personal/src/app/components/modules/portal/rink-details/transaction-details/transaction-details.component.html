@@ -1,0 +1,34 @@
+<div class="row">
+    <div class="col-md-7">
+
+        <div class="card shadow py-3">
+            <div class="card-body">
+
+                <p class="lead">Personal - Transaction</p>
+
+                <div class="row mb-1">
+                    <div class="col-md-4"><em><small class="float-end">Trnasction Date :</small></em></div>
+                    <div class="col-md-8">{{transactionData.transaction_date | date}}</div>
+                </div>
+                <div class="row mb-1">
+                    <div class="col-md-4"><em><small class="float-end">Description :</small></em></div>
+                    <div class="col-md-8">{{transactionData.description}}</div>
+                </div>
+                <div class="row mb-1">
+                    <div class="col-md-4"><em><small class="float-end">Transaction Type :</small></em></div>
+                    <div class="col-md-8">{{transactionData.transaction_type}}</div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-4"><em><small class="float-end">Amount :</small></em></div>
+                    <div class="col-md-8">{{transactionData.amount}}</div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- connection error prompt component -->
+
+<app-connection-prompt #connectionPromptComponentReference></app-connection-prompt>

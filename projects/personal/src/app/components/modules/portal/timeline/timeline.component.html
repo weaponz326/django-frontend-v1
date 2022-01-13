@@ -4,46 +4,48 @@
 
     <div class="row top-button-row">
         <div class="col-md-12">
-            <smart-button #buttonReference routerLink="/home/portal/search">New Rink</smart-button>
+            <button class="btn btn-secondary page-add-btn" routerLink="/home/portal/search">New Rink</button>
         </div>
     </div>
 
     <div class="row">
         <div class="col-md-8">
 
-            <div *ngFor="let rink of rinks">
+            <hr />
 
-                <hr />
+            <div *ngFor="let rink of rinks">
 
                 <div *ngIf="rink.sender.id==personalId; then senderBlock else recipientBlock"></div>
 
                 <ng-template #senderBlock>
                     <div class="list-pointer" (click)="viewRink(rink.id)">
-                        <div class="row mb-3">
+                        <div class="row mb-1">
                             <div class="col-md-12">
-                                <i class="bi bi-arrow-up-circle me-2 rinkout-icon"></i>
-                                <small><strong>RinkOut</strong> - {{rink.rink_date | date: 'MMMM d, y, hh:mm:ss a'}}</small>
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <div class="col-md-1 align-middle">
-                                <img src="../../../../../assets/images/utilities/photo-avatar.jpg" alt="" width="40" height="40" class="rounded-circle" />
-                            </div>
-                            <div class="col-md-5 align-middle">
-                                <strong>{{rink?.recipient.first_name}} {{rink.recipient.last_name}}</strong>
-                            </div>
-                            <div class="col-md-5 align-middle">
-                                {{rink.recipient.location}}
+                                <i class="bi bi-arrow-up-circle-fill me-2 rinkout-icon"></i>
+                                <small><strong>RinkOut</strong> - {{rink.rink_date | date: 'MMMM d, y, hh:mm a'}}</small>
                             </div>
                         </div>
 
                         <div class="row">
+                            <div class="col-md-1">
+                                <img src="../../../../../assets/images/utilities/photo-avatar.jpg" alt="" width="40" height="40" class="rounded-circle" />
+                            </div>
+                            <div class="col-md-5 mt-2">
+                                <strong>{{rink?.recipient.first_name}} {{rink.recipient.last_name}}</strong>
+                            </div>
+                            <div class="col-md-5 mt-2">
+                                {{rink.recipient.location}}
+                            </div>
+                        </div>
+
+                        <div class="row mt-1">
                             <div class="offset-md-1 col-md-5">
-                                <img *ngIf="rink.rink_type == 'Appointment'" src="../../../../../assets/images/modules/calendar.png" alt="" width="25" height="25" class="mr-2" />
-                                <img *ngIf="rink.rink_type == 'Note'" src="../../../../../assets/images/modules/notes.png" alt="" width="25" height="25" class="mr-2" />
-                                <img *ngIf="rink.rink_type == 'Task'" src="../../../../../assets/images/modules/tasks.png" alt="" width="25" height="25" class="mr-2" />
                                 Personal - {{rink.rink_type}}
+                                <img *ngIf="rink?.rink_type == 'Calendar' || rink?.rink_type == 'Schedule'" src="../../../../../assets/images/modules/calendar.png" alt="" width="25" height="25" class="ms-2" />
+                                <img *ngIf="rink?.rink_type == 'Budget'" src="../../../../../assets/images/modules/budget.png" alt="" width="25" height="25" class="ms-2" />
+                                <img *ngIf="rink?.rink_type == 'Note'" src="../../../../../assets/images/modules/notes.png" alt="" width="25" height="25" class="ms-2" />
+                                <img *ngIf="rink?.rink_type == 'Account' || rink?.rink_type == 'Transaction'" src="../../../../../assets/images/modules/accounts.png" alt="" width="25" height="25" class="ms-2" />
+                                <img *ngIf="rink?.rink_type == 'Task Group' || rink?.rink_type == 'Task Item'" src="../../../../../assets/images/modules/tasks.png" alt="" width="25" height="25" class="ms-2" />
                             </div>
                         </div>
                     </div>
@@ -51,35 +53,39 @@
 
                 <ng-template #recipientBlock>
                     <div class="list-pointer" (click)="viewRink(rink.id)">
-                        <div class="row">
+                        <div class="row mb-1">
                             <div class="col-md-12">
-                                <i class="bi bi-arrow-down-circle me-2 rinkin-icon"></i>
-                                <small><strong>RinkIn</strong> - {{rink.rink_date | date: 'MMMM d, y, hh:mm:ss a'}}</small>
+                                <i class="bi bi-arrow-down-circle-fill me-2 rinkin-icon"></i>
+                                <small><strong>RinkIn</strong> - {{rink.rink_date | date: 'MMMM d, y, hh:mm a'}}</small>
                             </div>
                         </div>
 
                         <div class="row">
-                            <div class="col-md-1  align-middle">
+                            <div class="col-md-1">
                                 <img src="../../../../../assets/images/utilities/photo-avatar.jpg" alt="" width="40" height="40" class="rounded-circle" />
                             </div>
-                            <div class="col-md-5 align-middle">
+                            <div class="col-md-5 mt-2">
                                 <strong>{{rink.sender.first_name}} {{rink.sender.last_name}}</strong>
                             </div>
-                            <div class="col-md-5 align-middle">
+                            <div class="col-md-5 mt-2">
                                 {{rink.sender.location}}
                             </div>
                         </div>
 
-                        <div class="row">
+                        <div class="row mt-1">
                             <div class="offset-md-1 col-md-5">
-                                <img *ngIf="rink.rink_type == 'Appointment'" src="../../../../../assets/images/modules/calendar.png" alt="" width="25" height="25" class="mr-2" />
-                                <img *ngIf="rink.rink_type == 'Note'" src="../../../../../assets/images/modules/notes.png" alt="" width="25" height="25" class="mr-2" />
-                                <img *ngIf="rink.rink_type == 'Task'" src="../../../../../assets/images/modules/tasks.png" alt="" width="25" height="25" class="mr-2" />
                                 Personal - {{rink.rink_type}}
+                                <img *ngIf="rink?.rink_type == 'Calendar' || rink?.rink_type == 'Schedule'" src="../../../../../assets/images/modules/calendar.png" alt="" width="25" height="25" class="ms-2" />
+                                <img *ngIf="rink?.rink_type == 'Budget'" src="../../../../../assets/images/modules/budget.png" alt="" width="25" height="25" class="ms-2" />
+                                <img *ngIf="rink?.rink_type == 'Note'" src="../../../../../assets/images/modules/notes.png" alt="" width="25" height="25" class="ms-2" />
+                                <img *ngIf="rink?.rink_type == 'Account' || rink?.rink_type == 'Transaction'" src="../../../../../assets/images/modules/accounts.png" alt="" width="25" height="25" class="ms-2" />
+                                <img *ngIf="rink?.rink_type == 'Task Group' || rink?.rink_type == 'Task Item'" src="../../../../../assets/images/modules/tasks.png" alt="" width="25" height="25" class="ms-2" />
                             </div>
                         </div>
                     </div>
                 </ng-template>
+
+                <hr />
 
             </div>
 
@@ -88,6 +94,6 @@
 
 </div>
 
-<!-- connection error prompt component -->
+<!-- connection error toast component -->
 
-<app-connection-prompt #connectionPromptComponentReference></app-connection-prompt>
+<app-connection-toast #connectionToastComponentReference></app-connection-toast>

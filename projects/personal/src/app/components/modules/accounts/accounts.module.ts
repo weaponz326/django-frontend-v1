@@ -1,13 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { ChartsModule } from 'ng2-charts';
 
 import { ModuleUtilitiesModule } from '../../module-utilities/module-utilities.module';
-import { AccountsPrintModule } from '../../printing/accounts-print/accounts-print.module';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SettingsComponent } from './settings/settings.component';
@@ -41,7 +39,6 @@ import { AllTransactionsComponent } from './all-transactions/all-transactions.co
     ReactiveFormsModule,
     ChartsModule,
     ModuleUtilitiesModule,
-    AccountsPrintModule,
   ]
 })
 export class AccountsModule { }

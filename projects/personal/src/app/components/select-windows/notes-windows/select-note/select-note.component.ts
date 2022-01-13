@@ -1,10 +1,8 @@
-import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
-
-import { WindowComponent } from 'smart-webcomponents-angular/window';
-import { GridComponent, GridColumn, DataAdapter, Smart } from 'smart-webcomponents-angular/grid';
+import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 
 import { NotesApiService } from 'projects/personal/src/app/services/modules/notes-api/notes-api.service';
-import { ConnectionPromptComponent } from '../../../module-utilities/connection-prompt/connection-prompt.component';
+
+import { ConnectionToastComponent } from '../../../module-utilities/connection-toast/connection-toast.component';
 
 
 @Component({
@@ -18,18 +16,18 @@ export class SelectNoteComponent implements OnInit {
 
   @Output() noteSelected = new EventEmitter<object>();
 
-  @ViewChild('window', { read: WindowComponent, static: false }) window!: WindowComponent;
-  @ViewChild('grid', { read: GridComponent, static: false }) grid!: GridComponent;
+  @ViewChild('openButtonElementReference', { read: ElementRef, static: false }) openButton!: ElementRef;
+  @ViewChild('closeButtonElementReference', { read: ElementRef, static: false }) closeButton!: ElementRef;
+  @ViewChild('connectionToastComponentReference', { read: ConnectionToastComponent, static: false }) connectionToast!: ConnectionToastComponent;
 
-  @ViewChild('connectionPromptComponentReference', { read: ConnectionPromptComponent, static: false }) connectionPrompt!: ConnectionPromptComponent;
-
-  sorting = { enabled: true }
-  filtering = { enabled: true }
-  dataSource = [];
-  columns: GridColumn[] = <GridColumn[]>[];
+  notesGridData: any[] = [];
 
   ngOnInit(): void {
-    this.initGrid();
+  }
+
+  openModal(){
+    this.getNotes();
+    this.openButton.nativeElement.click();
   }
 
   getNotes(){
@@ -37,39 +35,19 @@ export class SelectNoteComponent implements OnInit {
       .subscribe(
         res => {
           console.log(res);
-          this.dataSource = res;
+          this.notesGridData = res;
         },
         err => {
           console.log(err);
-          this.connectionPrompt.toast.open();
+          this.connectionToast.openToast();
         }
       )
   }
 
-  selectRow(event: any){
-    this.noteSelected.emit(event.detail.row.data);
-    this.window.close();
-    console.log(event);
-  }
-
-  initGrid(){
-    this.dataSource = new Smart.DataAdapter (
-      <DataAdapter>{
-        dataSource: this.getNotes(),
-        dataFields:[
-          'id: string',
-          'label: subject',
-          'dateStart: created_at',
-          'dateEnd: updated_at',
-        ]
-      }
-    );
-
-    this.columns = <GridColumn[]>[
-      { label: 'Subject', dataField: 'subject', width: '50%' },
-      { label: 'Date Created', dataField: 'created_at', width: '25%' },
-      { label: 'Last Updated', dataField: 'updated_at', width: '25%' },
-    ]
+  selectRow(row: any){
+    this.noteSelected.emit(row);
+    this.closeButton.nativeElement.click();
+    console.log(row);
   }
 
 }

@@ -5,29 +5,48 @@
     <div class="row">
         <div class="col-md-12">
 
-            <smart-tabs #tabsReference class="w-100">
-                <smart-tab-item label="Basic Profile">
+            <nav class="settings-tabs">
+                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                    <button class="nav-link active" id="nav-basic-tab" data-bs-toggle="tab" data-bs-target="#nav-basic" type="button" role="tab" aria-controls="nav-basic" aria-selected="true">
+                        Basic Profle
+                    </button>
+                    <button class="nav-link" id="nav-photo-tab" data-bs-toggle="tab" data-bs-target="#nav-photo" type="button" role="tab" aria-controls="nav-photo" aria-selected="false">
+                        Profle Photo
+                    </button>
+                    <button class="nav-link" id="nav-bio-tab" data-bs-toggle="tab" data-bs-target="#nav-bio" type="button" role="tab" aria-controls="nav-bio" aria-selected="false">
+                        Bio Profle
+                    </button>
+                    <button class="nav-link" id="nav-location-tab" data-bs-toggle="tab" data-bs-target="#nav-location" type="button" role="tab" aria-controls="nav-location" aria-selected="false">
+                        Location Details
+                    </button>
+                    <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">
+                        Contact Details
+                    </button>
+                </div>
+            </nav>
+            <div class="tab-content" id="nav-tabContent">
+                <div class="tab-pane fade show active" id="nav-basic" role="tabpanel" aria-labelledby="nav-basic-tab">
                     <app-basic #basicComponentReference (additionalEvent)="sendUser($event)"></app-basic>
-                </smart-tab-item>
-                <smart-tab-item label="Profile Photo">
+                </div>
+                <div class="tab-pane fade" id="nav-photo" role="tabpanel" aria-labelledby="nav-photo-tab">
                     <app-photo #photoComponentReference (photoEvent)="sendUser($event)"></app-photo>
-                </smart-tab-item>
-                <smart-tab-item label="Bio Profile">
+                </div>
+                <div class="tab-pane fade" id="nav-bio" role="tabpanel" aria-labelledby="nav-bio-tab">
                     <app-additional #additionalComponentReference (additionalEvent)="saveAdditional($event)"></app-additional>
-                </smart-tab-item>
-                <smart-tab-item label="Location Details">
+                </div>
+                <div class="tab-pane fade" id="nav-location" role="tabpanel" aria-labelledby="nav-location-tab">
                     <app-location #locationComponentReference (locationEvent)="saveLocation($event)"></app-location>
-                </smart-tab-item>
-                <smart-tab-item label="Contact Details">
+                </div>
+                <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
                     <app-contact #contactComponentReference (contactEvent)="saveContact($event)"></app-contact>
-                </smart-tab-item>
-            </smart-tabs>
+                </div>
+            </div>
 
         </div>
     </div>
 
 </div>
 
-<!-- connection error prompt component -->
+<!-- connection error toast component -->
 
-<app-connection-prompt #connectionPromptComponentReference></app-connection-prompt>
+<app-connection-toast #connectionToastComponentReference></app-connection-toast>

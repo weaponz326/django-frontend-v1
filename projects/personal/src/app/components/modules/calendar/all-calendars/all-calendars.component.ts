@@ -28,24 +28,52 @@ export class AllCalendarsComponent implements OnInit {
 
   calendarGridData: any[] = [];
 
+  currentPage = 0;
+  totalPages = 0;
+
+  calendarNameSort = "";
+  createdAtSort = "";
+
   ngOnInit(): void {
   }
 
   ngAfterViewInit(): void {
-    this.getCalendars();
+    this.getCalendars(1, "");
   }
 
-  getCalendars(){
-    this.calendarApi.getCalendars()
+  getCalendars(page: any, sortField: any){
+    this.calendarApi.getCalendars(page, sortField)
       .subscribe(
         res => {
           console.log(res);
-          this.calendarGridData = res;
+          this.calendarGridData = res.results;
+          this.currentPage = res.current_page;
+          this.totalPages = res.total_pages;
         },
         err => {
           console.log(err);
         }
       )
+  }
+
+  changePage(event: any, page: any){
+    console.log(page);
+    event.preventDefault();
+    this.getCalendars(page, "");
+  }
+
+  sortTable(field: any){
+    console.log(field);
+    this.getCalendars(1, field);
+
+    if((field == 'calendar_name') || (field == "-calendar_name")){
+      this.calendarNameSort = field;
+      this.createdAtSort = "";
+    }
+    else if((field == 'created_at') || (field == "-created_at")){
+      this.createdAtSort = field;
+      this.calendarNameSort = "";
+    }
   }
 
   viewCalendar(id: any){

@@ -100,6 +100,8 @@ export class AllAccountsComponent implements OnInit {
           }
         )
     });
+
+    this.suiteData.forEach((suite) => console.log(suite));
   }
 
 }

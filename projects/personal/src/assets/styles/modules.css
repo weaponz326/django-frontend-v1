@@ -2,6 +2,10 @@
 	font-size: 14px;
 }
 
+#content-wrapper{
+  margin-bottom: 40px;
+}
+
 .module-heading a{
 	color: #7f7f7f;
 }
@@ -49,7 +53,16 @@ hr {
 	cursor: pointer;
 }
 
+.list-overflow{
+  /* TODO: */
+}
+
 /* forms */
+
+.form-control:focus{
+  box-shadow: none;
+  color: #6e707e;
+}
 
 .page-form{
   font-size: 14px;
@@ -57,38 +70,6 @@ hr {
 
 .page-form .page-form-btn{
 	width: 80px;
-}
-
-/* ----------------------------------- */
-
-.page-form smart-input,
-.page-form smart-drop-down-list,
-.page-form smart-date-time-picker,
-.page-form smart-numeric-text-box,
-.page-form smart-button{
-	height: 32px;
-}
-
-.page-group-input{
-	width: 88%;
-  margin-right: 2% !important;
-}
-
-.page-group-button{
-	width: 10%;
-	padding: 0 !important;
-	background-color: #f5f5f5;
-}
-
-.page-control-button{
-	width: 100px;
-	padding-top: 0 !important;
-	padding-bottom: 0 !important;
-}
-
-.module-select-window smart-window{
-  width: 555px;
-  height: 600px;
 }
 
 /* tables */
@@ -106,6 +87,14 @@ table.page-table{
   cursor: pointer;
 }
 
+table.page-table .page-link{
+  padding: 2px;
+  width: 25px;
+  height: 25px;
+  text-align: center;
+  color: #858796;
+}
+
 /* modals */
 
 .form-modal{
@@ -114,30 +103,6 @@ table.page-table{
 
 .form-modal .modal-form-btn{
   width: 60px;
-}
-
-/* grid dialog forms */
-/* TODO: only works when placed in components scss */
-
-::ng-deep .smart-window.smart-grid-dialog .col-md-6{
-  padding: 0;
-  max-width: 100%;
-}
-
-::ng-deep .smart-grid-layout .col-sm-6{
-  grid-column: span 12;
-  max-width: 100%;
-}
-
-::ng-deep .smart-window.smart-grid-dialog [editor]:not([template=checkBox]){
-  width: 350px;
-  height: 32px;
-  max-width: 100%;
-}
-
-::ng-deep .smart-window.smart-grid-dialog .column label{
-  padding: 0;
-  margin: 0;
 }
 
 /* portal modules */
@@ -157,21 +122,18 @@ table.page-table{
   color: white;
 }
 
-.billing-form smart-input,
-.billing-form smart-drop-down-list,
-.billing-form smart-numeric-text-box,
-.billing-form smart-button{
-	height: 36px;
-}
-
 .billing-page-control-button{
 	width: 120px;
 	padding-top: 0 !important;
 	padding-bottom: 0 !important;
 }
 
-/* TODO: only works when placed in components scss */
-::ng-deep .settings-tabs .smart-tabs-content-section,
-::ng-deep .settings-tabs .smart-tabs-header-section{
-  border: none;
+.settings-tabs .nav-link{
+  width: 160px;
+  color: #6e707e;
+}
+
+.settings-tabs .nav-link.active{
+  color: #fff;
+  background-color: #858796;
 }

@@ -1,0 +1,17 @@
+<div class="row w-100 m-0">
+    <div class="col ps-0 pe-1">
+        <select [(ngModel)]="dayInput" class="form-control form-control-sm w-100">
+            <option *ngFor="let day of dobDaySource">{{day}}</option>
+        </select>
+    </div>
+    <div class="col p-0">
+        <select [(ngModel)]="monthInput" class="form-control form-control-sm w-100">
+            <option *ngFor="let month of dobMonthSource">{{month}}</option>
+        </select>
+    </div>
+    <div class="col ps-1 pe-0">
+        <select [(ngModel)]="yearInput" class="form-control form-control-sm w-100">
+            <option *ngFor="let year of dobYearSource">{{year}}</option>
+        </select>
+    </div>
+</div>

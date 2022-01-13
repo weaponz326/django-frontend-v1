@@ -1,45 +1,42 @@
 <div class="row m-2 page-form">
     <div class="col-md-6">
 
-        <div class="row mb-3">
-            <div class="col-md-12">
-                <h5>Basic Profile</h5>
-            </div>
-        </div>
+        <form class="page-form" [formGroup]="basicForm" (ngSubmit)="emitBasic()">
 
-        <div class="row mb-2">
-            <div class="col-md-4"><label>First Name :</label></div>
-            <div class="col-md-8">
-                <smart-input #firstNameInputReference class="w-100"></smart-input>
+            <div class="row mb-3">
+                <div class="col-md-12">
+                    <h5>Basic Profile</h5>
+                </div>
             </div>
-        </div>
 
-        <div class="row mb-2">
-            <div class="col-md-4"><label>Last Name :</label></div>
-            <div class="col-md-8">
-                <smart-input #lastNameInputReference class="w-100"></smart-input>
+            <div class="row mb-2">
+                <div class="col-md-4"><label class="mt-1">First Name :</label></div>
+                <div class="col-md-8">
+                    <input formControlName="firstName" class="form-control form-control-sm w-100">
+                </div>
             </div>
-        </div>
 
-        <div class="row mb-2">
-            <div class="col-md-4"><label>Location :</label></div>
-            <div class="col-md-8">
-                <smart-input #locationInputReference class="w-100"></smart-input>
+            <div class="row mb-2">
+                <div class="col-md-4"><label class="mt-1">Last Name :</label></div>
+                <div class="col-md-8">
+                    <input formControlName="lastName" class="form-control form-control-sm w-100">
+                </div>
             </div>
-        </div>
 
-        <div class="row mb-2">
-            <div class="col-md-4"><label>About :</label></div>
-            <div class="col-md-8">
-                <smart-multiline-text-box #aboutTextAreaReference class="w-100" [rows]="3"></smart-multiline-text-box>
+            <div class="row mb-2">
+                <div class="col-md-4"><label class="mt-1">About :</label></div>
+                <div class="col-md-8">
+                    <textarea formControlName="about" class="form-control form-control-sm w-100" rows="3"></textarea>
+                </div>
             </div>
-        </div>
 
-        <div class="row mt-3 page-form-div">
-            <div class="col-md-12">
-                <smart-button #saveButtonReference class="float-end page-control-button" (click)="emitBasic()">Save</smart-button>                
+            <div class="row mt-3 page-form-div">
+                <div class="col-md-12">
+                    <button type="submit" class="btn btn-secondary btn-sm float-end page-form-btn">Save</button>
+                </div>
             </div>
-        </div>
+
+        </form>
 
     </div>
 </div>

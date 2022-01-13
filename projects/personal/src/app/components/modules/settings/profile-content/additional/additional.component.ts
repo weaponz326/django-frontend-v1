@@ -1,9 +1,7 @@
 import { Component, OnInit, ViewChild, Output, EventEmitter } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 
-import { DropDownListComponent } from 'smart-webcomponents-angular/dropdownlist';
-import { ButtonComponent } from 'smart-webcomponents-angular/button';
-
-import { DobInputComponent } from '../../../../custom-widgets/dob-input/dob-input.component'
+import { BdayInputComponent } from '../../../../module-utilities/bday-input/bday-input.component'
 
 
 @Component({
@@ -15,19 +13,26 @@ export class AdditionalComponent implements OnInit {
 
   constructor() { }
 
-  @ViewChild('dobInputComponentReference', { read: DobInputComponent, static: false }) dobDateInput!: DobInputComponent;
-  @ViewChild('genderDropDownListReference', { read: DropDownListComponent, static: false }) genderDropDownList!: DropDownListComponent;
-  @ViewChild('saveButtonference', { read: ButtonComponent, static: false }) saveButton!: ButtonComponent;
+  @ViewChild('bdayInputComponentReference', { read: BdayInputComponent, static: false }) bdayInput!: BdayInputComponent;
 
   @Output() additionalEvent = new EventEmitter<any>();
 
+  additionalForm: FormGroup = new FormGroup({});
+
   ngOnInit(): void {
+    this.initAdditionalForm();
+  }
+
+  initAdditionalForm(){
+    this.additionalForm = new FormGroup({
+      gender: new FormControl(),
+    })
   }
 
   emitAdditional(){
     let data = {
-      date_of_birth: this.dobDateInput.value,
-      gender: this.genderDropDownList.value
+      date_of_birth: this.bdayInput.value,
+      gender: this.additionalForm.controls.gender.value
     }
 
   	this.additionalEvent.emit(data);

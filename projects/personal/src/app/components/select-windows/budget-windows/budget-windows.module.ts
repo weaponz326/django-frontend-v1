@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SelectBudgetComponent } from './select-budget/select-budget.component';
 
+import { ModuleUtilitiesModule } from '../../module-utilities/module-utilities.module';
+
+import { SelectBudgetComponent } from './select-budget/select-budget.component';
 
 
 @NgModule({
@@ -9,7 +11,11 @@ import { SelectBudgetComponent } from './select-budget/select-budget.component';
     SelectBudgetComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    ModuleUtilitiesModule,
+  ],
+  exports: [
+    SelectBudgetComponent
   ]
 })
 export class BudgetWindowsModule { }

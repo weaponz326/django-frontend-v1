@@ -1,0 +1,46 @@
+<button [hidden]="true" #openButtonElementReference data-bs-toggle="modal" data-bs-target="#selectTransactionModal">
+    Launch demo modal
+</button>
+
+<div class="modal fade select-table-modal" id="selectTransactionModal" tabindex="-1" aria-labelledby="selectTransactionModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+            <div class="modal-header bg-light">
+                <span class="modal-title" id="selectTransactionModalLabel">Select Personal Transaction</span>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+                <table class="table table-bordered table-sm w-100 page-table">
+                    <thead>
+                        <tr class="bg-light">
+                            <th width="25%">Transaction Date</th>
+                            <th width="35%">Description</th>
+                            <th width="20%">Transaction Type</th>
+                            <th width="20%">Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let data of transactionsGridData" (dblclick)="selectRow(data)" class="table-pointer">
+                            <td>{{data?.transaction_date | date}}</td>
+                            <td>{{data?.description}}</td>
+                            <td>{{data?.transaction_type}}</td>
+                            <td>{{data?.amount}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <button [hidden]="true" #closeButtonElementReference data-bs-toggle="modal" data-bs-target="#selectTransactionModal">
+                Launch demo modal
+            </button>
+
+
+        </div>
+    </div>
+</div>
+
+<!-- connection error toast component -->
+
+<app-connection-toast #connectionToastComponentReference></app-connection-toast>
