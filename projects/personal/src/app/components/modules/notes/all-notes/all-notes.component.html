@@ -14,9 +14,24 @@
             <table class="table table-bordered table-sm w-100 page-table">
                 <thead>
                     <tr class="bg-light">
-                        <th width="50%">Subject</th>
-                        <th width="25%">Created At</th>
-                        <th width="25%">Last Updated</th>
+                        <th width="50%">
+                            Subject
+                            <app-table-sorting #subjectSortingComponentReference
+                            [sortField]="'subject'" (sortDirection)="sortTable($event)"
+                            ></app-table-sorting>
+                        </th>
+                        <th width="25%">
+                            Created At
+                            <app-table-sorting #createdAtSortingComponentReference
+                            [sortField]="'created_at'" (sortDirection)="sortTable($event)"
+                            ></app-table-sorting>
+                        </th>
+                        <th width="25%">
+                            Last Updated
+                            <app-table-sorting #updatedAtSortingComponentReference
+                            [sortField]="'updated_at'" (sortDirection)="sortTable($event)"
+                            ></app-table-sorting>
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -26,6 +41,15 @@
                         <td>{{data?.updated_at | date}}</td>
                     </tr>
                 </tbody>
+                <tfoot>
+                    <tr class="bg-light">
+                        <td colspan="3">
+                            <app-table-pagination #tablePaginationComponentReference
+                            [currentPage]="currentPage" [totalPages]="totalPages" (pageSelected)="getNotes($event, 50, '')"
+                            ></app-table-pagination>
+                        </td>
+                    </tr>
+                </tfoot>
             </table>
 
         </div>

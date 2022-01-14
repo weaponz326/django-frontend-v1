@@ -14,9 +14,24 @@
             <table class="table table-bordered table-sm w-100 page-table">
                 <thead>
                     <tr class="bg-light">
-                        <th width="45%">Account Name</th>
-                        <th width="25%">Account No.</th>
-                        <th width="30%">Bank Name</th>
+                        <th width="45%">
+                            Account Name
+                            <app-table-sorting #accountNameSortingComponentReference
+                            [sortField]="'account_name'" (sortDirection)="sortTable($event)"
+                            ></app-table-sorting>
+                        </th>
+                        <th width="25%">
+                            Account No.
+                            <app-table-sorting #accountNumberSortingComponentReference
+                            [sortField]="'accountNumber'" (sortDirection)="sortTable($event)"
+                            ></app-table-sorting>
+                        </th>
+                        <th width="30%">
+                            Bank Name
+                            <app-table-sorting #bankNameSortingComponentReference
+                            [sortField]="'bank_name'" (sortDirection)="sortTable($event)"
+                            ></app-table-sorting>
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -26,6 +41,15 @@
                         <td>{{data?.bank_name}}</td>
                     </tr>
                 </tbody>
+                <tfoot>
+                    <tr class="bg-light">
+                        <td colspan="3">
+                            <app-table-pagination #tablePaginationComponentReference
+                            [currentPage]="currentPage" [totalPages]="totalPages" (pageSelected)="getAccounts($event, 50, '')"
+                            ></app-table-pagination>
+                        </td>
+                    </tr>
+                </tfoot>
             </table>
 
         </div>

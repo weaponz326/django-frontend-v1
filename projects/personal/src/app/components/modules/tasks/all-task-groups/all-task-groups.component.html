@@ -14,8 +14,18 @@
             <table class="table table-bordered table-sm w-100 page-table">
                 <thead>
                     <tr class="bg-light">
-                        <th width="65%">Task Group</th>
-                        <th width="35%">Created At</th>
+                        <th width="65%">
+                            Task Group Name
+                            <app-table-sorting #taskGroupSortingComponentReference
+                            [sortField]="'task_group'" (sortDirection)="sortTable($event)"
+                            ></app-table-sorting>
+                        </th>
+                        <th width="35%">
+                            Created At
+                            <app-table-sorting #createdAtSortingComponentReference
+                            [sortField]="'created_at'" (sortDirection)="sortTable($event)"
+                            ></app-table-sorting>
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -24,6 +34,15 @@
                         <td>{{data?.created_at | date}}</td>
                     </tr>
                 </tbody>
+                <tfoot>
+                    <tr class="bg-light">
+                        <td colspan="2">
+                            <app-table-pagination #tablePaginationComponentReference
+                            [currentPage]="currentPage" [totalPages]="totalPages" (pageSelected)="getTaskGroups($event, 50, '')"
+                            ></app-table-pagination>
+                        </td>
+                    </tr>
+                </tfoot>
             </table>
 
         </div>

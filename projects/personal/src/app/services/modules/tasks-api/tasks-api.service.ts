@@ -18,8 +18,12 @@ export class TasksApiService {
 
   personalUrl = environment.personalUrl;
 
-  public getTaskGroups(): Observable<any>{
-    return this.http.get(this.personalUrl + "module-tasks/task-group?user=" + localStorage.getItem('personal_id'), this.endpoints.headers);
+  public getTaskGroups(page: any, size: any, sortField: any): Observable<any>{
+    return this.http.get(this.personalUrl + "module-tasks/task-group?user=" + localStorage.getItem('personal_id')
+      + "&page=" + page
+      + "&size=" + size
+      + "&ordering=" + sortField,
+      this.endpoints.headers);
   }
 
   public postTaskGroup(task: any): Observable<any>{
@@ -42,8 +46,12 @@ export class TasksApiService {
 
   // tasks
 
-  public getAllTaskItems(): Observable<any>{
-    return this.http.get(this.personalUrl + "module-tasks/all-task-item?user=" + localStorage.getItem('personal_id'), this.endpoints.headers);
+  public getAllTaskItems(page: any, size: any, sortField: any): Observable<any>{
+    return this.http.get(this.personalUrl + "module-tasks/all-task-item?user=" + localStorage.getItem('personal_id')
+      + "&page=" + page
+      + "&size=" + size
+      + "&ordering=" + sortField,
+      this.endpoints.headers);
   }
 
   public getTasks(): Observable<any>{

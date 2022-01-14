@@ -20,8 +20,12 @@ export class AccountsApiService {
 
   // create and get all accounts belonging to user
 
-  public getAccounts(): Observable<any>{
-    return this.http.get(this.personalUrl + "module-accounts/account?user=" + localStorage.getItem('personal_id'), this.endpoints.headers);
+  public getAccounts(page: any, size: any, sortField: any): Observable<any>{
+    return this.http.get(this.personalUrl + "module-accounts/account?user=" + localStorage.getItem('personal_id')
+      + "&page=" + page
+      + "&size=" + size
+      + "&ordering=" + sortField,
+      this.endpoints.headers);
   }
 
   public postAccount(account: any): Observable<any>{
@@ -45,7 +49,7 @@ export class AccountsApiService {
   // -----------------------------------------------------------------------------------------------------------------------------------------
   // transactions
 
-  // get transactions belonging to user
+  // get transactions belonging to an account
   public getTransactions(): Observable<any>{
     return this.http.get(this.personalUrl + "module-accounts/transaction?account=" + sessionStorage.getItem('personal_account_id'), this.endpoints.headers);
   }
@@ -68,8 +72,12 @@ export class AccountsApiService {
   }
 
   // all transactions belonging to a user
-  public getAllTransactions(): Observable<any>{
-    return this.http.get(this.personalUrl + "module-accounts/all-transactions?user=" + localStorage.getItem('personal_id'), this.endpoints.headers);
+  public getAllTransactions(page: any, size: any, sortField: any): Observable<any>{
+    return this.http.get(this.personalUrl + "module-accounts/all-transactions?user=" + localStorage.getItem('personal_id')
+      + "&page=" + page
+      + "&size=" + size
+      + "&ordering=" + sortField,
+      this.endpoints.headers);
   }
 
   // dashboard

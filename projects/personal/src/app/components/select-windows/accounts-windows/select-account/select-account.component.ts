@@ -31,7 +31,7 @@ export class SelectAccountComponent implements OnInit {
   }
 
   getAccounts(){
-    this.accountsApi.getAccounts()
+    this.accountsApi.getAccounts(1, 15, "")
       .subscribe(
         res => {
           console.log(res);

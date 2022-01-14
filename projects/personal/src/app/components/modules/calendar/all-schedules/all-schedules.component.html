@@ -8,10 +8,30 @@
             <table class="table table-bordered table-sm w-100 page-table">
                 <thead>
                     <tr class="bg-light">
-                        <th width="35%">Schedule</th>
-                        <th width="23%">Start Date</th>
-                        <th width="23%">End Date</th>
-                        <th width="19%">Status</th>
+                        <th width="35%">
+                            Schedule
+                            <app-table-sorting #scheduleNameSortingComponentReference
+                            [sortField]="'schedule_name'" (sortDirection)="sortTable($event)"
+                            ></app-table-sorting>
+                        </th>
+                        <th width="23%">
+                            Start Date
+                            <app-table-sorting #startDateSortingComponentReference
+                            [sortField]="'start_date'" (sortDirection)="sortTable($event)"
+                            ></app-table-sorting>
+                        </th>
+                        <th width="23%">
+                            End Date
+                            <app-table-sorting #endDateSortingComponentReference
+                            [sortField]="'endDate'" (sortDirection)="sortTable($event)"
+                            ></app-table-sorting>
+                        </th>
+                        <th width="19%">
+                            Status
+                            <app-table-sorting #statusSortingComponentReference
+                            [sortField]="'status'" (sortDirection)="sortTable($event)"
+                            ></app-table-sorting>
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -22,6 +42,15 @@
                         <td>{{data?.status}}</td>
                     </tr>
                 </tbody>
+                <tfoot>
+                    <tr class="bg-light">
+                        <td colspan="4">
+                            <app-table-pagination #tablePaginationComponentReference
+                            [currentPage]="currentPage" [totalPages]="totalPages" (pageSelected)="getAllSchedules($event, 50, '')"
+                            ></app-table-pagination>
+                        </td>
+                    </tr>
+                </tfoot>
             </table>
 
         </div>

@@ -3,8 +3,6 @@ import { FormControl, FormGroup } from '@angular/forms';
 
 import { CalendarApiService } from 'projects/personal/src/app/services/modules/calendar-api/calendar-api.service';
 
-import { ViewCalendarPrintComponent } from 'projects/personal/src/app/components/printing/calendar-print/view-calendar-print/view-calendar-print.component'
-
 
 @Component({
   selector: 'app-view-calendar',
@@ -14,8 +12,6 @@ import { ViewCalendarPrintComponent } from 'projects/personal/src/app/components
 export class ViewCalendarComponent implements OnInit {
 
   constructor(private calendarApi: CalendarApiService) { }
-
-  @ViewChild('viewCalendarPrintComponentReference', { read: ViewCalendarPrintComponent, static: false }) viewCalendarPrint!: ViewCalendarPrintComponent;
 
   navHeading: any[] = [
     { text: "View Calendar", url: "/home/calendar/view-calendar" },
@@ -94,7 +90,6 @@ export class ViewCalendarComponent implements OnInit {
 
   onPrint(){
     console.log("lets start printing...");
-    this.viewCalendarPrint.print();
   }
 
 }

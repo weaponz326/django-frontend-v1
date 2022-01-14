@@ -31,11 +31,11 @@ export class SelectBudgetComponent implements OnInit {
   }
 
   getBudgets(){
-    this.budgetApi.getBudgets()
+    this.budgetApi.getBudgets(1, 15, "")
       .subscribe(
         res => {
           console.log(res);
-          this.budgetGridData = res;
+          this.budgetGridData = res.results;
         },
         err => {
           console.log(err);

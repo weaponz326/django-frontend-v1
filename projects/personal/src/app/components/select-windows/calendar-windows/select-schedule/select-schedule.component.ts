@@ -31,11 +31,11 @@ export class SelectScheduleComponent implements OnInit {
   }
 
   getSchedules(){
-    this.calendarApi.getAllSchedules()
+    this.calendarApi.getAllSchedules(1, 15, "")
       .subscribe(
         res => {
           console.log(res);
-          this.scheduleGridData = res;
+          this.scheduleGridData = res.results;
         },
         err => {
           console.log(err);

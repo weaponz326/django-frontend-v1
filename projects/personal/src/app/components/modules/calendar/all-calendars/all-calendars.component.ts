@@ -5,6 +5,8 @@ import { CalendarApiService } from 'projects/personal/src/app/services/modules/c
 import { CalendarPrintService } from 'projects/personal/src/app/services/printing/calendar-print/calendar-print.service';
 
 import { NewCalendarComponent } from '../new-calendar/new-calendar.component'
+import { TablePaginationComponent } from 'projects/personal/src/app/components/module-utilities/table-pagination/table-pagination.component'
+import { TableSortingComponent } from 'projects/personal/src/app/components/module-utilities/table-sorting/table-sorting.component'
 
 
 @Component({
@@ -21,6 +23,9 @@ export class AllCalendarsComponent implements OnInit {
   ) { }
 
   @ViewChild('newCalendarComponentReference', { read: NewCalendarComponent, static: false }) newCalendar!: NewCalendarComponent;
+  @ViewChild('tablePaginationComponentReference', { read: TablePaginationComponent, static: false }) tablePagination!: TablePaginationComponent;
+  @ViewChild('calendarNameSortingComponentReference', { read: TableSortingComponent, static: false }) calendarNameSorting!: TableSortingComponent;
+  @ViewChild('createdAtSortingComponentReference', { read: TableSortingComponent, static: false }) createdAtSorting!: TableSortingComponent;
 
   navHeading: any[] = [
     { text: "All Calendars", url: "/home/calendar/all-calendars" },
@@ -31,18 +36,15 @@ export class AllCalendarsComponent implements OnInit {
   currentPage = 0;
   totalPages = 0;
 
-  calendarNameSort = "";
-  createdAtSort = "";
-
   ngOnInit(): void {
   }
 
   ngAfterViewInit(): void {
-    this.getCalendars(1, "");
+    this.getCalendars(1, 50, "");
   }
 
-  getCalendars(page: any, sortField: any){
-    this.calendarApi.getCalendars(page, sortField)
+  getCalendars(page: any, size: any, sortField: any){
+    this.calendarApi.getCalendars(page, size, sortField)
       .subscribe(
         res => {
           console.log(res);
@@ -56,31 +58,23 @@ export class AllCalendarsComponent implements OnInit {
       )
   }
 
-  changePage(event: any, page: any){
-    console.log(page);
-    event.preventDefault();
-    this.getCalendars(page, "");
-  }
-
-  sortTable(field: any){
-    console.log(field);
-    this.getCalendars(1, field);
-
-    if((field == 'calendar_name') || (field == "-calendar_name")){
-      this.calendarNameSort = field;
-      this.createdAtSort = "";
-    }
-    else if((field == 'created_at') || (field == "-created_at")){
-      this.createdAtSort = field;
-      this.calendarNameSort = "";
-    }
-  }
-
   viewCalendar(id: any){
     console.log(id);
     sessionStorage.setItem('personal_calendar_id', id);
 
     this.router.navigateByUrl('/home/calendar/view-calendar')
+  }
+
+  sortTable(field: any){
+    console.log(field);
+    this.getCalendars(1, 50, field);
+
+    if((field == 'calendar_name') || (field == "-calendar_name")){
+      this.createdAtSorting.resetSort();
+    }
+    else if((field == 'created_at') || (field == "-created_at")){
+      this.calendarNameSorting.resetSort();
+    }
   }
 
   onPrint(){

@@ -6,7 +6,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ChartsModule } from 'ng2-charts';
 
 import { ModuleUtilitiesModule } from '../../module-utilities/module-utilities.module';
-import { CalendarPrintModule } from '../../printing/calendar-print/calendar-print.module';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SettingsComponent } from './settings/settings.component';
@@ -32,7 +31,6 @@ import { AllSchedulesComponent } from './all-schedules/all-schedules.component';
     ReactiveFormsModule,
     ChartsModule,
     ModuleUtilitiesModule,
-    CalendarPrintModule,
   ]
 })
 export class CalendarModule { }

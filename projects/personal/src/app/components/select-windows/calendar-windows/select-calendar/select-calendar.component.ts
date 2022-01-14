@@ -31,11 +31,11 @@ export class SelectCalendarComponent implements OnInit {
   }
 
   getCalendars(){
-    this.calendarApi.getCalendars(1, "")
+    this.calendarApi.getCalendars(1, 15, "")
       .subscribe(
         res => {
           console.log(res);
-          this.calendarGridData = res;
+          this.calendarGridData = res.results;
         },
         err => {
           console.log(err);

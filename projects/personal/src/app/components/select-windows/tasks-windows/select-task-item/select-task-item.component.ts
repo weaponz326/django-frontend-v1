@@ -31,7 +31,7 @@ export class SelectTaskItemComponent implements OnInit {
   }
 
   getTaskItems(){
-    this.tasksApi.getAllTaskItems()
+    this.tasksApi.getAllTaskItems(1, 15, "")
       .subscribe(
         res => {
           console.log(res);

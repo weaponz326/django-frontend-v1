@@ -16,15 +16,15 @@
                     <tr class="bg-light">
                         <th width="65%">
                             Calendar Name
-                            <i *ngIf="calendarNameSort == ''" class="bi bi-filter float-end list-pointer" (click)="sortTable('calendar_name')"></i>
-                            <i *ngIf="calendarNameSort == 'calendar_name'" class="bi bi-sort-down float-end list-pointer" (click)="sortTable('-calendar_name')"></i>
-                            <i *ngIf="calendarNameSort == '-calendar_name'" class="bi bi-sort-up float-end list-pointer" (click)="sortTable('calendar_name')"></i>
+                            <app-table-sorting #calendarNameSortingComponentReference
+                            [sortField]="'calendar_name'" (sortDirection)="sortTable($event)"
+                            ></app-table-sorting>
                         </th>
                         <th width="35%">
                             Created At
-                            <i *ngIf="createdAtSort == ''" class="bi bi-filter float-end list-pointer" (click)="sortTable('created_at')"></i>
-                            <i *ngIf="createdAtSort == 'created_at'" class="bi bi-sort-down float-end list-pointer" (click)="sortTable('-created_at')"></i>
-                            <i *ngIf="createdAtSort == '-created_at'" class="bi bi-sort-up float-end list-pointer" (click)="sortTable('created_at')"></i>
+                            <app-table-sorting #createdAtSortingComponentReference
+                            [sortField]="'created_at'" (sortDirection)="sortTable($event)"
+                            ></app-table-sorting>
                         </th>
                     </tr>
                 </thead>
@@ -37,37 +37,9 @@
                 <tfoot>
                     <tr class="bg-light">
                         <td colspan="2">
-                            <span class="m-1">Page {{currentPage}} of {{totalPages}}</span>
-
-                            <nav class="nav-light float-end" aria-label="Page navigation">
-                                <ul class="pagination pagination-sm mb-0 justify-content-end">
-                                    <li class="page-item">
-                                        <a class="page-link" href="#" aria-label="First" (click)="changePage($event, 1)">
-                                            <i class="bi bi-chevron-double-left"></i>
-                                        </a>
-                                    </li>
-                                    <li *ngIf="currentPage != 1" class="page-item">
-                                        <a class="page-link" href="#" aria-label="Previous" (click)="changePage($event, currentPage - 1)">
-                                            {{currentPage - 1}}
-                                        </a>
-                                    </li>
-                                    <li class="page-item">
-                                        <a class="page-link" href="#" aria-label="Current" (click)="changePage($event, currentPage)">
-                                            {{currentPage}}
-                                        </a>
-                                    </li>
-                                    <li *ngIf="currentPage != totalPages" class="page-item">
-                                        <a class="page-link" href="#" aria-label="Next" (click)="changePage($event, currentPage + 1)">
-                                            {{currentPage + 1}}
-                                        </a>
-                                    </li>
-                                    <li class="page-item">
-                                        <a class="page-link" href="#" aria-label="Last" (click)="changePage($event, totalPages)">
-                                            <i class="bi bi-chevron-double-right"></i>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </nav>
+                            <app-table-pagination #tablePaginationComponentReference
+                            [currentPage]="currentPage" [totalPages]="totalPages" (pageSelected)="getCalendars($event, 50, '')"
+                            ></app-table-pagination>
                         </td>
                     </tr>
                 </tfoot>

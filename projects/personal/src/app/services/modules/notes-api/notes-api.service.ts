@@ -19,8 +19,12 @@ export class NotesApiService {
   personalUrl = environment.personalUrl;
 
   // get all notes and belonging to a user
-  public getNotes(): Observable<any>{
-    return this.http.get(this.personalUrl + "module-notes/note?user=" + localStorage.getItem('personal_id'), this.endpoints.headers);
+  public getNotes(page: any, size: any, sortField: any): Observable<any>{
+    return this.http.get(this.personalUrl + "module-notes/note?user=" + localStorage.getItem('personal_id')
+      + "&page=" + page
+      + "&size=" + size
+      + "&ordering=" + sortField,
+      this.endpoints.headers);
   }
 
   // get single note and its attachments

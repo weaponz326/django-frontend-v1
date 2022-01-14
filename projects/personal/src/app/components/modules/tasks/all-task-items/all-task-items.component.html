@@ -8,11 +8,36 @@
             <table class="table table-bordered table-sm w-100 page-table">
                 <thead>
                     <tr class="bg-light">
-                        <th width="36%">Task Item</th>
-                        <th width="14%">Priority</th>
-                        <th width="18%">Start Date</th>
-                        <th width="18%">End Date</th>
-                        <th width="14%">Status</th>
+                        <th width="36%">
+                            Task Item
+                            <app-table-sorting #taskItemSortingComponentReference
+                            [sortField]="'task_item'" (sortDirection)="sortTable($event)"
+                            ></app-table-sorting>
+                        </th>
+                        <th width="14%">
+                            Priority
+                            <app-table-sorting #prioritySortingComponentReference
+                            [sortField]="'priority'" (sortDirection)="sortTable($event)"
+                            ></app-table-sorting>
+                        </th>
+                        <th width="18%">
+                            Start Date
+                            <app-table-sorting #startDateSortingComponentReference
+                            [sortField]="'start_date'" (sortDirection)="sortTable($event)"
+                            ></app-table-sorting>
+                        </th>
+                        <th width="18%">
+                            End Date
+                            <app-table-sorting #endDateSortingComponentReference
+                            [sortField]="'endDate'" (sortDirection)="sortTable($event)"
+                            ></app-table-sorting>
+                        </th>
+                        <th width="14%">
+                            Status
+                            <app-table-sorting #statusSortingComponentReference
+                            [sortField]="'status'" (sortDirection)="sortTable($event)"
+                            ></app-table-sorting>
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -24,6 +49,15 @@
                         <td>{{data?.status}}</td>
                     </tr>
                 </tbody>
+                <tfoot>
+                    <tr class="bg-light">
+                        <td colspan="5">
+                            <app-table-pagination #tablePaginationComponentReference
+                            [currentPage]="currentPage" [totalPages]="totalPages" (pageSelected)="getAllTaskItems($event, 50, '')"
+                            ></app-table-pagination>
+                        </td>
+                    </tr>
+                </tfoot>
             </table>
 
         </div>

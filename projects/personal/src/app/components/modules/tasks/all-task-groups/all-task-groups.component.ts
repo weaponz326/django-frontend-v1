@@ -5,6 +5,8 @@ import { TasksApiService } from 'projects/personal/src/app/services/modules/task
 import { TasksPrintService } from 'projects/personal/src/app/services/printing/tasks-print/tasks-print.service';
 
 import { NewTaskGroupComponent } from '../new-task-group/new-task-group.component'
+import { TablePaginationComponent } from 'projects/personal/src/app/components/module-utilities/table-pagination/table-pagination.component'
+import { TableSortingComponent } from 'projects/personal/src/app/components/module-utilities/table-sorting/table-sorting.component'
 
 
 @Component({
@@ -21,6 +23,9 @@ export class AllTaskGroupsComponent implements OnInit {
   ) { }
 
   @ViewChild('newTaskGroupComponentReference', { read: NewTaskGroupComponent, static: false }) newTaskGroup!: NewTaskGroupComponent;
+  @ViewChild('tablePaginationComponentReference', { read: TablePaginationComponent, static: false }) tablePagination!: TablePaginationComponent;
+  @ViewChild('taskGroupSortingComponentReference', { read: TableSortingComponent, static: false }) taskGroupSorting!: TableSortingComponent;
+  @ViewChild('createdAtSortingComponentReference', { read: TableSortingComponent, static: false }) createdAtSorting!: TableSortingComponent;
 
   navHeading: any[] = [
     { text: "All Task Groups", url: "/home/tasks/all-task-groups" },
@@ -28,19 +33,24 @@ export class AllTaskGroupsComponent implements OnInit {
 
   taskGroupsGridData: any[] = [];
 
+  currentPage = 0;
+  totalPages = 0;
+
   ngOnInit(): void {
   }
 
   ngAfterViewInit(): void {
-    this.getTaskGroups();
+    this.getTaskGroups(1, 50, "");
   }
 
-  getTaskGroups(){
-    this.tasksApi.getTaskGroups()
+  getTaskGroups(page: any, size: any, sortField: any){
+    this.tasksApi.getTaskGroups(page, size, sortField)
       .subscribe(
         res => {
           console.log(res);
-          this.taskGroupsGridData = res;
+          this.taskGroupsGridData = res.results;
+          this.currentPage = res.current_page;
+          this.totalPages = res.total_pages;
         },
         err => {
           console.log(err);
@@ -53,6 +63,18 @@ export class AllTaskGroupsComponent implements OnInit {
     sessionStorage.setItem('personal_task_group_id', id);
 
     this.router.navigateByUrl('/home/tasks/view-task-group/kanban-view')
+  }
+
+  sortTable(field: any){
+    console.log(field);
+    this.getTaskGroups(1, 50, field);
+
+    if((field == 'task_group') || (field == "-task_group")){
+      this.createdAtSorting.resetSort();
+    }
+    else if((field == 'created_at') || (field == "-created_at")){
+      this.taskGroupSorting.resetSort();
+    }
   }
 
   onPrint(){

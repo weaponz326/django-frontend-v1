@@ -19,8 +19,12 @@ export class BudgetApiService {
   personalUrl = environment.personalUrl;
 
   // get all budgets belonging to a user
-  public getBudgets(): Observable<any>{
-    return this.http.get(this.personalUrl + "module-budget/budget?user=" + localStorage.getItem('personal_id'), this.endpoints.headers);
+  public getBudgets(page: any, size: any, sortField: any): Observable<any>{
+    return this.http.get(this.personalUrl + "module-budget/budget?user=" + localStorage.getItem('personal_id')
+      + "&page=" + page
+      + "&size=" + size
+      + "&ordering=" + sortField,
+      this.endpoints.headers);
   }
 
   // create new budget

@@ -31,7 +31,7 @@ export class SelectTaskGroupComponent implements OnInit {
   }
 
   getTaskGroups(){
-    this.tasksApi.getTaskGroups()
+    this.tasksApi.getTaskGroups(1, 15, "")
       .subscribe(
         res => {
           console.log(res);

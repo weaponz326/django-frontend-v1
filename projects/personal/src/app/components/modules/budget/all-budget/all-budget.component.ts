@@ -5,6 +5,8 @@ import { BudgetApiService } from 'projects/personal/src/app/services/modules/bud
 import { BudgetPrintService } from 'projects/personal/src/app/services/printing/budget-print/budget-print.service';
 
 import { NewBudgetComponent } from '../new-budget/new-budget.component'
+import { TablePaginationComponent } from 'projects/personal/src/app/components/module-utilities/table-pagination/table-pagination.component'
+import { TableSortingComponent } from 'projects/personal/src/app/components/module-utilities/table-sorting/table-sorting.component'
 
 
 @Component({
@@ -21,6 +23,9 @@ export class AllBudgetComponent implements OnInit {
   ) { }
 
   @ViewChild('newBudgetComponentReference', { read: NewBudgetComponent, static: false }) newBudget!: NewBudgetComponent;
+  @ViewChild('tablePaginationComponentReference', { read: TablePaginationComponent, static: false }) tablePagination!: TablePaginationComponent;
+  @ViewChild('budgetNameSortingComponentReference', { read: TableSortingComponent, static: false }) budgetNameSorting!: TableSortingComponent;
+  @ViewChild('budgetTypeSortingComponentReference', { read: TableSortingComponent, static: false }) budgetTypeSorting!: TableSortingComponent;
 
   navHeading: any[] = [
     { text: "All Budgets", url: "/home/budget/all-budget" },
@@ -28,19 +33,24 @@ export class AllBudgetComponent implements OnInit {
 
   budgetGridData: any[] = [];
 
+  currentPage = 0;
+  totalPages = 0;
+
   ngOnInit(): void {
   }
 
   ngAfterViewInit(): void {
-    this.getAppointments();
+    this.getBudgets(1, 50, "");
   }
 
-  getAppointments(){
-    this.budgetApi.getBudgets()
+  getBudgets(page: any, size: any, sortField: any){
+    this.budgetApi.getBudgets(page, size, sortField)
       .subscribe(
         res => {
           console.log(res);
-          this.budgetGridData = res;
+          this.budgetGridData = res.results;
+          this.currentPage = res.current_page;
+          this.totalPages = res.total_pages;
         },
         err => {
           console.log(err);
@@ -53,6 +63,18 @@ export class AllBudgetComponent implements OnInit {
 
     sessionStorage.setItem("personal_budget_id", budgetId);
     this.router.navigateByUrl("/home/budget/view-budget");
+  }
+
+  sortTable(field: any){
+    console.log(field);
+    this.getBudgets(1, 50, field);
+
+    if((field == 'budget_name') || (field == "-budget_name")){
+      this.budgetTypeSorting.resetSort();
+    }
+    else if((field == 'budget_type') || (field == "-budget_type")){
+      this.budgetNameSorting.resetSort();
+    }
   }
 
   onPrint(){

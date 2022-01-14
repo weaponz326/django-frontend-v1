@@ -8,12 +8,42 @@
             <table class="table table-bordered table-sm w-100 page-table">
                 <thead>
                     <tr class="bg-light">
-                        <th width="15%">Transaction Date</th>
-                        <th width="20%">Account Name</th>
-                        <th width="18%">Bank</th>
-                        <th width="23%">Description</th>
-                        <th width="12%">Transaction Type</th>
-                        <th width="12%">Amount</th>
+                        <th width="15%">
+                            Transaction Date
+                            <app-table-sorting #transactionDateSortingComponentReference
+                            [sortField]="'transaction_date'" (sortDirection)="sortTable($event)"
+                            ></app-table-sorting>
+                        </th>
+                        <th width="20%">
+                            Account Name
+                            <app-table-sorting #accountNameSortingComponentReference
+                            [sortField]="'account_name'" (sortDirection)="sortTable($event)"
+                            ></app-table-sorting>
+                        </th>
+                        <th width="18%">
+                            Bank
+                            <app-table-sorting #bankNameSortingComponentReference
+                            [sortField]="'bank_name'" (sortDirection)="sortTable($event)"
+                            ></app-table-sorting>
+                        </th>
+                        <th width="20%">
+                            Description
+                            <app-table-sorting #descriptionSortingComponentReference
+                            [sortField]="'description'" (sortDirection)="sortTable($event)"
+                            ></app-table-sorting>
+                        </th>
+                        <th width="15%">
+                            Transaction Type
+                            <app-table-sorting #transactionTypeSortingComponentReference
+                            [sortField]="'transactiona_type'" (sortDirection)="sortTable($event)"
+                            ></app-table-sorting>
+                        </th>
+                        <th width="12%">
+                            Amount
+                            <app-table-sorting #amountSortingComponentReference
+                            [sortField]="'amount'" (sortDirection)="sortTable($event)"
+                            ></app-table-sorting>
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -26,6 +56,15 @@
                         <td>{{data?.amount}}</td>
                     </tr>
                 </tbody>
+                <tfoot>
+                    <tr class="bg-light">
+                        <td colspan="6">
+                            <app-table-pagination #tablePaginationComponentReference
+                            [currentPage]="currentPage" [totalPages]="totalPages" (pageSelected)="getAllTransactions($event, 50, '')"
+                            ></app-table-pagination>
+                        </td>
+                    </tr>
+                </tfoot>
             </table>
 
         </div>

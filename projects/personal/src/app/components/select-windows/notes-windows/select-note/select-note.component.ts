@@ -31,7 +31,7 @@ export class SelectNoteComponent implements OnInit {
   }
 
   getNotes(){
-    this.notesApi.getNotes()
+    this.notesApi.getNotes(1, 15, "")
       .subscribe(
         res => {
           console.log(res);

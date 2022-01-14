@@ -31,7 +31,7 @@ export class SelectTransactionComponent implements OnInit {
   }
 
   getAccounts(){
-    this.accountsApi.getAllTransactions()
+    this.accountsApi.getAllTransactions(1, 15, "")
       .subscribe(
         res => {
           console.log(res);
