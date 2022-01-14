@@ -6,6 +6,8 @@ import { AccountsApiService } from 'projects/personal/src/app/services/modules/a
 import { AccountsPrintService } from 'projects/personal/src/app/services/printing/accounts-print/accounts-print.service';
 
 import { AccountTransactionsComponent } from '../account-transactions/account-transactions.component';
+import { ConnectionToastComponent } from '../../../module-utilities/connection-toast/connection-toast.component'
+import { DeleteModalComponent } from '../../../module-utilities/delete-modal/delete-modal.component'
 
 
 @Component({
@@ -22,6 +24,8 @@ export class ViewAccountComponent implements OnInit {
   ) { }
 
   @ViewChild('accountTransactionsComponentReference', { read: AccountTransactionsComponent, static: false }) accountTransactions!: AccountTransactionsComponent;
+  @ViewChild('connectionToastComponentReference', { read: ConnectionToastComponent, static: false }) connectionToast!: ConnectionToastComponent;
+  @ViewChild('deleteModalComponentReference', { read: DeleteModalComponent, static: false }) deleteModal!: DeleteModalComponent;
 
   navHeading: any[] = [
     { text: "All Accounts", url: "/home/accounts/all-accounts" },
@@ -36,7 +40,6 @@ export class ViewAccountComponent implements OnInit {
   transactionsGridData = [];
 
   isAccountSaving: boolean = false;
-  isAccountDeleting: boolean = false;
 
   ngOnInit(): void {
     this.initAccountForm();
@@ -67,6 +70,7 @@ export class ViewAccountComponent implements OnInit {
         },
         err => {
           console.log(err);
+          this.connectionToast.openToast();
         }
       )
   }
@@ -91,14 +95,13 @@ export class ViewAccountComponent implements OnInit {
         },
         err => {
           console.log(err);
+          this.connectionToast.openToast();
           this.isAccountSaving = false;
         }
       )
   }
 
   deleteAccount(){
-    this.isAccountDeleting = true;
-
     this.accountsApi.deleteAccount()
       .subscribe(
         res => {
@@ -107,9 +110,13 @@ export class ViewAccountComponent implements OnInit {
         },
         err => {
           console.log(err);
-          this.isAccountDeleting = false;
+          this.connectionToast.openToast();
         }
       )
+  }
+
+  confirmDelete(){
+    this.deleteModal.openModal();
   }
 
   onPrint(){

@@ -8,44 +8,36 @@ import { DeleteModalComponent } from '../../../module-utilities/delete-modal/del
 
 
 @Component({
-  selector: 'app-view-note',
-  templateUrl: './view-note.component.html',
-  styleUrls: ['./view-note.component.scss']
+  selector: 'app-note-files',
+  templateUrl: './note-files.component.html',
+  styleUrls: ['./note-files.component.scss']
 })
-export class ViewNoteComponent implements OnInit {
+export class NoteFilesComponent implements OnInit {
 
-  constructor(
-    private router: Router,
-    private notesApi: NotesApiService
-  ) { }
+  constructor(private notesApi: NotesApiService) { }
 
   @ViewChild('connectionToastComponentReference', { read: ConnectionToastComponent, static: false }) connectionToast!: ConnectionToastComponent;
   @ViewChild('deleteModalComponentReference', { read: DeleteModalComponent, static: false }) deleteModal!: DeleteModalComponent;
 
-  navHeading: any[] = [
-    { text: "All Notes", url: "/home/notes/all-notes" },
-    { text: "Note View", url: "/home/notes/view-note" },
-  ];
+  fileNames: any;
+  filesToUpload: File[] = [];
 
-  subject = "";
-  noteViewData = [];
+  deleteIndex = 0;
+  deleteId = "";
 
   ngOnInit(): void {
   }
 
   ngAfterViewInit(): void {
-    this.getNote();
+    this.getNoteFiles();
   }
 
-  getNote(){
-    this.notesApi.getNote()
+  getNoteFiles(){
+    this.notesApi.getFiles()
       .subscribe(
         res => {
           console.log(res);
-          this.subject = res.subject;
-          // this.bodyEditor.value = res.body;
-
-          this.noteViewData = res;
+          this.fileNames = res;
         },
         err => {
           console.log(err);
@@ -54,19 +46,42 @@ export class ViewNoteComponent implements OnInit {
       )
   }
 
-  saveNote(){
-    let noteData = {
-      user: localStorage.getItem('personal_id'),
-      subject: this.subject,
-      // body: this.bodyEditor.value
+  sendFile(file: any){
+    let formData = new FormData();
+    formData.append("note", String(sessionStorage.getItem('personal_note_id')));
+    formData.append("file", file);
+
+    this.notesApi.postFile(formData)
+      .subscribe(
+        res => {
+          console.log(res);
+          // TODO: pushes null into array
+          this.fileNames.push(res?.data?.file);
+        },
+        err => {
+          console.log(err);
+          this.connectionToast.openToast();
+        }
+      )
+  }
+
+  onFileSelected(e: any){
+    this.filesToUpload = [];
+    this.filesToUpload = e.target.files;
+
+    for(var i = 0; i < this.filesToUpload.length; i++){
+      this.sendFile(this.filesToUpload[i]);
     }
 
-    console.log(noteData);
+    console.log(this.filesToUpload);
+  }
 
-    this.notesApi.putNote(noteData)
+  deleteFile(){
+    this.notesApi.deleteFile(this.deleteId)
       .subscribe(
         res => {
           console.log(res);
+          this.fileNames.splice(this.deleteIndex, 1);
         },
         err => {
           console.log(err);
@@ -75,27 +90,19 @@ export class ViewNoteComponent implements OnInit {
       )
   }
 
-  deleteNote(){
-    this.notesApi.deleteNote()
-      .subscribe(
-        res => {
-          console.log(res);
-          sessionStorage.removeItem('personal_note_id');
-          this.router.navigateByUrl('/home/notes/new-note');
-        },
-        err => {
-          console.log(err);
-          this.connectionToast.openToast();
-        }
-      )
+  downloadFile(fileId: any, index: any){
+
   }
 
-  confirmDelete(){
+  formatFileName(name: any){
+    return name.replace('/notes/', '');
+  }
+
+  confirmDelete(id: any, index: any){
+    this.deleteId = id;
+    this.deleteIndex = index;
+
     this.deleteModal.openModal();
-  }
-
-  onPrint(){
-    console.log("lets start printing...");
   }
 
 }

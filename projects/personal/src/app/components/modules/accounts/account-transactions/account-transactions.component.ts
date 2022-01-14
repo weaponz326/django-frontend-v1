@@ -4,6 +4,8 @@ import { AccountsApiService } from 'projects/personal/src/app/services/modules/a
 
 import { AddTransactionComponent } from '../add-transaction/add-transaction.component'
 import { EditTransactionComponent } from '../edit-transaction/edit-transaction.component'
+import { ConnectionToastComponent } from '../../../module-utilities/connection-toast/connection-toast.component'
+import { DeleteModalComponent } from '../../../module-utilities/delete-modal/delete-modal.component'
 
 
 @Component({
@@ -19,8 +21,13 @@ export class AccountTransactionsComponent implements OnInit {
 
   @ViewChild('addTransactionComponentReference', { read: AddTransactionComponent, static: false }) addTransaction!: AddTransactionComponent;
   @ViewChild('editTransactionComponentReference', { read: EditTransactionComponent, static: false }) editTransaction!: EditTransactionComponent;
+  @ViewChild('connectionToastComponentReference', { read: ConnectionToastComponent, static: false }) connectionToast!: ConnectionToastComponent;
+  @ViewChild('deleteModalComponentReference', { read: DeleteModalComponent, static: false }) deleteModal!: DeleteModalComponent;
 
   transactionsGridData: any[] = [];
+
+  deleteId = "";
+  deleteIndex = 0;
 
   ngOnInit(): void {
   }
@@ -31,7 +38,7 @@ export class AccountTransactionsComponent implements OnInit {
 
   calculateBalance(){
     let balance = this.transactionsGridData.reduce((total, transaction) => {
-      (transaction.transaction_type == "Credit") ? 
+      (transaction.transaction_type == "Credit") ?
         total + transaction.amount : total - transaction.amount;
     });
 
@@ -49,6 +56,7 @@ export class AccountTransactionsComponent implements OnInit {
         },
         err => {
           console.log(err);
+          this.connectionToast.openToast();
         }
       )
   }
@@ -69,6 +77,7 @@ export class AccountTransactionsComponent implements OnInit {
         },
         err => {
           console.log(err);
+          this.connectionToast.openToast();
         }
       )
   }
@@ -88,22 +97,24 @@ export class AccountTransactionsComponent implements OnInit {
         },
         err => {
           console.log(err);
+          this.connectionToast.openToast();
         }
       )
   }
 
-  deleteTransaction(index: any, id: any){
-    console.log(id);
+  deleteTransaction(){
+    console.log(this.deleteId);
 
-    this.accountsApi.deleteTransaction(id)
+    this.accountsApi.deleteTransaction(this.deleteId)
       .subscribe(
         res => {
           console.log(res);
-          this.transactionsGridData.splice(index, 1);
+          this.transactionsGridData.splice(this.deleteIndex, 1);
           this.calculateBalance();
         },
         err => {
           console.log(err);
+          this.connectionToast.openToast();
         }
       )
   }
@@ -111,6 +122,13 @@ export class AccountTransactionsComponent implements OnInit {
   openEditTransaction(index: any){
     console.log(index);
     this.editTransaction.openModal(index, this.transactionsGridData[index]);
+  }
+
+  confirmDelete(index: any, id: any){
+    this.deleteIndex = index;
+    this.deleteId = id;
+
+    this.deleteModal.openModal();
   }
 
 }

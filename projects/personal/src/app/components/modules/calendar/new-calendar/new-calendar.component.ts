@@ -4,6 +4,8 @@ import { FormControl, FormGroup } from '@angular/forms';
 
 import { CalendarApiService } from 'projects/personal/src/app/services/modules/calendar-api/calendar-api.service';
 
+import { ConnectionToastComponent } from '../../../module-utilities/connection-toast/connection-toast.component'
+
 
 @Component({
   selector: 'app-new-calendar',
@@ -18,6 +20,7 @@ export class NewCalendarComponent implements OnInit {
   ) { }
 
   @ViewChild('buttonElementReference', { read: ElementRef, static: false }) buttonElement!: ElementRef;
+  @ViewChild('connectionToastComponentReference', { read: ConnectionToastComponent, static: false }) connectionToast!: ConnectionToastComponent;
 
   calendarForm: FormGroup = new FormGroup({});
 
@@ -54,6 +57,7 @@ export class NewCalendarComponent implements OnInit {
           }
         },
         err => {
+          this.connectionToast.openToast();
           console.log(err);
         }
       )

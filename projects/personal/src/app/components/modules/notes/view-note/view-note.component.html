@@ -19,7 +19,7 @@
             <div class="row mb-3 page-form">
                 <div class="col-md-12">
                     <button class="btn btn-secondary btn-sm float-end ms-1 page-form-btn" routerLink="/home/notes/all-notes">Cancel</button>
-                    <button class="btn btn-secondary btn-sm float-end ms-1 page-form-btn" (click)="deleteNote()">Delete</button>
+                    <button class="btn btn-secondary btn-sm float-end ms-1 page-form-btn" (click)="confirmDelete()">Delete</button>
                     <button class="btn btn-secondary btn-sm float-end ms-1 page-form-btn" (click)="saveNote()">Save</button>
                 </div>
             </div>
@@ -27,26 +27,20 @@
         </div>
 
         <div class="offset-md-1 col-md-4">
-            <div class="row mb-3">
-                <div class="col-md-12">
-                    <input #fileUploadReference type="file" requiredFileType="file" class="file-upload-element d-none" multiple (change)="onFileSelected($event) "/>
-                    <button class="btn btn-secondary attachment-btn" (click)="fileUploadReference.click()">
-                        Add Attachment
-                        <i class="bi bi-paperclip ms-2"></i>
-                    </button>
-                </div>
-            </div>
 
-            <div class="row mb-2 g-1">
-                <div *ngFor="let file of fileNames; index as i" class="col-md-12 mb-1">
-                    <div class="btn-group w-100" role="group">
-                        <button class="btn btn-outline-secondary file-name-btn" (click)="downloadFile(file.id, i)">{{formatFileName(file.file)}}</button>
-                        <button class="btn btn-outline-secondary btn-sm file-delete-btn" (click)="deleteFile(file.id, i)"><i class="bi bi-trash"></i></button>
-                    </div>
-                </div>
-            </div>
+            <!-- note files component -->
+
+            <app-note-files #noteFilesComponentReference></app-note-files>
 
         </div>
     </div>
 
 </div>
+
+<!-- connection error toast component -->
+
+<app-connection-toast #connectionToastComponentReference></app-connection-toast>
+
+<!-- delete confirmation modal component -->
+
+<app-delete-modal #deleteModalComponentReference (confirmEvent)="deleteNote()"></app-delete-modal>

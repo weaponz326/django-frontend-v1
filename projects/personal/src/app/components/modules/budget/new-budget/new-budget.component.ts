@@ -4,6 +4,8 @@ import { FormControl, FormGroup } from '@angular/forms';
 
 import { BudgetApiService } from 'projects/personal/src/app/services/modules/budget-api/budget-api.service';
 
+import { ConnectionToastComponent } from '../../../module-utilities/connection-toast/connection-toast.component'
+
 
 @Component({
   selector: 'app-new-budget',
@@ -18,6 +20,7 @@ export class NewBudgetComponent implements OnInit {
   ) { }
 
   @ViewChild('buttonElementReference', { read: ElementRef, static: false }) buttonElement!: ElementRef;
+  @ViewChild('connectionToastComponentReference', { read: ConnectionToastComponent, static: false }) connectionToast!: ConnectionToastComponent;
 
   budgetForm: FormGroup = new FormGroup({});
 
@@ -59,6 +62,7 @@ export class NewBudgetComponent implements OnInit {
         },
         err => {
           console.log(err);
+          this.connectionToast.openToast();
         }
       )
   }

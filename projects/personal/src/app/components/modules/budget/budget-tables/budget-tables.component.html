@@ -30,7 +30,7 @@
                             <td>{{data?.amount}}</td>
                             <td class="p-0">
                                 <button class="btn btn-sm border w-50" (click)="openEditIncome(i)"><i class="bi bi-pen"></i></button>
-                                <button class="btn btn-sm border w-50" (click)="deleteIncome(i, data.id)"><i class="bi bi-trash"></i></button>
+                                <button class="btn btn-sm border w-50" (click)="confirmDelete('Income', i, data.id)"><i class="bi bi-trash"></i></button>
                             </td>
                         </tr>
                         <tr class="bg-light">
@@ -67,7 +67,7 @@
                             <td>{{data?.amount}}</td>
                             <td class="p-0">
                                 <button class="btn btn-sm border w-50" (click)="openEditExpenditure(i)"><i class="bi bi-pen"></i></button>
-                                <button class="btn btn-sm border w-50" (click)="deleteExpenditure(i, data.id)"><i class="bi bi-trash"></i></button>
+                                <button class="btn btn-sm border w-50" (click)="confirmDelete('Expenditure', i, data.id)"><i class="bi bi-trash"></i></button>
                             </td>
                         </tr>
                         <tr class="bg-light">
@@ -85,18 +85,20 @@
     </div>
 </div>
 
-<!-- add income modal component -->
+<!-- add and edit income and expenditore modal components -->
 
 <app-add-income #addIncomeComponentReference (saveIncomeEvent)="postIncome($event)"></app-add-income>
 
-<!-- edit income modal component -->
-
 <app-edit-income #editIncomeComponentReference (saveIncomeEvent)="putIncome($event)"></app-edit-income>
-
-<!-- add expenditure modal component -->
 
 <app-add-expenditure #addExpenditureComponentReference (saveExpenditureEvent)="postExpenditure($event)"></app-add-expenditure>
 
-<!-- edit expenditure modal component -->
-
 <app-edit-expenditure #editExpenditureComponentReference (saveExpenditureEvent)="putExpenditure($event)"></app-edit-expenditure>
+
+<!-- connection error toast component -->
+
+<app-connection-toast #connectionToastComponentReference></app-connection-toast>
+
+<!-- delete confirmation modal component -->
+
+<app-delete-modal #deleteModalComponentReference (confirmEvent)="deleteItem()"></app-delete-modal>

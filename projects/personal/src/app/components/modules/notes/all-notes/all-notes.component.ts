@@ -6,6 +6,7 @@ import { NotesPrintService } from 'projects/personal/src/app/services/printing/n
 
 import { TablePaginationComponent } from 'projects/personal/src/app/components/module-utilities/table-pagination/table-pagination.component'
 import { TableSortingComponent } from 'projects/personal/src/app/components/module-utilities/table-sorting/table-sorting.component'
+import { ConnectionToastComponent } from '../../../module-utilities/connection-toast/connection-toast.component'
 
 
 @Component({
@@ -21,6 +22,7 @@ export class AllNotesComponent implements OnInit {
     private notesPrint: NotesPrintService
   ) { }
 
+  @ViewChild('connectionToastComponentReference', { read: ConnectionToastComponent, static: false }) connectionToast!: ConnectionToastComponent;
   @ViewChild('tablePaginationComponentReference', { read: TablePaginationComponent, static: false }) tablePagination!: TablePaginationComponent;
   @ViewChild('subjectSortingComponentReference', { read: TableSortingComponent, static: false }) subjectSorting!: TableSortingComponent;
   @ViewChild('createdAtSortingComponentReference', { read: TableSortingComponent, static: false }) createdAtSorting!: TableSortingComponent;
@@ -53,6 +55,7 @@ export class AllNotesComponent implements OnInit {
         },
         err => {
           console.log(err);
+          this.connectionToast.openToast();
         }
       )
   }

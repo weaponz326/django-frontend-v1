@@ -5,6 +5,7 @@ import { BudgetApiService } from 'projects/personal/src/app/services/modules/bud
 import { BudgetPrintService } from 'projects/personal/src/app/services/printing/budget-print/budget-print.service';
 
 import { NewBudgetComponent } from '../new-budget/new-budget.component'
+import { ConnectionToastComponent } from '../../../module-utilities/connection-toast/connection-toast.component'
 import { TablePaginationComponent } from 'projects/personal/src/app/components/module-utilities/table-pagination/table-pagination.component'
 import { TableSortingComponent } from 'projects/personal/src/app/components/module-utilities/table-sorting/table-sorting.component'
 
@@ -23,6 +24,7 @@ export class AllBudgetComponent implements OnInit {
   ) { }
 
   @ViewChild('newBudgetComponentReference', { read: NewBudgetComponent, static: false }) newBudget!: NewBudgetComponent;
+  @ViewChild('connectionToastComponentReference', { read: ConnectionToastComponent, static: false }) connectionToast!: ConnectionToastComponent;
   @ViewChild('tablePaginationComponentReference', { read: TablePaginationComponent, static: false }) tablePagination!: TablePaginationComponent;
   @ViewChild('budgetNameSortingComponentReference', { read: TableSortingComponent, static: false }) budgetNameSorting!: TableSortingComponent;
   @ViewChild('budgetTypeSortingComponentReference', { read: TableSortingComponent, static: false }) budgetTypeSorting!: TableSortingComponent;
@@ -54,6 +56,7 @@ export class AllBudgetComponent implements OnInit {
         },
         err => {
           console.log(err);
+          this.connectionToast.openToast();
         }
       )
   }

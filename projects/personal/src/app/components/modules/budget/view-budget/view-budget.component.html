@@ -37,7 +37,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <button type="button" class="btn btn-secondary btn-sm float-end ms-1 page-form-btn" routerLink="/home/budget/all-budget">Cancel</button>
-                        <button type="button" class="btn btn-secondary btn-sm float-end ms-1 page-form-btn" (click)="deleteBudget()">Delete</button>
+                        <button type="button" class="btn btn-secondary btn-sm float-end ms-1 page-form-btn" (click)="confirmDelete()">Delete</button>
                         <button [disabled]="isBudgetSaving" type="submit" class="btn btn-secondary btn-sm float-end ms-1 page-form-btn">Save</button>
                     </div>
                 </div>
@@ -57,3 +57,11 @@
     <app-budget-tables #budgetTablesComponentReference (ioeEvent)="ioe = $event"></app-budget-tables>
 
 </div>
+
+<!-- connection error toast component -->
+
+<app-connection-toast #connectionToastComponentReference></app-connection-toast>
+
+<!-- delete confirmation modal component -->
+
+<app-delete-modal #deleteModalComponentReference (confirmEvent)="deleteBudget()"></app-delete-modal>

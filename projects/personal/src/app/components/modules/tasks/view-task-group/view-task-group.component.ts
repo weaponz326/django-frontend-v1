@@ -3,6 +3,8 @@ import { FormControl, FormGroup } from '@angular/forms';
 
 import { TasksApiService } from 'projects/personal/src/app/services/modules/tasks-api/tasks-api.service';
 
+import { ConnectionToastComponent } from '../../../module-utilities/connection-toast/connection-toast.component'
+
 
 @Component({
   selector: 'app-view-task-group',
@@ -12,6 +14,8 @@ import { TasksApiService } from 'projects/personal/src/app/services/modules/task
 export class ViewTaskGroupComponent implements OnInit {
 
   constructor(private tasksApi: TasksApiService) { }
+
+  @ViewChild('connectionToastComponentReference', { read: ConnectionToastComponent, static: false }) connectionToast!: ConnectionToastComponent;
 
   navHeading: any[] = [
     { text: "View Task Group", url: "/home/tasks/view-task-group" },
@@ -46,6 +50,7 @@ export class ViewTaskGroupComponent implements OnInit {
         },
         err => {
           console.log(err);
+          this.connectionToast.openToast();
         }
       )
   }
@@ -67,6 +72,7 @@ export class ViewTaskGroupComponent implements OnInit {
         },
         err => {
           console.log(err);
+          this.connectionToast.openToast();
           this.isTaskGroupSaving = false;
         }
       )

@@ -4,6 +4,8 @@ import { FormControl, FormGroup } from '@angular/forms';
 
 import { TasksApiService } from 'projects/personal/src/app/services/modules/tasks-api/tasks-api.service';
 
+import { ConnectionToastComponent } from '../../../module-utilities/connection-toast/connection-toast.component'
+
 
 @Component({
   selector: 'app-new-task-group',
@@ -18,6 +20,7 @@ export class NewTaskGroupComponent implements OnInit {
   ) { }
 
   @ViewChild('buttonElementReference', { read: ElementRef, static: false }) buttonElement!: ElementRef;
+  @ViewChild('connectionToastComponentReference', { read: ConnectionToastComponent, static: false }) connectionToast!: ConnectionToastComponent;
 
   taskGroupForm: FormGroup = new FormGroup({});
 
@@ -55,6 +58,7 @@ export class NewTaskGroupComponent implements OnInit {
         },
         err => {
           console.log(err);
+          this.connectionToast.openToast();
         }
       )
   }

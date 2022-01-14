@@ -7,6 +7,7 @@ import { CalendarPrintService } from 'projects/personal/src/app/services/printin
 import { NewCalendarComponent } from '../new-calendar/new-calendar.component'
 import { TablePaginationComponent } from 'projects/personal/src/app/components/module-utilities/table-pagination/table-pagination.component'
 import { TableSortingComponent } from 'projects/personal/src/app/components/module-utilities/table-sorting/table-sorting.component'
+import { ConnectionToastComponent } from '../../../module-utilities/connection-toast/connection-toast.component'
 
 
 @Component({
@@ -22,6 +23,7 @@ export class AllCalendarsComponent implements OnInit {
     private calendarPrint: CalendarPrintService,
   ) { }
 
+  @ViewChild('connectionToastComponentReference', { read: ConnectionToastComponent, static: false }) connectionToast!: ConnectionToastComponent;
   @ViewChild('newCalendarComponentReference', { read: NewCalendarComponent, static: false }) newCalendar!: NewCalendarComponent;
   @ViewChild('tablePaginationComponentReference', { read: TablePaginationComponent, static: false }) tablePagination!: TablePaginationComponent;
   @ViewChild('calendarNameSortingComponentReference', { read: TableSortingComponent, static: false }) calendarNameSorting!: TableSortingComponent;
@@ -53,6 +55,7 @@ export class AllCalendarsComponent implements OnInit {
           this.totalPages = res.total_pages;
         },
         err => {
+          this.connectionToast.openToast();
           console.log(err);
         }
       )

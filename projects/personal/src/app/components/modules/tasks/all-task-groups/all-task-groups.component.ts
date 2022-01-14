@@ -7,6 +7,7 @@ import { TasksPrintService } from 'projects/personal/src/app/services/printing/t
 import { NewTaskGroupComponent } from '../new-task-group/new-task-group.component'
 import { TablePaginationComponent } from 'projects/personal/src/app/components/module-utilities/table-pagination/table-pagination.component'
 import { TableSortingComponent } from 'projects/personal/src/app/components/module-utilities/table-sorting/table-sorting.component'
+import { ConnectionToastComponent } from '../../../module-utilities/connection-toast/connection-toast.component'
 
 
 @Component({
@@ -22,6 +23,7 @@ export class AllTaskGroupsComponent implements OnInit {
     private tasksPrint: TasksPrintService
   ) { }
 
+  @ViewChild('connectionToastComponentReference', { read: ConnectionToastComponent, static: false }) connectionToast!: ConnectionToastComponent;
   @ViewChild('newTaskGroupComponentReference', { read: NewTaskGroupComponent, static: false }) newTaskGroup!: NewTaskGroupComponent;
   @ViewChild('tablePaginationComponentReference', { read: TablePaginationComponent, static: false }) tablePagination!: TablePaginationComponent;
   @ViewChild('taskGroupSortingComponentReference', { read: TableSortingComponent, static: false }) taskGroupSorting!: TableSortingComponent;
@@ -54,6 +56,7 @@ export class AllTaskGroupsComponent implements OnInit {
         },
         err => {
           console.log(err);
+          this.connectionToast.openToast();
         }
       )
   }

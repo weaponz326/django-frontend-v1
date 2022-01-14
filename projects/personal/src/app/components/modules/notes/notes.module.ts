@@ -12,6 +12,7 @@ import { SettingsComponent } from './settings/settings.component';
 import { AllNotesComponent } from './all-notes/all-notes.component';
 import { ViewNoteComponent } from './view-note/view-note.component';
 import { NewNoteComponent } from './new-note/new-note.component';
+import { NoteFilesComponent } from './note-files/note-files.component';
 
 
 
@@ -21,7 +22,8 @@ import { NewNoteComponent } from './new-note/new-note.component';
     SettingsComponent,
     AllNotesComponent,
     ViewNoteComponent,
-    NewNoteComponent
+    NewNoteComponent,
+    NoteFilesComponent
   ],
   imports: [
     CommonModule,

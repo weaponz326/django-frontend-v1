@@ -4,7 +4,7 @@ import { ChartDataSets, ChartOptions } from 'chart.js';
 import { Color, Label, SingleDataSet } from 'ng2-charts';
 
 import { NotesApiService } from 'projects/personal/src/app/services/modules/notes-api/notes-api.service';
-import { ConnectionPromptComponent } from '../../../module-utilities/connection-prompt/connection-prompt.component'
+import { ConnectionToastComponent } from '../../../module-utilities/connection-toast/connection-toast.component'
 
 
 @Component({
@@ -16,7 +16,7 @@ export class DashboardComponent implements OnInit {
 
   constructor(private notesApi: NotesApiService) { }
 
-  @ViewChild('connectionPromptComponentReference') connectionPrompt!: ConnectionPromptComponent;
+  @ViewChild('connectionToastComponentReference', { read: ConnectionToastComponent, static: false }) connectionToast!: ConnectionToastComponent;
 
   navHeading: any[] = [
     { text: "Dashboard", url: "/home/notes/dashboard" },
@@ -44,7 +44,7 @@ export class DashboardComponent implements OnInit {
         },
         err => {
           console.log(err);
-          this.connectionPrompt.toast.open();
+          this.connectionToast.openToast();
         }
       )
   }
@@ -58,7 +58,7 @@ export class DashboardComponent implements OnInit {
         },
         err => {
           console.log(err);
-          this.connectionPrompt.toast.open();
+          this.connectionToast.openToast();
         }
       )
   }

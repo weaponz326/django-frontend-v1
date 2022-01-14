@@ -7,6 +7,7 @@ import { AccountsPrintService } from 'projects/personal/src/app/services/printin
 import { AddAccountComponent } from '../add-account/add-account.component'
 import { TablePaginationComponent } from 'projects/personal/src/app/components/module-utilities/table-pagination/table-pagination.component'
 import { TableSortingComponent } from 'projects/personal/src/app/components/module-utilities/table-sorting/table-sorting.component'
+import { ConnectionToastComponent } from '../../../module-utilities/connection-toast/connection-toast.component'
 
 
 @Component({
@@ -22,6 +23,7 @@ export class AllAccountsComponent implements OnInit {
     private accountsPrint: AccountsPrintService,
   ) { }
 
+  @ViewChild('connectionToastComponentReference', { read: ConnectionToastComponent, static: false }) connectionToast!: ConnectionToastComponent;
   @ViewChild('addAccountComponentReference', { read: AddAccountComponent, static: false }) addAccount!: AddAccountComponent;
   @ViewChild('tablePaginationComponentReference', { read: TablePaginationComponent, static: false }) tablePagination!: TablePaginationComponent;
   @ViewChild('accountNameSortingComponentReference', { read: TableSortingComponent, static: false }) accountNameSorting!: TableSortingComponent;
@@ -55,6 +57,7 @@ export class AllAccountsComponent implements OnInit {
         },
         err => {
           console.log(err);
+          this.connectionToast.openToast();
         }
       )
   }

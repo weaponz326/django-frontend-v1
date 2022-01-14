@@ -3,6 +3,8 @@ import { FormControl, FormGroup } from '@angular/forms';
 
 import { CalendarApiService } from 'projects/personal/src/app/services/modules/calendar-api/calendar-api.service';
 
+import { ConnectionToastComponent } from '../../../module-utilities/connection-toast/connection-toast.component'
+
 
 @Component({
   selector: 'app-view-calendar',
@@ -12,6 +14,8 @@ import { CalendarApiService } from 'projects/personal/src/app/services/modules/c
 export class ViewCalendarComponent implements OnInit {
 
   constructor(private calendarApi: CalendarApiService) { }
+
+  @ViewChild('connectionToastComponentReference', { read: ConnectionToastComponent, static: false }) connectionToast!: ConnectionToastComponent;
 
   navHeading: any[] = [
     { text: "View Calendar", url: "/home/calendar/view-calendar" },
@@ -48,6 +52,7 @@ export class ViewCalendarComponent implements OnInit {
           this.calendarForm.controls.calendarName.setValue(res.calendar_name);
         },
         err => {
+          this.connectionToast.openToast();
           console.log(err);
         }
       )
@@ -61,6 +66,7 @@ export class ViewCalendarComponent implements OnInit {
           this.schedulesGridData = res;
         },
         err => {
+          this.connectionToast.openToast();
           console.log(err);
         }
       )
@@ -83,6 +89,7 @@ export class ViewCalendarComponent implements OnInit {
         },
         err => {
           console.log(err);
+          this.connectionToast.openToast();
           this.isCalendarSaving = false;
         }
       )

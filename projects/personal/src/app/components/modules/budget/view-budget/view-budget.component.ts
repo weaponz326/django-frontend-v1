@@ -6,6 +6,8 @@ import { BudgetApiService } from 'projects/personal/src/app/services/modules/bud
 import { BudgetPrintService } from 'projects/personal/src/app/services/printing/budget-print/budget-print.service';
 
 import { BudgetTablesComponent } from '../budget-tables/budget-tables.component'
+import { ConnectionToastComponent } from '../../../module-utilities/connection-toast/connection-toast.component'
+import { DeleteModalComponent } from '../../../module-utilities/delete-modal/delete-modal.component'
 
 
 @Component({
@@ -22,6 +24,8 @@ export class ViewBudgetComponent implements OnInit {
   ) { }
 
   @ViewChild('budgetTablesComponentReference', { read: BudgetTablesComponent, static: false }) budgetTables!: BudgetTablesComponent;
+  @ViewChild('connectionToastComponentReference', { read: ConnectionToastComponent, static: false }) connectionToast!: ConnectionToastComponent;
+  @ViewChild('deleteModalComponentReference', { read: DeleteModalComponent, static: false }) deleteModal!: DeleteModalComponent;
 
   navHeading: any[] = [
     { text: "All Budgets", url: "/home/budget/all-budget" },
@@ -60,6 +64,7 @@ export class ViewBudgetComponent implements OnInit {
         },
         err => {
           console.log(err);
+          this.connectionToast.openToast();
         }
       )
   }
@@ -82,9 +87,14 @@ export class ViewBudgetComponent implements OnInit {
         },
         err => {
           console.log(err);
+          this.connectionToast.openToast();
           this.isBudgetSaving = false;
         }
       )
+  }
+
+  confirmDelete(){
+    this.deleteModal.openModal();
   }
 
   deleteBudget(){
@@ -98,6 +108,7 @@ export class ViewBudgetComponent implements OnInit {
         },
         err => {
           console.log(err);
+          this.connectionToast.openToast();
           this.isBudgetDeleting = false;
         }
       )

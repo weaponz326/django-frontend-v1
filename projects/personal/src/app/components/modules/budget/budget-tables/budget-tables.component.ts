@@ -1,10 +1,13 @@
 import { Component, OnInit, ViewChild, Output, EventEmitter } from '@angular/core';
 
 import { BudgetApiService } from 'projects/personal/src/app/services/modules/budget-api/budget-api.service';
+
 import { AddIncomeComponent } from '../add-income/add-income.component'
 import { EditIncomeComponent } from '../edit-income/edit-income.component'
 import { AddExpenditureComponent } from '../add-expenditure/add-expenditure.component'
 import { EditExpenditureComponent } from '../edit-expenditure/edit-expenditure.component'
+import { ConnectionToastComponent } from '../../../module-utilities/connection-toast/connection-toast.component'
+import { DeleteModalComponent } from '../../../module-utilities/delete-modal/delete-modal.component'
 
 
 @Component({
@@ -22,11 +25,17 @@ export class BudgetTablesComponent implements OnInit {
   @ViewChild('editIncomeComponentReference', { read: EditIncomeComponent, static: false }) editIncome!: EditIncomeComponent;
   @ViewChild('addExpenditureComponentReference', { read: AddExpenditureComponent, static: false }) addExpenditure!: AddExpenditureComponent;
   @ViewChild('editExpenditureComponentReference', { read: EditExpenditureComponent, static: false }) editExpenditure!: EditExpenditureComponent;
+  @ViewChild('connectionToastComponentReference', { read: ConnectionToastComponent, static: false }) connectionToast!: ConnectionToastComponent;
+  @ViewChild('deleteModalComponentReference', { read: DeleteModalComponent, static: false }) deleteModal!: DeleteModalComponent;
 
   incomeGridData: any[] = [];
   expenditureGridData: any[] = [];
   totalIncome = 0;
   totalExpenditure = 0;
+
+  deleteType = "";
+  deleteId = "";
+  deleteIndex = 0;
 
   ngOnInit(): void {
   }
@@ -60,6 +69,7 @@ export class BudgetTablesComponent implements OnInit {
         },
         err => {
           console.log(err);
+          this.connectionToast.openToast();
         }
       )
   }
@@ -80,6 +90,7 @@ export class BudgetTablesComponent implements OnInit {
         },
         err => {
           console.log(err);
+          this.connectionToast.openToast();
         }
       )
   }
@@ -99,6 +110,7 @@ export class BudgetTablesComponent implements OnInit {
         },
         err => {
           console.log(err);
+          this.connectionToast.openToast();
         }
       )
   }
@@ -115,6 +127,7 @@ export class BudgetTablesComponent implements OnInit {
         },
         err => {
           console.log(err);
+          this.connectionToast.openToast();
         }
       )
   }
@@ -142,6 +155,7 @@ export class BudgetTablesComponent implements OnInit {
         },
         err => {
           console.log(err);
+          this.connectionToast.openToast();
         }
       )
   }
@@ -162,6 +176,7 @@ export class BudgetTablesComponent implements OnInit {
         },
         err => {
           console.log(err);
+          this.connectionToast.openToast();
         }
       )
   }
@@ -181,6 +196,7 @@ export class BudgetTablesComponent implements OnInit {
         },
         err => {
           console.log(err);
+          this.connectionToast.openToast();
         }
       )
   }
@@ -197,6 +213,7 @@ export class BudgetTablesComponent implements OnInit {
         },
         err => {
           console.log(err);
+          this.connectionToast.openToast();
         }
       )
   }
@@ -204,6 +221,27 @@ export class BudgetTablesComponent implements OnInit {
   openEditExpenditure(index: any){
     console.log(index);
     this.editExpenditure.openModal(index, this.expenditureGridData[index]);
+  }
+
+  // deletions
+
+  // open confirm delete modal
+  confirmDelete(type: any, index: any, id: any){
+    console.log(type);
+
+    this.deleteType = type;
+    this.deleteIndex = index;
+    this.deleteId = id;
+
+    this.deleteModal.openModal();
+  }
+
+  // delete income or expenditure
+  deleteItem(){
+    if(this.deleteType == "Income")
+      this.deleteIncome(this.deleteIndex, this.deleteId);
+    else if(this.deleteType == "Expenditure")
+      this.deleteExpenditure(this.deleteIndex, this.deleteId)
   }
 
 }

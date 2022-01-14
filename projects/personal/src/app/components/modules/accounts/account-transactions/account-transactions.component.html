@@ -28,7 +28,7 @@
                     <td>{{data?.amount}}</td>
                     <td class="p-0">
                         <button class="btn btn-sm border w-50" (click)="openEditTransaction(i)"><i class="bi bi-pen"></i></button>
-                        <button class="btn btn-sm border w-50" (click)="deleteTransaction(i, data.id)"><i class="bi bi-trash"></i></button>
+                        <button class="btn btn-sm border w-50" (click)="confirmDelete(i, data.id)"><i class="bi bi-trash"></i></button>
                     </td>
                 </tr>
             </tbody>
@@ -37,10 +37,16 @@
     </div>
 </div>
 
-<!-- add transaction modal component -->
+<!-- add and edit transaction modal components -->
 
 <app-add-transaction #addTransactionComponentReference (saveTransactionEvent)="postTransaction($event)"></app-add-transaction>
 
-<!-- edit transaction modal component -->
-
 <app-edit-transaction #editTransactionComponentReference (saveTransactionEvent)="putTransaction($event)"></app-edit-transaction>
+
+<!-- connection error toast component -->
+
+<app-connection-toast #connectionToastComponentReference></app-connection-toast>
+
+<!-- delete confirmation modal component -->
+
+<app-delete-modal #deleteModalComponentReference (confirmEvent)="deleteTransaction()"></app-delete-modal>
