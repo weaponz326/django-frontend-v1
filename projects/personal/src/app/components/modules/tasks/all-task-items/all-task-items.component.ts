@@ -41,7 +41,7 @@ export class AllTaskItemsComponent implements OnInit {
   }
 
   ngAfterViewInit(): void {
-    this.getAllTaskItems(1, 50, "");
+    this.getAllTaskItems(1, 20, "");
   }
 
   getAllTaskItems(page: any, size: any, sortField: any){
@@ -62,7 +62,7 @@ export class AllTaskItemsComponent implements OnInit {
 
   sortTable(field: any){
     console.log(field);
-    this.getAllTaskItems(1, 50, field);
+    this.getAllTaskItems(1, 20, field);
 
     if((field == 'taskItem') || (field == "-taskItem")){
       this.prioritySorting.resetSort();

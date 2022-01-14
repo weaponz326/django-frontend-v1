@@ -40,7 +40,7 @@ export class AllSchedulesComponent implements OnInit {
   }
 
   ngAfterViewInit(): void {
-    this.getAllSchedules(1, 50, "");
+    this.getAllSchedules(1, 20, "");
   }
 
   getAllSchedules(page: any, size: any, sortField: any){
@@ -61,7 +61,7 @@ export class AllSchedulesComponent implements OnInit {
 
   sortTable(field: any){
     console.log(field);
-    this.getAllSchedules(1, 50, field);
+    this.getAllSchedules(1, 20, field);
 
     if((field == 'schedule_name') || (field == "-schedule_name")){
       this.startDateSorting.resetSort();

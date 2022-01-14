@@ -5,6 +5,7 @@ import { AccountsPrintService } from 'projects/personal/src/app/services/printin
 
 import { TablePaginationComponent } from 'projects/personal/src/app/components/module-utilities/table-pagination/table-pagination.component'
 import { TableSortingComponent } from 'projects/personal/src/app/components/module-utilities/table-sorting/table-sorting.component'
+import { ConnectionToastComponent } from '../../../module-utilities/connection-toast/connection-toast.component'
 
 
 @Component({
@@ -19,6 +20,7 @@ export class AllTransactionsComponent implements OnInit {
     private accountsPrint: AccountsPrintService,
   ) { }
 
+  @ViewChild('connectionToastComponentReference', { read: ConnectionToastComponent, static: false }) connectionToast!: ConnectionToastComponent;
   @ViewChild('tablePaginationComponentReference', { read: TablePaginationComponent, static: false }) tablePagination!: TablePaginationComponent;
   @ViewChild('transactionDateSortingComponentReference', { read: TableSortingComponent, static: false }) transactionDateSorting!: TableSortingComponent;
   @ViewChild('accountNameSortingComponentReference', { read: TableSortingComponent, static: false }) accountNameSorting!: TableSortingComponent;
@@ -40,7 +42,7 @@ export class AllTransactionsComponent implements OnInit {
   }
 
   ngAfterViewInit(): void {
-    this.getAllTransactions(1, 50, "");
+    this.getAllTransactions(1, 20, "");
   }
 
   getAllTransactions(page: any, size: any, sortField: any){
@@ -54,13 +56,14 @@ export class AllTransactionsComponent implements OnInit {
         },
         err => {
           console.log(err);
+          this.connectionToast.openToast();
         }
       )
   }
 
   sortTable(field: any){
     console.log(field);
-    this.getAllTransactions(1, 50, field);
+    this.getAllTransactions(1, 20, field);
 
     if((field == 'transaction_date') || (field == "-transaction_date")){
       this.accountNameSorting.resetSort();

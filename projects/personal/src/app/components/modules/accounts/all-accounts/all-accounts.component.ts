@@ -43,7 +43,7 @@ export class AllAccountsComponent implements OnInit {
   }
 
   ngAfterViewInit(): void {
-    this.getAccounts(1, 50, "");
+    this.getAccounts(1, 20, "");
   }
 
   getAccounts(page: any, size: any, sortField: any){
@@ -71,7 +71,7 @@ export class AllAccountsComponent implements OnInit {
 
   sortTable(field: any){
     console.log(field);
-    this.getAccounts(1, 50, field);
+    this.getAccounts(1, 20, field);
 
     if((field == 'account_name') || (field == "-account_name")){
       this.accountNumberSorting.resetSort();

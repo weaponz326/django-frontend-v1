@@ -60,7 +60,7 @@
                     <tr class="bg-light">
                         <td colspan="6">
                             <app-table-pagination #tablePaginationComponentReference
-                            [currentPage]="currentPage" [totalPages]="totalPages" (pageSelected)="getAllTransactions($event, 50, '')"
+                            [currentPage]="currentPage" [totalPages]="totalPages" (pageSelected)="getAllTransactions($event, 20, '')"
                             ></app-table-pagination>
                         </td>
                     </tr>
@@ -71,3 +71,7 @@
     </div>
 
 </div>
+
+<!-- connection error toast component -->
+
+<app-connection-toast #connectionToastComponentReference></app-connection-toast>

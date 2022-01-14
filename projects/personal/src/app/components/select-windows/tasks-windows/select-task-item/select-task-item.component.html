@@ -15,9 +15,24 @@
                 <table class="table table-bordered table-sm w-100 page-table">
                     <thead>
                         <tr class="bg-light">
-                            <th width="50%">Task Item</th>
-                            <th width="25%">Priority</th>
-                            <th width="25%">Status</th>
+                            <th width="50%">
+                                Task Item
+                                <app-table-sorting #taskItemSortingComponentReference
+                                [sortField]="'task_item'" (sortDirection)="sortTable($event)"
+                                ></app-table-sorting>
+                            </th>
+                            <th width="25%">
+                                Priority
+                                <app-table-sorting #prioritySortingComponentReference
+                                [sortField]="'priority'" (sortDirection)="sortTable($event)"
+                                ></app-table-sorting>
+                            </th>
+                            <th width="25%">
+                                Status
+                                <app-table-sorting #statusSortingComponentReference
+                                [sortField]="'status'" (sortDirection)="sortTable($event)"
+                                ></app-table-sorting>
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -27,6 +42,15 @@
                             <td>{{data?.status}}</td>
                         </tr>
                     </tbody>
+                    <tfoot>
+                        <tr class="bg-light">
+                            <td colspan="3">
+                                <app-table-pagination #tablePaginationComponentReference
+                                [currentPage]="currentPage" [totalPages]="totalPages" (pageSelected)="getAllTaskItems($event, 10, '')"
+                                ></app-table-pagination>
+                            </td>
+                        </tr>
+                    </tfoot>
                 </table>
             </div>
 

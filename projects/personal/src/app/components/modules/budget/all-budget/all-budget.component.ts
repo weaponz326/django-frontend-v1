@@ -42,7 +42,7 @@ export class AllBudgetComponent implements OnInit {
   }
 
   ngAfterViewInit(): void {
-    this.getBudgets(1, 50, "");
+    this.getBudgets(1, 20, "");
   }
 
   getBudgets(page: any, size: any, sortField: any){
@@ -70,7 +70,7 @@ export class AllBudgetComponent implements OnInit {
 
   sortTable(field: any){
     console.log(field);
-    this.getBudgets(1, 50, field);
+    this.getBudgets(1, 20, field);
 
     if((field == 'budget_name') || (field == "-budget_name")){
       this.budgetTypeSorting.resetSort();

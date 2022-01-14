@@ -42,7 +42,7 @@ export class AllTaskGroupsComponent implements OnInit {
   }
 
   ngAfterViewInit(): void {
-    this.getTaskGroups(1, 50, "");
+    this.getTaskGroups(1, 20, "");
   }
 
   getTaskGroups(page: any, size: any, sortField: any){
@@ -70,7 +70,7 @@ export class AllTaskGroupsComponent implements OnInit {
 
   sortTable(field: any){
     console.log(field);
-    this.getTaskGroups(1, 50, field);
+    this.getTaskGroups(1, 20, field);
 
     if((field == 'task_group') || (field == "-task_group")){
       this.createdAtSorting.resetSort();

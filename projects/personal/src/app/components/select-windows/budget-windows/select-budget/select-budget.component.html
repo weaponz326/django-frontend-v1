@@ -15,8 +15,18 @@
                 <table class="table table-bordered table-sm w-100 page-table">
                     <thead>
                         <tr class="bg-light">
-                            <th width="60%">Budget Name</th>
-                            <th width="40%">Budget Type</th>
+                            <th width="60%">
+                                Budget Name
+                                <app-table-sorting #budgetNameSortingComponentReference
+                                [sortField]="'budget_name'" (sortDirection)="sortTable($event)"
+                                ></app-table-sorting>
+                            </th>
+                            <th width="40%">
+                                Budget Type
+                                <app-table-sorting #budgetTypeSortingComponentReference
+                                [sortField]="'budget_type'" (sortDirection)="sortTable($event)"
+                                ></app-table-sorting>
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -25,13 +35,21 @@
                             <td>{{data?.budget_type}}</td>
                         </tr>
                     </tbody>
+                    <tfoot>
+                        <tr class="bg-light">
+                            <td colspan="2">
+                                <app-table-pagination #tablePaginationComponentReference
+                                [currentPage]="currentPage" [totalPages]="totalPages" (pageSelected)="getBudgets($event, 10, '')"
+                                ></app-table-pagination>
+                            </td>
+                        </tr>
+                    </tfoot>
                 </table>
             </div>
 
             <button [hidden]="true" #closeButtonElementReference data-bs-toggle="modal" data-bs-target="#selectBudgetModal">
                 Launch demo modal
             </button>
-
 
         </div>
     </div>

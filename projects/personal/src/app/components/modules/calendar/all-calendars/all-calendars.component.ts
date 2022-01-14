@@ -42,7 +42,7 @@ export class AllCalendarsComponent implements OnInit {
   }
 
   ngAfterViewInit(): void {
-    this.getCalendars(1, 50, "");
+    this.getCalendars(1, 20, "");
   }
 
   getCalendars(page: any, size: any, sortField: any){
@@ -70,7 +70,7 @@ export class AllCalendarsComponent implements OnInit {
 
   sortTable(field: any){
     console.log(field);
-    this.getCalendars(1, 50, field);
+    this.getCalendars(1, 20, field);
 
     if((field == 'calendar_name') || (field == "-calendar_name")){
       this.createdAtSorting.resetSort();

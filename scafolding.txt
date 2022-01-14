@@ -96,7 +96,6 @@
 					- all notes (C)
                     - new note (C)
 					- view note (C)
-                    - note files (C)
 				+ accounts (M)
 					- dashboard  (C)
 					- all accounts (C)

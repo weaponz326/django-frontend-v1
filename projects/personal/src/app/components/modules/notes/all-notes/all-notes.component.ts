@@ -41,7 +41,7 @@ export class AllNotesComponent implements OnInit {
   }
 
   ngAfterViewInit(): void {
-    this.getNotes(1, 50, "");
+    this.getNotes(1, 20, "");
   }
 
   getNotes(page: any, size: any, sortField: any){
@@ -69,7 +69,7 @@ export class AllNotesComponent implements OnInit {
 
   sortTable(field: any){
     console.log(field);
-    this.getNotes(1, 50, field);
+    this.getNotes(1, 20, field);
 
     if((field == 'subject') || (field == "-subject")){
       this.createdAtSorting.resetSort();
