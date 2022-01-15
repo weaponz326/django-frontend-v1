@@ -132,8 +132,8 @@
 						- select task group (C)
 						- select task item (C)
 		+ services
-			+ auth api (S)
-            + pdf print
+			- auth api (S)
+            - pdf print
 			+ modules
 				- portal api (S)
 				- settings api (S)
@@ -158,6 +158,21 @@
 			- tasks model
 		+ guards
 			- auth (G)
+            + modules
+                + portal
+                    - view rink
+                    - send rink
+                + settings
+                + calendar
+                    - view calendar
+                + budget
+                    - view budget
+                + notes
+                    - view note
+                + accounts
+                    - view account
+                + tasks
+                    - view task group
 	+ restaurant
 		+ pages
 			- guest landing page (Mr)(C)

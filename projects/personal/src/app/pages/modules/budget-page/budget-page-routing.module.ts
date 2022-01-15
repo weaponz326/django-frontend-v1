@@ -6,6 +6,8 @@ import { AllBudgetComponent } from '../../../components/modules/budget/all-budge
 import { ViewBudgetComponent } from '../../../components/modules/budget/view-budget/view-budget.component';
 import { DashboardComponent } from '../../../components/modules/budget/dashboard/dashboard.component';
 
+import { ViewBudgetGuard } from '../../../guards/modules/budget/view-budget.guard';
+
 
 const routes: Routes = [
   {
@@ -15,7 +17,7 @@ const routes: Routes = [
       { path: "", component: DashboardComponent },
       { path: "dashboard", component: DashboardComponent },
       { path: "all-budget", component: AllBudgetComponent },
-      { path: "view-budget", component: ViewBudgetComponent },
+      { path: "view-budget", component: ViewBudgetComponent, canActivate: [ViewBudgetGuard] },
     ]
   }
 ];

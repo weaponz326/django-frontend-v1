@@ -8,6 +8,8 @@ import { AllCalendarsComponent } from '../../../components/modules/calendar/all-
 import { NewCalendarComponent } from '../../../components/modules/calendar/new-calendar/new-calendar.component';
 import { AllSchedulesComponent } from '../../../components/modules/calendar/all-schedules/all-schedules.component';
 
+import { ViewCalendarGuard } from '../../../guards/modules/calendar/view-calendar.guard';
+
 
 const routes: Routes = [
   {
@@ -18,7 +20,7 @@ const routes: Routes = [
       { path: "dashboard", component: DashboardComponent },
       { path: "all-calendars", component: AllCalendarsComponent },
       { path: "new-calendar", component: NewCalendarComponent },
-      { path: "view-calendar", component: ViewCalendarComponent },
+      { path: "view-calendar", component: ViewCalendarComponent, canActivate: [ViewCalendarGuard] },
       { path: "all-schedules", component: AllSchedulesComponent },
     ]
   }

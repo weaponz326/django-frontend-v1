@@ -7,6 +7,8 @@ import { ViewAccountComponent } from '../../../components/modules/accounts/view-
 import { AllTransactionsComponent } from '../../../components/modules/accounts/all-transactions/all-transactions.component';
 import { DashboardComponent } from '../../../components/modules/accounts/dashboard/dashboard.component';
 
+import { ViewAccountGuard } from '../../../guards/modules/accounts/view-account.guard';
+
 
 const routes: Routes = [
   {
@@ -16,7 +18,7 @@ const routes: Routes = [
       { path: "", component: DashboardComponent },
       { path: "dashboard", component: DashboardComponent },
       { path: "all-accounts", component: AllAccountsComponent },
-      { path: "view-account", component: ViewAccountComponent },
+      { path: "view-account", component: ViewAccountComponent, canActivate: [ViewAccountGuard] },
       { path: "all-transactions", component: AllTransactionsComponent },
     ]
   }

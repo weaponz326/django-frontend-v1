@@ -81,7 +81,7 @@ export class ViewNoteComponent implements OnInit {
         res => {
           console.log(res);
           sessionStorage.removeItem('personal_note_id');
-          this.router.navigateByUrl('/home/notes/new-note');
+          this.router.navigateByUrl('/home/notes/all-notes');
         },
         err => {
           console.log(err);

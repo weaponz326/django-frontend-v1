@@ -9,6 +9,9 @@ import { SettingsComponent } from '../../../components/modules/portal/settings/s
 import { TimelineComponent } from '../../../components/modules/portal/timeline/timeline.component';
 import { ViewRinkComponent } from '../../../components/modules/portal/view-rink/view-rink.component';
 
+import { SendRinkGuard } from '../../../guards/modules/portal/send-rink.guard';
+import { ViewRinkGuard } from '../../../guards/modules/portal/view-rink.guard';
+
 const routes: Routes = [
   {
     path: "",
@@ -18,9 +21,9 @@ const routes: Routes = [
       { path: "dashboard", component: DashboardComponent },
       { path: "settings", component: SettingsComponent },
       { path: "timeline", component: TimelineComponent },
-      { path: "new-rink", component: NewRinkComponent },
+      { path: "new-rink", component: NewRinkComponent, canActivate: [SendRinkGuard] },
       { path: "search", component: SearchViewComponent },
-      { path: "view-rink", component: ViewRinkComponent },
+      { path: "view-rink", component: ViewRinkComponent, canActivate: [ViewRinkGuard] },
     ]
   },
 ];

@@ -151,15 +151,13 @@
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/bootstrap-icons/font/bootstrap-icons.css",
               "node_modules/quill/dist/quill.core.css",
-              "node_modules/quill/dist/quill.bubble.css",
-              "node_modules/quill/dist/quill.snow.css",
               "node_modules/quill-emoji/dist/quill-emoji.css",
               "projects/personal/src/assets/styles/sb-admin-2.min.css",
               "projects/personal/src/styles.scss"
             ],
             "scripts": [
               "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
-              "node_modules/quill/dist/quill.js",
+              "node_modules/quill/dist/quill.min.js",
               "projects/personal/src/assets/scripts/sb-admin-2.min.js"
             ]
           },

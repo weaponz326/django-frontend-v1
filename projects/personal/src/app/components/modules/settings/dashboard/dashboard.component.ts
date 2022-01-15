@@ -6,7 +6,7 @@ import { Color, Label, SingleDataSet } from 'ng2-charts';
 import { environment } from 'projects/personal/src/environments/environment'
 import { SettingsApiService } from 'projects/personal/src/app/services/modules/settings-api/settings-api.service';
 
-import { ConnectionPromptComponent } from '../../../module-utilities/connection-prompt/connection-prompt.component'
+import { ConnectionToastComponent } from '../../../module-utilities/connection-toast/connection-toast.component'
 
 
 @Component({
@@ -18,7 +18,7 @@ export class DashboardComponent implements OnInit {
 
   constructor(private settingsApi: SettingsApiService) { }
 
-  @ViewChild('connectionPromptComponentReference', { read: ConnectionPromptComponent, static: false }) connectionPrompt!: ConnectionPromptComponent;
+  @ViewChild('connectionToastComponentReference', { read: ConnectionToastComponent, static: false }) connectionToast!: ConnectionToastComponent;
 
   navHeading: any[] = [
     { text: "Dashboard", url: "/home/portal/dashboard" },
@@ -58,7 +58,7 @@ export class DashboardComponent implements OnInit {
           },
           err => {
             console.log(err);
-            this.connectionPrompt.toast.open();
+            this.connectionToast.openToast();
           }
         )
     });
