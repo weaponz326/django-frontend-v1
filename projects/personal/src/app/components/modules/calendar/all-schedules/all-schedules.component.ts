@@ -35,6 +35,7 @@ export class AllSchedulesComponent implements OnInit {
 
   currentPage = 0;
   totalPages = 0;
+  totalItems = 0;
 
   ngOnInit(): void {
   }
@@ -51,6 +52,7 @@ export class AllSchedulesComponent implements OnInit {
           this.schedulesGridData = res.results;
           this.currentPage = res.current_page;
           this.totalPages = res.total_pages;
+          this.totalItems = res.count;
         },
         err => {
           this.connectionToast.openToast();
@@ -87,7 +89,7 @@ export class AllSchedulesComponent implements OnInit {
 
   onPrint(){
     console.log("lets start printing...");
-    this.calendarPrint.printAllSchedules(this.schedulesGridData);
+    this.calendarPrint.getPrintSchedules(this.totalItems);
   }
 
 }

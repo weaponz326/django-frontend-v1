@@ -1,6 +1,7 @@
-import { Injectable } from '@angular/core';
+import { Injectable, ViewChild } from '@angular/core';
 
 import { PdfPrintService } from 'projects/personal/src/app/services/pdf-print/pdf-print.service';
+import { AccountsApiService } from 'projects/personal/src/app/services/modules/accounts-api/accounts-api.service';
 
 
 @Injectable({
@@ -8,12 +9,34 @@ import { PdfPrintService } from 'projects/personal/src/app/services/pdf-print/pd
 })
 export class AccountsPrintService {
 
-  constructor(private pdfPrint: PdfPrintService) { }
+  constructor(
+    private pdfPrint: PdfPrintService,
+    private accountsApi: AccountsApiService,
+  ) { }
+
+  accountsGridData: any[] = [];
+  accountFormData: any;
+  transactionsGridData: any[] = [];
+  allTransactionsGridData: any[] = [];
 
   // all accounts
 
-  printAllAccounts(gridData: any){
-    let mappedData = gridData.map(function(obj: any){
+  getPrintAccounts(count: any){
+    this.accountsApi.getAccounts(1, count, "")
+      .subscribe(
+        res => {
+          console.log(res);
+          this.accountsGridData = res.results;
+          this.printAllAccounts();
+        },
+        err => {
+          console.log(err);
+        }
+      )
+  }
+
+  printAllAccounts(){
+    let mappedData = this.accountsGridData.map(function(obj: any){
       return {
         account_name: obj.account_name,
         account_number: obj.account_number,
@@ -47,8 +70,36 @@ export class AccountsPrintService {
 
   // view account
 
-  printViewAccount(formData: any, gridData: any){
-    let incomeMappedData = gridData.map(function(obj: any){
+  getPrintAccount(){
+    this.accountsApi.getSingleAccount()
+      .subscribe(
+        res => {
+          console.log(res);
+          this.accountFormData = res;
+          this.getPrintTransactions();
+        },
+        err => {
+          console.log(err);
+        }
+      )
+  }
+
+  getPrintTransactions(){
+    this.accountsApi.getTransactions()
+      .subscribe(
+        res => {
+          console.log(res);
+          this.transactionsGridData = res;
+          this.printViewAccount();
+        },
+        err => {
+          console.log(err);
+        }
+      )
+  }
+
+  printViewAccount(){
+    let incomeMappedData = this.transactionsGridData.map(function(obj: any){
       return {
         transaction_date: new Date(obj.transaction_date).toISOString().slice(0, 16),
         description: obj.description,
@@ -70,10 +121,10 @@ export class AccountsPrintService {
       {
         columns: [
           [
-            { text: 'Account Name: ' + formData.accountName },
-            { text: 'Account No: ' + formData.accountNumber },
-            { text: 'Bank Name: ' + formData.bankName },
-            { text: 'Account Type: ' + formData.accountType },
+            { text: 'Account Name: ' + this.accountFormData.account_name },
+            { text: 'Account No: ' + this.accountFormData.account_number },
+            { text: 'Bank Name: ' + this.accountFormData.bank_name },
+            { text: 'Account Type: ' + this.accountFormData.account_type },
           ],
           [
             { text: 'Account Balance', bold: true, alignment: 'center' },
@@ -97,8 +148,22 @@ export class AccountsPrintService {
 
   // all transaction
 
-  printAllTransactions(gridData: any){
-    let mappedData = gridData.map(function(obj: any){
+  getPrintAllTransactions(count: any){
+    this.accountsApi.getAllTransactions(1, count, "")
+      .subscribe(
+        res => {
+          console.log(res);
+          this.allTransactionsGridData = res.results;
+          this.printAllTransactions();
+        },
+        err => {
+          console.log(err);
+        }
+      )
+  }
+
+  printAllTransactions(){
+    let mappedData = this.allTransactionsGridData.map(function(obj: any){
       return {
         transaction_date: new Date(obj.transaction_date).toISOString().slice(0, 16),
         account_name: obj.account.account_name,

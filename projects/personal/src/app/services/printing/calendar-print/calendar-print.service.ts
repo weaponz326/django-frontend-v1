@@ -1,6 +1,7 @@
-import { Injectable } from '@angular/core';
+import { Injectable, ViewChild } from '@angular/core';
 
 import { PdfPrintService } from 'projects/personal/src/app/services/pdf-print/pdf-print.service';
+import { CalendarApiService } from 'projects/personal/src/app/services/modules/calendar-api/calendar-api.service';
 
 
 @Injectable({
@@ -8,12 +9,32 @@ import { PdfPrintService } from 'projects/personal/src/app/services/pdf-print/pd
 })
 export class CalendarPrintService {
 
-  constructor(private pdfPrint: PdfPrintService) { }
+  constructor(
+    private pdfPrint: PdfPrintService,
+    private calendarApi: CalendarApiService,
+  ) { }
+
+  calendarGridData: any[] = [];
+  schedulesGridData: any[] = [];
 
   // all calendars
 
-  printAllCalendars(gridData: any){
-    let mappedData = gridData.map(function(obj: any){
+  getPrintCalendars(count: any){
+    this.calendarApi.getCalendars(1, count, "")
+      .subscribe(
+        res => {
+          console.log(res);
+          this.calendarGridData = res.results;
+          this.printAllCalendars();
+        },
+        err => {
+          console.log(err);
+        }
+      )
+  }
+
+  printAllCalendars(){
+    let mappedData = this.calendarGridData.map(function(obj: any){
       return {
         calendar_name: obj.calendar_name,
         created_at: new Date(obj.created_at).toISOString().slice(0, 16),
@@ -21,7 +42,7 @@ export class CalendarPrintService {
     });
 
     var body = [['Calendar Name', 'Created At']];
-    
+
     mappedData.forEach((data: any) => {
       var row = [];
       for(let x in data){
@@ -40,14 +61,28 @@ export class CalendarPrintService {
         }
       }
     ]
-    
+
     this.pdfPrint.openPdf(content);
   }
 
   // all schedules
 
-  printAllSchedules(gridData: any){
-    let mappedData = gridData.map(function(obj: any){
+  getPrintSchedules(count: any){
+    this.calendarApi.getAllSchedules(1, count, "")
+      .subscribe(
+        res => {
+          console.log(res);
+          this.schedulesGridData = res.results;
+          this.printAllSchedules();
+        },
+        err => {
+          console.log(err);
+        }
+      )
+  }
+
+  printAllSchedules(){
+    let mappedData = this.schedulesGridData.map(function(obj: any){
       return {
         schedule_name: obj.schedule_name,
         start_date: new Date(obj.start_date).toISOString().slice(0, 16),
@@ -57,7 +92,7 @@ export class CalendarPrintService {
     });
 
     var body = [['Schedule Name', 'Start Date', 'End Date', 'Status']];
-    
+
     mappedData.forEach((data: any) => {
       var row = [];
       for(let x in data){
@@ -76,7 +111,7 @@ export class CalendarPrintService {
         }
       }
     ]
-    
+
     this.pdfPrint.openPdf(content);
   }
 

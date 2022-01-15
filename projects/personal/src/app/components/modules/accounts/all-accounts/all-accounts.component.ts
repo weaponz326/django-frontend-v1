@@ -38,6 +38,7 @@ export class AllAccountsComponent implements OnInit {
 
   currentPage = 0;
   totalPages = 0;
+  totalItems = 0;
 
   ngOnInit(): void {
   }
@@ -54,6 +55,7 @@ export class AllAccountsComponent implements OnInit {
           this.accountsGridData = res.results;
           this.currentPage = res.current_page;
           this.totalPages = res.total_pages;
+          this.totalItems = res.count;
         },
         err => {
           console.log(err);
@@ -89,7 +91,7 @@ export class AllAccountsComponent implements OnInit {
 
   onPrint(){
     console.log("lets start printing...");
-    this.accountsPrint.printAllAccounts(this.accountsGridData);
+    this.accountsPrint.getPrintAccounts(this.totalItems);
   }
 
 }

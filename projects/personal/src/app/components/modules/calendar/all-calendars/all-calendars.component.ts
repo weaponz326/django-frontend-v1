@@ -37,6 +37,7 @@ export class AllCalendarsComponent implements OnInit {
 
   currentPage = 0;
   totalPages = 0;
+  totalItems = 0;
 
   ngOnInit(): void {
   }
@@ -53,6 +54,7 @@ export class AllCalendarsComponent implements OnInit {
           this.calendarGridData = res.results;
           this.currentPage = res.current_page;
           this.totalPages = res.total_pages;
+          this.totalItems = res.count;
         },
         err => {
           this.connectionToast.openToast();
@@ -82,7 +84,7 @@ export class AllCalendarsComponent implements OnInit {
 
   onPrint(){
     console.log("lets start printing...");
-    this.calendarPrint.printAllCalendars(this.calendarGridData);
+    this.calendarPrint.getPrintCalendars(this.totalItems);
   }
 
 }

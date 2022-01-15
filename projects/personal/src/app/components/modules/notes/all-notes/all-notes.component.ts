@@ -36,6 +36,7 @@ export class AllNotesComponent implements OnInit {
 
   currentPage = 0;
   totalPages = 0;
+  totalItems = 0;
 
   ngOnInit(): void {
   }
@@ -52,6 +53,7 @@ export class AllNotesComponent implements OnInit {
           this.notesGridData = res.results;
           this.currentPage = res.current_page;
           this.totalPages = res.total_pages;
+          this.totalItems = res.count;
         },
         err => {
           console.log(err);
@@ -87,7 +89,7 @@ export class AllNotesComponent implements OnInit {
 
   onPrint(){
     console.log("lets start printing...");
-    this.notesPrint.printAllNotes(this.notesGridData);
+    this.notesPrint.getPrintNotes(this.totalItems);
   }
 
 }

@@ -36,6 +36,7 @@ export class AllTaskItemsComponent implements OnInit {
 
   currentPage = 0;
   totalPages = 0;
+  totalItems = 0;
 
   ngOnInit(): void {
   }
@@ -52,6 +53,7 @@ export class AllTaskItemsComponent implements OnInit {
           this.taskItemsGridData = res.results;
           this.currentPage = res.current_page;
           this.totalPages = res.total_pages;
+          this.totalItems = res.count;
         },
         err => {
           console.log(err);
@@ -98,7 +100,7 @@ export class AllTaskItemsComponent implements OnInit {
 
   onPrint(){
     console.log("lets start printing...");
-    this.tasksPrint.printAllTaskItems(this.taskItemsGridData);
+    this.tasksPrint.getPrintAllTaskItems(this.totalItems);
   }
 
 }

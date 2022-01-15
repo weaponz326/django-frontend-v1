@@ -1,6 +1,7 @@
-import { Injectable } from '@angular/core';
+import { Injectable, ViewChild } from '@angular/core';
 
 import { PdfPrintService } from 'projects/personal/src/app/services/pdf-print/pdf-print.service';
+import { BudgetApiService } from 'projects/personal/src/app/services/modules/budget-api/budget-api.service';
 
 
 @Injectable({
@@ -8,12 +9,34 @@ import { PdfPrintService } from 'projects/personal/src/app/services/pdf-print/pd
 })
 export class BudgetPrintService {
 
-  constructor(private pdfPrint: PdfPrintService) { }
+  constructor(
+    private pdfPrint: PdfPrintService,
+    private budgetApi: BudgetApiService,
+  ) { }
+
+  budgetGridData: any[] = [];
+  budgetFormData: any;
+  incomeGridData: any[] = [];
+  expenditureGridData: any[] = [];
 
   // all budget
 
-  printAllBudget(gridData: any){
-    let mappedData = gridData.map(function(obj: any){
+  getPrintBudgets(count: any){
+    this.budgetApi.getBudgets(1, count, "")
+      .subscribe(
+        res => {
+          console.log(res);
+          this.budgetGridData = res.results;
+          this.printAllBudget();
+        },
+        err => {
+          console.log(err);
+        }
+      )
+  }
+
+  printAllBudget(){
+    let mappedData = this.budgetGridData.map(function(obj: any){
       return {
         budget_name: obj.budget_name,
         budget_type: obj.budget_type,
@@ -46,8 +69,50 @@ export class BudgetPrintService {
 
   // view budget
 
-  printViewBudget(formData: any, incomeGridData: any, expenditureGridData: any){
-    let incomeMappedData = incomeGridData.map(function(obj: any){
+  getPrintBudget(){
+    this.budgetApi.getSingleBudget()
+      .subscribe(
+        res => {
+          console.log(res);
+          this.budgetFormData = res;
+          this.getPrintIncome();
+        },
+        err => {
+          console.log(err);
+        }
+      )
+  }
+
+  getPrintIncome(){
+    this.budgetApi.getIncome()
+      .subscribe(
+        res => {
+          console.log(res);
+          this.incomeGridData = res;
+          this.getPrintExpenditure();
+        },
+        err => {
+          console.log(err);
+        }
+      )
+  }
+
+  getPrintExpenditure(){
+    this.budgetApi.getExpenditure()
+      .subscribe(
+        res => {
+          console.log(res);
+          this.expenditureGridData = res;
+          this.printViewBudget();
+        },
+        err => {
+          console.log(err);
+        }
+      )
+  }
+
+  printViewBudget(){
+    let incomeMappedData = this.incomeGridData.map(function(obj: any){
       return {
         item_number: obj.item_number,
         item_description: obj.item_description,
@@ -64,10 +129,10 @@ export class BudgetPrintService {
       incomeBody.push(row);
     })
 
-    let totalIncome = incomeGridData.reduce((total: number, {amount}: any) => total + Number(amount), 0);
-    incomeBody.push(['', '', totalIncome]);
+    let totalIncome = this.incomeGridData.reduce((total: number, {amount}: any) => total + Number(amount), 0);
+    incomeBody.push(['', '', totalIncome.toString()]);
 
-    let expenditureMappedData = expenditureGridData.map(function(obj: any){
+    let expenditureMappedData = this.expenditureGridData.map(function(obj: any){
       return {
         item_number: obj.item_number,
         item_description: obj.item_description,
@@ -84,15 +149,15 @@ export class BudgetPrintService {
       expenditureBody.push(row);
     })
 
-    let totalExpenditure = expenditureGridData.reduce((total: number, {amount}: any) => total + Number(amount), 0);
-    expenditureBody.push(['', '', totalExpenditure]);
+    let totalExpenditure = this.expenditureGridData.reduce((total: number, {amount}: any) => total + Number(amount), 0);
+    expenditureBody.push(['', '', totalExpenditure.toString()]);
 
     let content = [
       {
         columns: [
           [
-            { text: 'Budget Name: ' + formData.budgetName },
-            { text: 'Budget Type: ' + formData.budgetType },
+            { text: 'Budget Name: ' + this.budgetFormData.budget_name },
+            { text: 'Budget Type: ' + this.budgetFormData.budget_type },
           ],
           [
             { text: 'Income over Expenditure', bold: true, alignment: 'center' },

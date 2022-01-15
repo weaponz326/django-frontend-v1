@@ -116,7 +116,7 @@ export class ViewBudgetComponent implements OnInit {
 
   onPrint(){
     console.log("lets start printing...");
-    this.budgetPrint.printViewBudget(this.budgetForm.value, this.budgetTables.incomeGridData, this.budgetTables.expenditureGridData);
+    this.budgetPrint.getPrintBudget();
   }
 
 }

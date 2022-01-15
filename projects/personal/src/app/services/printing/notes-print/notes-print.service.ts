@@ -1,6 +1,7 @@
-import { Injectable } from '@angular/core';
+import { Injectable, ViewChild } from '@angular/core';
 
 import { PdfPrintService } from 'projects/personal/src/app/services/pdf-print/pdf-print.service';
+import { NotesApiService } from 'projects/personal/src/app/services/modules/notes-api/notes-api.service';
 
 
 @Injectable({
@@ -8,12 +9,31 @@ import { PdfPrintService } from 'projects/personal/src/app/services/pdf-print/pd
 })
 export class NotesPrintService {
 
-  constructor(private pdfPrint: PdfPrintService) { }
+  constructor(
+    private pdfPrint: PdfPrintService,
+    private notesApi: NotesApiService,
+  ) { }
+
+  notesGridData: any[] = [];
 
   // all notes
 
-  printAllNotes(gridData: any){
-    let mappedData = gridData.map(function(obj: any){
+  getPrintNotes(count: any){
+    this.notesApi.getNotes(1, count, "")
+      .subscribe(
+        res => {
+          console.log(res);
+          this.notesGridData = res.results;
+          this.printAllNotes();
+        },
+        err => {
+          console.log(err);
+        }
+      )
+  }
+
+  printAllNotes(){
+    let mappedData = this.notesGridData.map(function(obj: any){
       return {
         subject: obj.subject,
         created_at: new Date(obj.created_at).toISOString().slice(0, 16),
