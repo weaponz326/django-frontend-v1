@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 
 import { SettingsApiService } from 'projects/restaurant/src/app/services/modules/settings-api/settings-api.service';
-import { ConnectionPromptComponent } from 'projects/personal/src/app/components/module-utilities/connection-prompt/connection-prompt.component'
+import { ConnectionToastComponent } from 'projects/personal/src/app/components/module-utilities/connection-toast/connection-toast.component'
 
 
 @Component({
@@ -13,7 +13,7 @@ export class PaymentsHistoryComponent implements OnInit {
 
   constructor(private settingsApi: SettingsApiService) { }
 
-  @ViewChild('connectionPromptComponentReference', { read: ConnectionPromptComponent, static: false }) connectionPrompt!: ConnectionPromptComponent;
+  @ViewChild('connectionToastComponentReference', { read: ConnectionToastComponent, static: false }) connectionToast!: ConnectionToastComponent;
 
   navHeading: any[] = [
     { text: "Billing", url: "/home/settings/billing" },
@@ -38,7 +38,7 @@ export class PaymentsHistoryComponent implements OnInit {
         },
         err => {
           console.log(err);
-          this.connectionPrompt.toast.open();
+          this.connectionToast.openToast();
         }
       )
   }

@@ -6,7 +6,7 @@ import { GridComponent, GridColumn, DataAdapter, Smart } from 'smart-webcomponen
 
 import { MenuApiService } from 'projects/restaurant/src/app/services/modules/menu-api/menu-api.service';
 import { AllMenuGroupsPrintComponent } from 'projects/restaurant/src/app/components/printing/menu-print/all-menu-groups-print/all-menu-groups-print.component'
-import { ConnectionPromptComponent } from 'projects/personal/src/app/components/module-utilities/connection-prompt/connection-prompt.component'
+import { ConnectionToastComponent } from 'projects/personal/src/app/components/module-utilities/connection-toast/connection-toast.component'
 
 
 @Component({
@@ -24,7 +24,7 @@ export class AllMenuGroupsComponent implements OnInit {
   @ViewChild('newMenuGroupButtonReference', { read: ButtonComponent, static: false }) newMenuGroupButton!: ButtonComponent;
   @ViewChild('menuGroupGridReference', { read: GridComponent, static: false }) menuGroupGrid!: GridComponent;
 
-  @ViewChild('connectionPromptComponentReference', { read: ConnectionPromptComponent, static: false }) connectionPrompt!: ConnectionPromptComponent;
+  @ViewChild('connectionToastComponentReference', { read: ConnectionToastComponent, static: false }) connectionToast!: ConnectionToastComponent;
   @ViewChild('allMenuGroupsPrintComponentReference', { read: AllMenuGroupsPrintComponent, static: false }) allMenuGroupsPrint!: AllMenuGroupsPrintComponent;
 
   navHeading: any[] = [
@@ -58,7 +58,7 @@ export class AllMenuGroupsComponent implements OnInit {
         },
         err => {
           console.log(err);
-          this.connectionPrompt.toast.open();
+          this.connectionToast.openToast();
         }
       )
   }
@@ -118,7 +118,7 @@ export class AllMenuGroupsComponent implements OnInit {
       //   },
       //   err => {
       //     console.log(err);
-      //     this.connectionPrompt.toast.open();
+      //     this.connectionToast.openToast();
       //   }
       // )
   }

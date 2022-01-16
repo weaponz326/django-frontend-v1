@@ -6,7 +6,7 @@ import { InputComponent } from 'smart-webcomponents-angular/input';
 import { ButtonComponent } from 'smart-webcomponents-angular/button';
 
 import { SettingsApiService } from 'projects/restaurant/src/app/services/modules/settings-api/settings-api.service';
-import { ConnectionPromptComponent } from 'projects/personal/src/app/components/module-utilities/connection-prompt/connection-prompt.component'
+import { ConnectionToastComponent } from 'projects/personal/src/app/components/module-utilities/connection-toast/connection-toast.component'
 
 
 @Component({
@@ -27,7 +27,7 @@ export class BillingComponent implements OnInit {
 
   @ViewChild('buttonReference', { read: ButtonComponent, static: false }) button!: ButtonComponent;
 
-  @ViewChild('connectionPromptComponentReference', { read: ConnectionPromptComponent, static: false }) connectionPrompt!: ConnectionPromptComponent;
+  @ViewChild('connectionToastComponentReference', { read: ConnectionToastComponent, static: false }) connectionToast!: ConnectionToastComponent;
 
   navHeading: any[] = [
     { text: "Billing", url: "/home/settings/billing" },
@@ -61,7 +61,7 @@ export class BillingComponent implements OnInit {
         },
         err => {
           console.log(err);
-          this.connectionPrompt.toast.open();
+          this.connectionToast.openToast();
         }
       )
   }
@@ -83,7 +83,7 @@ export class BillingComponent implements OnInit {
         },
         err => {
           console.log(err);
-          this.connectionPrompt.toast.open();
+          this.connectionToast.openToast();
         }
       )
   }

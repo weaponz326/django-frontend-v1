@@ -5,7 +5,7 @@ import { ButtonComponent } from 'smart-webcomponents-angular/button';
 
 import { StaffApiService } from 'projects/restaurant/src/app/services/modules/staff-api/staff-api.service';
 import { StaffFormComponent } from '../staff-form/staff-form.component';
-import { ConnectionPromptComponent } from 'projects/personal/src/app/components/module-utilities/connection-prompt/connection-prompt.component'
+import { ConnectionToastComponent } from 'projects/personal/src/app/components/module-utilities/connection-toast/connection-toast.component'
 
 
 @Component({
@@ -21,7 +21,7 @@ export class NewStaffComponent implements OnInit {
   ) { }
 
   @ViewChild('staffFormComponentReference', { read: StaffFormComponent, static: false }) staffForm!: StaffFormComponent;
-  @ViewChild('connectionPromptComponentReference', { read: ConnectionPromptComponent, static: false }) connectionPrompt!: ConnectionPromptComponent;
+  @ViewChild('connectionToastComponentReference', { read: ConnectionToastComponent, static: false }) connectionToast!: ConnectionToastComponent;
 
   navHeading: any[] = [
     { text: "New Staff", url: "/home/staff/new-staff" },
@@ -38,7 +38,7 @@ export class NewStaffComponent implements OnInit {
       first_name: this.staffForm.firstNameInput.value,
       last_name: this.staffForm.lastNameInput.value,
       sex: this.staffForm.sexDropDownList.value,
-      date_of_birth: this.staffForm.dobCustomWidget.value,
+      // date_of_birth: this.staffForm.dobCustomWidget.value,
       photo: this.staffForm.photoCustomWidget.image,
       nationality: this.staffForm.nationalityInput.value,
       religion: this.staffForm.religionInput.value,
@@ -65,7 +65,7 @@ export class NewStaffComponent implements OnInit {
         },
         err => {
           console.log(err);
-          this.connectionPrompt.toast.open();
+          this.connectionToast.openToast();
         }
       )
   }

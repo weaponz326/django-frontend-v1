@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild, Output, EventEmitter } from '@angular/cor
 
 import { ButtonComponent } from 'smart-webcomponents-angular/button';
 
-import { ImageUploadComponent } from 'projects/personal/src/app/components/custom-widgets/image-upload/image-upload.component'
+import { ImageInputComponent } from 'projects/personal/src/app/components/module-utilities/image-input/image-input.component'
 
 
 @Component({
@@ -15,7 +15,7 @@ export class LogoComponent implements OnInit {
   constructor() { }
 
   @ViewChild('saveButtonReference', { read: ButtonComponent, static: false }) saveButton!: ButtonComponent;
-  @ViewChild('imageUploadComponentReference', { read: ImageUploadComponent, static: false }) imageUpload!: ImageUploadComponent;
+  @ViewChild('imageInputComponentReference', { read: ImageInputComponent, static: false }) imageInput!: ImageInputComponent;
 
   @Output() logoEvent = new EventEmitter<any>();
 
@@ -24,7 +24,7 @@ export class LogoComponent implements OnInit {
 
   emitLogo(){
     let data = {
-      logo: this.imageUpload.image
+      logo: this.imageInput.image
     }
 
   	this.logoEvent.emit(data);

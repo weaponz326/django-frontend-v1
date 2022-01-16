@@ -11,7 +11,6 @@ import { DropDownListModule } from 'smart-webcomponents-angular/dropdownlist';
 import { NumericTextBoxModule } from 'smart-webcomponents-angular/numerictextbox';
 
 import { ModuleUtilitiesModule } from 'projects/personal/src/app/components/module-utilities/module-utilities.module';
-import { CustomWidgetsModule } from 'projects/personal/src/app/components/custom-widgets/custom-widgets.module';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SettingsComponent } from './settings/settings.component';
@@ -48,7 +47,6 @@ import { PaymentsHistoryComponent } from './payments-history/payments-history.co
     DropDownListModule,
     NumericTextBoxModule,
     ModuleUtilitiesModule,
-    CustomWidgetsModule,
   ]
 })
 export class SettingsModule { }

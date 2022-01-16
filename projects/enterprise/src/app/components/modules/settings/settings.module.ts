@@ -10,7 +10,6 @@ import { MultilineTextBoxModule } from 'smart-webcomponents-angular/multilinetex
 import { DropDownListModule } from 'smart-webcomponents-angular/dropdownlist';
 
 import { ModuleUtilitiesModule } from 'projects/personal/src/app/components/module-utilities/module-utilities.module';
-import { CustomWidgetsModule } from 'projects/personal/src/app/components/custom-widgets/custom-widgets.module';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SettingsComponent } from './settings/settings.component';
@@ -48,7 +47,6 @@ import { PaymentsHistoryComponent } from './payments-history/payments-history.co
     MultilineTextBoxModule,
     DropDownListModule,
     ModuleUtilitiesModule,
-    CustomWidgetsModule,
   ]
 })
 export class SettingsModule { }

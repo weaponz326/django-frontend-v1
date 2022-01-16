@@ -4,7 +4,7 @@ import { ButtonComponent } from 'smart-webcomponents-angular/button';
 import { GridComponent, GridColumn, DataAdapter, Smart } from 'smart-webcomponents-angular/grid';
 
 import { PaymentsApiService } from 'projects/restaurant/src/app/services/modules/payments-api/payments-api.service';
-import { ConnectionPromptComponent } from 'projects/personal/src/app/components/module-utilities/connection-prompt/connection-prompt.component'
+import { ConnectionToastComponent } from 'projects/personal/src/app/components/module-utilities/connection-toast/connection-toast.component'
 
 
 @Component({
@@ -19,7 +19,7 @@ export class AllPaymentsComponent implements OnInit {
   @ViewChild('newMenuPaymentButtonReference', { read: ButtonComponent, static: false }) newPaymentButton!: ButtonComponent;
   @ViewChild('paymentsGridReference', { read: GridComponent, static: false }) paymentsGrid!: GridComponent;
 
-  @ViewChild('connectionPromptComponentReference', { read: ConnectionPromptComponent, static: false }) connectionPrompt!: ConnectionPromptComponent;
+  @ViewChild('connectionToastComponentReference', { read: ConnectionToastComponent, static: false }) connectionToast!: ConnectionToastComponent;
 
   navHeading: any[] = [
     { text: "All Payments", url: "/home/payments/all-payments" },
@@ -44,7 +44,7 @@ export class AllPaymentsComponent implements OnInit {
         },
         err => {
           console.log(err);
-          this.connectionPrompt.toast.open();
+          this.connectionToast.openToast();
         }
       )
   }

@@ -4,7 +4,7 @@ import { WindowComponent } from 'smart-webcomponents-angular/window';
 import { GridComponent, GridColumn, DataAdapter, Smart } from 'smart-webcomponents-angular/grid';
 
 import { ReservationsApiService } from 'projects/restaurant/src/app/services/modules/reservations-api/reservations-api.service';
-import { ConnectionPromptComponent } from 'projects/personal/src/app/components/module-utilities/connection-prompt/connection-prompt.component';
+import { ConnectionToastComponent } from 'projects/personal/src/app/components/module-utilities/connection-toast/connection-toast.component';
 
 
 @Component({
@@ -21,7 +21,7 @@ export class SelectReservationComponent implements OnInit {
   @ViewChild('window', { read: WindowComponent, static: false }) window!: WindowComponent;
   @ViewChild('grid', { read: GridComponent, static: false }) grid!: GridComponent;
 
-  @ViewChild('connectionPromptComponentReference', { read: ConnectionPromptComponent, static: false }) connectionPrompt!: ConnectionPromptComponent;
+  @ViewChild('connectionToastComponentReference', { read: ConnectionToastComponent, static: false }) connectionToast!: ConnectionToastComponent;
 
   sorting = { enabled: true }
   filtering = { enabled: true }
@@ -41,7 +41,7 @@ export class SelectReservationComponent implements OnInit {
         },
         err => {
           console.log(err);
-          this.connectionPrompt.toast.open();
+          this.connectionToast.openToast();
         }
       )
   }

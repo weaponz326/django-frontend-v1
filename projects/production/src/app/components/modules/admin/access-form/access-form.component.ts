@@ -3,7 +3,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { CheckBoxComponent } from 'smart-webcomponents-angular/checkbox';
 
 import { AdminApiService } from 'projects/production/src/app/services/modules/admin-api/admin-api.service';
-import { ConnectionPromptComponent } from 'projects/personal/src/app/components/module-utilities/connection-prompt/connection-prompt.component';
+import { ConnectionToastComponent } from 'projects/personal/src/app/components/module-utilities/connection-toast/connection-toast.component';
 
 
 @Component({
@@ -32,7 +32,7 @@ export class AccessFormComponent implements OnInit {
   @ViewChild('tasksCheckBoxReference', { read: CheckBoxComponent, static: false }) tasksCheckBox!: CheckBoxComponent;
   @ViewChild('workersCheckBoxReference', { read: CheckBoxComponent, static: false }) workersCheckBox!: CheckBoxComponent;
 
-  @ViewChild('connectionPromptComponentReference', { read: ConnectionPromptComponent, static: false }) connectionPrompt!: ConnectionPromptComponent;
+  @ViewChild('connectionToastComponentReference', { read: ConnectionToastComponent, static: false }) connectionToast!: ConnectionToastComponent;
 
   ngOnInit(): void {
   }
@@ -60,7 +60,7 @@ export class AccessFormComponent implements OnInit {
         },
         err => {
           console.log(err);
-          this.connectionPrompt.toast.open();
+          this.connectionToast.openToast();
         }
       )
   }
@@ -90,7 +90,7 @@ export class AccessFormComponent implements OnInit {
         },
         err => {
           console.log(err);
-          this.connectionPrompt.toast.open();
+          this.connectionToast.openToast();
         }
       )
   }

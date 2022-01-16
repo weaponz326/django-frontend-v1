@@ -1,7 +1,0 @@
-<input #imageUpload type="file" requiredFileType="image" class="d-none" (change)="onImageSelected($event) "/>
-
-<div class="card border rounded list-pointer" [style.width.px]="width" [style.height.px]="height"  (click)="imageUpload.click()">
-    <div class="card-img-top">
-        <img [src]="imgSrc" class="w-100 h-100" />
-    </div>
-</div>

@@ -8,7 +8,7 @@ import { LocationComponent } from '../profile-content/location/location.componen
 import { ContactComponent } from '../profile-content/contact/contact.component';
 
 import { SettingsApiService } from 'projects/enterprise/src/app/services/modules/settings-api/settings-api.service';
-import { ConnectionPromptComponent } from 'projects/personal/src/app/components/module-utilities/connection-prompt/connection-prompt.component'
+import { ConnectionToastComponent } from 'projects/personal/src/app/components/module-utilities/connection-toast/connection-toast.component'
 
 
 @Component({
@@ -27,7 +27,7 @@ export class ProfileComponent implements OnInit {
   @ViewChild('locationComponentReference') location!: LocationComponent;
   @ViewChild('contactComponentReference') contact!: ContactComponent;
 
-  @ViewChild('connectionPromptComponentReference', { read: ConnectionPromptComponent, static: false }) connectionPrompt!: ConnectionPromptComponent;
+  @ViewChild('connectionToastComponentReference', { read: ConnectionToastComponent, static: false }) connectionToast!: ConnectionToastComponent;
 
   navHeading: any[] = [
     { text: "Profile", url: "/home/settings/profile" },
@@ -49,7 +49,7 @@ export class ProfileComponent implements OnInit {
       },
       err => {
         console.log(err);
-        this.connectionPrompt.toast.open();
+        this.connectionToast.openToast();
       }
     )
   }
@@ -68,7 +68,7 @@ export class ProfileComponent implements OnInit {
         },
         err => {
           console.log(err);
-          this.connectionPrompt.toast.open();
+          this.connectionToast.openToast();
         }
       )
   }
@@ -89,7 +89,7 @@ export class ProfileComponent implements OnInit {
           this.basic.saveButton.disabled = false;
           this.logo.saveButton.disabled = false;
 
-          this.connectionPrompt.toast.open();
+          this.connectionToast.openToast();
         }
       )
   }
@@ -112,7 +112,7 @@ export class ProfileComponent implements OnInit {
           this.location.saveButton.disabled = false;
           this.contact.saveButton.disabled = false;
 
-          this.connectionPrompt.toast.open();
+          this.connectionToast.openToast();
         }
       )
   }

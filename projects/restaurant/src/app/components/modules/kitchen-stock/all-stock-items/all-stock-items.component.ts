@@ -4,7 +4,7 @@ import { ButtonComponent } from 'smart-webcomponents-angular/button';
 import { GridComponent, GridColumn, DataAdapter, Smart } from 'smart-webcomponents-angular/grid';
 
 import { KitchenStockApiService } from 'projects/restaurant/src/app/services/modules/kitchen-stock-api/kitchen-stock-api.service';
-import { ConnectionPromptComponent } from 'projects/personal/src/app/components/module-utilities/connection-prompt/connection-prompt.component'
+import { ConnectionToastComponent } from 'projects/personal/src/app/components/module-utilities/connection-toast/connection-toast.component'
 
 
 @Component({
@@ -19,7 +19,7 @@ export class AllStockItemsComponent implements OnInit {
   @ViewChild('addItemButtonReference', { read: ButtonComponent, static: false }) addItemButton!: ButtonComponent;
   @ViewChild('kitchenStockGridReference', { read: GridComponent, static: false }) kitchenStockGrid!: GridComponent;
 
-  @ViewChild('connectionPromptComponentReference', { read: ConnectionPromptComponent, static: false }) connectionPrompt!: ConnectionPromptComponent;
+  @ViewChild('connectionToastComponentReference', { read: ConnectionToastComponent, static: false }) connectionToast!: ConnectionToastComponent;
 
   navHeading: any[] = [
     { text: "All Items", url: "/home/kitchenStock/all-stock-items" },
@@ -44,7 +44,7 @@ export class AllStockItemsComponent implements OnInit {
         },
         err => {
           console.log(err);
-          this.connectionPrompt.toast.open();
+          this.connectionToast.openToast();
         }
       )
   }

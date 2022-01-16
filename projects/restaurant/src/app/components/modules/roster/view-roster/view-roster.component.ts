@@ -5,7 +5,7 @@ import { InputComponent } from 'smart-webcomponents-angular/input';
 import { DateTimePickerComponent } from 'smart-webcomponents-angular/datetimepicker';
 
 import { RosterApiService } from 'projects/restaurant/src/app/services/modules/roster-api/roster-api.service';
-import { ConnectionPromptComponent } from 'projects/personal/src/app/components/module-utilities/connection-prompt/connection-prompt.component'
+import { ConnectionToastComponent } from 'projects/personal/src/app/components/module-utilities/connection-toast/connection-toast.component'
 import { RosterSheetComponent } from '../roster-sheet/roster-sheet.component';
 
 
@@ -26,7 +26,7 @@ export class ViewRosterComponent implements OnInit {
   @ViewChild('fromDateTimePickerReference', { read: DateTimePickerComponent, static: false }) fromDateTimePicker!: DateTimePickerComponent;
   @ViewChild('toDateTimePickerReference', { read: DateTimePickerComponent, static: false }) toDateTimePicker!: DateTimePickerComponent;
 
-  @ViewChild('connectionPromptComponentReference', { read: ConnectionPromptComponent, static: false }) connectionPrompt!: ConnectionPromptComponent;
+  @ViewChild('connectionToastComponentReference', { read: ConnectionToastComponent, static: false }) connectionToast!: ConnectionToastComponent;
   @ViewChild('rosterSheetComponentReference', { read: RosterSheetComponent, static: false }) rosterSheet!: RosterSheetComponent;
 
   navHeading: any[] = [
@@ -54,7 +54,7 @@ export class ViewRosterComponent implements OnInit {
         },
         err => {
           console.log(err);
-          this.connectionPrompt.toast.open();
+          this.connectionToast.openToast();
         }
       )
   }
@@ -75,7 +75,7 @@ export class ViewRosterComponent implements OnInit {
         },
         err => {
           console.log(err);
-          this.connectionPrompt.toast.open();
+          this.connectionToast.openToast();
         }
       )
 

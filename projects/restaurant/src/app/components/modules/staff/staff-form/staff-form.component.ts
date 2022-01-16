@@ -4,8 +4,9 @@ import { InputComponent } from 'smart-webcomponents-angular/input';
 import { MultilineTextBoxComponent } from 'smart-webcomponents-angular/multilinetextbox';
 import { DropDownListComponent } from 'smart-webcomponents-angular/dropdownlist';
 
-import { DobInputComponent } from 'projects/personal/src/app/components/custom-widgets/dob-input/dob-input.component'
-import { ImageUploadComponent } from 'projects/personal/src/app/components/custom-widgets/image-upload/image-upload.component'
+// TODO: replace dob input with baday input component
+// import { DobInputComponent } from 'projects/personal/src/app/components/custom-widgets/dob-input/dob-input.component'
+import { ImageInputComponent } from 'projects/personal/src/app/components/module-utilities/image-input/image-input.component'
 
 
 @Component({
@@ -20,8 +21,8 @@ export class StaffFormComponent implements OnInit {
   @ViewChild('firstNameInputReference', { read: InputComponent, static: false }) firstNameInput!: InputComponent;
   @ViewChild('lastNameInputReference', { read: InputComponent, static: false }) lastNameInput!: InputComponent;
   @ViewChild('sexDropDownListReference', { read: DropDownListComponent, static: false }) sexDropDownList!: DropDownListComponent;
-  @ViewChild('dobCustomWidgetReference', { read: DobInputComponent, static: false }) dobCustomWidget!: DobInputComponent;
-  @ViewChild('imageCustomWidgetUpload', { read: ImageUploadComponent, static: false }) photoCustomWidget!: ImageUploadComponent;
+  // @ViewChild('dobCustomWidgetReference', { read: DobInputComponent, static: false }) dobCustomWidget!: DobInputComponent;
+  @ViewChild('imageCustomWidgetUpload', { read: ImageInputComponent, static: false }) photoCustomWidget!: ImageInputComponent;
   @ViewChild('nationalityInputReference', { read: InputComponent, static: false }) nationalityInput!: InputComponent;
   @ViewChild('religionInputReference', { read: InputComponent, static: false }) religionInput!: InputComponent;
   @ViewChild('phoneInputReference', { read: InputComponent, static: false }) phoneInput!: InputComponent;

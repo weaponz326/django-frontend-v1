@@ -5,7 +5,7 @@ import { ButtonComponent } from 'smart-webcomponents-angular/button';
 import { GridComponent, GridColumn, DataAdapter, Smart } from 'smart-webcomponents-angular/grid';
 
 import { DeliveriesApiService } from 'projects/restaurant/src/app/services/modules/deliveries-api/deliveries-api.service';
-import { ConnectionPromptComponent } from 'projects/personal/src/app/components/module-utilities/connection-prompt/connection-prompt.component'
+import { ConnectionToastComponent } from 'projects/personal/src/app/components/module-utilities/connection-toast/connection-toast.component'
 
 
 @Component({
@@ -23,7 +23,7 @@ export class AllDeliveriesComponent implements OnInit {
   @ViewChild('newDeliveryButtonReference', { read: ButtonComponent, static: false }) newDeliveryButton!: ButtonComponent;
   @ViewChild('deliveriesGridReference', { read: GridComponent, static: false }) deliveriesGrid!: GridComponent;
 
-  @ViewChild('connectionPromptComponentReference', { read: ConnectionPromptComponent, static: false }) connectionPrompt!: ConnectionPromptComponent;
+  @ViewChild('connectionToastComponentReference', { read: ConnectionToastComponent, static: false }) connectionToast!: ConnectionToastComponent;
 
   navHeading: any[] = [
     { text: "All Deliveries", url: "/home/deliveries/all-deliveries" },
@@ -48,7 +48,7 @@ export class AllDeliveriesComponent implements OnInit {
         },
         err => {
           console.log(err);
-          this.connectionPrompt.toast.open();
+          this.connectionToast.openToast();
         }
       )
   }

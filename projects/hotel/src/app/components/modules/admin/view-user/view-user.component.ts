@@ -5,7 +5,7 @@ import { InputComponent } from 'smart-webcomponents-angular/input';
 import { DropDownListComponent } from 'smart-webcomponents-angular/dropdownlist';
 
 import { AdminApiService } from 'projects/hotel/src/app/services/modules/admin-api/admin-api.service';
-import { ConnectionPromptComponent } from 'projects/personal/src/app/components/module-utilities/connection-prompt/connection-prompt.component';
+import { ConnectionToastComponent } from 'projects/personal/src/app/components/module-utilities/connection-toast/connection-toast.component';
 import { AccessFormComponent } from '../access-form/access-form.component';
 
 
@@ -25,7 +25,7 @@ export class ViewUserComponent implements OnInit {
   @ViewChild('cancelReference', { read: ButtonComponent, static: false }) cancelButton!: ButtonComponent;
 
   @ViewChild('accessFormComponentReference', { read: AccessFormComponent, static: false }) accessFormComponent!: AccessFormComponent;
-  @ViewChild('connectionPromptComponentReference', { read: ConnectionPromptComponent, static: false }) connectionPrompt!: ConnectionPromptComponent;
+  @ViewChild('connectionToastComponentReference', { read: ConnectionToastComponent, static: false }) connectionToast!: ConnectionToastComponent;
 
   navHeading: any[] = [
     { text: "All Users", url: "/home/admin/all-users" },
@@ -48,7 +48,7 @@ export class ViewUserComponent implements OnInit {
         },
         err => {
           console.log(err);
-          this.connectionPrompt.toast.open();
+          this.connectionToast.openToast();
         }
       )
   }
@@ -65,7 +65,7 @@ export class ViewUserComponent implements OnInit {
         },
         err => {
           console.log(err);
-          this.connectionPrompt.toast.open();
+          this.connectionToast.openToast();
         }
       )
 

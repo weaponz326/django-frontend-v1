@@ -5,7 +5,7 @@ import { ButtonComponent } from 'smart-webcomponents-angular/button';
 
 import { TablesApiService } from 'projects/restaurant/src/app/services/modules/tables-api/tables-api.service';
 import { TableFormComponent } from '../table-form/table-form.component';
-import { ConnectionPromptComponent } from 'projects/personal/src/app/components/module-utilities/connection-prompt/connection-prompt.component'
+import { ConnectionToastComponent } from 'projects/personal/src/app/components/module-utilities/connection-toast/connection-toast.component'
 
 
 @Component({
@@ -21,7 +21,7 @@ export class AddTableComponent implements OnInit {
   ) { }
 
   @ViewChild('tableFormComponentReference', { read: TableFormComponent, static: false }) tableForm!: TableFormComponent;
-  @ViewChild('connectionPromptComponentReference', { read: ConnectionPromptComponent, static: false }) connectionPrompt!: ConnectionPromptComponent;
+  @ViewChild('connectionToastComponentReference', { read: ConnectionToastComponent, static: false }) connectionToast!: ConnectionToastComponent;
 
   navHeading: any[] = [
     { text: "Add Table", url: "/home/tables/add-table" },
@@ -54,7 +54,7 @@ export class AddTableComponent implements OnInit {
         },
         err => {
           console.log(err);
-          this.connectionPrompt.toast.open();
+          this.connectionToast.openToast();
         }
       )
   }

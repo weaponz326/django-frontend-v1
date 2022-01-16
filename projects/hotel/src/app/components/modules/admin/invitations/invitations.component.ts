@@ -5,7 +5,7 @@ import { GridComponent, GridColumn, DataAdapter, Smart } from 'smart-webcomponen
 import { ButtonComponent } from 'smart-webcomponents-angular/button';
 
 import { AdminApiService } from 'projects/hotel/src/app/services/modules/admin-api/admin-api.service';
-import { ConnectionPromptComponent } from 'projects/personal/src/app/components/module-utilities/connection-prompt/connection-prompt.component'
+import { ConnectionToastComponent } from 'projects/personal/src/app/components/module-utilities/connection-toast/connection-toast.component'
 
 
 @Component({
@@ -23,7 +23,7 @@ export class InvitationsComponent implements OnInit {
   @ViewChild('buttonReference', { read: ButtonComponent, static: false }) button!: ButtonComponent;
   @ViewChild('gridReference', { read: GridComponent, static: false }) grid!: GridComponent;
 
-  @ViewChild('connectionPromptComponentReference', { read: ConnectionPromptComponent, static: false }) connectionPrompt!: ConnectionPromptComponent;
+  @ViewChild('connectionToastComponentReference', { read: ConnectionToastComponent, static: false }) connectionToast!: ConnectionToastComponent;
 
   navHeading: any[] = [
     { text: "Invitations", url: "/home/admin/invitations" },
@@ -45,7 +45,7 @@ export class InvitationsComponent implements OnInit {
         },
         err => {
           console.log(err);
-          this.connectionPrompt.toast.open();
+          this.connectionToast.openToast();
         }
       )
   }

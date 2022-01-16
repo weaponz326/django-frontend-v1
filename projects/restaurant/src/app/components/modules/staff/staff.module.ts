@@ -10,7 +10,6 @@ import { DropDownListModule } from 'smart-webcomponents-angular/dropdownlist';
 import { MultilineTextBoxModule } from 'smart-webcomponents-angular/multilinetextbox';
 
 import { ModuleUtilitiesModule } from 'projects/personal/src/app/components/module-utilities/module-utilities.module';
-import { CustomWidgetsModule } from 'projects/personal/src/app/components/custom-widgets/custom-widgets.module';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SettingsComponent } from './settings/settings.component';
@@ -39,7 +38,6 @@ import { StaffFormComponent } from './staff-form/staff-form.component';
     DropDownListModule,
     MultilineTextBoxModule,
     ModuleUtilitiesModule,
-    CustomWidgetsModule,
   ]
 })
 export class StaffModule { }

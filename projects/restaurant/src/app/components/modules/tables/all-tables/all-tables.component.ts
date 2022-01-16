@@ -4,7 +4,7 @@ import { ButtonComponent } from 'smart-webcomponents-angular/button';
 import { GridComponent, GridColumn, DataAdapter, Smart } from 'smart-webcomponents-angular/grid';
 
 import { TablesApiService } from 'projects/restaurant/src/app/services/modules/tables-api/tables-api.service';
-import { ConnectionPromptComponent } from 'projects/personal/src/app/components/module-utilities/connection-prompt/connection-prompt.component'
+import { ConnectionToastComponent } from 'projects/personal/src/app/components/module-utilities/connection-toast/connection-toast.component'
 
 
 @Component({
@@ -19,7 +19,7 @@ export class AllTablesComponent implements OnInit {
   @ViewChild('addMenuTableButtonReference', { read: ButtonComponent, static: false }) addTableButton!: ButtonComponent;
   @ViewChild('tablesGridReference', { read: GridComponent, static: false }) tablesGrid!: GridComponent;
 
-  @ViewChild('connectionPromptComponentReference', { read: ConnectionPromptComponent, static: false }) connectionPrompt!: ConnectionPromptComponent;
+  @ViewChild('connectionToastComponentReference', { read: ConnectionToastComponent, static: false }) connectionToast!: ConnectionToastComponent;
 
   navHeading: any[] = [
     { text: "All Tables", url: "/home/tables/all-tables" },
@@ -44,7 +44,7 @@ export class AllTablesComponent implements OnInit {
         },
         err => {
           console.log(err);
-          this.connectionPrompt.toast.open();
+          this.connectionToast.openToast();
         }
       )
   }

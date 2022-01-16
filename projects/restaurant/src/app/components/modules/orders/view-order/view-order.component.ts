@@ -3,7 +3,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { ButtonComponent } from 'smart-webcomponents-angular/button';
 
 import { OrdersApiService } from 'projects/restaurant/src/app/services/modules/orders-api/orders-api.service';
-import { ConnectionPromptComponent } from 'projects/personal/src/app/components/module-utilities/connection-prompt/connection-prompt.component'
+import { ConnectionToastComponent } from 'projects/personal/src/app/components/module-utilities/connection-toast/connection-toast.component'
 import { OrderFormComponent } from '../order-form/order-form.component';
 import { OrderItemsComponent } from '../order-items/order-items.component';
 
@@ -17,7 +17,7 @@ export class ViewOrderComponent implements OnInit {
 
   constructor(private ordersApi: OrdersApiService) { }
 
-  @ViewChild('connectionPromptComponentReference', { read: ConnectionPromptComponent, static: false }) connectionPrompt!: ConnectionPromptComponent;
+  @ViewChild('connectionToastComponentReference', { read: ConnectionToastComponent, static: false }) connectionToast!: ConnectionToastComponent;
   @ViewChild('orderFormComponentReference', { read: OrderFormComponent, static: false }) orderForm!: OrderFormComponent;
   @ViewChild('orderItemsComponentReference', { read: OrderItemsComponent, static: false }) orderItems!: OrderItemsComponent;
 
@@ -45,7 +45,7 @@ export class ViewOrderComponent implements OnInit {
         },
         err => {
           console.log(err);
-          this.connectionPrompt.toast.open();
+          this.connectionToast.openToast();
         }
       )
   }
@@ -69,7 +69,7 @@ export class ViewOrderComponent implements OnInit {
         },
         err => {
           console.log(err);
-          this.connectionPrompt.toast.open();
+          this.connectionToast.openToast();
         }
       )
 

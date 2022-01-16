@@ -5,7 +5,7 @@ import { ButtonComponent } from 'smart-webcomponents-angular/button';
 
 import { CustomersApiService } from 'projects/restaurant/src/app/services/modules/customers-api/customers-api.service';
 import { CustomerFormComponent } from '../customer-form/customer-form.component';
-import { ConnectionPromptComponent } from 'projects/personal/src/app/components/module-utilities/connection-prompt/connection-prompt.component'
+import { ConnectionToastComponent } from 'projects/personal/src/app/components/module-utilities/connection-toast/connection-toast.component'
 
 
 @Component({
@@ -21,7 +21,7 @@ export class NewCustomerComponent implements OnInit {
   ) { }
 
   @ViewChild('customerFormComponentReference', { read: CustomerFormComponent, static: false }) customerForm!: CustomerFormComponent;
-  @ViewChild('connectionPromptComponentReference', { read: ConnectionPromptComponent, static: false }) connectionPrompt!: ConnectionPromptComponent;
+  @ViewChild('connectionToastComponentReference', { read: ConnectionToastComponent, static: false }) connectionToast!: ConnectionToastComponent;
 
   navHeading: any[] = [
     { text: "New Customer", url: "/home/customers/new-customer" },
@@ -58,7 +58,7 @@ export class NewCustomerComponent implements OnInit {
         },
         err => {
           console.log(err);
-          this.connectionPrompt.toast.open();
+          this.connectionToast.openToast();
         }
       )
   }

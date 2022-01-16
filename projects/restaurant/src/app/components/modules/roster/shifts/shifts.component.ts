@@ -5,7 +5,7 @@ import { ButtonComponent } from 'smart-webcomponents-angular/button';
 import { GridComponent, GridColumn, DataAdapter, Smart } from 'smart-webcomponents-angular/grid';
 
 import { RosterApiService } from 'projects/restaurant/src/app/services/modules/roster-api/roster-api.service';
-import { ConnectionPromptComponent } from 'projects/personal/src/app/components/module-utilities/connection-prompt/connection-prompt.component'
+import { ConnectionToastComponent } from 'projects/personal/src/app/components/module-utilities/connection-toast/connection-toast.component'
 
 
 @Component({
@@ -23,7 +23,7 @@ export class ShiftsComponent implements OnInit {
   @ViewChild('addShiftButtonReference', { read: ButtonComponent, static: false }) addShiftButton!: ButtonComponent;
   @ViewChild('shiftsGridReference', { read: GridComponent, static: false }) shiftsGrid!: GridComponent;
 
-  @ViewChild('connectionPromptComponentReference', { read: ConnectionPromptComponent, static: false }) connectionPrompt!: ConnectionPromptComponent;
+  @ViewChild('connectionToastComponentReference', { read: ConnectionToastComponent, static: false }) connectionToast!: ConnectionToastComponent;
 
   dataSource = [];
   columns: GridColumn[] = <GridColumn[]>[];
@@ -42,7 +42,7 @@ export class ShiftsComponent implements OnInit {
         },
         err => {
           console.log(err);
-          this.connectionPrompt.toast.open();
+          this.connectionToast.openToast();
         }
       )
   }

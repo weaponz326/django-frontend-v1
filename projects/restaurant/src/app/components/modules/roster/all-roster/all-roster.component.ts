@@ -5,7 +5,7 @@ import { ButtonComponent } from 'smart-webcomponents-angular/button';
 import { GridComponent, GridColumn, DataAdapter, Smart } from 'smart-webcomponents-angular/grid';
 
 import { RosterApiService } from 'projects/restaurant/src/app/services/modules/roster-api/roster-api.service';
-import { ConnectionPromptComponent } from 'projects/personal/src/app/components/module-utilities/connection-prompt/connection-prompt.component'
+import { ConnectionToastComponent } from 'projects/personal/src/app/components/module-utilities/connection-toast/connection-toast.component'
 
 
 @Component({
@@ -23,7 +23,7 @@ export class AllRosterComponent implements OnInit {
   @ViewChild('newRosterButtonReference', { read: ButtonComponent, static: false }) newRosterGroupButton!: ButtonComponent;
   @ViewChild('rosterGridReference', { read: GridComponent, static: false }) rosterGrid!: GridComponent;
 
-  @ViewChild('connectionPromptComponentReference', { read: ConnectionPromptComponent, static: false }) connectionPrompt!: ConnectionPromptComponent;
+  @ViewChild('connectionToastComponentReference', { read: ConnectionToastComponent, static: false }) connectionToast!: ConnectionToastComponent;
 
   navHeading: any[] = [
     { text: "All Roster", url: "/home/roster/all-roster" },
@@ -48,7 +48,7 @@ export class AllRosterComponent implements OnInit {
         },
         err => {
           console.log(err);
-          this.connectionPrompt.toast.open();
+          this.connectionToast.openToast();
         }
       )
   }

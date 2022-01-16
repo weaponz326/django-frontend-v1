@@ -6,8 +6,7 @@ import { GridComponent, GridColumn, DataAdapter, Smart } from 'smart-webcomponen
 import { InputComponent } from 'smart-webcomponents-angular/input';
 
 import { MenuApiService } from 'projects/restaurant/src/app/services/modules/menu-api/menu-api.service';
-import { ConnectionPromptComponent } from 'projects/personal/src/app/components/module-utilities/connection-prompt/connection-prompt.component'
-import { DeleteConfirmationComponent } from 'projects/personal/src/app/components/module-utilities/delete-confirmation/delete-confirmation.component'
+import { ConnectionToastComponent } from 'projects/personal/src/app/components/module-utilities/connection-toast/connection-toast.component'
 
 
 @Component({
@@ -26,8 +25,7 @@ export class ViewMenuGroupComponent implements OnInit {
   @ViewChild('categoryInputReference', { read: InputComponent, static: false }) categoryInput!: InputComponent;
   @ViewChild('menuItemsGridReference', { read: GridComponent, static: false }) menuItemsGrid!: GridComponent;
 
-  @ViewChild('connectionPromptComponentReference', { read: ConnectionPromptComponent, static: false }) connectionPrompt!: ConnectionPromptComponent;
-  @ViewChild('deleteConfirmationComponentReference', { read: DeleteConfirmationComponent, static: false }) deleteConfirmation!: DeleteConfirmationComponent;
+  @ViewChild('connectionToastComponentReference', { read: ConnectionToastComponent, static: false }) connectionToast!: ConnectionToastComponent;
 
   navHeading: any[] = [
     { text: "All Menu Groups", url: "/home/menu/all-menu-groups" },
@@ -58,7 +56,7 @@ export class ViewMenuGroupComponent implements OnInit {
         },
         err => {
           console.log(err);
-          this.connectionPrompt.toast.open();
+          this.connectionToast.openToast();
         }
       )
   }
@@ -79,7 +77,7 @@ export class ViewMenuGroupComponent implements OnInit {
         },
         err => {
           console.log(err);
-          this.connectionPrompt.toast.open();
+          this.connectionToast.openToast();
         }
       )
 
@@ -88,8 +86,6 @@ export class ViewMenuGroupComponent implements OnInit {
 
   deleteMenuGroup(){
     console.log("dude... u are gonna delete the menu group?");
-
-    this.deleteConfirmation.window.open();
   }
 
   deleteConfirmationSelected(value: string){
@@ -103,7 +99,7 @@ export class ViewMenuGroupComponent implements OnInit {
           },
           err => {
             console.log(err);
-            this.connectionPrompt.toast.open();
+            this.connectionToast.openToast();
           }
         )
     }
@@ -118,7 +114,7 @@ export class ViewMenuGroupComponent implements OnInit {
         },
         err => {
           console.log(err);
-          this.connectionPrompt.toast.open();
+          this.connectionToast.openToast();
         }
       )
   }

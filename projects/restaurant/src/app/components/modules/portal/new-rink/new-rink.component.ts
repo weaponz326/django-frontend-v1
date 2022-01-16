@@ -6,7 +6,7 @@ import { InputComponent } from 'smart-webcomponents-angular/input';
 import { MultilineTextBoxComponent } from 'smart-webcomponents-angular/multilinetextbox';
 
 import { PortalApiService } from 'projects/restaurant/src/app/services/modules/portal-api/portal-api.service';
-import { ConnectionPromptComponent } from 'projects/personal/src/app/components/module-utilities/connection-prompt/connection-prompt.component'
+import { ConnectionToastComponent } from 'projects/personal/src/app/components/module-utilities/connection-toast/connection-toast.component'
 
 import { SelectMenuGroupComponent } from '../../../select-windows/menu-windows/select-menu-group/select-menu-group.component';
 import { SelectMenuItemComponent } from '../../../select-windows/menu-windows/select-menu-item/select-menu-item.component';
@@ -38,7 +38,7 @@ export class NewRinkComponent implements OnInit {
   @ViewChild('sendButtonReference', { read: ButtonComponent, static: false }) sendButton!: ButtonComponent;
   @ViewChild('cancelButtonReference', { read: ButtonComponent, static: false }) cancelButton!: ButtonComponent;
 
-  @ViewChild('connectionPromptComponentReference', { read: ConnectionPromptComponent, static: false }) connectionPrompt!: ConnectionPromptComponent;
+  @ViewChild('connectionToastComponentReference', { read: ConnectionToastComponent, static: false }) connectionToast!: ConnectionToastComponent;
 
   @ViewChild('selectMenuGroupComponentReference', { read: SelectMenuGroupComponent, static: false }) selectMenuGroup!: SelectMenuGroupComponent;
   @ViewChild('selectMenuItemComponentReference', { read: SelectMenuItemComponent, static: false }) selectMenuItem!: SelectMenuItemComponent;
@@ -81,7 +81,7 @@ export class NewRinkComponent implements OnInit {
         },
         err => {
           console.log(err);
-          this.connectionPrompt.toast.open();
+          this.connectionToast.openToast();
         }
       )
   }
@@ -112,7 +112,7 @@ export class NewRinkComponent implements OnInit {
         err => {
           console.log(err);
           this.sendButton.disabled = false;
-          this.connectionPrompt.toast.open();
+          this.connectionToast.openToast();
         }
       )
   }

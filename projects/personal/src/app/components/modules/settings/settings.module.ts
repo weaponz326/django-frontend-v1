@@ -7,7 +7,6 @@ import { GooglePlaceModule } from "ngx-google-places-autocomplete";
 import { ChartsModule } from 'ng2-charts';
 
 import { ModuleUtilitiesModule } from '../../module-utilities/module-utilities.module';
-import { CustomWidgetsModule } from '../../custom-widgets/custom-widgets.module';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SettingsComponent } from './settings/settings.component';
@@ -41,7 +40,6 @@ import { AllAccountsComponent } from './all-accounts/all-accounts.component';
     GooglePlaceModule,
     ChartsModule,
     ModuleUtilitiesModule,
-    CustomWidgetsModule,
   ]
 })
 export class SettingsModule { }

@@ -4,7 +4,7 @@ import { ButtonComponent } from 'smart-webcomponents-angular/button';
 
 import { environment } from 'projects/association/src/environments/environment';
 import { AdminApiService } from 'projects/association/src/app/services/modules/admin-api/admin-api.service';
-import { ConnectionPromptComponent } from 'projects/personal/src/app/components/module-utilities/connection-prompt/connection-prompt.component';
+import { ConnectionToastComponent } from 'projects/personal/src/app/components/module-utilities/connection-toast/connection-toast.component';
 
 
 
@@ -21,7 +21,7 @@ export class ViewInvitationComponent implements OnInit {
 
   @ViewChild('buttonReference', { read: ButtonComponent, static: false }) button!: ButtonComponent;
 
-  @ViewChild('connectionPromptComponentReference', { read: ConnectionPromptComponent, static: false }) connectionPrompt!: ConnectionPromptComponent;
+  @ViewChild('connectionToastComponentReference', { read: ConnectionToastComponent, static: false }) connectionToast!: ConnectionToastComponent;
 
   personalUrl = environment.personalUrl;
 
@@ -45,7 +45,7 @@ export class ViewInvitationComponent implements OnInit {
         },
         err => {
           console.log(err);
-          this.connectionPrompt.toast.open();
+          this.connectionToast.openToast();
         }
       )
   }

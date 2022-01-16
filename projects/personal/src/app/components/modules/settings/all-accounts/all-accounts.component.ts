@@ -3,7 +3,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { environment } from 'projects/personal/src/environments/environment'
 import { SettingsApiService } from 'projects/personal/src/app/services/modules/settings-api/settings-api.service';
 
-import { ConnectionPromptComponent } from '../../../module-utilities/connection-prompt/connection-prompt.component'
+import { ConnectionToastComponent } from '../../../module-utilities/connection-toast/connection-toast.component'
 
 
 @Component({
@@ -15,7 +15,7 @@ export class AllAccountsComponent implements OnInit {
 
   constructor(private settingsApi: SettingsApiService) { }
 
-  @ViewChild('connectionPromptComponentReference', { read: ConnectionPromptComponent, static: false }) connectionPrompt!: ConnectionPromptComponent;
+  @ViewChild('connectionToastComponentReference', { read: ConnectionToastComponent, static: false }) connectionToast!: ConnectionToastComponent;
 
   navHeading: any[] = [
     { text: "All Accounts", url: "/home/profile/all-accounts" },
@@ -81,7 +81,7 @@ export class AllAccountsComponent implements OnInit {
         },
         err => {
           console.log(err);
-          this.connectionPrompt.toast.open();
+          this.connectionToast.openToast();
         }
       )
   }
@@ -96,7 +96,7 @@ export class AllAccountsComponent implements OnInit {
           },
           err => {
             console.log(err);
-            this.connectionPrompt.toast.open();
+            this.connectionToast.openToast();
           }
         )
     });
