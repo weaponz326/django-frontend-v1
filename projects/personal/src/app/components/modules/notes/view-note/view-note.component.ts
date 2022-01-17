@@ -28,9 +28,14 @@ export class ViewNoteComponent implements OnInit {
   ];
 
   subject = "";
-  noteViewData = [];
+  body = "";
+
+  modules: any;
+  styles: any;
 
   ngOnInit(): void {
+    this.initModules();
+    this.initStyles();
   }
 
   ngAfterViewInit(): void {
@@ -43,9 +48,8 @@ export class ViewNoteComponent implements OnInit {
         res => {
           console.log(res);
           this.subject = res.subject;
-          // this.bodyEditor.value = res.body;
+          this.body = res.body;
 
-          this.noteViewData = res;
         },
         err => {
           console.log(err);
@@ -58,7 +62,7 @@ export class ViewNoteComponent implements OnInit {
     let noteData = {
       user: localStorage.getItem('personal_id'),
       subject: this.subject,
-      // body: this.bodyEditor.value
+      body: this.body
     }
 
     console.log(noteData);
@@ -88,6 +92,20 @@ export class ViewNoteComponent implements OnInit {
           this.connectionToast.openToast();
         }
       )
+  }
+
+  initModules(){
+    this.modules = {
+      'emoji-shortname': true,
+      'emoji-textarea': true,
+      'emoji-tooolbar': true,
+    }
+  }
+
+  initStyles(){
+    this.modules = {
+      height: '250px',
+    }
   }
 
   confirmDelete(){

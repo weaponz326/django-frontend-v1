@@ -3,13 +3,15 @@
     [source]="'Shop'"
 ></app-main-navbar>
 
-<app-suite-scrollnav
+<app-landing-loading *ngIf="isLoading"></app-landing-loading>
+
+<app-suite-scrollnav *ngIf="!isLoading"
     (aboutEvent)="gotoAbout()"
     (pricingEvent)="gotoPricing()"
     (contactEvent)="gotoContact()"
 ></app-suite-scrollnav>
 
-<app-guest-top
+<app-guest-top *ngIf="!isLoading"
     [suiteName]="'Shop'"
     [primaryCaption]="'netRink Shop'"
     [secondaryCaption]="'Easy way to manage all activities and operations of your shop'"
@@ -17,22 +19,22 @@
         {
             'title': 'Customer relationship',
             'description': 'Manage your customers for a good customer eperience',
-            'imgLink': 'assets/images/features/customer.png'
+            'imgLink': assetsBasePath + 'assets/images/features/customer.png'
         },
         {
             'title': 'Financial management',
             'description': 'Easily handle all financial operations of your shop',
-            'imgLink': 'assets/images/features/financial.png'
+            'imgLink': assetsBasePath + 'assets/images/features/financial.png'
         },
         {
             'title': 'Product Management',
             'description': 'Manage and track all products from aquisition to sale',
-            'imgLink': 'assets/images/features/product.png'
+            'imgLink': assetsBasePath + 'assets/images/features/product.png'
         },
         {
             'title': 'Sales management',
             'description': 'Manage sales and all of its related activities',
-            'imgLink': 'assets/images/features/sales.png'
+            'imgLink': assetsBasePath + 'assets/images/features/sales.png'
         }
     ]"
 ></app-guest-top>

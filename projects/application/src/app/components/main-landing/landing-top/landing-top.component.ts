@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+import { environment } from 'projects/application/src/environments/environment';
+
+
 @Component({
   selector: 'app-landing-top',
   templateUrl: './landing-top.component.html',
@@ -8,6 +11,8 @@ import { Component, OnInit } from '@angular/core';
 export class LandingTopComponent implements OnInit {
 
   constructor() { }
+
+  assetsBasePath = environment.assetsBasePath;
 
   ngOnInit(): void {
   }

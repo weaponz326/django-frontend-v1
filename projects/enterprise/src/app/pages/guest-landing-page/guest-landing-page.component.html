@@ -3,13 +3,15 @@
     [source]="'Enterprise'"
 ></app-main-navbar>
 
-<app-suite-scrollnav
+<app-landing-loading *ngIf="isLoading"></app-landing-loading>
+
+<app-suite-scrollnav *ngIf="!isLoading"
     (aboutEvent)="gotoAbout()"
     (pricingEvent)="gotoPricing()"
     (contactEvent)="gotoContact()"
 ></app-suite-scrollnav>
 
-<app-guest-top
+<app-guest-top *ngIf="!isLoading"
     [suiteName]="'Enterprise'"
     [primaryCaption]="'netRink Enterprise'"
     [secondaryCaption]="'Everything you need to manage and run your business operations effectively'"
@@ -17,22 +19,22 @@
         {
             'title': 'Finance and accounting',
             'description': 'Take care of all your financial operations in one place',
-            'imgLink': 'assets/images/features/finance.png'
+            'imgLink': assetsBasePath + 'assets/images/features/finance.png'
         },
         {
             'title': 'Human Resource',
             'description': 'Manage all personnel related operations',
-            'imgLink': 'assets/images/features/personnel.png'
+            'imgLink': assetsBasePath + 'assets/images/features/personnel.png'
         },
         {
             'title': 'Administrative operations',
             'description': 'Efficiently handle all office and administrative activities',
-            'imgLink': 'assets/images/features/operations.png'
+            'imgLink': assetsBasePath + 'assets/images/features/operations.png'
         },
         {
             'title': 'Assets management',
             'description': 'Manage and track all assets in your establishment',
-            'imgLink': 'assets/images/features/assets.png'
+            'imgLink': assetsBasePath + 'assets/images/features/assets.png'
         }
     ]"
 ></app-guest-top>

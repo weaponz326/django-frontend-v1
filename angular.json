@@ -61,7 +61,8 @@
                   "with": "projects/application/src/environments/environment.prod.ts"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "none",
+              "deployUrl": "/static/dist/"
             },
             "development": {
               "buildOptimizer": false,
@@ -151,6 +152,8 @@
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/bootstrap-icons/font/bootstrap-icons.css",
               "node_modules/quill/dist/quill.core.css",
+              "node_modules/quill/dist/quill.bubble.css",
+              "node_modules/quill/dist/quill.snow.css",
               "node_modules/quill-emoji/dist/quill-emoji.css",
               "projects/personal/src/assets/styles/sb-admin-2.min.css",
               "projects/personal/src/styles.scss"
@@ -181,7 +184,8 @@
                   "with": "projects/personal/src/environments/environment.prod.ts"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "none",
+              "deployUrl": "/static/dist/"
             },
             "development": {
               "buildOptimizer": false,
@@ -300,7 +304,8 @@
                   "with": "projects/restaurant/src/environments/environment.prod.ts"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "none",
+              "deployUrl": "/static/dist/"
             },
             "development": {
               "buildOptimizer": false,
@@ -419,7 +424,8 @@
                   "with": "projects/school/src/environments/environment.prod.ts"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "none",
+              "deployUrl": "/static/dist/"
             },
             "development": {
               "buildOptimizer": false,
@@ -538,7 +544,8 @@
                   "with": "projects/enterprise/src/environments/environment.prod.ts"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "none",
+              "deployUrl": "/static/dist/"
             },
             "development": {
               "buildOptimizer": false,
@@ -657,7 +664,8 @@
                   "with": "projects/association/src/environments/environment.prod.ts"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "none",
+              "deployUrl": "/static/dist/"
             },
             "development": {
               "buildOptimizer": false,
@@ -776,7 +784,8 @@
                   "with": "projects/hospital/src/environments/environment.prod.ts"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "none",
+              "deployUrl": "/static/dist/"
             },
             "development": {
               "buildOptimizer": false,
@@ -895,7 +904,8 @@
                   "with": "projects/hotel/src/environments/environment.prod.ts"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "none",
+              "deployUrl": "/static/dist/"
             },
             "development": {
               "buildOptimizer": false,
@@ -1014,7 +1024,8 @@
                   "with": "projects/shop/src/environments/environment.prod.ts"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "none",
+              "deployUrl": "/static/dist/"
             },
             "development": {
               "buildOptimizer": false,
@@ -1133,7 +1144,8 @@
                   "with": "projects/production/src/environments/environment.prod.ts"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "none",
+              "deployUrl": "/static/dist/"
             },
             "development": {
               "buildOptimizer": false,

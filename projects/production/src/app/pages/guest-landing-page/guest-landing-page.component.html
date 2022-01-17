@@ -3,13 +3,15 @@
     [source]="'Production'"
 ></app-main-navbar>
 
-<app-suite-scrollnav
+<app-landing-loading *ngIf="isLoading"></app-landing-loading>
+
+<app-suite-scrollnav *ngIf="!isLoading"
     (aboutEvent)="gotoAbout()"
     (pricingEvent)="gotoPricing()"
     (contactEvent)="gotoContact()"
 ></app-suite-scrollnav>
 
-<app-guest-top
+<app-guest-top *ngIf="!isLoading"
     [suiteName]="'Production'"
     [primaryCaption]="'netRink Production'"
     [secondaryCaption]="'Fully manage your production facility\'s operations, from beginning to end'"
@@ -17,22 +19,22 @@
         {
             'title': 'Production materials',
             'description': 'Take stock of materials needed for your production',
-            'imgLink': 'assets/images/features/materials.png'
+            'imgLink': assetsBasePath + 'assets/images/features/materials.png'
         },
         {
             'title': 'Operations management',
             'description': 'Manage all production related administrative operations',
-            'imgLink': 'assets/images/features/operations.png'
+            'imgLink': assetsBasePath + 'assets/images/features/operations.png'
         },
         {
             'title': 'Product lifecycle',
             'description': 'Manage products as they go through the production proccess',
-            'imgLink': 'assets/images/features/product.png'
+            'imgLink': assetsBasePath + 'assets/images/features/product.png'
         },
         {
             'title': 'Production planning',
             'description': 'Plan your production proccesses and tasks',
-            'imgLink': 'assets/images/features/planning.png'
+            'imgLink': assetsBasePath + 'assets/images/features/planning.png'
         }
     ]"
 ></app-guest-top>

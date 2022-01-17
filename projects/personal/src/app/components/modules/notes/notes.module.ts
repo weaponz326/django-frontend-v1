@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
 import { ChartsModule } from 'ng2-charts';
-// import { QuillModule } from 'ngx-quill'
+import { QuillModule } from 'ngx-quill'
 
 import { ModuleUtilitiesModule } from '../../module-utilities/module-utilities.module';
 
@@ -28,7 +28,7 @@ import { NewNoteComponent } from './new-note/new-note.component';
     RouterModule,
     FormsModule,
     ChartsModule,
-    // QuillModule,
+    QuillModule,
     ModuleUtilitiesModule,
   ]
 })

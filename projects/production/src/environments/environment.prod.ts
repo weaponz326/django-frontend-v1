@@ -3,5 +3,7 @@ export const environment = {
 
   baseUrl: "https://netrink.com/",
   personalUrl: "https://personal.netrink.com/",
-  productionUrl: "https://personal.netrink.com/"
+  productionUrl: "https://personal.netrink.com/",
+
+  assetsBasePath: "static/dist/",
 };

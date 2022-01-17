@@ -25,18 +25,21 @@ export class NewNoteComponent implements OnInit {
   ];
 
   subject = "";
-
-  isFileSave: boolean = false;
-  filesToUpload: File[] = [];
+  body = "";
+  
+  modules: any;
+  styles: any;
 
   ngOnInit(): void {
-  }
+    this.initModules();
+    this.initStyles();
+  }  
 
   saveNote(){
     let noteData = {
       user: localStorage.getItem('personal_id'),
       subject: this.subject,
-      // body: this.bodyEditor.value
+      body: this.body
     }
 
     console.log(noteData);
@@ -46,29 +49,6 @@ export class NewNoteComponent implements OnInit {
         res => {
           console.log(res);
           sessionStorage.setItem('personal_note_id', res.id);
-          if(!this.isFileSave){
-            this.router.navigateByUrl('/home/notes/view-note');
-          }
-          else{
-            this.sendFile(this.filesToUpload[0]);
-          }
-        },
-        err => {
-          console.log(err);
-          this.connectionToast.openToast();
-        }
-      )
-  }
-
-  sendFile(file: any){
-    let formData = new FormData();
-    formData.append("note", String(sessionStorage.getItem('personal_note_id')));
-    formData.append("file", file);
-
-    this.notesApi.postFile(formData)
-      .subscribe(
-        res => {
-          console.log(res);
           this.router.navigateByUrl('/home/notes/view-note');
         },
         err => {
@@ -78,17 +58,18 @@ export class NewNoteComponent implements OnInit {
       )
   }
 
-  onFileSelected(e: any){
-    this.filesToUpload = [];
-    this.filesToUpload = e.target.files;
-    console.log(this.filesToUpload);
-
-    this.setFileSave();
+  initModules(){
+    this.modules = {
+      'emoji-shortname': true,
+      'emoji-textarea': true,
+      'emoji-tooolbar': true,
+    }
   }
 
-  setFileSave(){
-    this.isFileSave = true;
-    this.saveNote();
+  initStyles(){
+    this.modules = {
+      height: '250px',
+    }
   }
 
 }

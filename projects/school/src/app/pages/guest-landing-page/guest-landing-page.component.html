@@ -3,13 +3,15 @@
     [source]="'School'"
 ></app-main-navbar>
 
-<app-suite-scrollnav
+<app-landing-loading *ngIf="isLoading"></app-landing-loading>
+
+<app-suite-scrollnav *ngIf="!isLoading"
     (aboutEvent)="gotoAbout()"
     (pricingEvent)="gotoPricing()"
     (contactEvent)="gotoContact()"
 ></app-suite-scrollnav>
 
-<app-guest-top
+<app-guest-top *ngIf="!isLoading"
     [suiteName]="'School'"
     [primaryCaption]="'netRink School'"
     [secondaryCaption]="'Run and handle every aspect of your educational institution with much ease'"
@@ -17,22 +19,22 @@
         {
             'title': 'Fees and payments',
             'description': 'Easily generate school fees and receive payments',
-            'imgLink': 'assets/images/features/fees.png'
+            'imgLink': assetsBasePath + 'assets/images/features/fees.png'
         },
         {
             'title': 'Parents interaction',
             'description': 'Interact with parents about the welfare of their wards',
-            'imgLink': 'assets/images/features/parents.png'
+            'imgLink': assetsBasePath + 'assets/images/features/parents.png'
         },
         {
             'title': 'Academics management',
             'description': 'Run all your academic and extra curricular activities',
-            'imgLink': 'assets/images/features/academics.png'
+            'imgLink': assetsBasePath + 'assets/images/features/academics.png'
         },
         {
             'title': 'Teachers and staff',
             'description': 'Manage teaching and non-teaching staff with ease',
-            'imgLink': 'assets/images/features/teachers.png'
+            'imgLink': assetsBasePath + 'assets/images/features/teachers.png'
         }
     ]"
 ></app-guest-top>

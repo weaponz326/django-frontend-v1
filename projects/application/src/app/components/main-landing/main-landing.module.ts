@@ -14,7 +14,7 @@ import { SuiteRightComponent } from './suite-right/suite-right.component';
     MainScrollnavComponent,
     LandingTopComponent,
     SuiteLeftComponent,
-    SuiteRightComponent
+    SuiteRightComponent,
   ],
   imports: [
     CommonModule,
@@ -24,7 +24,7 @@ import { SuiteRightComponent } from './suite-right/suite-right.component';
     MainScrollnavComponent,
     LandingTopComponent,
     SuiteLeftComponent,
-    SuiteRightComponent
+    SuiteRightComponent,
   ]
 })
 export class MainLandingModule { }

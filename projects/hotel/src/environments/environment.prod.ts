@@ -4,4 +4,6 @@ export const environment = {
   baseUrl: "https://netrink.com/",
   personalUrl: "https://personal.netrink.com/",
   hotelUrl: "https://hotel.netrink.com/",
+
+  assetsBasePath: "static/dist/",
 };

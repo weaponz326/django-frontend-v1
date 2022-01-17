@@ -10,5 +10,7 @@ export const environment = {
   hospitalUrl: "https://hospital.netrink.com/",
   hotelUrl: "https://hotel.netrink.com/",
   shopUrl: "https://shop.netrink.com/",
-  productionUrl: "https://production.netrink.com/"
+  productionUrl: "https://production.netrink.com/",
+
+  assetsBasePath: "static/dist/"
 };

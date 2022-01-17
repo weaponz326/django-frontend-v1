@@ -46,21 +46,21 @@ export class NewTaskGroupComponent implements OnInit {
 
     console.log(data);
 
-    this.tasksApi.postTaskGroup(data)
-      .subscribe(
-        res => {
-          console.log(res);
+    // this.tasksApi.postTaskGroup(data)
+    //   .subscribe(
+    //     res => {
+    //       console.log(res);
 
-          if(res.id){
-            sessionStorage.setItem('personal_task_group_id', res.id);
-            this.router.navigateByUrl('/home/tasks/view-task-group/kanban-view');
-          }
-        },
-        err => {
-          console.log(err);
-          this.connectionToast.openToast();
-        }
-      )
+    //       if(res.id){
+    //         sessionStorage.setItem('personal_task_group_id', res.id);
+    //         this.router.navigateByUrl('/home/tasks/view-task-group/kanban-view');
+    //       }
+    //     },
+    //     err => {
+    //       console.log(err);
+    //       this.connectionToast.openToast();
+    //     }
+    //   )
   }
 
 

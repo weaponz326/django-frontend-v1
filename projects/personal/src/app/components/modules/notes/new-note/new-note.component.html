@@ -12,11 +12,11 @@
                 </div>
             </div>
 
-            <!-- ==============================
-            TODO: editor component comes here
-            ============================== -->
+            <quill-editor
+            [(ngModel)]="body" [modules]="modules" [styles]="styles" [placeholder]="''" trackChanges="all">
+            </quill-editor>
 
-            <div class="row mb-3 page-form">
+            <div class="row mt-3 page-form">
                 <div class="col-md-12">
                     <button class="btn btn-secondary btn-sm float-end ms-1 page-form-btn" routerLink="/home/notes/all-notes">Cancel</button>
                     <button class="btn btn-secondary btn-sm float-end ms-1 page-form-btn" (click)="saveNote()">Save</button>

@@ -50,21 +50,21 @@ export class NewBudgetComponent implements OnInit {
 
     console.log(data);
 
-    this.budgetApi.postBudget(data)
-      .subscribe(
-        res => {
-          console.log(res);
+    // this.budgetApi.postBudget(data)
+    //   .subscribe(
+    //     res => {
+    //       console.log(res);
 
-          if(res.id){
-            sessionStorage.setItem('personal_budget_id', res.id);
-            this.router.navigateByUrl('/home/budget/view-budget');
-          }
-        },
-        err => {
-          console.log(err);
-          this.connectionToast.openToast();
-        }
-      )
+    //       if(res.id){
+    //         sessionStorage.setItem('personal_budget_id', res.id);
+    //         this.router.navigateByUrl('/home/budget/view-budget');
+    //       }
+    //     },
+    //     err => {
+    //       console.log(err);
+    //       this.connectionToast.openToast();
+    //     }
+    //   )
   }
 
 }

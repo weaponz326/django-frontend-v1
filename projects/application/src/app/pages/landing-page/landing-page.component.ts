@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+import { environment } from 'projects/application/src/environments/environment';
+
+
 @Component({
   selector: 'app-landing-page',
   templateUrl: './landing-page.component.html',
@@ -9,15 +12,17 @@ export class LandingPageComponent implements OnInit {
 
   constructor() { }
 
-  personalUrl = 'https://personal.netrink.com';
-  hospitalUrl = 'https://hospital.netrink.com';
-  restaurantUrl = 'https://restaurant.netrink.com';
-  schoolUrl = 'https://school.netrink.com';
-  enterpriseUrl = 'https://enterprise.netrink.com';
-  associationUrl = 'https://association.netrink.com';
-  hotelUrl = 'https://hotel.netrink.com';
-  shopUrl = 'https://shop.netrink.com';
-  productionUrl = 'https://production.netrink.com';
+  personalUrl = environment.personalUrl;
+  hospitalUrl = environment.hospitalUrl;
+  restaurantUrl = environment.restaurantUrl;
+  schoolUrl = environment.schoolUrl;
+  enterpriseUrl = environment.enterpriseUrl;
+  associationUrl = environment.associationUrl;
+  hotelUrl = environment.hotelUrl;
+  shopUrl = environment.shopUrl;
+  productionUrl = environment.productionUrl;
+
+  assetsBasePath = environment.assetsBasePath;
 
   ngOnInit(): void {
   }

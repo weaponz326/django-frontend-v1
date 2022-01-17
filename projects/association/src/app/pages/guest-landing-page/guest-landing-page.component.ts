@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
+import { environment } from 'projects/association/src/environments/environment';
 import { RegisterApiService } from '../../services/register-api/register-api.service';
 
 
@@ -16,22 +17,31 @@ export class GuestLandingPageComponent implements OnInit {
     private registerApi: RegisterApiService
   ) { }
 
+  assetsBasePath = environment.assetsBasePath;
+
+  isLoading: boolean = false;
+
   ngOnInit(): void {
     this.checkUserAccount();
   }
 
   checkUserAccount(){
+    this.isLoading = true;
+
     // redirect if user has an account
     this.registerApi.hasAccount()
       .subscribe(
         res => {
           console.log(res);
+          this.isLoading = false;
+
           if (res.has_account == true){
             this.router.navigateByUrl("/user");
           }
         },
         err => {
           console.log(err);
+          this.isLoading = false;
         }
       )
   }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
+import { environment } from 'projects/personal/src/environments/environment';
 import { AuthApiService } from '../../services/auth-api/auth-api.service';
 
 
@@ -16,23 +17,30 @@ export class GuestLandingPageComponent implements OnInit {
     private authApi: AuthApiService
   ) { }
 
+  assetsBasePath = environment.assetsBasePath;
+
+  isLoading: boolean = false;
+
   ngOnInit(): void {
     this.getUser();
   }
 
   getUser(){
-    this.authApi.getUser()
+      this.isLoading = true;
+
+      this.authApi.getUser()
       .subscribe(
         res => {
           console.log(res);
+          this.isLoading = false;
 
-          // go to suite page if user is logged in
           if (res.id){
             this.router.navigateByUrl("/home");
           }
         },
         err => {
           console.log(err);
+          this.isLoading = false;
         }
       )
   }

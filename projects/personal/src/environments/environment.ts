@@ -14,7 +14,9 @@ export const environment = {
   hospitalUrl: "http://localhost:8006/",            // url for hospital backend
   hotelUrl: "http://localhost:8007/",               // url for hotel backend
   shopUrl: "http://localhost:8008/",                // url for shop backend
-  productionUrl: "http://localhost:8009/"           // url for production backend
+  productionUrl: "http://localhost:8009/",          // url for production backend
+
+  assetsBasePath: ""
 };
 
 /*

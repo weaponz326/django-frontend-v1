@@ -9,6 +9,7 @@ import { GuestTopComponent } from './guest-top/guest-top.component';
 import { AboutComponent } from './about/about.component';
 import { PricingComponent } from './pricing/pricing.component';
 import { ContactComponent } from './contact/contact.component';
+import { LandingLoadingComponent } from './landing-loading/landing-loading.component';
 
 
 
@@ -19,7 +20,8 @@ import { ContactComponent } from './contact/contact.component';
     GuestTopComponent,
     AboutComponent,
     PricingComponent,
-    ContactComponent
+    ContactComponent,
+    LandingLoadingComponent
   ],
   imports: [
     CommonModule,
@@ -32,7 +34,8 @@ import { ContactComponent } from './contact/contact.component';
     GuestTopComponent,
     AboutComponent,
     PricingComponent,
-    ContactComponent
+    ContactComponent,
+    LandingLoadingComponent
   ]
 })
 export class SuiteLandingModule { }

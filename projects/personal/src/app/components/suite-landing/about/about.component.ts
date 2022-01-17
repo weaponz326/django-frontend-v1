@@ -1,5 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 
+import { environment } from 'projects/personal/src/environments/environment';
+
+
 @Component({
   selector: 'app-about',
   templateUrl: './about.component.html',
@@ -11,6 +14,8 @@ export class AboutComponent implements OnInit {
 
   @Input() suiteName: string = "";
   @Input() suiteDetails: string = "";
+
+  assetsBasePath = environment.assetsBasePath;
 
   ngOnInit(): void {
   }
