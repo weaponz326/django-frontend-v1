@@ -36,6 +36,8 @@ export class MainNavbarComponent implements OnInit {
   }
 
   setSource(){
+    sessionStorage.setItem('app_source', this.navBrand);
+
     this.mainApi.postSource(this.navBrand)
       .subscribe(
         res => {

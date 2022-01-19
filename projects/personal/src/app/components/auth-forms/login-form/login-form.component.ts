@@ -43,7 +43,8 @@ export class LoginFormComponent implements OnInit {
         res => {
           console.log(res);
 
-          this.suiteRegistrationType = res.user_source;
+          // this.suiteRegistrationType = res.user_source;
+          this.suiteRegistrationType = sessionStorage.getItem('app_source') as string;
         },
         err => {
           console.log(err);

@@ -8,8 +8,6 @@ export const environment = {
   baseUrl: "http://localhost:8000/",                // url for application backend
   personalUrl: "http://localhost:8001/",            // url for personal backend
   associationUrl: "http://localhost:8005/",         // url for association backend
-
-  assetsBasePath: "",
 };
 
 /*

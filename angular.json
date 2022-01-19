@@ -61,8 +61,7 @@
                   "with": "projects/application/src/environments/environment.prod.ts"
                 }
               ],
-              "outputHashing": "none",
-              "deployUrl": "/static/dist/"
+              "outputHashing": "all"
             },
             "development": {
               "buildOptimizer": false,
@@ -184,8 +183,7 @@
                   "with": "projects/personal/src/environments/environment.prod.ts"
                 }
               ],
-              "outputHashing": "none",
-              "deployUrl": "/static/dist/"
+              "outputHashing": "all"
             },
             "development": {
               "buildOptimizer": false,
@@ -304,8 +302,7 @@
                   "with": "projects/restaurant/src/environments/environment.prod.ts"
                 }
               ],
-              "outputHashing": "none",
-              "deployUrl": "/static/dist/"
+              "outputHashing": "all"
             },
             "development": {
               "buildOptimizer": false,
@@ -424,8 +421,7 @@
                   "with": "projects/school/src/environments/environment.prod.ts"
                 }
               ],
-              "outputHashing": "none",
-              "deployUrl": "/static/dist/"
+              "outputHashing": "all"
             },
             "development": {
               "buildOptimizer": false,
@@ -544,8 +540,7 @@
                   "with": "projects/enterprise/src/environments/environment.prod.ts"
                 }
               ],
-              "outputHashing": "none",
-              "deployUrl": "/static/dist/"
+              "outputHashing": "all"
             },
             "development": {
               "buildOptimizer": false,
@@ -664,8 +659,7 @@
                   "with": "projects/association/src/environments/environment.prod.ts"
                 }
               ],
-              "outputHashing": "none",
-              "deployUrl": "/static/dist/"
+              "outputHashing": "all"
             },
             "development": {
               "buildOptimizer": false,
@@ -784,8 +778,7 @@
                   "with": "projects/hospital/src/environments/environment.prod.ts"
                 }
               ],
-              "outputHashing": "none",
-              "deployUrl": "/static/dist/"
+              "outputHashing": "all"
             },
             "development": {
               "buildOptimizer": false,
@@ -904,8 +897,7 @@
                   "with": "projects/hotel/src/environments/environment.prod.ts"
                 }
               ],
-              "outputHashing": "none",
-              "deployUrl": "/static/dist/"
+              "outputHashing": "all"
             },
             "development": {
               "buildOptimizer": false,
@@ -1024,8 +1016,7 @@
                   "with": "projects/shop/src/environments/environment.prod.ts"
                 }
               ],
-              "outputHashing": "none",
-              "deployUrl": "/static/dist/"
+              "outputHashing": "all"
             },
             "development": {
               "buildOptimizer": false,
@@ -1144,8 +1135,7 @@
                   "with": "projects/production/src/environments/environment.prod.ts"
                 }
               ],
-              "outputHashing": "none",
-              "deployUrl": "/static/dist/"
+              "outputHashing": "all"
             },
             "development": {
               "buildOptimizer": false,

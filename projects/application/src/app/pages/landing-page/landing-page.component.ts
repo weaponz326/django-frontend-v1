@@ -22,8 +22,6 @@ export class LandingPageComponent implements OnInit {
   shopUrl = environment.shopUrl;
   productionUrl = environment.productionUrl;
 
-  assetsBasePath = environment.assetsBasePath;
-
   ngOnInit(): void {
   }
 

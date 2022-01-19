@@ -2,8 +2,6 @@ export const environment = {
   production: true,
 
   baseUrl: "https://netrink.com/",
-  personalUrl: "https://personal.netrink.com/",
-  associationUrl: "https://association.netrink.com/",
-
-  assetsBasePath: "static/dist/",
+  personalUrl: "https://personal-api.netrink.com/",
+  associationUrl: "https://association-api.netrink.com/",
 };
