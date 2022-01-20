@@ -19,10 +19,10 @@ export class ImageInputComponent implements OnInit {
 
   ngOnInit(): void {
     if(this.imgType == 'photo'){
-      this.imgSrc = '../../../../assets/images/utilities/photo-avatar.jpg';
+      this.imgSrc = 'assets/images/utilities/photo-avatar.jpg';
     }
     else if(this.imgType == 'logo'){
-      this.imgSrc = '../../../../assets/images/utilities/logo-placeholder.jpg';
+      this.imgSrc = 'assets/images/utilities/logo-placeholder.jpg';
     }
   }
 
