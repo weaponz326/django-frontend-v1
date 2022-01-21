@@ -11,4 +11,6 @@ export const environment = {
   hotelUrl: "https://hotel.netrink.com/api/",
   shopUrl: "https://shop.netrink.com/api/",
   productionUrl: "https://production.netrink.com/api/",
+
+  assetsBasePath: "static/dist/",
 };

@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 
+import { environment } from 'projects/personal/src/environments/environment';
+
 
 @Component({
   selector: 'app-module-home',
@@ -9,6 +11,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 export class ModuleHomeComponent implements OnInit {
 
   constructor() { }
+
+  assetsBasePath = environment.assetsBasePath;
 
   ngOnInit(): void {
   }

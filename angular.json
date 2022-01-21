@@ -183,7 +183,9 @@
                   "with": "projects/personal/src/environments/environment.prod.ts"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "none",
+              "deployUrl": "/static/dist/",
+              "outputPath": "../projects/personal/static/dist/"
             },
             "development": {
               "buildOptimizer": false,
