@@ -1,7 +1,11 @@
 + projects
 	+ application (A)
 		+ pages
-			- landing page (Mr)(C)
+			- landing page (Mr)(C)'
+            + extras
+                - privacy page (Mr)(C)
+                - terms page (Mr)(C)
+            - help page (Mr)(C)
 		+ components
 			+ main navbar (M)
 				- main navbar (C)
@@ -19,6 +23,7 @@
 		+ pages
 			- guest landing page (Mr)(C)
 			- auth page (Mr)(C)
+            - user settings page(Mr)(C)
 			- home page (Mr)(C)
 			+ modules
 				- portal page (Mr)(C)
@@ -44,6 +49,10 @@
 				- login form (C)
 				- recovery form (C)
 				- reset form (C)
+            + user settings
+                - change password (C)
+                - change email (C)
+                - two factor auth (C)
 			+ module utilities (M)
 				- module sidenav (C)
 				- module topnav (C)

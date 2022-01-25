@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { environment } from 'projects/personal/src/environments/environment';
 import { AuthApiService } from '../../services/auth-api/auth-api.service';
 
 
@@ -16,8 +15,6 @@ export class GuestLandingPageComponent implements OnInit {
     private router: Router,
     private authApi: AuthApiService
   ) { }
-
-  assetsBasePath = environment.assetsBasePath;
 
   isLoading: boolean = false;
 

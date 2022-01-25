@@ -1,7 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 
-import { environment } from 'projects/personal/src/environments/environment';
-
 
 @Component({
   selector: 'app-image-input',
@@ -16,17 +14,15 @@ export class ImageInputComponent implements OnInit {
   @Input() height = 120;
   @Input() width = 120;
 
-  assetsBasePath = environment.assetsBasePath;
-
   image: any;
   imgSrc = '';
 
   ngOnInit(): void {
     if(this.imgType == 'photo'){
-      this.imgSrc = this.assetsBasePath + 'assets/images/utilities/photo-avatar.jpg';
+      this.imgSrc = 'assets/images/utilities/photo-avatar.jpg';
     }
     else if(this.imgType == 'logo'){
-      this.imgSrc = this.assetsBasePath + 'assets/images/utilities/logo-placeholder.jpg';
+      this.imgSrc = 'assets/images/utilities/logo-placeholder.jpg';
     }
   }
 
