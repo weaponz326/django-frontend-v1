@@ -13,3 +13,8 @@
 .text-white {
   color: #fffd;
 }
+
+.suite-details p.h1,
+.suite-details p.h4{
+  color: #212529;
+}
